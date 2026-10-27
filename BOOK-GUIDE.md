@@ -190,6 +190,7 @@ To keep a block always open, add `data-open`: `<div class="card tip" data-open>`
 - Supported symbols: `∧ ∨ ~ ≅ ∠ ≯ ≈ × ÷ − ² ⁿ ° ......`. Add a new symbol to the `MAP` in `math.js`.
 - Write `>` as `&gt;` and `<` as `&lt;`.
 - Times (`8:30`) and lesson numbers are never converted.
+- MathJax cannot line-break. `math.js` (`splitLong`) splits a long `.m` (20+ characters) at top-level commas, or else before `=`, `≅`, `>`…, so it wraps on phones. Keep a single piece short: write `√((−0.48)² + 8.65²) = √75.05`, not one long square root.
 - Math labels inside widgets: put them in `<span class="m">` in the innerHTML, then call `tex(el)` (see widgets.js).
 - Without internet, the Unicode version shows. That's why the Unicode version must also read correctly.
 

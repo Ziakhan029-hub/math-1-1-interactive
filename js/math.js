@@ -19,7 +19,39 @@
   // a .num is an equation only if it has an operator and is not a time, lesson number or Arabic text
   const isEquation = (s) => /[=+×²÷≈]|[−-]\d/.test(s) && !/[:؀-ۿ]/.test(s) && !/^\d-\d$/.test(s.trim());
 
+  /* MathJax cannot line-break, so a long equation is split before relations (=, ≅, >, …) and after
+     top-level commas into pieces inside one LTR wrapper; the line may then wrap between pieces. */
+  function splitLong(root) {
+    root.querySelectorAll('.m:not(.tex)').forEach((el) => {
+      const s = el.textContent;
+      if (s.length < 20 || el.closest('svg, .widget, .pg-foot')) return;
+      const top = (test) => { let d = 0; return [...s].some((ch) => { if ('([{'.includes(ch)) d++; if (')]}'.includes(ch)) d--; return d === 0 && test(ch); }); };
+      const byComma = top((ch) => ch === ',' || ch === '،');   // a list splits only at its commas
+      const parts = []; let cur = '', depth = 0;
+      for (const ch of s) {
+        if ('([{'.includes(ch)) depth++;
+        if (')]}'.includes(ch)) depth--;
+        if (!byComma && depth === 0 && '=≅≈><≤≥≠'.includes(ch) && cur.trim()) { parts.push(cur); cur = ''; }
+        cur += ch;
+        if (byComma && depth === 0 && (ch === ',' || ch === '،')) { parts.push(cur); cur = ''; }
+      }
+      parts.push(cur);
+      const ps = parts.map((x) => x.trim()).filter(Boolean);
+      if (ps.length < 2) return;
+      const wrap = document.createElement('span');
+      wrap.className = 'm-wrap'; wrap.dir = 'ltr';
+      ps.forEach((x, i) => {
+        const piece = document.createElement('span');
+        piece.className = el.className; piece.textContent = x;
+        if (i) wrap.append(' ');
+        wrap.append(piece);
+      });
+      el.replaceWith(wrap);
+    });
+  }
+
   function convert(root) {
+    splitLong(root);
     const els = [...root.querySelectorAll('.m, .num')].filter((el) =>
       !el.classList.contains('tex') &&
       !el.closest('svg, .pg-foot, .page-ind, .brand, option') &&

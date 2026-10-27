@@ -452,6 +452,8 @@ table.tt td button.wrong { background: #fee2e2; color: #991b1b; }
 mjx-container[jax="CHTML"] { direction: ltr; unicode-bidi: isolate; display: inline-block; margin: 0 .1em; line-height: 0; }
 .tex { font-style: normal; font-family: inherit; white-space: nowrap; }
 .steps mjx-container, .q mjx-container { color: inherit; }
+.widget select { max-width: 100%; min-width: 0; }
+.m-wrap { unicode-bidi: isolate; }   /* pieces of a long equation (math.js splitLong) */
 
 /* ===== Page curl ===== */
 .single.book { clip-path: inset(-30px 0 -30px -30px); }   /* the flap disappears at the spine edge */
