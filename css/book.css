@@ -77,7 +77,7 @@ a.icon-btn { text-decoration: none; font-size: 22px; }
 .book::after { left: -2px; top: 3px; bottom: 3px; background: #fdf8ec; box-shadow: none; }
 
 .page { position: absolute; inset: 0; }
-.page.gone { visibility: hidden; }
+.page.gone { display: none; }   /* only the current page and its neighbours are rendered (keeps phones from running out of memory) */
 
 .face {
   position: absolute; inset: 0;
@@ -366,8 +366,7 @@ table.tt td button.wrong { background: #fee2e2; color: #991b1b; }
 /* ===== Paper feel ===== */
 .front, .base .paper, .spread .back {
   background-color: var(--paper);
-  background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .35  0 0 0 0 .15  0 0 0 .06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-image: linear-gradient(180deg, rgba(255,255,255,.6), rgba(243,234,210,.25));
 }
 
 /* ===== Two-page spread (wide screens) ===== */
@@ -425,7 +424,6 @@ table.tt td button.wrong { background: #fee2e2; color: #991b1b; }
 .cv-chapter {
   margin-top: 14px; padding: 14px 22px; border-radius: 18px; display: grid; gap: 2px;
   background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
 }
 .cv-chapter b { color: #fde047; font-family: "Cairo"; }
 .cv-chapter span { font-family: "Cairo"; font-weight: 800; font-size: 22px; }

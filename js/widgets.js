@@ -908,6 +908,266 @@
     draw();
   };
 
+  /* ===================== Chapter 2 ===================== */
+
+  /* ---------- 2-1: rectangular prism — tap an edge to see parallel / intersecting / skew edges ----------
+     data-labels: 8 vertex names in the order top-front-left, top-front-right, top-back-right, top-back-left,
+     bottom-front-left, bottom-front-right, bottom-back-right, bottom-back-left */
+  W.box3d = function (el) {
+    const names = (el.dataset.labels || 'A,D,C,B,F,E,H,G').split(',');
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 320 230"></svg><div class="readout"></div>
+      <div class="chips" style="margin-top:6px"><span class="chip" style="color:${C.blue}"><span>متوازية</span></span><span class="chip" style="color:${C.green}"><span>متقاطعة</span></span><span class="chip" style="color:${C.red}"><span>متخالفة</span></span></div>`);
+    el.querySelectorAll('.chips .chip').forEach((c) => c.setAttribute('aria-pressed', 'true'));
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const P3 = [[0, 1, 0], [1, 1, 0], [1, 1, 1], [0, 1, 1], [0, 0, 0], [1, 0, 0], [1, 0, 1], [0, 0, 1]];   // x right, y up, z back
+    const proj = ([x, y, z]) => [70 + x * 150 + z * 70, 190 - y * 120 - z * 55];
+    const E = [[0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4], [0, 4], [1, 5], [2, 6], [3, 7]];
+    const dir = (e) => P3[e[1]].map((v, i) => Math.abs(v - P3[e[0]][i])).join('');
+    let sel = 0;
+    const layer = s('g', {}, svg);
+    function rel(a, b) {
+      if (a === b) return 'self';
+      const share = E[a].some((v) => E[b].includes(v));
+      if (share) return 'meet';
+      if (dir(E[a]) === dir(E[b])) return 'par';
+      // same face and not sharing a vertex and not parallel is impossible in a box; otherwise skew
+      return 'skew';
+    }
+    function draw() {
+      clear(layer);
+      const col = { self: C.orange, par: C.blue, meet: C.green, skew: C.red };
+      const groups = { par: [], meet: [], skew: [] };
+      E.forEach((e, i) => {
+        const r = rel(sel, i), a = proj(P3[e[0]]), b = proj(P3[e[1]]);
+        const hidden = P3[e[0]][2] && P3[e[1]][2] && (P3[e[0]][0] === 0 || P3[e[1]][0] === 0) && (P3[e[0]][1] === 0 || P3[e[1]][1] === 0);
+        if (r !== 'self') groups[r].push(names[e[0]] + names[e[1]]);
+        s('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: col[r], 'stroke-width': r === 'self' ? 6 : 3.5, 'stroke-linecap': 'round', 'stroke-dasharray': hidden ? '6 5' : '' }, layer);
+        const hit = s('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: 'transparent', 'stroke-width': 18, style: 'cursor:pointer' }, layer);
+        hit.addEventListener('click', () => { sel = i; draw(); });
+      });
+      P3.forEach((p, i) => { const q = proj(p); s('circle', { cx: q[0], cy: q[1], r: 3.5, fill: C.ink }, layer); txt(layer, q[0] + (p[0] ? 12 : -12), q[1] + (p[1] ? -6 : 16), names[i], italic()); });
+      const segs = (arr) => arr.map((x) => `<span class="m">${x}</span>`).join('، ');
+      const e = E[sel];
+      ro.innerHTML = `<span class="pill big" style="color:${C.orange}">القطعة <span class="m">${names[e[0]] + names[e[1]]}</span></span>` +
+        `<span class="pill" style="color:${C.blue}">توازيها: ${segs(groups.par)}</span><span class="pill" style="color:${C.red}">تخالفها: ${segs(groups.skew)}</span><span class="pill" style="color:${C.green}">تقطعها: ${segs(groups.meet)}</span>`;
+      tex(ro);
+    }
+    draw();
+  };
+
+  /* ---------- 2-1 … 2-3: two lines cut by a transversal ----------
+     data-orient: "h" (lines horizontal, transversal steep) or "v" (lines vertical, transversal gentle)
+     data-labels: "TL,TR,BR,BL|TL,TR,BR,BL" angle numbers at the first and second intersection
+     data-given:  "5:72" (optional) — lines are parallel and this angle is known; tap any angle to see its measure
+     data-names:  "t,n,p" (optional) transversal and line names */
+  W.transFig = function (el) {
+    const orient = el.dataset.orient || 'h';
+    const labels = (el.dataset.labels || '1,2,3,4|5,6,7,8').split('|').map((g) => g.split(','));
+    const nm = (el.dataset.names || 't,,').split(',');
+    let given = el.dataset.given ? el.dataset.given.split(':').map(Number) : null;
+    const POS = ['TL', 'TR', 'BR', 'BL'];
+    const all = [];
+    labels.forEach((g, i) => g.forEach((n, k) => all.push({ n, i, p: POS[k] })));
+    const find = (n) => all.find((a) => String(a.n) === String(n));
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 320 210"></svg>${given ? '<div class="ctrl"><label>القياس المعطى</label><input type="range" min="20" max="160" step="1"><output></output></div>' : ''}<div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const cls = (p) => (p === 'TL' || p === 'BR' ? 0 : 1);
+    const interior = (a) => (orient === 'h' ? (a.i === 0 ? ['BL', 'BR'] : ['TL', 'TR']) : (a.i === 0 ? ['TR', 'BR'] : ['TL', 'BL'])).includes(a.p);
+    const side = (p) => (orient === 'h' ? (p === 'TL' || p === 'BL' ? 'L' : 'R') : (p === 'TL' || p === 'TR' ? 'T' : 'B'));
+    function relation(a, b) {
+      if (a.i === b.i) return cls(a.p) === cls(b.p) ? 'متقابلتان بالرأس' : 'متجاورتان على مستقيم (متكاملتان)';
+      if (a.p === b.p) return 'متناظرتان';
+      const ia = interior(a), ib = interior(b), same = side(a.p) === side(b.p);
+      if (ia && ib) return same ? 'متحالفتان (داخليتان في جهة واحدة)' : 'متبادلتان داخليًّا';
+      if (!ia && !ib) return same ? 'خارجيتان في جهة واحدة' : 'متبادلتان خارجيًّا';
+      return 'ليس لهما اسم خاص';
+    }
+    const measure = (a) => { const g = find(given[0]); return cls(a.p) === cls(g.p) ? given[1] : 180 - given[1]; };
+    let picks = [];
+    function geom() {
+      // angle (deg) of the transversal so the figure matches the given measure
+      let base = 62;
+      if (given) {
+        const g = find(given[0]);
+        const tr = cls(g.p) === 1 ? given[1] : 180 - given[1];      // measure of the TR/BL class
+        base = orient === 'h' ? tr : 90 - tr;
+      }
+      return base;
+    }
+    function draw() {
+      clear(layer);
+      const th = geom(), rad = th * Math.PI / 180;
+      const X = orient === 'h' ? [[0, 70], [0, 150]] : [[110, 0], [220, 0]];
+      // intersection points
+      const I = orient === 'h'
+        ? [[160 + (105 - 70) / Math.tan(rad), 70], [160 - (150 - 105) / Math.tan(rad), 150]]
+        : [[110, 105 - (110 - 160) * Math.tan(rad)], [220, 105 - (220 - 160) * Math.tan(rad)]];
+      const arrow = (x, y, a) => s('path', { d: `M${x},${y} l${-9 * Math.cos(a - 0.5)},${9 * Math.sin(a - 0.5)} M${x},${y} l${-9 * Math.cos(a + 0.5)},${9 * Math.sin(a + 0.5)}`, stroke: C.pink, 'stroke-width': 2.5, fill: 'none' }, layer);
+      if (orient === 'h') {
+        [70, 150].forEach((y, i) => { s('line', { x1: 8, x2: 312, y1: y, y2: y, stroke: C.blue, 'stroke-width': 3 }, layer); if (given) arrow(290, y, 0); if (nm[i + 1]) txt(layer, 304, y - 8, nm[i + 1], italic()); });
+      } else {
+        [110, 220].forEach((x, i) => { s('line', { x1: x, x2: x, y1: 6, y2: 204, stroke: C.blue, 'stroke-width': 3 }, layer); if (given) arrow(x, 22, Math.PI / 2); if (nm[i + 1]) txt(layer, x + 12, 16, nm[i + 1], italic()); });
+      }
+      const L = 400, mid = [(I[0][0] + I[1][0]) / 2, (I[0][1] + I[1][1]) / 2];
+      s('line', { x1: mid[0] - L * Math.cos(rad), y1: mid[1] + L * Math.sin(rad), x2: mid[0] + L * Math.cos(rad), y2: mid[1] - L * Math.sin(rad), stroke: C.ink, 'stroke-width': 3 }, layer);
+      if (nm[0]) { const tp = orient === 'h' ? [I[0][0] + 70 / Math.tan(rad) + 10, 12] : [304, 105 - 144 * Math.tan(rad) - 8]; txt(layer, tp[0], tp[1], nm[0], italic()); }
+      // label positions: bisector directions of the 4 angles
+      const lineDir = orient === 'h' ? 0 : 90;
+      const rays = [lineDir, th, lineDir + 180, th + 180].map((a) => (a + 360) % 360).sort((a, b) => a - b);
+      all.forEach((a) => {
+        const P = I[a.i];
+        // find which wedge corresponds to the position
+        const wedges = rays.map((r, k) => { const r2 = rays[(k + 1) % 4] + (k === 3 ? 360 : 0); return [r, r2, (r + r2) / 2]; });
+        const want = { TL: [-1, -1], TR: [1, -1], BR: [1, 1], BL: [-1, 1] }[a.p];
+        const w = wedges.find(([, , m]) => Math.sign(Math.round(Math.cos(m * Math.PI / 180) * 1000)) === want[0] && Math.sign(Math.round(-Math.sin(m * Math.PI / 180) * 1000)) === want[1]) || wedges[0];
+        const picked = picks.includes(a);
+        if (picked) s('path', { d: arcPath(P, 26, w[0], w[1]), fill: picks[0] === a ? 'rgba(245,158,11,.4)' : 'rgba(124,58,237,.35)' }, layer);
+        const q = [P[0] + 19 * Math.cos(w[2] * Math.PI / 180), P[1] - 19 * Math.sin(w[2] * Math.PI / 180)];
+        const t = txt(layer, q[0], q[1] + 5, a.n, { 'font-size': 14, 'font-weight': 800, fill: picked ? C.ink : '#475569' });
+        const hit = s('circle', { cx: q[0], cy: q[1], r: 13, fill: 'transparent', style: 'cursor:pointer' }, layer);
+        hit.addEventListener('click', () => { picks = picks.length >= 2 || picks.includes(a) ? [a] : picks.concat(a); draw(); });
+        t.style.pointerEvents = 'none';
+      });
+      let html = '';
+      if (picks.length === 0) html = `<span class="pill">${given ? 'اضغط على رقم أي زاوية لمعرفة قياسها' : 'اضغط على رقمَي زاويتين لمعرفة نوع العلاقة بينهما'}</span>`;
+      if (given && picks[0]) { const a = picks[0], g = find(given[0]); html += `<span class="pill big ok"><span class="m">m∠${a.n} = ${measure(a)}°</span></span>` + (String(a.n) !== String(g.n) ? `<span class="pill">∠${a.n} و ∠${g.n}: ${relation(a, g)}</span>` : '<span class="pill">هذه هي الزاوية المعطاة</span>'); }
+      if (picks.length === 2) html += `<span class="pill big" style="color:${C.purple}">∠${picks[0].n} و ∠${picks[1].n}: ${relation(picks[0], picks[1])}</span>`;
+      ro.innerHTML = html;
+    }
+    if (given) {
+      const r = el.querySelector('input[type=range]'), out = el.querySelector('output');
+      r.value = given[1]; out.textContent = given[1] + '°';
+      r.addEventListener('input', () => { given[1] = +r.value; out.textContent = r.value + '°'; draw(); });
+    }
+    draw();
+  };
+
+  /* ---------- 2-4: slope on a grid ---------- */
+  function grid(svg, n, S0) {
+    const g = s('g', {}, svg), c = S0 / 2, u = S0 / (2 * n);
+    for (let i = -n; i <= n; i++) {
+      s('line', { x1: c + i * u, x2: c + i * u, y1: 0, y2: S0, stroke: i ? C.grid : C.ink, 'stroke-width': i ? 1 : 1.6 }, g);
+      s('line', { y1: c + i * u, y2: c + i * u, x1: 0, x2: S0, stroke: i ? C.grid : C.ink, 'stroke-width': i ? 1 : 1.6 }, g);
+    }
+    txt(g, S0 - 8, c - 6, 'x', italic({ 'font-size': 13 })); txt(g, c + 9, 12, 'y', italic({ 'font-size': 13 }));
+    return { X: (x) => c + x * u, Y: (y) => c - y * u, inv: (px, py) => [Math.round((px - c) / u), Math.round((c - py) / u)], u };
+  }
+  const gcd = (a, b) => (b ? gcd(b, a % b) : Math.abs(a));
+  const frac = (p, q) => { if (q === 0) return null; if (q < 0) { p = -p; q = -q; } const g = gcd(Math.abs(p), q) || 1; return q / g === 1 ? String(p / g) : `${p / g}/${q / g}`; };
+  W.slope = function (el) {
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 260 260"></svg><label class="ctrl" style="justify-content:center"><input type="checkbox" data-k="pp"> أظهر مستقيمًا موازيًا وآخر عموديًّا</label><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const G = grid(svg, 6, 260), layer = s('g', {}, svg);
+    const pts = [[-2, -1], [3, 3]], hs = [handle(svg, C.purple), handle(svg, C.orange)];
+    const pp = el.querySelector('[data-k=pp]');
+    pp.addEventListener('change', draw);
+    hs.forEach((h, i) => draggable(svg, h, (x, y) => { const q = G.inv(x, y).map((v) => Math.max(-6, Math.min(6, v))); if (q[0] === pts[1 - i][0] && q[1] === pts[1 - i][1]) return; pts[i] = q; draw(); }));
+    const lineThrough = (p, m, col, dash) => {
+      if (m === null) { s('line', { x1: G.X(p[0]), x2: G.X(p[0]), y1: 0, y2: 260, stroke: col, 'stroke-width': 2.5, 'stroke-dasharray': dash || '' }, layer); return; }
+      s('line', { x1: G.X(-7), y1: G.Y(p[1] + m * (-7 - p[0])), x2: G.X(7), y2: G.Y(p[1] + m * (7 - p[0])), stroke: col, 'stroke-width': 2.5, 'stroke-dasharray': dash || '' }, layer);
+    };
+    function draw() {
+      clear(layer);
+      const [a, b] = pts, dy = b[1] - a[1], dx = b[0] - a[0], m = dx ? dy / dx : null;
+      lineThrough(a, m, C.teal);
+      if (pp.checked) {
+        lineThrough([a[0], a[1] + 3], m, C.blue, '6 4');
+        lineThrough(a, m === null ? 0 : m === 0 ? null : -1 / m, C.pink, '6 4');
+      }
+      if (dx && dy) {
+        s('line', { x1: G.X(a[0]), y1: G.Y(a[1]), x2: G.X(b[0]), y2: G.Y(a[1]), stroke: C.red, 'stroke-width': 3 }, layer);
+        s('line', { x1: G.X(b[0]), y1: G.Y(a[1]), x2: G.X(b[0]), y2: G.Y(b[1]), stroke: C.blue, 'stroke-width': 3 }, layer);
+        txt(layer, (G.X(a[0]) + G.X(b[0])) / 2, G.Y(a[1]) + (dy > 0 ? 16 : -6), String(dx), { fill: C.red, 'font-weight': 800, 'font-size': 13 });
+        txt(layer, G.X(b[0]) + 14, (G.Y(a[1]) + G.Y(b[1])) / 2 + 4, String(dy), { fill: C.blue, 'font-weight': 800, 'font-size': 13 });
+      }
+      pts.forEach((p, i) => { place(hs[i], G.X(p[0]), G.Y(p[1])); });
+      const kind = m === null ? 'غير معرّف (مستقيم رأسي)' : m > 0 ? 'موجب (يصعد نحو اليمين)' : m < 0 ? 'سالب (ينزل نحو اليمين)' : 'صفر (مستقيم أفقي)';
+      const fs = frac(dy, dx);
+      ro.innerHTML = `<span class="pill"><span class="m">(${a[0]}, ${a[1]})</span> و <span class="m">(${b[0]}, ${b[1]})</span></span>` +
+        `<span class="pill big ${m === null ? 'no' : 'ok'}"><span class="m">m = (${b[1]} − ${a[1] < 0 ? '(' + a[1] + ')' : a[1]}) / (${b[0]} − ${a[0] < 0 ? '(' + a[0] + ')' : a[0]}) = ${fs === null ? dy + '/0' : fs}</span></span><span class="pill">الميل ${kind}</span>` +
+        (pp.checked && m !== null && m !== 0 ? `<span class="pill" style="color:${C.blue}">الموازي: الميل نفسه <span class="m">${fs}</span></span><span class="pill" style="color:${C.pink}">العمودي: <span class="m">${frac(-dx, dy)}</span>، والناتج <span class="m">${fs} × ${frac(-dx, dy)} = −1</span></span>` : '');
+      tex(ro);
+    }
+    draw();
+  };
+
+  /* ---------- 2-5: y = mx + b with sliders ---------- */
+  W.lineEq = function (el) {
+    el.insertAdjacentHTML('beforeend', `<div class="ctrl"><label>الميل m</label><input type="range" min="-4" max="4" step="0.5" value="3" data-k="m"><output></output></div>
+      <div class="ctrl"><label>المقطع b</label><input type="range" min="-5" max="5" step="1" value="-2" data-k="b"><output></output></div>
+      <svg viewBox="0 0 260 260"></svg><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), G = grid(svg, 6, 260), layer = s('g', {}, svg);
+    const rm = el.querySelector('[data-k=m]'), rb = el.querySelector('[data-k=b]');
+    function draw() {
+      const m = +rm.value, b = +rb.value;
+      rm.nextElementSibling.textContent = m; rb.nextElementSibling.textContent = b;
+      clear(layer);
+      s('line', { x1: G.X(-7), y1: G.Y(m * -7 + b), x2: G.X(7), y2: G.Y(m * 7 + b), stroke: C.teal, 'stroke-width': 3 }, layer);
+      s('circle', { cx: G.X(0), cy: G.Y(b), r: 6, fill: C.orange, stroke: '#fff', 'stroke-width': 2 }, layer);
+      if (m) {
+        const [rise, run] = Number.isInteger(m) ? [m, 1] : [m * 2, 2];
+        s('path', { d: `M${G.X(0)},${G.Y(b)} H${G.X(run)} V${G.Y(b + rise)}`, fill: 'none', stroke: C.red, 'stroke-width': 2.5, 'stroke-dasharray': '5 3' }, layer);
+      }
+      const eq = `y = ${m === 0 ? '' : m === 1 ? 'x' : m === -1 ? '−x' : m + 'x'}${b === 0 ? (m === 0 ? '0' : '') : b > 0 ? (m === 0 ? b : ' + ' + b) : (m === 0 ? '−' + -b : ' − ' + -b)}`;
+      ro.innerHTML = `<span class="pill big ok"><span class="m">${eq}</span></span><span class="pill" style="color:#b45309">مقطع المحور y: <span class="m">(0, ${b})</span></span><span class="pill">${m === 0 ? 'مستقيم أفقي' : m > 0 ? 'يصعد' : 'ينزل'}</span>`;
+      tex(ro);
+    }
+    rm.addEventListener('input', draw); rb.addEventListener('input', draw);
+    draw();
+  };
+
+  /* ---------- 2-5: compare two linear offers ---------- */
+  W.plans = function (el) {
+    const A = el.dataset.a.split(',').map(Number), B = el.dataset.b.split(',').map(Number);   // [rate, fixed]
+    const max = +el.dataset.max, unit = el.dataset.unit || '', names = (el.dataset.names || 'العرض X,العرض Y').split(',');
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 320 220"></svg><div class="ctrl"><label>${el.dataset.label || 'العدد'}</label><input type="range" min="0" max="${max}" step="${el.dataset.step || 1}" value="${Math.round(max / 3)}"><output></output></div><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const cost = (p, t) => p[0] * t + p[1];
+    const ymax = Math.ceil(Math.max(cost(A, max), cost(B, max)) / 20) * 20;
+    range(el, (t) => {
+      clear(layer);
+      const g = chart(layer, { x0: 0, x1: max, y0: 0, y1: ymax, xs: [0, max / 4, max / 2, 3 * max / 4, max].map(Math.round), ys: [0, ymax / 4, ymax / 2, 3 * ymax / 4, ymax], xl: el.dataset.label || '', yl: 'التكلفة' });
+      [[A, C.blue], [B, C.orange]].forEach(([p, col]) => s('line', { x1: g.X(0), y1: g.Y(cost(p, 0)), x2: g.X(max), y2: g.Y(cost(p, max)), stroke: col, 'stroke-width': 3 }, layer));
+      s('line', { x1: g.X(t), x2: g.X(t), y1: g.T, y2: g.B, stroke: C.purple, 'stroke-dasharray': '4 3' }, layer);
+      [[A, C.blue], [B, C.orange]].forEach(([p, col]) => s('circle', { cx: g.X(t), cy: g.Y(cost(p, t)), r: 5, fill: col, stroke: '#fff', 'stroke-width': 2 }, layer));
+      const ca = cost(A, t), cb = cost(B, t), eqT = A[0] !== B[0] ? (B[1] - A[1]) / (A[0] - B[0]) : null;
+      ro.innerHTML = `<span class="pill" style="color:${C.blue}">${names[0]}: <b>${fmt(ca, 2)}</b> ${unit}</span><span class="pill" style="color:#b45309">${names[1]}: <b>${fmt(cb, 2)}</b> ${unit}</span>` +
+        `<span class="pill big ${Math.abs(ca - cb) < 1e-9 ? '' : 'ok'}">${Math.abs(ca - cb) < 1e-9 ? 'التكلفتان متساويتان' : (ca < cb ? names[0] : names[1]) + ' أقل تكلفة'}</span>` +
+        (eqT !== null ? `<span class="pill">تتساوى التكلفتان عند ${fmt(eqT, 2)}</span>` : '');
+    });
+  };
+
+  /* ---------- 2-6: distance from a point to a line ---------- */
+  W.pointLine = function (el) {
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 260 260"></svg><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), G = grid(svg, 7, 260), layer = s('g', {}, svg);
+    const m = -1, b = -2;   // line ℓ: y = −x − 2
+    let P = [2, 4], Rx = 4;
+    const hP = handle(svg, C.orange), hR = handle(svg, C.purple);
+    draggable(svg, hP, (x, y) => { P = G.inv(x, y).map((v) => Math.max(-7, Math.min(7, v))); if (P[1] === m * P[0] + b) P[1] += 1; draw(); });
+    draggable(svg, hR, (x) => { Rx = Math.max(-7, Math.min(5, G.inv(x, 0)[0])); draw(); });
+    function draw() {
+      clear(layer);
+      s('line', { x1: G.X(-8), y1: G.Y(m * -8 + b), x2: G.X(8), y2: G.Y(m * 8 + b), stroke: C.teal, 'stroke-width': 3 }, layer);
+      txt(layer, G.X(-6.2), G.Y(m * -6.2 + b) - 8, 'ℓ', italic({ fill: C.teal }));
+      const fx = (P[0] + m * (P[1] - b)) / (1 + m * m), F = [fx, m * fx + b];
+      const R = [Rx, m * Rx + b];
+      s('line', { x1: G.X(P[0]), y1: G.Y(P[1]), x2: G.X(R[0]), y2: G.Y(R[1]), stroke: C.purple, 'stroke-width': 2.5, 'stroke-dasharray': '5 4' }, layer);
+      s('line', { x1: G.X(P[0]), y1: G.Y(P[1]), x2: G.X(F[0]), y2: G.Y(F[1]), stroke: C.orange, 'stroke-width': 3.5 }, layer);
+      // right-angle mark
+      const ux = Math.SQRT1_2, uy = -Math.SQRT1_2, vx = (P[0] - F[0]), vy = (P[1] - F[1]), vl = Math.hypot(vx, vy) || 1, k = 0.45;
+      const c1 = [F[0] + ux * k, F[1] + uy * k], c3 = [F[0] + vx / vl * k, F[1] + vy / vl * k], c2 = [c1[0] + vx / vl * k, c1[1] + vy / vl * k];
+      s('path', { d: `M${G.X(c1[0])},${G.Y(c1[1])} L${G.X(c2[0])},${G.Y(c2[1])} L${G.X(c3[0])},${G.Y(c3[1])}`, fill: 'none', stroke: C.red, 'stroke-width': 2 }, layer);
+      place(hP, G.X(P[0]), G.Y(P[1])); place(hR, G.X(R[0]), G.Y(R[1]));
+      txt(layer, G.X(P[0]) + 14, G.Y(P[1]) - 10, 'P', italic());
+      const d = Math.hypot(P[0] - F[0], P[1] - F[1]), dr = Math.hypot(P[0] - R[0], P[1] - R[1]);
+      const sq = Math.round(d * d * 1000) / 1000;
+      ro.innerHTML = `<span class="pill big ok">البعد العمودي <span class="m">d = √${fmt(sq, 2)} ≈ ${fmt(d, 2)}</span></span><span class="pill" style="color:${C.purple}">قطعة مائلة: ${fmt(dr, 2)} ${dr > d + 0.01 ? '(أطول)' : ''}</span><span class="pill">المستقيم <span class="m">ℓ: y = −x − 2</span></span>`;
+      tex(ro);
+    }
+    draw();
+  };
+
   document.querySelectorAll('[data-widget]').forEach((el) => {
     const f = W[el.dataset.widget];
     if (f) { try { f(el); } catch (e) { console.error('widget', el.dataset.widget, e); } }

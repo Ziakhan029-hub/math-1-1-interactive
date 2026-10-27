@@ -115,7 +115,7 @@
       u.classList.toggle('turned', t);
       u.setAttribute('aria-hidden', String(mode === 'single' ? i !== cur : !(i === cur || i === cur - 1)));
       if (mode === 'single') {
-        u.classList.toggle('gone', t);
+        u.classList.toggle('gone', t || i > cur + 1);
         u.style.zIndex = t ? 0 : n - i;
       } else {
         u.classList.toggle('gone', i < cur - 1 || i > cur + 1);
