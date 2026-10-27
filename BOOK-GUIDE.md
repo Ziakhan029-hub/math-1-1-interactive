@@ -240,6 +240,12 @@ Mark it in HTML, JS does the rest:
 | `lineEq` | y = mx + b with m and b sliders | 2-5 |
 | `plans` | Compare two linear offers (`data-a`/`data-b` = "rate,fixed", `data-max`, `data-label`, `data-names`) | 2-5 |
 | `pointLine` | Distance from a point to a line (perpendicular vs slanted segment) | 2-6 |
+| `triClassify` | Drag triangle vertices: angles, sides, equal-side ticks, classification by angles and sides | 3-1 |
+| `triAngles` | Angle sum with the auxiliary parallel line; exterior angle mode | 3-2 |
+| `congMatch` | Pick the vertex order of a congruence statement; colors show the claimed correspondences | 3-3 |
+| `congTest` | SSS / SAS / ASA / AAS (one triangle) vs SSA / AAA (not enough) | 3-4, 3-5 |
+| `isoTri` | Isosceles triangle: equal legs ⟺ equal base angles | 3-6 |
+| `midsegment` | Coordinate proof: the midsegment is parallel to the base and half its length | 3-7 |
 
 ### Rules for a new widget
 - Write it as `W.myWidget = function (el) { … }` in `js/widgets.js`.

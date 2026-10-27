@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e3a5f">
+<title>الفصل 3: المثلثات المتطابقة — الرياضيات 1-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/book.css">
+</head>
+<body data-chapter="3">
+<div class="app">
+
+  <header class="topbar">
+    <a class="icon-btn" href="index.html" aria-label="فهرس الكتاب" title="فهرس الكتاب">⌂</a>
+    <button class="icon-btn" id="tocBtn" aria-label="محتويات الفصل">☰</button>
+    <div class="brand">الرياضيات <span class="num">1-1</span><small>الفصل 3 · المثلثات المتطابقة</small></div>
+    <button class="icon-btn" id="soundBtn" aria-label="صوت قلب الصفحة" aria-pressed="true">🔊</button>
+  </header>
+  <div class="progress"><i id="prog"></i></div>
+
+  <main class="stage">
+    <div class="book" id="book">
+
+      <!-- ================= 0: COVER ================= -->
+      <section class="page cover" data-title="الغلاف">
+        <div class="face front"><div class="scroll"><div class="cover-full" style="background:radial-gradient(circle at 70% 20%, rgba(251,146,60,.35), transparent 50%),linear-gradient(160deg,#7c2d12 0%,#c2410c 45%,#b45309 75%,#1e3a8a 100%)">
+          <div class="cv-grid" aria-hidden="true"></div>
+          <svg class="cv-s s-tl fl f4" viewBox="0 0 80 70" aria-hidden="true"><polygon points="6,64 40,6 74,64" fill="rgba(253,224,71,.15)" stroke="#fde047" stroke-width="2.5"/></svg>
+          <svg class="cv-s s-tr fl f2" viewBox="0 0 110 70" aria-hidden="true"><g fill="none" stroke-width="2.5"><polygon points="4,64 30,8 52,64" stroke="#7dd3fc"/><polygon points="58,64 84,8 106,64" stroke="#7dd3fc"/></g><g stroke="#f9a8d4" stroke-width="2"><line x1="14" y1="34" x2="20" y2="38"/><line x1="68" y1="34" x2="74" y2="38"/></g></svg>
+          <svg class="cv-s s-bl fl f1" viewBox="0 0 80 70" aria-hidden="true"><polygon points="6,64 6,10 74,64" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="2.5"/><rect x="6" y="52" width="12" height="12" fill="none" stroke="#f9a8d4" stroke-width="2"/></svg>
+          <svg class="cv-s s-br fl f3" viewBox="0 0 80 70" aria-hidden="true"><polygon points="6,64 40,6 74,64" fill="none" stroke="#a7f3d0" stroke-width="2.5"/><line x1="40" y1="6" x2="40" y2="64" stroke="#a7f3d0" stroke-dasharray="4 3"/></svg>
+          <div class="cv-content">
+            <div class="cv-top">الرياضيات <span class="num">1-1</span> · التعليم الثانوي</div>
+            <div class="cv-title">الفصل <span>3</span></div>
+            <div class="cv-chapter"><b>الفصل 3</b><span>المثلثات المتطابقة</span><i>Congruent Triangles</i></div>
+            <button class="cv-start" data-next>ابدأ القراءة <span>←</span></button>
+            <div class="cv-badge">✦ نسخة تفاعلية ✦</div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1: HOW TO USE ================= -->
+      <section class="page" data-title="كيف تستعمل هذا الكتاب؟">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">👋</div>
+            <h1>مرحبًا بك!</h1>
+            <div class="en" style="direction:rtl;text-align:right;font-family:inherit;font-weight:500">هذا الكتاب تفاعلي: اقرأ، جرّب بنفسك، ثم تحقق من فهمك.</div>
+          </div>
+          <h2 class="sec-title">كيف تستعمل هذا الكتاب؟</h2>
+          <div class="how">
+            <div class="card"><div class="ic" style="background:#dcfce7">✋</div><div><b>اسحب رؤوس المثلثات</b><br>النقاط الملوّنة النابضة تُسحب، فتتغير الزوايا والأضلاع مباشرة.</div></div>
+            <div class="card"><div class="ic" style="background:#dbeafe">🎚️</div><div><b>اختر وجرّب</b><br>الأزرار والقوائم تغيّر ما تعرضه الأداة.</div></div>
+            <div class="card"><div class="ic" style="background:#ede9fe">💡</div><div><b>عرض الحل خطوة بخطوة</b><br>حاول أولًا، ثم اضغط «عرض الحل» واكشف الخطوات واحدة تلو الأخرى.</div></div>
+            <div class="card"><div class="ic" style="background:#fef3c7">📖</div><div><b>قلّب الصفحات</b><br>اسحب الصفحة، أو اضغط رقم الصفحة في الأسفل للانتقال إلى أي صفحة.</div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 3 · المثلثات المتطابقة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 2: CONTENTS ================= -->
+      <section class="page" data-title="فهرس الفصل 3">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head" style="background:linear-gradient(135deg,#7c2d12,#c2410c 55%,#f59e0b)">
+            <div class="no">3</div>
+            <h1>المثلثات المتطابقة</h1>
+            <div class="en">Congruent Triangles</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ قياس الزوايا وتصنيفها، والتوازي والتعامد.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أصنّف المثلثات وأجد قياسات زواياها.</li><li>أسمّي العناصر المتناظرة في المثلثات المتطابقة، وأثبت تطابق مثلثين.</li><li>أستعمل خصائص المثلثات المتطابقة الضلعين والمتطابقة الأضلاع، والبرهان الإحداثي.</li></ul></div>
+          </div>
+          <h2 class="sec-title">دروس الفصل</h2>
+          <ul class="toc-list">
+            <li><span class="no">3-1</span><span class="ttl">تصنيف المثلثات</span><button class="btn sm go" data-goto="3">افتح ←</button></li>
+            <li><span class="no">3-2</span><span class="ttl">زوايا المثلثات</span><button class="btn sm go" data-goto="6">افتح ←</button></li>
+            <li><span class="no">3-3</span><span class="ttl">المثلثات المتطابقة</span><button class="btn sm go" data-goto="9">افتح ←</button></li>
+            <li><span class="no">3-4</span><span class="ttl">إثبات تطابق المثلثات SSS, SAS</span><button class="btn sm go" data-goto="12">افتح ←</button></li>
+            <li><span class="no">3-5</span><span class="ttl">إثبات تطابق المثلثات ASA, AAS</span><button class="btn sm go" data-goto="14">افتح ←</button></li>
+            <li><span class="no">3-6</span><span class="ttl">المثلثات المتطابقة الضلعين والمتطابقة الأضلاع</span><button class="btn sm go" data-goto="16">افتح ←</button></li>
+            <li><span class="no">3-7</span><span class="ttl">المثلثات والبرهان الإحداثي</span><button class="btn sm go" data-goto="18">افتح ←</button></li>
+            <li><span class="no">★</span><span class="ttl">ملخص الفصل</span><button class="btn sm go" data-goto="20">افتح ←</button></li>
+          </ul>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 3 · المثلثات المتطابقة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 3: LESSON 3-1 ================= -->
+      <section class="page" data-title="3-1 تصنيف المثلثات">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">3-1</div>
+            <h1>تصنيف المثلثات</h1>
+            <div class="en">Classifying Triangles</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ قياس الزوايا وتصنيفها. (مهارة سابقة)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أصنّف المثلثات وفقًا لأضلاعها أو زواياها.</li><li>أستعمل تصنيف المثلثات في إيجاد قيم مجهولة.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>يُعدّ المثلث عنصرًا زخرفيًّا مميزًا في العمارة التقليدية في المملكة العربية السعودية، كما يلاحظ ذلك في صالات المسافرين بمطار الملك خالد الدولي بمدينة الرياض.</p></div>
+          <div class="card def"><h3>مفهوم أساسي: تصنيف المثلثات وفقًا لزواياها</h3>
+            <p><span class="hl">مثلث حاد الزوايا</span>: زواياه الثلاث حادة. <span class="hl">مثلث منفرج الزاوية</span>: إحدى زواياه منفرجة. <span class="hl">مثلث قائم الزاوية</span>: إحدى زواياه قائمة.</p>
+            <p>والمثلث الحاد الزوايا الذي زواياه الثلاث متطابقة يسمى <span class="hl">متطابق الزوايا</span>.</p>
+          </div>
+          <div class="widget" data-widget="triClassify"><div class="hint">اسحب رؤوس المثلث وراقب تصنيفه وفقًا لزواياه وأضلاعه</div></div>
+          <div class="vocab"><span><b>المثلث الحاد الزوايا</b><i>acute triangle</i></span><span><b>المثلث المنفرج الزاوية</b><i>obtuse triangle</i></span><span><b>المثلث القائم الزاوية</b><i>right triangle</i></span><span><b>المثلث المتطابق الأضلاع</b><i>equilateral triangle</i></span><span><b>المثلث المتطابق الضلعين</b><i>isosceles triangle</i></span><span><b>المثلث المختلف الأضلاع</b><i>scalene triangle</i></span></div>
+          <div class="card example" style="margin-top:14px">
+            <header><span class="tag">مثال 1</span><h3>تصنيف المثلثات وفقًا لزواياها</h3></header>
+            <div class="body">
+              <div class="part"><span class="lbl">a</span> مثلث زواياه <span class="num">70°, 40°, 70°</span>
+                <div class="sol" data-sol><ol class="steps"><li class="final">زوايا المثلث الثلاث حادة؛ لذا فالمثلث <b>حاد الزوايا</b>.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> مثلث زواياه <span class="num">90°, 30°, 60°</span>
+                <div class="sol" data-sol><ol class="steps"><li class="final">قياس إحدى زوايا المثلث <span class="num">90°</span>، فهو مثلث <b>قائم الزاوية</b>.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">1A</span> زواياه <span class="num">97°, 49°, 34°</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">إحدى زواياه منفرجة (<span class="num">97°</span>) ← <b>منفرج الزاوية</b>.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> زواياه <span class="num">60°, 60°, 60°</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">زواياه الثلاث حادة ومتطابقة ← <b>متطابق الزوايا</b>.</li></ol></div></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>تصنيف المثلثات ضمن أشكال مختلفة</h3></header>
+            <div class="body">
+              <p class="q">تقع النقطة <span class="m">S</span> على <span class="m">PR</span>، حيث <span class="m">m∠P = 45°</span> ، <span class="m">m∠PQS = 45°</span> ، <span class="m">m∠SQR = 59°</span> ، <span class="m">m∠R = 31°</span>، و <span class="m">QS ⊥ PR</span>. صنِّف <span class="m">△PQR</span> وفقًا لزواياه.</p>
+              <div class="sol" data-sol><ol class="steps"><li>تقع <span class="m">S</span> داخل <span class="m">∠PQR</span>، وحسب مسلّمة جمع قياسات الزوايا: <span class="m">m∠PQR = m∠PQS + m∠SQR</span></li><li><span class="m">m∠PQR = 45° + 59° = 104°</span></li><li class="final">بما أن إحدى زوايا <span class="m">△PQR</span> منفرجة، فهو <b>منفرج الزاوية</b>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> استعمل الشكل نفسه لتصنيف <span class="m">△PQS</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>بما أن <span class="m">QS ⊥ PR</span>، فإن <span class="m">m∠PSQ = 90°</span>.</li><li class="final"><span class="m">△PQS</span> <b>قائم الزاوية</b> (زواياه <span class="num">45°, 45°, 90°</span>).</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-1</span> · تصنيف المثلثات</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 4: 3-1 BY SIDES ================= -->
+      <section class="page" data-title="تصنيف المثلثات وفقًا لأضلاعها">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>مفهوم أساسي: تصنيف المثلثات وفقًا لأضلاعها</h3>
+            <p><span class="hl">متطابق الأضلاع</span>: أضلاعه الثلاثة متطابقة. <span class="hl">متطابق الضلعين</span>: له ضلعان متطابقان على الأقل. <span class="hl">مختلف الأضلاع</span>: لا توجد أضلاع متطابقة.</p>
+            <p>وللدلالة على تطابق ضلعين، يوضع عدد متساوٍ من الشرطات الصغيرة عليهما. والمثلث المتطابق الأضلاع حالة خاصة من المثلث المتطابق الضلعين.</p>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>تصنيف المثلثات وفقًا لأضلاعها</h3></header>
+            <div class="body">
+              <p><b>فن العمارة:</b> صنِّف المثلث الذي أطوال أضلاعه <span class="m up">55 cm, 55 cm, 45 cm</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li class="final">في المثلث ضلعان قياس كلٍّ منهما <span class="m up">55 cm</span> ← <b>متطابق الضلعين</b>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3) قيادة السيارة والسلامة:</b> صنِّف شكل زر ضوء الخطر الذي طول كل ضلع من أضلاعه <span class="m up">2 cm</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li class="final">أضلاعه الثلاثة متطابقة ← <b>متطابق الأضلاع</b>.</li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>تصنيف المثلثات ضمن أشكال مختلفة وفقًا لأضلاعها</h3></header>
+            <div class="body">
+              <p class="q">إذا كانت <span class="m">M</span> نقطة منتصف <span class="m">JL</span>، حيث <span class="m">JL = 1.5</span> ، <span class="m">JK = 0.75</span> ، <span class="m">KL = 1.3</span> ، <span class="m">KM ≅ ML</span>، فصنِّف <span class="m">△JKM</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li>من تعريف نقطة المنتصف: <span class="m">JM = ML</span>، و <span class="m">JM + ML = 1.5</span> ← <span class="m">2ML = 1.5</span> ← <span class="m">ML = 0.75</span></li><li>إذن <span class="m">JM = ML = 0.75</span>، وبما أن <span class="m">KM ≅ ML</span> فإن <span class="m">KM = 0.75</span></li><li class="final">أضلاع <span class="m">△JKM</span> الثلاثة تساوي <span class="num">0.75</span> ← <b>متطابق الأضلاع</b>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> صنِّف <span class="m">△KML</span> وفقًا لأضلاعه.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">KM = ML = 0.75</span> و <span class="m">KL = 1.3</span></li><li class="final">ضلعان متطابقان ← <b>متطابق الضلعين</b>.</li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 5</span><h3>إيجاد قيم مجهولة</h3></header>
+            <div class="body">
+              <p class="q"><b>جبر:</b> أوجد قياسات أضلاع المثلث المتطابق الضلعين <span class="m">ABC</span>، حيث <span class="m">AC = 4x + 1</span> ، <span class="m">CB = 5x − 0.5</span> ، <span class="m">AB = 9x − 1</span>، و <span class="m">AC ≅ CB</span>.</p>
+              <div class="ans" data-answer="1.5"><input inputmode="decimal" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">AC = CB</span> ← <span class="m">4x + 1 = 5x − 0.5</span></li><li><span class="m">1 = x − 0.5</span> ← <span class="m">x = 1.5</span></li><li><span class="m">AC = 4(1.5) + 1 = 7</span> ، <span class="m">CB = 7</span></li><li class="final"><span class="m">AB = 9(1.5) − 1 = 12.5</span>. تحقّق: <span class="m">CB = 5(1.5) − 0.5 = 7</span> ✓</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>5)</b> أوجد قياسات أضلاع المثلث المتطابق الأضلاع <span class="m">FGH</span>، حيث <span class="m">FG = 2y + 5</span> ، <span class="m">GH = 3y − 3</span> ، <span class="m">FH = 5y − 19</span>.</p>
+            <div class="ans" data-answer="21"><input inputmode="numeric" placeholder="طول الضلع"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">2y + 5 = 3y − 3</span> ← <span class="m">y = 8</span></li><li><span class="m">FG = 2(8) + 5 = 21</span> ، <span class="m">GH = 3(8) − 3 = 21</span></li><li class="final"><span class="m">FH = 5(8) − 19 = 21</span>؛ كل ضلع طوله <b>21</b>.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-1</span> · تصنيف المثلثات</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 5: 3-1 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 3-1">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — فن العمارة: صنِّف كلًّا من المثلثات وفقًا لزواياه:</div>
+          <div class="ex"><span class="exn">1</span> زواياه <span class="num">45°, 90°, 45°</span><div class="sol" data-sol><ol class="steps"><li class="final"><b>قائم الزاوية</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> زواياه <span class="num">130°, 25°, 25°</span><div class="sol" data-sol><ol class="steps"><li class="final"><b>منفرج الزاوية</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> زواياه <span class="num">60°, 60°, 60°</span><div class="sol" data-sol><ol class="steps"><li class="final"><b>متطابق الزوايا</b> (وحاد الزوايا).</li></ol></div></div>
+          <div class="ex-group">المثال 2 — النقطة <span class="m">D</span> على <span class="m">AC</span>: <span class="m">m∠A = 60°</span> ، <span class="m">m∠ADB = 60°</span> ، <span class="m">m∠BDC = 120°</span> ، <span class="m">m∠C = 30°</span> ، <span class="m">m∠ABD = 60°</span> ، <span class="m">m∠DBC = 30°</span>. صنِّف:</div>
+          <div class="ex"><span class="exn">4</span> <span class="m">△ABD</span><div class="sol" data-sol><ol class="steps"><li class="final">زواياه <span class="num">60°, 60°, 60°</span> ← <b>متطابق الزوايا</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">5</span> <span class="m">△BDC</span><div class="sol" data-sol><ol class="steps"><li class="final">فيه <span class="m">m∠BDC = 120°</span> ← <b>منفرج الزاوية</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> <span class="m">△ABC</span><div class="sol" data-sol><ol class="steps"><li><span class="m">m∠ABC = 60° + 30° = 90°</span></li><li class="final"><b>قائم الزاوية</b>.</li></ol></div></div>
+          <div class="ex-group">المثال 3 — صنِّف وفقًا لأضلاعه:</div>
+          <div class="ex"><span class="exn">8</span> مثلث أطوال أضلاعه <span class="m up">12 cm, 5 cm, 13 cm</span><div class="sol" data-sol><ol class="steps"><li class="final">لا توجد أضلاع متطابقة ← <b>مختلف الأضلاع</b>.</li></ol></div></div>
+          <div class="ex-group">المثال 5 — جبر: أوجد قيمة <span class="m">x</span> وأطوال الأضلاع المجهولة:</div>
+          <div class="ex"><span class="exn">12</span> <span class="m">△LMN</span>: <span class="m">LM = 40</span> ، <span class="m">MN = 2x + 7</span> ، <span class="m">LN = 3x − 4</span>، حيث <span class="m">MN ≅ LN</span>.
+            <div class="ans" data-answer="11"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">2x + 7 = 3x − 4</span> ← <span class="m">x = 11</span></li><li class="final"><span class="m">MN = LN = 29</span></li></ol></div></div>
+          <div class="ex"><span class="exn">13</span> <span class="m">△QRS</span>: <span class="m">RQ = 5x</span> ، <span class="m">RS = 6x − 5</span> ، <span class="m">QS = 3x + 10</span>، حيث <span class="m">RQ ≅ RS</span>.
+            <div class="ans" data-answer="5"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">5x = 6x − 5</span> ← <span class="m">x = 5</span></li><li class="final"><span class="m">RQ = RS = 25</span> ، <span class="m">QS = 3(5) + 10 = 25</span>؛ فالمثلث متطابق الأضلاع أيضًا.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-1</span> · تصنيف المثلثات</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 6: LESSON 3-2 ================= -->
+      <section class="page" data-title="3-2 زوايا المثلثات">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">3-2</div>
+            <h1>زوايا المثلثات</h1>
+            <div class="en">Angles of Triangles</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ تصنيف المثلثات وفقًا لقياسات أضلاعها وزواياها. (الدرس <span class="num">3-1</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أطبّق نظرية مجموع قياسات زوايا المثلث.</li><li>أطبّق نظرية الزاوية الخارجية للمثلث.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>يرعى أحد معاهد التقنية مسابقة سنوية، حيث يصمّم الطلاب روبوتًا آليًّا يؤدّي مهامّ مختلفة. وقد تمّت برمجة الروبوت ليتحرك في مسار على شكل مثلث، على أن يكون مجموع قياسات الزوايا التي ينعطف فيها عند نقاط الارتكاز الثلاث ثابتًا دائمًا.</p></div>
+          <div class="card def"><h3>نظرية 3.1: نظرية مجموع قياسات زوايا المثلث</h3><p>مجموع قياسات زوايا المثلث يساوي <span class="num">180°</span>: <span class="m">m∠A + m∠B + m∠C = 180°</span>.</p>
+            <p>يتطلب برهانها استعمال <span class="hl">مستقيم مساعد</span>: مستقيم إضافي يُرسم للمساعدة على تحليل العلاقات الهندسية، ويجب تبرير خصائصه.</p></div>
+          <div class="widget" data-widget="triAngles"><div class="hint">اسحب الرأس A: المستقيم المساعد يوازي BC، والزوايا الملونة على المستقيم متطابقة مع زاويتَي القاعدة</div></div>
+          <div class="vocab"><span><b>المستقيم المساعد</b><i>auxiliary line</i></span><span><b>الزاوية الخارجية</b><i>exterior angle</i></span><span><b>الزاويتان الداخليتان البعيدتان</b><i>remote interior angles</i></span><span><b>البرهان التسلسلي</b><i>flow proof</i></span><span><b>النتيجة</b><i>corollary</i></span></div>
+          <div class="card example" style="margin-top:14px">
+            <header><span class="tag">مثال 1 من واقع الحياة</span><h3>استعمال نظرية مجموع زوايا المثلث</h3></header>
+            <div class="body">
+              <p><b>كرة قدم:</b> في <span class="m">△ABC</span>: <span class="m">m∠A = 20°</span> ، <span class="m">m∠ACB = 78°</span>، وفي <span class="m">△CDE</span>: <span class="m">m∠CED = 61°</span>، و <span class="m">∠2</span> تقابل <span class="m">∠ACB</span> بالرأس. أوجد <span class="m">m∠3 = m∠ABC</span> و <span class="m">m∠1 = m∠CDE</span>.</p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>خطط:</b> أوجد <span class="m">m∠3</span> أولًا، ثم استعمل الزاويتين المتقابلتين بالرأس لإيجاد <span class="m">m∠2</span>، ثم <span class="m">m∠1</span>.</li>
+                <li><span class="m">m∠3 + 20° + 78° = 180°</span> ← <span class="m">m∠3 = 82°</span></li>
+                <li><span class="m">∠2</span> و <span class="m">∠ACB</span> متقابلتان بالرأس ← <span class="m">m∠2 = 78°</span></li>
+                <li><span class="m">m∠1 + 78° + 61° = 180°</span> ← <span class="m">m∠1 = 41°</span></li>
+                <li class="final">تحقّق: <span class="m">82° + 20° + 78° = 180°</span> و <span class="m">41° + 78° + 61° = 180°</span> ✓</li>
+              </ol></div>
+            </div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-2</span> · زوايا المثلثات</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 7: 3-2 EXTERIOR ================= -->
+      <section class="page" data-title="نظرية الزاوية الخارجية">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>نظرية 3.2: نظرية الزاوية الخارجية</h3><p>بالإضافة إلى الزوايا الداخلية الثلاث، يكون للمثلث <span class="hl">زوايا خارجية</span> تتشكل من أحد أضلاعه وامتداد ضلع مجاور له. ولكل زاوية خارجية <span class="hl">زاويتان داخليتان بعيدتان</span> غير مجاورتين لها.</p><p><b>قياس الزاوية الخارجية في مثلث يساوي مجموع قياسَي الزاويتين الداخليتين البعيدتين.</b></p></div>
+          <p>في <span class="hl">البرهان التسلسلي</span> تُستعمل عبارات مكتوبة في مستطيلات، وأسهم تبيّن التسلسل المنطقي لهذه العبارات. <small>(اختر «الزاوية الخارجية» في الأداة بالصفحة السابقة)</small></p>
+          <div class="card example">
+            <header><span class="tag">مثال 2 من واقع الحياة</span><h3>استعمال نظرية الزاوية الخارجية</h3></header>
+            <div class="body">
+              <p><b>اللياقة البدنية:</b> في <span class="m">△KLM</span>: <span class="m">m∠KLM = x°</span> ، <span class="m">m∠LMK = 50°</span>، والزاوية الخارجية <span class="m">m∠JKL = (2x − 15)°</span>. أوجد <span class="m">m∠JKL</span>.</p>
+              <div class="ans" data-answer="115|115°"><input inputmode="numeric" placeholder="m∠JKL"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠KLM + m∠LMK = m∠JKL</span> ← نظرية الزاوية الخارجية</li><li><span class="m">x + 50 = 2x − 15</span> ← <span class="m">x = 65</span></li><li class="final"><span class="m">m∠JKL = 2(65) − 15 = 115°</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card def"><h3>نتيجتان: مجموع زوايا المثلث</h3><p><span class="hl">النتيجة</span> نظرية يكون برهانها مبنيًّا على نظرية أخرى.</p><p><b>3.1</b> الزاويتان الحادتان في أي مثلث قائم الزاوية متتامتان.<br><b>3.2</b> توجد زاوية قائمة واحدة، أو زاوية منفرجة واحدة على الأكثر في أي مثلث.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>إيجاد قياسات الزوايا في مثلثات قائمة الزاوية</h3></header>
+            <div class="body">
+              <p class="q">في المستطيل <span class="m">TWXY</span>، القطر <span class="m">YW</span>، و <span class="m">TZ ⊥ YW</span>، حيث <span class="m">m∠TYZ = 52°</span> و <span class="m">m∠ZYX = 38°</span>. <span class="m">∠1</span> عند <span class="m">T</span> بين <span class="m">TY</span> و <span class="m">TZ</span>. أوجد <span class="m">m∠1</span>.</p>
+              <svg viewBox="0 0 240 150" style="max-width:240px;display:block;margin:6px auto" aria-hidden="true"><rect x="20" y="15" width="200" height="120" fill="none" stroke="#1d4ed8" stroke-width="2.5"/><line x1="20" y1="135" x2="220" y2="15" stroke="#1d4ed8" stroke-width="2.5"/><line x1="20" y1="15" x2="81" y2="98" stroke="#1d4ed8" stroke-width="2.5"/><g font-family="Georgia" font-style="italic" font-size="13"><text x="6" y="14">T</text><text x="224" y="14">W</text><text x="224" y="146">X</text><text x="6" y="146">Y</text><text x="84" y="112">Z</text></g><g font-size="11" font-weight="800" fill="#475569"><text x="26" y="40">1</text><text x="46" y="28">4</text><text x="196" y="30">3</text><text x="206" y="44">2</text><text x="26" y="118">52°</text><text x="44" y="131">38°</text></g></svg>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">△TYZ</span> قائم الزاوية في <span class="m">Z</span>.</li><li><span class="m">m∠1 + m∠TYZ = 90°</span> ← الزاويتان الحادتان في المثلث القائم متتامتان</li><li class="final"><span class="m">m∠1 + 52° = 90°</span> ← <span class="m">m∠1 = 38°</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">3A</span> <span class="m">∠2</span> (عند <span class="m">W</span> بين <span class="m">WY</span> و <span class="m">WX</span>)
+              <div class="ans" data-answer="52"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">△WXY</span> قائم في <span class="m">X</span>، و <span class="m">m∠XYW = 38°</span></li><li class="final"><span class="m">m∠2 = 90° − 38° = 52°</span></li></ol></div></div>
+            <div class="part"><span class="lbl">3B</span> <span class="m">∠3</span> (عند <span class="m">W</span> بين <span class="m">WT</span> و <span class="m">WY</span>)
+              <div class="ans" data-answer="38"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>زاوية المستطيل عند <span class="m">W</span> قائمة: <span class="m">m∠3 + m∠2 = 90°</span></li><li class="final"><span class="m">m∠3 = 90° − 52° = 38°</span></li></ol></div></div>
+            <div class="part"><span class="lbl">3C</span> <span class="m">∠4</span> (عند <span class="m">T</span> بين <span class="m">TZ</span> و <span class="m">TW</span>)
+              <div class="ans" data-answer="52"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>زاوية المستطيل عند <span class="m">T</span> قائمة: <span class="m">m∠1 + m∠4 = 90°</span></li><li class="final"><span class="m">m∠4 = 90° − 38° = 52°</span></li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-2</span> · زوايا المثلثات</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 8: 3-2 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 3-2">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 3 — في المثلث القائم المجاور، أوجد القياسات:</div>
+          <svg viewBox="0 0 280 110" style="max-width:280px;display:block;margin:6px auto" aria-hidden="true"><polygon points="20,15 20,95 270,95" fill="none" stroke="#1d4ed8" stroke-width="2.5"/><line x1="20" y1="15" x2="164" y2="95" stroke="#1d4ed8" stroke-width="2.5"/><rect x="20" y="83" width="12" height="12" fill="none" stroke="#db2777" stroke-width="2"/><g font-size="12" font-weight="800" fill="#475569"><text x="26" y="34">1</text><text x="70" y="42">3</text><text x="124" y="90">29°</text><text x="170" y="90">2</text><text x="222" y="90">17°</text></g></svg>
+          <div class="ex"><span class="exn">7</span> <span class="m">m∠1</span>
+            <div class="ans" data-answer="61"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>المثلث الأيسر الصغير قائم الزاوية، وزاويته عند القاعدة <span class="num">29°</span>.</li><li class="final">الزاويتان الحادتان متتامتان: <span class="m">m∠1 = 90° − 29° = 61°</span></li></ol></div></div>
+          <div class="ex"><span class="exn">8</span> <span class="m">m∠3</span>
+            <div class="ans" data-answer="12"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠2</span> و الزاوية <span class="num">29°</span> متجاورتان على مستقيم ← <span class="m">m∠2 = 151°</span></li><li>في المثلث الأيمن: <span class="m">m∠3 + 151° + 17° = 180°</span></li><li class="final"><span class="m">m∠3 = 12°</span>. تحقّق: <span class="m">61° + 12° + 17° + 90° = 180°</span> في المثلث الكبير ✓</li></ol></div></div>
+          <div class="ex"><span class="exn">9</span> <span class="m">m∠2</span>
+            <div class="ans" data-answer="151"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>طريقة أخرى: <span class="m">∠2</span> زاوية خارجية للمثلث الأيسر، وزاويتاه البعيدتان <span class="m">∠1 = 61°</span> والقائمة.</li><li class="final"><span class="m">m∠2 = 61° + 90° = 151°</span></li></ol></div></div>
+          <div class="ex-group">تدرب وحل المسائل:</div>
+          <div class="ex"><span class="exn">12</span> <b>طائرات:</b> يمكن تمثيل خط الطيران بمثلث قياس زاوية رأسه <span class="num">173°</span>، والمسافة صعودًا تساوي المسافة هبوطًا. (a) صنِّف النموذج. (b) إذا كانت زاويتا الإقلاع والهبوط متطابقتين، فأوجد قياس كلٍّ منهما.
+            <div class="ans" data-answer="3.5"><input inputmode="decimal" placeholder="زاوية الإقلاع"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>(a) ضلعان متطابقان وزاوية منفرجة ← <b>متطابق الضلعين ومنفرج الزاوية</b>.</li><li>(b) <span class="m">2x + 173 = 180</span> ← <span class="m">2x = 7</span></li><li class="final">زاوية الإقلاع = زاوية الهبوط = <span class="num">3.5°</span></li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-2</span> · زوايا المثلثات</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 9: LESSON 3-3 ================= -->
+      <section class="page" data-title="3-3 المثلثات المتطابقة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">3-3</div>
+            <h1>المثلثات المتطابقة</h1>
+            <div class="en">Congruent Triangles</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ الزوايا المتطابقة واستعمالاتها. (مهارة سابقة)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أسمّي العناصر المتناظرة في المضلعات المتطابقة وأستعملها.</li><li>أثبت تطابق مثلثين باستعمال تعريف التطابق.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>تقوم عدة مصانع بصنع مسجّلات سيارات بواجهات متحركة يصعب نزعها لحمايتها من السرقة؛ لأن شكل هذه الواجهات وأبعادها تطابق شكل المكان الذي تثبت فيه تمامًا.</p></div>
+          <div class="card def"><h3>مفهوم أساسي: تعريف المضلعات المتطابقة</h3>
+            <p>إذا كان لشكلين هندسيين الشكل نفسه والقياسات نفسها فإنهما <span class="hl">متطابقان</span>. يتطابق مضلعان إذا وفقط إذا كانت <span class="hl">عناصرهما المتناظرة</span> (الزوايا والأضلاع) متطابقة.</p>
+            <p>مثال: <span class="m">△ABC ≅ △HJK</span> يعني: <span class="m">∠A ≅ ∠H</span>، <span class="m">∠B ≅ ∠J</span>، <span class="m">∠C ≅ ∠K</span>، و <span class="m">AB ≅ HJ</span>، <span class="m">BC ≅ JK</span>، <span class="m">CA ≅ KH</span>.</p>
+            <p>عبارات التطابق الصحيحة تُظهر الرؤوس المتناظرة <b>بالترتيب نفسه</b>: <span class="m">△BCA ≅ △JKH</span> صحيحة، أما <span class="m">△ABC ≅ △HKJ</span> فغير صحيحة.</p>
+          </div>
+          <div class="widget" data-widget="congMatch"><div class="hint">اختر ترتيب رؤوس المثلث الثاني: الألوان تُظهر العناصر التي تدّعي العبارة أنها متناظرة</div></div>
+          <div class="vocab"><span><b>التطابق</b><i>congruent</i></span><span><b>المضلعات المتطابقة</b><i>congruent polygons</i></span><span><b>العناصر المتناظرة</b><i>corresponding parts</i></span></div>
+          <div class="card example" style="margin-top:14px">
+            <header><span class="tag">مثال 2</span><h3>تعيين العناصر المتناظرة المتطابقة</h3></header>
+            <div class="body">
+              <p class="q">إذا كان <span class="m">△ABC ≅ △DFE</span>، حيث <span class="m">m∠B = 99°</span> ، <span class="m">BC = 38.4</span> ، <span class="m">m∠F = (8y − 5)°</span> ، <span class="m">FE = 2y + x</span>، فأوجد قيمة كلٍّ من <span class="m">x, y</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠F ≅ ∠B</span> ← العناصر المتناظرة متطابقة: <span class="m">8y − 5 = 99</span> ← <span class="m">y = 13</span></li><li><span class="m">FE ≅ BC</span> ← <span class="m">2y + x = 38.4</span> ← <span class="m">2(13) + x = 38.4</span></li><li class="final"><span class="m">x = 12.4</span> ، <span class="m">y = 13</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> إذا كان <span class="m">△RSV ≅ △TVS</span>، حيث <span class="m">RS = 2y − 1</span> ، <span class="m">VT = 24</span> ، <span class="m">m∠RSV = 90°</span> ، <span class="m">m∠RVS = 78°</span> ، <span class="m">m∠T = x°</span>، فأوجد <span class="m">x, y</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">RS ↔ TV</span>: <span class="m">2y − 1 = 24</span> ← <span class="m">y = 12.5</span></li><li>في <span class="m">△RSV</span>: <span class="m">m∠R = 180° − 90° − 78° = 12°</span></li><li class="final"><span class="m">∠T ↔ ∠R</span> ← <span class="m">x = 12</span></li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-3</span> · المثلثات المتطابقة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 10: 3-3 THIRD ANGLE ================= -->
+      <section class="page" data-title="نظرية الزاوية الثالثة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>نظرية 3.3: نظرية الزاوية الثالثة</h3><p>إذا تطابقت زاويتان في مثلث مع زاويتين في مثلث آخر، فإن الزاوية الثالثة في المثلث الأول تطابق الزاوية الثالثة في المثلث الثاني.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>استعمال نظرية الزاوية الثالثة</h3></header>
+            <div class="body">
+              <p><b>تنظيم الحفلات:</b> إذا كانت <span class="m">∠NPQ ≅ ∠RST</span> ، <span class="m">m∠NPQ = 40°</span>، وكل من <span class="m">∠NQP</span> و <span class="m">∠RTS</span> قائمة، فأوجد <span class="m">m∠SRT</span>.</p>
+              <div class="ans" data-answer="50|50°"><input inputmode="numeric" placeholder="m∠SRT"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠NQP ≅ ∠RTS</span> (جميع الزوايا القائمة متطابقة)، و <span class="m">∠NPQ ≅ ∠RST</span></li><li>بنظرية الزاوية الثالثة: <span class="m">∠QNP ≅ ∠SRT</span></li><li><span class="m">m∠QNP + 40° = 90°</span> ← <span class="m">m∠QNP = 50°</span></li><li class="final"><span class="m">m∠SRT = 50°</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> إذا كانت <span class="m">∠WNX ≅ ∠WRX</span>، و <span class="m">WX</span> منصِّفًا لـ <span class="m">∠NXR</span>، و <span class="m">m∠WNX = 88°</span> ، <span class="m">m∠NXW = 49°</span>، فأوجد <span class="m">m∠NWR</span>. وفسّر إجابتك.</p>
+            <div class="ans" data-answer="86|86°"><input inputmode="numeric" placeholder="m∠NWR"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>في <span class="m">△WNX</span>: <span class="m">m∠NWX = 180° − 88° − 49° = 43°</span></li><li><span class="m">WX</span> منصف ← <span class="m">∠NXW ≅ ∠RXW</span>، ومع <span class="m">∠WNX ≅ ∠WRX</span> فإن <span class="m">∠NWX ≅ ∠RWX</span> (نظرية الزاوية الثالثة)</li><li class="final"><span class="m">m∠NWR = 43° + 43° = 86°</span></li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>إثبات تطابق مثلثين</h3></header>
+            <div class="body">
+              <p class="q">المعطيات: <span class="m">DE ≅ GE</span> ، <span class="m">DF ≅ GF</span> ، <span class="m">∠D ≅ ∠G</span> ، <span class="m">∠DFE ≅ ∠GFE</span>. المطلوب: <span class="m">△DEF ≅ △GEF</span>.</p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><span class="m">DE ≅ GE</span> ، <span class="m">DF ≅ GF</span> ← معطيات</li>
+                <li><span class="m">EF ≅ EF</span> ← خاصية الانعكاس للتطابق</li>
+                <li><span class="m">∠D ≅ ∠G</span> ، <span class="m">∠DFE ≅ ∠GFE</span> ← معطيات</li>
+                <li><span class="m">∠DEF ≅ ∠GEF</span> ← نظرية الزاوية الثالثة</li>
+                <li class="final"><span class="m">△DEF ≅ △GEF</span> ← تعريف المضلعات المتطابقة</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card tip"><h4>إرشادات للدراسة: خاصية الانعكاس</h4>عندما يشترك مثلثان في ضلع، استعمل خاصية الانعكاس للتطابق؛ لتثبت أن الضلع المشترك يطابق نفسه.</div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> المعطيات: <span class="m">∠J ≅ ∠P</span> ، <span class="m">JK ≅ PM</span> ، <span class="m">JL ≅ PL</span> ، و <span class="m">L</span> تنصف <span class="m">KM</span>. المطلوب: <span class="m">△JLK ≅ △PLM</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠J ≅ ∠P</span> ، <span class="m">JK ≅ PM</span> ، <span class="m">JL ≅ PL</span> ← معطيات</li><li><span class="m">KL ≅ ML</span> ← <span class="m">L</span> نقطة منتصف <span class="m">KM</span></li><li><span class="m">∠JLK ≅ ∠PLM</span> ← نظرية الزاويتين المتقابلتين بالرأس</li><li><span class="m">∠K ≅ ∠M</span> ← نظرية الزاوية الثالثة</li><li class="final"><span class="m">△JLK ≅ △PLM</span> ← تعريف المضلعات المتطابقة (جميع العناصر المتناظرة متطابقة)</li></ol></div>
+          </div>
+          <div class="card def"><h3>نظرية 3.4: خصائص تطابق المثلثات</h3><p><b>الانعكاس:</b> <span class="m">△ABC ≅ △ABC</span>. <b>التماثل:</b> إذا كان <span class="m">△ABC ≅ △EFG</span>، فإن <span class="m">△EFG ≅ △ABC</span>. <b>التعدي:</b> إذا كان <span class="m">△ABC ≅ △EFG</span> و <span class="m">△EFG ≅ △JKL</span>، فإن <span class="m">△ABC ≅ △JKL</span>.</p></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-3</span> · المثلثات المتطابقة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 11: 3-3 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 3-3">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex"><span class="exn">3</span> إذا كان <span class="m">△QRS ≅ △LMN</span>، حيث <span class="m">RQ = 3x − 9</span> ، <span class="m">ML = 2x + 11</span>، فأوجد قيمة <span class="m">x</span>.
+            <div class="ans" data-answer="20"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">QR ↔ LM</span> (العنصران المتناظران متطابقان): <span class="m">3x − 9 = 2x + 11</span></li><li class="final"><span class="m">x = 20</span></li></ol></div></div>
+          <div class="ex"><span class="exn">7</span> <b>برهان:</b> المعطيات: <span class="m">∠WXZ ≅ ∠YXZ</span> ، <span class="m">∠XZW ≅ ∠XZY</span> ، <span class="m">WX ≅ YX</span> ، <span class="m">WZ ≅ YZ</span>. المطلوب: <span class="m">△WXZ ≅ △YXZ</span>. اكتب برهانًا حرًّا.
+            <div class="sol" data-sol><ol class="steps"><li>لدينا من المعطيات زاويتان متطابقتان وضلعان متطابقان.</li><li><span class="m">XZ ≅ XZ</span> بخاصية الانعكاس، فالأضلاع الثلاثة المتناظرة متطابقة.</li><li>وبنظرية الزاوية الثالثة: <span class="m">∠W ≅ ∠Y</span>، فالزوايا الثلاث المتناظرة متطابقة.</li><li class="final">إذن <span class="m">△WXZ ≅ △YXZ</span> بحسب تعريف المضلعات المتطابقة.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-3</span> · المثلثات المتطابقة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 12: LESSON 3-4 ================= -->
+      <section class="page" data-title="3-4 إثبات تطابق المثلثات SSS, SAS">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">3-4</div>
+            <h1>إثبات تطابق المثلثات SSS, SAS</h1>
+            <div class="en">Proving Triangles Congruent – SSS, SAS</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ إثبات تطابق مثلثين باستعمال تعريف التطابق. (الدرس <span class="num">3-3</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أستعمل المسلّمة SSS لاختبار تطابق المثلثات.</li><li>أستعمل المسلّمة SAS لاختبار تطابق المثلثات.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>تُعدّ السبورة المزدوجة على شكل الحرف A طريقة مناسبة لعرض المعلومات؛ فعندما يكون للذراعين الطول نفسه، ويتم تثبيتهما على أبعاد متساوية من القمة على الجانبين، فإن السبورة المفتوحة تشكّل مثلثين متطابقين.</p></div>
+          <p>ليس من الضروري أن نبيّن تطابق جميع الأضلاع والزوايا المتناظرة في مثلثين لنثبت تطابقهما. جرّب في الأداة أيّ المعطيات تكفي:</p>
+          <div class="widget" data-widget="congTest"><div class="hint">اختر مجموعة المعطيات: هل تحدد مثلثًا واحدًا فقط؟</div></div>
+          <div class="card def"><h3>مسلّمة 3.1: التطابق بثلاثة أضلاع (SSS)</h3><p>إذا تطابقت أضلاع مثلث مع الأضلاع المناظرة لها في مثلث آخر، فإن المثلثين متطابقان.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>استعمال المسلّمة SSS لإثبات تطابق مثلثين</h3></header>
+            <div class="body">
+              <p class="q">المعطيات: <span class="m">L</span> نقطة منتصف <span class="m">GK</span> ، <span class="m">GH ≅ KJ</span> ، <span class="m">HL ≅ JL</span>. المطلوب: <span class="m">△GHL ≅ △KJL</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">GH ≅ KJ</span> ← معطى</li><li><span class="m">HL ≅ JL</span> ← معطى</li><li><span class="m">L</span> نقطة منتصف <span class="m">GK</span> ← معطى، إذن <span class="m">GL ≅ KL</span> ← تعريف نقطة المنتصف</li><li class="final"><span class="m">△GHL ≅ △KJL</span> ← SSS</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>1)</b> المعطيات: <span class="m">△QRS</span> متطابق الضلعين فيه <span class="m">QR ≅ SR</span>، و <span class="m">RT</span> تنصّف <span class="m">QS</span> عند النقطة <span class="m">T</span>. المطلوب: <span class="m">△QRT ≅ △SRT</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">QR ≅ SR</span> ← معطى</li><li><span class="m">QT ≅ ST</span> ← <span class="m">T</span> نقطة منتصف <span class="m">QS</span></li><li><span class="m">RT ≅ RT</span> ← خاصية الانعكاس</li><li class="final"><span class="m">△QRT ≅ △SRT</span> ← SSS</li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2 على اختبار معياري</span><h3>إجابة مطوّلة</h3></header>
+            <div class="body">
+              <p class="q">إحداثيات رؤوس <span class="m">△ABC</span>: <span class="m">A(1, 1), B(0, 3), C(2, 5)</span>، و <span class="m">△EFG</span>: <span class="m">E(1, −1), F(2, −5), G(4, −4)</span>. هل المثلثان متطابقان؟</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">AB = √5</span> ، <span class="m">BC = √8</span> ، <span class="m">AC = √17</span></li><li><span class="m">EF = √17</span> ، <span class="m">FG = √5</span> ، <span class="m">EG = √18</span></li><li class="final"><span class="m">AB = FG</span> و <span class="m">AC = EF</span>، لكن <span class="m">BC ≠ EG</span>؛ شروط SSS غير متحققة، إذن <span class="m">△ABC</span> لا يطابق <span class="m">△EFG</span>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> رؤوس <span class="m">△JKL</span>: <span class="m">J(2, 5), K(1, 1), L(5, 2)</span>، ورؤوس <span class="m">△NPQ</span>: <span class="m">N(−3, 0), P(−7, 1), Q(−4, 4)</span>. هل المثلثان متطابقان؟</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">JK = √17</span> ، <span class="m">KL = √17</span> ، <span class="m">JL = √18</span></li><li><span class="m">NP = √17</span> ، <span class="m">NQ = √17</span> ، <span class="m">PQ = √18</span></li><li class="final">الأضلاع المتناظرة متطابقة ← <span class="m">△JKL ≅ △PNQ</span> بحسب SSS.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-4</span> · إثبات تطابق المثلثات SSS, SAS</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 13: 3-4 SAS ================= -->
+      <section class="page" data-title="مسلّمة SAS">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <p>تُسمّى الزاوية المكونة من ضلعين متجاورين لمضلع <span class="hl">زاوية محصورة</span>.</p>
+          <div class="card def"><h3>مسلّمة 3.2: التطابق بضلعين والزاوية المحصورة بينهما (SAS)</h3><p>إذا طابق ضلعان وزاوية محصورة بينهما في مثلث نظائرها في مثلث آخر، فإن المثلثين متطابقان.</p></div>
+          <div class="vocab"><span><b>الزاوية المحصورة</b><i>included angle</i></span></div>
+          <div class="card example" style="margin-top:12px">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>استعمال SAS لإثبات تطابق المثلثات</h3></header>
+            <div class="body">
+              <p><b>إضاءة:</b> إذا كان <span class="m">WX ≅ ZY</span> ، <span class="m">WX ∥ ZY</span>، فاكتب برهانًا ذا عمودين لإثبات أن <span class="m">△WXZ ≅ △YZX</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">WX ≅ ZY</span> ← معطى</li><li><span class="m">WX ∥ ZY</span> ← معطى</li><li><span class="m">∠WXZ ≅ ∠XZY</span> ← نظرية الزاويتين المتبادلتين داخليًّا</li><li><span class="m">XZ ≅ ZX</span> ← خاصية الانعكاس للتطابق</li><li class="final"><span class="m">△WXZ ≅ △YZX</span> ← SAS</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3) طيران شراعي:</b> يبدو جناحا الطائرة الشراعية مثلثين متطابقين. إذا كانت <span class="m">FG ≅ GH</span>، و <span class="m">JG</span> تنصّف <span class="m">∠FGH</span>، فأثبت أن <span class="m">△FGJ ≅ △HGJ</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">FG ≅ HG</span> ← معطى</li><li><span class="m">∠FGJ ≅ ∠HGJ</span> ← تعريف منصف الزاوية</li><li><span class="m">GJ ≅ GJ</span> ← خاصية الانعكاس</li><li class="final"><span class="m">△FGJ ≅ △HGJ</span> ← SAS (الزاوية محصورة بين الضلعين)</li></ol></div>
+          </div>
+          <div class="card tip warn"><h4>تنبيه: SSA لا تكفي</h4>تطابق ضلعين وزاوية <b>غير محصورة</b> بينهما لا يكفي لإثبات تطابق مثلثين؛ اختر SSA في الأداة بالصفحة السابقة لترى مثلثين مختلفين بالمعطيات نفسها.</div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-4</span> · إثبات تطابق المثلثات SSS, SAS</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 14: LESSON 3-5 ================= -->
+      <section class="page" data-title="3-5 إثبات تطابق المثلثات ASA, AAS">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">3-5</div>
+            <h1>إثبات تطابق المثلثات ASA, AAS</h1>
+            <div class="en">Proving Triangles Congruent – ASA, AAS</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ إثبات تطابق مثلثين باستعمال SSS و SAS. (الدرس <span class="num">3-4</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أستعمل المسلّمة ASA لاختبار التطابق.</li><li>أستعمل النظرية AAS لاختبار التطابق.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>يتطلب سباق التجديف عادة مسطّحًا من الماء طوله 1500 متر على الأقل، ويمكن استعمال المثلثات المتطابقة لقياس المسافات التي يصعب قياسها مباشرة.</p></div>
+          <div class="card def"><h3>مسلّمة 3.3: التطابق بزاويتين وضلع محصور بينهما (ASA)</h3><p>الضلع الواقع بين زاويتين متتاليتين لمضلع يُسمى <span class="hl">الضلع المحصور</span>. إذا طابقت زاويتان والضلع المحصور بينهما في مثلث نظائرها في مثلث آخر، فإن المثلثين متطابقان.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>استعمال ASA لإثبات تطابق مثلثين</h3></header>
+            <div class="body">
+              <p class="q">المعطيات: <span class="m">QS</span> تنصّف <span class="m">∠PQR</span> ، <span class="m">∠PSQ ≅ ∠RSQ</span>. المطلوب: <span class="m">△PQS ≅ △RQS</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">QS</span> تنصّف <span class="m">∠PQR</span> ، <span class="m">∠PSQ ≅ ∠RSQ</span> ← معطيات</li><li><span class="m">∠PQS ≅ ∠RQS</span> ← تعريف منصف الزاوية</li><li><span class="m">QS ≅ QS</span> ← خاصية الانعكاس للتطابق</li><li class="final"><span class="m">△PQS ≅ △RQS</span> ← ASA</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>1)</b> المعطيات: <span class="m">ZX</span> تنصّف <span class="m">∠WZY</span>، و <span class="m">XZ</span> تنصّف <span class="m">∠YXW</span>. المطلوب: <span class="m">△WXZ ≅ △YXZ</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠WZX ≅ ∠YZX</span> و <span class="m">∠WXZ ≅ ∠YXZ</span> ← تعريف منصف الزاوية</li><li><span class="m">XZ ≅ XZ</span> ← خاصية الانعكاس</li><li class="final"><span class="m">△WXZ ≅ △YXZ</span> ← ASA (الضلع <span class="m">XZ</span> محصور بين الزاويتين)</li></ol></div>
+          </div>
+          <div class="card def"><h3>نظرية 3.5: التطابق بزاويتين وضلع غير محصور (AAS)</h3><p>إذا طابقت زاويتان وضلع غير محصور بينهما في مثلث نظائرها في مثلث آخر، يكون المثلثان متطابقين. (تُبرهن باستعمال نظرية الزاوية الثالثة ثم ASA)</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>استعمال AAS لإثبات تطابق مثلثين</h3></header>
+            <div class="body">
+              <p class="q">المعطيات: <span class="m">∠DAC ≅ ∠BEC</span> ، <span class="m">DC ≅ BC</span>. المطلوب: <span class="m">△ACD ≅ △ECB</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li class="final">بما أن <span class="m">∠DAC ≅ ∠BEC</span> ، <span class="m">DC ≅ BC</span>، وأن <span class="m">∠C ≅ ∠C</span> بحسب خاصية الانعكاس، إذن <span class="m">△ACD ≅ △ECB</span> بحسب النظرية AAS.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> المعطيات: <span class="m">RQ ≅ ST</span> ، <span class="m">RQ ∥ ST</span>، والقطعتان <span class="m">RT</span> و <span class="m">QS</span> تتقاطعان في <span class="m">U</span>. المطلوب: <span class="m">△RUQ ≅ △TUS</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠QRU ≅ ∠STU</span> ← متبادلتان داخليًّا (<span class="m">RQ ∥ ST</span>، والقاطع <span class="m">RT</span>)</li><li><span class="m">∠RQU ≅ ∠TSU</span> ← متبادلتان داخليًّا (القاطع <span class="m">QS</span>)</li><li><span class="m">RQ ≅ TS</span> ← معطى</li><li class="final"><span class="m">△RUQ ≅ △TUS</span> ← ASA</li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>المسافات</h3></header>
+            <div class="body">
+              <p>أراد أكرم أن يحسب المسافة بين النقطتين <span class="m">C, B</span> على ضفتَي نهر. عيّن <span class="m">A</span> على <span class="m">CB</span> ممتدًّا، ثم <span class="m">D</span> بحيث <span class="m">CD ⊥ CB</span>، <span class="m">CD ⊥ DE</span>، و <span class="m">AC ≅ AD</span>، و <span class="m">∠BAC</span> و <span class="m">∠EAD</span> متقابلتان بالرأس. إذا كان <span class="m">DE = 8 ft</span>، فاحسب <span class="m">CB</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠BCA ≅ ∠EDA</span> (زاويتان قائمتان)، و <span class="m">AC ≅ AD</span>، و <span class="m">∠BAC ≅ ∠EAD</span> (متقابلتان بالرأس)</li><li><span class="m">△BAC ≅ △EAD</span> ← ASA</li><li class="final">العناصر المتناظرة متطابقة ← <span class="m">CB ≅ DE</span>، إذن <span class="m">CB = 8 ft</span>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> عمودا كهرباء <span class="m">BC</span> و <span class="m">DE</span> عموديان على الأرض، وطولا قاعدتي الظل <span class="m">AC ≅ FE</span>، و <span class="m">∠A ≅ ∠F</span>. اكتب برهانًا حرًّا يبيّن أن <span class="m">BC ≅ DE</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠BCA ≅ ∠DEF</span> لأن جميع الزوايا القائمة متطابقة.</li><li>مع <span class="m">∠A ≅ ∠F</span> و <span class="m">AC ≅ FE</span> (الضلع المحصور): <span class="m">△ABC ≅ △FDE</span> بحسب ASA.</li><li class="final">العناصر المتناظرة في المثلثين المتطابقين متطابقة ← <span class="m">BC ≅ DE</span>.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-5</span> · إثبات تطابق المثلثات ASA, AAS</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 15: 3-5 SUMMARY + EXERCISES ================= -->
+      <section class="page" data-title="ملخص طرق التطابق وتمارين 3-5">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>ملخص المفاهيم: إثبات تطابق المثلثات</h3>
+            <div class="tbl-wrap"><table class="data">
+              <tr><th>الطريقة</th><th>يتطابق مثلثان إذا طابقت…</th></tr>
+              <tr><td><b>SSS</b></td><td>أضلاعهما المتناظرة الثلاثة</td></tr>
+              <tr><td><b>SAS</b></td><td>ضلعان والزاوية المحصورة بينهما</td></tr>
+              <tr><td><b>ASA</b></td><td>زاويتان والضلع المحصور بينهما</td></tr>
+              <tr><td><b>AAS</b></td><td>زاويتان وضلع غير محصور بينهما</td></tr>
+            </table></div>
+            <p style="margin-bottom:0"><small>SSA و AAA لا تكفيان لإثبات التطابق.</small></p>
+          </div>
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex"><span class="exn">1</span> <b>برهان تسلسلي:</b> المعطيات: <span class="m">JK ∥ LM</span> ، <span class="m">JL ∥ KM</span>. المطلوب: <span class="m">△JML ≅ △MJK</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠KJM ≅ ∠LMJ</span> ← متبادلتان داخليًّا (<span class="m">JK ∥ LM</span>، والقاطع <span class="m">JM</span>)</li><li><span class="m">∠LJM ≅ ∠KMJ</span> ← متبادلتان داخليًّا (<span class="m">JL ∥ KM</span>، والقاطع <span class="m">JM</span>)</li><li><span class="m">JM ≅ MJ</span> ← خاصية الانعكاس</li><li class="final"><span class="m">△JML ≅ △MJK</span> ← ASA</li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <b>برهان حر:</b> المعطيات: <span class="m">∠K ≅ ∠M</span>، و <span class="m">JL</span> تنصّف <span class="m">∠KLM</span>. المطلوب: <span class="m">△JKL ≅ △JML</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠KLJ ≅ ∠MLJ</span> لأن <span class="m">JL</span> منصف الزاوية.</li><li><span class="m">JL ≅ JL</span> بخاصية الانعكاس.</li><li class="final">زاويتان وضلع غير محصور ← <span class="m">△JKL ≅ △JML</span> بحسب AAS.</li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> <b>بناء جسور:</b> وضع مسّاح وتدًا عند <span class="m">A</span> وآخر عند <span class="m">B</span> على الضفة المقابلة، ثم <span class="m">C</span> بحيث <span class="m">CA ⊥ AB</span>، و <span class="m">E</span> نقطة منتصف <span class="m">CA</span>، و <span class="m">D</span> بحيث <span class="m">CD ⊥ CA</span>، والنقاط <span class="m">D, E, B</span> على استقامة واحدة. إذا كان <span class="m">AC = 160 m</span> ، <span class="m">DC = 60 m</span> ، <span class="m">DE = 100 m</span>، فأوجد <span class="m">AB</span>.
+            <div class="ans" data-answer="60"><input inputmode="numeric" placeholder="AB بالمتر"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠BAE ≅ ∠DCE</span> (قائمتان)، <span class="m">AE ≅ CE</span> (<span class="m">E</span> منتصف <span class="m">CA</span>)، <span class="m">∠AEB ≅ ∠CED</span> (متقابلتان بالرأس)</li><li><span class="m">△ABE ≅ △CDE</span> ← ASA</li><li class="final"><span class="m">AB ≅ CD</span> ← <span class="m">AB = 60 m</span></li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-5</span> · إثبات تطابق المثلثات ASA, AAS</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 16: LESSON 3-6 ================= -->
+      <section class="page" data-title="3-6 المثلثات المتطابقة الضلعين والمتطابقة الأضلاع">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">3-6</div>
+            <h1>المثلثات المتطابقة الضلعين والمتطابقة الأضلاع</h1>
+            <div class="en">Isosceles and Equilateral Triangles</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ المثلثات المتطابقة الضلعين والمثلثات المتطابقة الأضلاع. (الدرس <span class="num">3-1</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أستعمل خصائص المثلثات المتطابقة الضلعين.</li><li>أستعمل خصائص المثلثات المتطابقة الأضلاع.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>للعبة القطار السريع في مدينة الألعاب دعائم مثلثية بين المسارات لتقويتها وتثبيتها، والدعائم المثلثية الظاهرة في الصورة عبارة عن مثلثات متطابقة الضلعين.</p></div>
+          <div class="card def"><h3>خصائص المثلث المتطابق الضلعين</h3><p>يُسمّى الضلعان المتطابقان <span class="hl">الساقين</span>، والزاوية التي ضلعاها الساقان تُسمّى <span class="hl">زاوية الرأس</span>، ويسمى ضلع المثلث المقابل لزاوية الرأس القاعدة، والزاويتان المكونتان من القاعدة والضلعين المتطابقين تُسميان <span class="hl">زاويتَي القاعدة</span>.</p></div>
+          <div class="widget" data-widget="isoTri"><div class="hint">اسحب الرأس: متى تتطابق زاويتا القاعدة؟</div></div>
+          <div class="card def"><h3>نظريتان: المثلث المتطابق الضلعين</h3>
+            <p><b>3.10 نظرية المثلث المتطابق الضلعين:</b> إذا تطابق ضلعان في مثلث، فإن الزاويتين المقابلتين لهما متطابقتان.</p>
+            <p><b>3.11 عكس نظرية المثلث المتطابق الضلعين:</b> إذا تطابقت زاويتان في مثلث، فإن الضلعين المقابلين لهما متطابقان.</p>
+          </div>
+          <div class="vocab"><span><b>ساقا المثلث المتطابق الضلعين</b><i>legs</i></span><span><b>زاوية الرأس</b><i>vertex angle</i></span><span><b>زاويتا القاعدة</b><i>base angles</i></span></div>
+          <div class="card example" style="margin-top:12px">
+            <header><span class="tag">مثال 1</span><h3>القطع المستقيمة المتطابقة والزوايا المتطابقة</h3></header>
+            <div class="body">
+              <p class="q">في الشكل: <span class="m">AB ≅ AC</span>، و <span class="m">∠D ≅ ∠ACD</span> (حيث <span class="m">D</span> على امتداد <span class="m">BC</span>).</p>
+              <div class="part"><span class="lbl">a</span> سمِّ زاويتين متطابقتين غير مشار إلى تطابقهما.
+                <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">∠ACB</span> تقابل <span class="m">AB</span>، و <span class="m">∠B</span> تقابل <span class="m">AC</span>، و <span class="m">AB ≅ AC</span> ← <span class="m">∠ACB ≅ ∠B</span>.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> سمِّ قطعتين مستقيمتين متطابقتين غير مشار إلى تطابقهما.
+                <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">AD</span> تقابل <span class="m">∠ACD</span>، و <span class="m">AC</span> تقابل <span class="m">∠D</span> ← <span class="m">AD ≅ AC</span>.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في الشكل الطائري <span class="m">FGHJ</span>: <span class="m">FG ≅ FJ</span>، و <span class="m">∠HGJ ≅ ∠HJG</span>.</p>
+            <div class="part"><span class="lbl">1A</span> سمِّ زاويتين متطابقتين غير مشار إلى تطابقهما.
+              <div class="sol" data-sol><ol class="steps"><li class="final">في <span class="m">△FGJ</span>: <span class="m">FG ≅ FJ</span> ← <span class="m">∠FGJ ≅ ∠FJG</span>.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> سمِّ قطعتين مستقيمتين متطابقتين غير مشار إلى تطابقهما.
+              <div class="sol" data-sol><ol class="steps"><li class="final">في <span class="m">△HGJ</span>: <span class="m">∠HGJ ≅ ∠HJG</span> ← <span class="m">HG ≅ HJ</span>.</li></ol></div></div>
+          </div>
+          <div class="card def"><h3>نتيجتان: المثلث المتطابق الأضلاع</h3><p><b>3.3</b> يكون المثلث متطابق الأضلاع إذا وفقط إذا كان متطابق الزوايا.<br><b>3.4</b> قياس كل زاوية في المثلث المتطابق الأضلاع <span class="num">60°</span>.</p></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-6</span> · المثلثات المتطابقة الضلعين والمتطابقة الأضلاع</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 17: 3-6 UNKNOWNS ================= -->
+      <section class="page" data-title="إيجاد القياسات المجهولة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>إيجاد القياسات المجهولة</h3></header>
+            <div class="body">
+              <p class="q">في <span class="m">△XYZ</span>: <span class="m">XY = XZ = 8 cm</span> ، <span class="m">m∠X = 60°</span>.</p>
+              <div class="part"><span class="lbl">a</span> <span class="m">m∠Y</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">XY ≅ XZ</span> ← زاويتا القاعدة متطابقتان: <span class="m">m∠Z = m∠Y</span></li><li><span class="m">60° + 2(m∠Y) = 180°</span></li><li class="final"><span class="m">m∠Y = 60°</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m">YZ</span>
+                <div class="sol" data-sol><ol class="steps"><li>كل زاوية <span class="num">60°</span> ← المثلث متطابق الزوايا، فهو متطابق الأضلاع.</li><li class="final"><span class="m">YZ = 8 cm</span></li></ol></div></div>
+            </div>
+          </div>
+          <div class="card tip"><h4>إرشادات للدراسة: المثلثات المتطابقة الضلعين</h4>كما اكتشفت في المثال 2، أي مثلث متطابق الضلعين فيه زاوية قياسها <span class="num">60°</span> يكون مثلثًا متطابق الأضلاع.</div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في <span class="m">△PNM</span>: <span class="m">m∠N = 120°</span> ، <span class="m">NM = 11 cm</span>، و <span class="m">∠P ≅ ∠M</span>.</p>
+            <div class="part"><span class="lbl">2A</span> <span class="m">m∠M</span>
+              <div class="ans" data-answer="30"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">2(m∠M) + 120° = 180°</span></li><li class="final"><span class="m">m∠M = 30°</span></li></ol></div></div>
+            <div class="part"><span class="lbl">2B</span> <span class="m">PN</span>
+              <div class="ans" data-answer="11"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li class="final">بعكس نظرية المثلث المتطابق الضلعين: <span class="m">PN ≅ NM</span> ← <span class="m">PN = 11 cm</span></li></ol></div></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>إيجاد القيم المجهولة</h3></header>
+            <div class="body">
+              <p class="q"><b>جبر:</b> في <span class="m">△ABC</span>: <span class="m">m∠A = (2x)°</span> ، <span class="m">m∠B = (2x)°</span> ، <span class="m">AC ≅ BC</span> ، <span class="m">AB = 3 in.</span> ، <span class="m">BC = (4y − 5) in.</span>. أوجد قيمة كل متغير.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠A ≅ ∠B</span> و <span class="m">AC ≅ BC</span>؛ فالمثلث متطابق الزوايا وكل زاوية <span class="num">60°</span></li><li><span class="m">2x = 60</span> ← <span class="m">x = 30</span></li><li>المثلث متطابق الأضلاع: <span class="m">AB = BC</span> ← <span class="m">3 = 4y − 5</span></li><li class="final"><span class="m">y = 2</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> مثلث زاوية رأسه <span class="num">80°</span>، وساقاه <span class="m">4y − 2</span> و <span class="m">2y + 2</span>، وإحدى زاويتي القاعدة <span class="m">(6x + 8)°</span>. أوجد قيمتَي المتغيرين.</p>
+            <div class="sol" data-sol><ol class="steps"><li>الساقان متطابقان: <span class="m">4y − 2 = 2y + 2</span> ← <span class="m">y = 2</span></li><li>زاويتا القاعدة متطابقتان: كل منهما <span class="m">(180° − 80°)/2 = 50°</span></li><li class="final"><span class="m">6x + 8 = 50</span> ← <span class="m">x = 7</span></li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-6</span> · المثلثات المتطابقة الضلعين والمتطابقة الأضلاع</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 18: LESSON 3-7 ================= -->
+      <section class="page" data-title="3-7 المثلثات والبرهان الإحداثي">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">3-7</div>
+            <h1>المثلثات والبرهان الإحداثي</h1>
+            <div class="en">Triangles and Coordinate Proof</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ استعمال الهندسة الإحداثية لبرهان تطابق المثلثات. (مهارة سابقة)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أرسم مثلثات، وأحدد مواقعها لاستعمالها في البرهان الإحداثي.</li><li>أكتب برهانًا إحداثيًّا.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>نظام تحديد الموقع العالمي (GPS) يستقبل البث من الأقمار الاصطناعية، والتي يمكن بواسطتها تحديد موقع السيارة.</p></div>
+          <p>يستعمل <span class="hl">البرهان الإحداثي</span> الأشكال في المستوى الإحداثي والجبر لإثبات صحة المفاهيم الهندسية.</p>
+          <div class="card def"><h3>مفهوم أساسي: رسم المثلثات في المستوى الإحداثي</h3><p><b>1.</b> اجعل نقطة الأصل رأسًا للمثلث. <b>2.</b> ارسم ضلعًا واحدًا على الأقل من أضلاع المثلث على أحد المحورين. <b>3.</b> ارسم المثلث في الربع الأول إن أمكن. <b>4.</b> استعمل الإحداثيات التي تجعل الحسابات أبسط ما يمكن.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>تحديد موقع المثلث وتسميته</h3></header>
+            <div class="body">
+              <p class="q">ارسم المثلث القائم <span class="m">MNP</span> في المستوى الإحداثي، على أن يكون طول <span class="m">MN</span> يساوي <span class="m">a</span> وحدة، وطول <span class="m">NP</span> يساوي <span class="m">b</span> وحدة.</p>
+              <div class="sol" data-sol><ol class="steps"><li>اجعل الزاوية القائمة <span class="m">∠N</span> عند نقطة الأصل: <span class="m">N(0, 0)</span>، فيكون ضلعا القائمة على المحورين.</li><li>ارسم <span class="m">M</span> على المحور <span class="m">y</span>: <span class="m">M(0, a)</span>.</li><li class="final">ارسم <span class="m">P</span> على المحور <span class="m">x</span>: <span class="m">P(b, 0)</span>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>1)</b> ارسم المثلث <span class="m">JKL</span> المتطابق الضلعين، على أن يكون طول قاعدته <span class="m">JL</span> يساوي <span class="m">a</span> وحدة، وارتفاعه <span class="m">b</span> وحدة، والرأس <span class="m">K</span> يقع على المحور <span class="m">y</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>الارتفاع على القاعدة في المثلث المتطابق الضلعين ينصف القاعدة، فنجعل منتصف <span class="m">JL</span> عند نقطة الأصل.</li><li class="final"><span class="m">J(−a/2, 0)</span> ، <span class="m">L(a/2, 0)</span> ، <span class="m">K(0, b)</span></li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>إيجاد الإحداثيات المجهولة</h3></header>
+            <div class="body">
+              <p class="q">أوجد الإحداثيات المجهولة في المثلث <span class="m">XYZ</span> المتطابق الضلعين، حيث <span class="m">X</span> عند نقطة الأصل و <span class="m">Z</span> على المحور <span class="m">x</span> على بعد <span class="m">a</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">X(0, 0)</span> و <span class="m">Z(a, 0)</span></li><li>بما أن <span class="m">△XYZ</span> متطابق الضلعين، فإن الإحداثي <span class="m">x</span> للنقطة <span class="m">Y</span> يقع في منتصف المسافة بين 0 و <span class="m">a</span>.</li><li class="final"><span class="m">Y(a/2, b)</span>، حيث <span class="m">b</span> لا يمكن إيجاده فنفترضه.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> أوجد الإحداثيات المجهولة في المثلث <span class="m">ABC</span> المتطابق الضلعين والقائم الزاوية في <span class="m">B</span> عند نقطة الأصل، و <span class="m">C(a, ?)</span> على المحور <span class="m">x</span>، و <span class="m">A</span> على المحور <span class="m">y</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">B(0, 0)</span> و <span class="m">C(a, 0)</span></li><li class="final">الساقان متطابقان: <span class="m">BA = BC = a</span> ← <span class="m">A(0, a)</span></li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-7</span> · المثلثات والبرهان الإحداثي</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 19: 3-7 PROOF ================= -->
+      <section class="page" data-title="كتابة البرهان الإحداثي">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>كتابة البرهان الإحداثي</h3></header>
+            <div class="body">
+              <p class="q">اكتب برهانًا إحداثيًّا لإثبات أن القطعة المستقيمة التي تصل بين منتصفَي ضلعين في مثلث توازي الضلع الثالث.</p>
+              <div class="widget" data-widget="midsegment"><div class="hint">اسحب الرأس C والنقطة B: هل يبقى ST موازيًا لـ AB؟</div></div>
+              <div class="sol" data-sol><ol class="steps">
+                <li>اجعل <span class="m">A(0, 0)</span>، <span class="m">B(2a, 0)</span>، <span class="m">C(2b, 2c)</span> (مضاعفات 2 لتسهيل قسمة الإحداثيات على 2).</li>
+                <li>المعطيات: <span class="m">S</span> منتصف <span class="m">AC</span>، و <span class="m">T</span> منتصف <span class="m">BC</span>. المطلوب: <span class="m">ST ∥ AB</span>.</li>
+                <li><span class="m">S = ((2b + 0)/2, (2c + 0)/2) = (b, c)</span></li>
+                <li><span class="m">T = ((2a + 2b)/2, (0 + 2c)/2) = (a + b, c)</span></li>
+                <li>ميل <span class="m">ST = (c − c)/(a + b − b) = 0</span> ، وميل <span class="m">AB = (0 − 0)/(2a − 0) = 0</span></li>
+                <li class="final">بما أن ميل <span class="m">ST</span> يساوي ميل <span class="m">AB</span>، فإن <span class="m">ST ∥ AB</span>.</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4 من واقع الحياة</span><h3>تصنيف المثلثات</h3></header>
+            <div class="body">
+              <p><b>جغرافيا:</b> الإحداثيات التقريبية: الرياض <span class="m">R(24.15, 46.72)</span>، ينبع <span class="m">Y(24.63, 38.07)</span>، تبوك <span class="m">T(28.37, 36.6)</span>. اكتب برهانًا إحداثيًّا يبيّن أن المثلث الذي رؤوسه هذه المدن مختلف الأضلاع.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">RY = √((24.15 − 24.63)² + (46.72 − 38.07)²) ≈ 8.66</span></li><li><span class="m">RT = √((28.37 − 24.15)² + (36.6 − 46.72)²) ≈ 10.96</span></li><li><span class="m">YT = √((24.63 − 28.37)² + (38.07 − 36.6)²) ≈ 4.02</span></li><li class="final">أطوال الأضلاع مختلفة؛ فالمثلث <b>مختلف الأضلاع</b>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4) جغرافيا:</b> الإحداثيات التقريبية: تبوك <span class="m">(28.37, 36.6)</span>، عرعر <span class="m">(30.9, 41.13)</span>، حائل <span class="m">(27.43, 41.68)</span>. اكتب برهانًا إحداثيًّا لإثبات أن المثلث متطابق الضلعين تقريبًا.</p>
+            <div class="sol" data-sol><ol class="steps"><li>تبوك–عرعر: <span class="m">√(2.53² + 4.53²) ≈ 5.19</span></li><li>تبوك–حائل: <span class="m">√(0.94² + 5.08²) ≈ 5.17</span></li><li>عرعر–حائل: <span class="m">√(3.47² + 0.55²) ≈ 3.51</span></li><li class="final">طولا ضلعين متساويان تقريبًا (<span class="num">5.19 ≈ 5.17</span>) ← المثلث <b>متطابق الضلعين تقريبًا</b>.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">3-7</span> · المثلثات والبرهان الإحداثي</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 20: END ================= -->
+      <section class="page" data-title="ملخص الفصل 3">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">ملخص الفصل</h2>
+          <div class="card def">
+            <h3>ماذا تعلمت في الفصل الثالث؟</h3>
+            <ul style="margin:0;padding-inline-start:18px">
+              <li><b>تصنيف المثلثات <span class="num">(3-1)</span>:</b> وفقًا لزواياها (حاد، قائم، منفرج) ووفقًا لأضلاعها (متطابق الأضلاع، متطابق الضلعين، مختلف الأضلاع).</li>
+              <li><b>زوايا المثلثات <span class="num">(3-2)</span>:</b> مجموع الزوايا <span class="num">180°</span>، والزاوية الخارجية = مجموع الزاويتين الداخليتين البعيدتين.</li>
+              <li><b>المثلثات المتطابقة <span class="num">(3-3)</span>:</b> العناصر المتناظرة متطابقة، ونظرية الزاوية الثالثة.</li>
+              <li><b>طرق إثبات التطابق <span class="num">(3-4، 3-5)</span>:</b> SSS، SAS، ASA، AAS (أما SSA و AAA فلا تكفيان).</li>
+              <li><b>المثلث المتطابق الضلعين <span class="num">(3-6)</span>:</b> الساقان متطابقان ⟺ زاويتا القاعدة متطابقتان؛ والمتطابق الأضلاع كل زاوية فيه <span class="num">60°</span>.</li>
+              <li><b>البرهان الإحداثي <span class="num">(3-7)</span>:</b> ضع المثلث بذكاء في المستوى الإحداثي، واستعمل صيغ المسافة والمنتصف والميل.</li>
+            </ul>
+          </div>
+          <div class="card" style="text-align:center;background:linear-gradient(135deg,#fff7ed,#eff6ff)">
+            <div style="font-size:42px">🎉</div>
+            <h3 style="color:var(--teal)">أحسنت! أكملت الفصل الثالث</h3>
+            <p>الفصل الرابع «العلاقات في المثلث» سيضاف قريبًا.</p>
+            <div class="ctrl" style="justify-content:center"><a class="btn" href="index.html" style="text-decoration:none">⌂ فهرس الكتاب</a><a class="btn ghost" href="chapter-2.html" style="text-decoration:none">→ الفصل 2</a></div>
+          </div>
+        </div></div><div class="pg-foot"><span>الفصل 3 · المثلثات المتطابقة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <nav class="navbar">
+    <button class="nav-btn" id="prevBtn" aria-label="الصفحة السابقة">→ السابق</button>
+    <div class="page-ind" id="pageInd"></div>
+    <button class="nav-btn primary" id="nextBtn" aria-label="الصفحة التالية">التالي ←</button>
+  </nav>
+</div>
+
+<aside class="drawer" id="drawer" aria-label="الفهرس">
+  <h3>محتويات الكتاب</h3>
+  <ol id="drawerList"></ol>
+</aside>
+<div class="drawer-bg" id="drawerBg"></div>
+
+<script src="js/math.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" async></script>
+<script src="js/widgets.js"></script>
+<script src="js/book.js"></script>
+</body>
+</html>
