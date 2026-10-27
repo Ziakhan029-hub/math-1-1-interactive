@@ -1,0 +1,75 @@
+/* ===== Book home page (chapter index) — shares the palette of book.css ===== */
+:root {
+  --paper: #fffdf7; --ink: #1e293b; --muted: #64748b; --line: #e2e8f0;
+  --teal: #0f766e; --orange: #f59e0b; --desk-1: #1e3a5f; --desk-2: #0b2440;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: "Tajawal", "Cairo", "Geeza Pro", "Segoe UI", Tahoma, sans-serif; font-size: 16px; line-height: 1.7;
+  color: var(--ink); background: linear-gradient(170deg, var(--desk-1), var(--desk-2)); min-height: 100dvh;
+}
+a { color: inherit; }
+
+.hero {
+  position: relative; overflow: hidden; color: #fff; text-align: center;
+  padding: calc(40px + env(safe-area-inset-top, 0px)) 20px 56px;
+  background: radial-gradient(circle at 75% 15%, rgba(45, 212, 191, .35), transparent 50%),
+              linear-gradient(160deg, #064e3b 0%, #0f766e 45%, #0e7490 75%, #1e3a8a 100%);
+  border-radius: 0 0 36px 36px;
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: .14;
+  background-image: linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 20%, transparent 75%); mask-image: radial-gradient(circle at 50% 45%, #000 20%, transparent 75%);
+}
+.hs { position: absolute; width: clamp(54px, 12vw, 110px); opacity: .8; animation: float 8s ease-in-out infinite; }
+.h1 { bottom: 14%; left: 6%; }
+.h2 { top: 12%; right: 5%; width: clamp(70px, 15vw, 140px); animation-delay: -3s; }
+.h3 { bottom: 12%; right: 8%; animation-delay: -5s; }
+@keyframes float { 50% { transform: translateY(-10px) rotate(4deg); } }
+.hero-in { position: relative; max-width: 640px; margin: 0 auto; }
+.eyebrow { font-size: 14px; opacity: .85; }
+.hero h1 { font-family: "Cairo", sans-serif; font-weight: 900; font-size: clamp(42px, 11vw, 68px); margin: 6px 0; line-height: 1.2; text-shadow: 0 4px 18px rgba(0,0,0,.25); }
+.hero h1 span { direction: ltr; display: inline-block; color: #fde047; }
+.lead { opacity: .92; margin: 0 auto 22px; max-width: 460px; }
+.continue {
+  display: inline-flex; gap: 10px; align-items: center; text-decoration: none;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #422006; font-weight: 900; font-size: 18px;
+  padding: 12px 28px; border-radius: 999px; box-shadow: 0 8px 24px rgba(245, 158, 11, .45); transition: transform .2s;
+}
+.continue:hover { transform: translateY(-2px); }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 26px 16px 20px; }
+.title { font-family: "Cairo"; color: #e0f2fe; font-size: 22px; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+.title::before { content: ""; width: 6px; height: 24px; border-radius: 3px; background: var(--orange); }
+.chapters { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .chapters { grid-template-columns: 1fr 1fr; } }
+
+.chapter {
+  display: block; text-decoration: none; background: var(--paper); border-radius: 20px; padding: 16px;
+  border-top: 6px solid var(--c); box-shadow: 0 10px 30px rgba(0,0,0,.25); position: relative;
+  transition: transform .25s, box-shadow .25s;
+}
+a.chapter:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+.chapter.soon { opacity: .72; }
+.ch-top { display: flex; align-items: center; gap: 12px; }
+.ch-no {
+  flex: none; width: 58px; height: 58px; border-radius: 16px; background: var(--c); color: #fff;
+  display: grid; place-items: center; font-family: "Cairo"; font-weight: 900; font-size: 26px; line-height: 1;
+}
+.ch-no small { font-size: 11px; font-weight: 700; opacity: .85; }
+.ch-name { flex: 1; min-width: 0; }
+.ch-name h3 { margin: 0; font-family: "Cairo"; font-size: 19px; color: var(--c); }
+.ch-name i { display: block; direction: ltr; text-align: right; font-family: Georgia, serif; color: var(--muted); font-size: 14px; }
+.ch-status { font-size: 13px; font-weight: 800; padding: 2px 10px; border-radius: 999px; background: color-mix(in srgb, var(--c) 14%, white); color: var(--c); }
+.soon .ch-status { background: var(--line); color: var(--muted); }
+.bar { height: 6px; border-radius: 6px; background: var(--line); margin: 12px 0 8px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--c); border-radius: 6px; }
+.chapter ul { list-style: none; margin: 0; padding: 0; font-size: 14px; }
+.chapter li { display: flex; gap: 8px; align-items: baseline; padding: 4px 0; border-bottom: 1px dashed var(--line); color: var(--muted); }
+.chapter li.ok { color: var(--ink); font-weight: 700; }
+.chapter li .ln { direction: ltr; font-weight: 900; color: var(--c); min-width: 30px; font-family: "Cairo"; }
+.chapter li em { font-style: normal; font-size: 11px; background: var(--line); border-radius: 999px; padding: 0 6px; margin-inline-start: auto; }
+.go { display: inline-block; margin-top: 12px; background: var(--c); color: #fff; font-weight: 800; padding: 6px 16px; border-radius: 12px; }
+.foot { text-align: center; color: #93c5fd; font-size: 13px; padding: 10px 16px calc(24px + env(safe-area-inset-bottom, 0px)); }

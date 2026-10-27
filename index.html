@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#064e3b">
+<title>الرياضيات 1-1 — الكتاب التفاعلي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <svg class="hs h1" viewBox="0 0 104 92" aria-hidden="true"><polygon points="4,88 52,4 100,88" fill="rgba(253,224,71,.16)" stroke="#fde047" stroke-width="2.5"/></svg>
+  <svg class="hs h2" viewBox="0 0 110 76" aria-hidden="true"><circle cx="38" cy="38" r="34" fill="rgba(56,189,248,.16)" stroke="#7dd3fc" stroke-width="2.5"/><circle cx="72" cy="38" r="34" fill="rgba(251,146,60,.14)" stroke="#fdba74" stroke-width="2.5"/></svg>
+  <svg class="hs h3" viewBox="0 0 76 76" aria-hidden="true"><rect x="3" y="3" width="70" height="70" rx="4" fill="rgba(255,255,255,.06)" stroke="#fff" stroke-width="2"/><line x1="3" y1="3" x2="73" y2="73" stroke="#f9a8d4" stroke-width="2" stroke-dasharray="6 5"/><line x1="73" y1="3" x2="3" y2="73" stroke="#f9a8d4" stroke-width="2" stroke-dasharray="6 5"/></svg>
+  <div class="hero-in">
+    <div class="eyebrow">التعليم الثانوي · نظام المسارات · السنة الأولى المشتركة</div>
+    <h1>الرياضيات <span>1-1</span></h1>
+    <p class="lead">كتاب تفاعلي: اسحب الأشكال، حرّك المنزلقات، واكشف الحلول خطوة بخطوة.</p>
+    <a class="continue" id="continue" href="chapter-1.html">ابدأ القراءة <span>←</span></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2 class="title">فصول الكتاب</h2>
+  <div class="chapters" id="chapters"></div>
+</main>
+
+<footer class="foot">نسخة تجريبية — تُضاف الفصول تباعًا</footer>
+
+<script>
+/* ===== Chapter list. To publish a new chapter: set its `file` (and lessons' `live: true`). ===== */
+const CHAPTERS = [
+  { no: 1, title: 'التبرير والبرهان', en: 'Reasoning and Proof', color: '#0f766e', file: 'chapter-1.html',
+    lessons: [['1-1', 'التبرير الاستقرائي والتخمين', true], ['1-2', 'المنطق', true], ['1-3', 'العبارات الشرطية', true], ['1-4', 'التبرير الاستنتاجي', true], ['1-5', 'المسلمات والبراهين الحرة', true], ['1-6', 'البرهان الجبري', true], ['1-7', 'إثبات علاقات بين القطع المستقيمة', true], ['1-8', 'إثبات علاقات بين الزوايا', true]] },
+  { no: 2, title: 'التوازي والتعامد', en: 'Parallel and Perpendicular Lines', color: '#1d4ed8', file: null,
+    lessons: [['2-1', 'المستقيمات والقاطع'], ['2-2', 'الزوايا والمستقيمات المتوازية'], ['2-3', 'إثبات توازي مستقيمين'], ['2-4', 'ميل المستقيم'], ['2-5', 'صيغ معادلة المستقيم'], ['2-6', 'الأعمدة والمسافة']] },
+  { no: 3, title: 'المثلثات المتطابقة', en: 'Congruent Triangles', color: '#c2410c', file: null,
+    lessons: [['3-1', 'تصنيف المثلثات'], ['3-2', 'زوايا المثلثات'], ['3-3', 'المثلثات المتطابقة'], ['3-4', 'إثبات تطابق المثلثات SSS, SAS'], ['3-5', 'إثبات تطابق المثلثات ASA, AAS'], ['3-6', 'المثلثات المتطابقة الضلعين والمتطابقة الأضلاع'], ['3-7', 'المثلثات والبرهان الإحداثي']] },
+  { no: 4, title: 'العلاقات في المثلث', en: 'Relationships in Triangles', color: '#7c3aed', file: null,
+    lessons: [['4-1', 'المنصفات في المثلث'], ['4-2', 'القطع المتوسطة والارتفاعات في المثلث'], ['4-3', 'المتباينات في المثلث'], ['4-4', 'البرهان غير المباشر'], ['4-5', 'متباينة المثلث'], ['4-6', 'المتباينات في مثلثين']] },
+];
+
+function progress(no) {
+  try {
+    const max = +localStorage.getItem(`ib.ch${no}.max`) || 0, total = +localStorage.getItem(`ib.ch${no}.pages`) || 0;
+    return total ? Math.min(100, Math.round(max / total * 100)) : 0;
+  } catch (e) { return 0; }
+}
+
+const list = document.getElementById('chapters');
+let resume = null;
+CHAPTERS.forEach((ch) => {
+  const live = !!ch.file, pct = live ? progress(ch.no) : 0;
+  if (live && pct > 0 && pct < 100 && !resume) resume = ch;
+  const el = document.createElement(live ? 'a' : 'div');
+  el.className = 'chapter' + (live ? '' : ' soon');
+  el.style.setProperty('--c', ch.color);
+  if (live) el.href = ch.file;
+  el.innerHTML = `
+    <div class="ch-top">
+      <div class="ch-no"><small>الفصل</small>${ch.no}</div>
+      <div class="ch-name"><h3>${ch.title}</h3><i>${ch.en}</i></div>
+      <span class="ch-status">${live ? (pct ? pct + '%' : 'متاح') : 'قريبًا'}</span>
+    </div>
+    <div class="bar"><i style="width:${pct}%"></i></div>
+    <ul>${ch.lessons.map(([n, t, ok]) => `<li class="${ok ? 'ok' : ''}"><span class="ln">${n}</span>${t}${ok ? '' : ' <em>قريبًا</em>'}</li>`).join('')}</ul>
+    ${live ? `<span class="go">${pct ? 'تابع القراءة' : 'افتح الفصل'} ←</span>` : ''}`;
+  list.appendChild(el);
+});
+if (resume) {
+  const c = document.getElementById('continue');
+  c.href = resume.file;
+  c.firstChild.textContent = `تابع: الفصل ${resume.no} `;
+}
+</script>
+</body>
+</html>

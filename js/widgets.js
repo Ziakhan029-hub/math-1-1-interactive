@@ -1,0 +1,915 @@
+/* ===== Interactive widgets. Each element with data-widget="name" is set up by Widgets[name](el). ===== */
+(function () {
+  const NS = 'http://www.w3.org/2000/svg';
+  const C = { teal: '#0f766e', blue: '#1d4ed8', red: '#dc2626', orange: '#f59e0b', green: '#16a34a', purple: '#7c3aed', pink: '#db2777', ink: '#1e293b', muted: '#94a3b8', grid: '#e2e8f0' };
+
+  function s(tag, attrs, parent) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function txt(parent, x, y, str, attrs) {
+    const t = s('text', Object.assign({ x, y, 'font-size': 14, 'text-anchor': 'middle', fill: C.ink, 'font-family': 'Tajawal, sans-serif' }, attrs || {}), parent);
+    t.textContent = str;
+    return t;
+  }
+  function clear(svg) { while (svg.firstChild) svg.removeChild(svg.firstChild); }
+  const tex = (root) => { if (window.renderMath) window.renderMath(root); };
+  const fmt = (n, d = 1) => (Math.round(n * 10 ** d) / 10 ** d).toString();
+
+  /* Draggable point helper: returns svg coordinates on move */
+  function draggable(svg, el, onMove) {
+    el.classList.add('handle');
+    el.addEventListener('pointerdown', (e) => {
+      e.preventDefault(); e.stopPropagation();
+      el.setPointerCapture(e.pointerId);
+      const move = (ev) => {
+        const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+        const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+        onMove(p.x, p.y);
+      };
+      const up = () => { el.removeEventListener('pointermove', move); el.removeEventListener('pointerup', up); el.removeEventListener('pointercancel', up); };
+      el.addEventListener('pointermove', move);
+      el.addEventListener('pointerup', up);
+      el.addEventListener('pointercancel', up);
+    });
+  }
+  function handle(svg, color) {
+    const g = s('g', {}, svg);
+    s('circle', { r: 14, fill: color, opacity: .35, class: 'handle-ring' }, g);
+    s('circle', { r: 9, fill: color, stroke: '#fff', 'stroke-width': 3 }, g);
+    s('circle', { r: 22, fill: 'transparent' }, g); // larger touch target
+    return g;
+  }
+  const place = (g, x, y) => g.setAttribute('transform', `translate(${x},${y})`);
+
+  function range(el, onInput) {
+    const r = el.querySelector('input[type=range]'), out = el.querySelector('output');
+    const upd = () => { if (out) out.textContent = r.value; onInput(+r.value); };
+    r.addEventListener('input', upd);
+    upd();
+    return r;
+  }
+
+  const W = {};
+
+  /* ---------- a) bus times sequence ---------- */
+  W.timeSeq = function (el) {
+    const box = el.querySelector('.seq');
+    const start = +el.dataset.start, step = +el.dataset.step, base = +el.dataset.count;
+    let count = base;
+    const clock = (m) => { const h = Math.floor(m / 60), mm = m % 60; return `${h > 12 ? h - 12 : h}:${String(mm).padStart(2, '0')}`; };
+    const period = (m) => (m < 720 ? 'ص' : 'م');
+    function render(animateLast) {
+      box.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        if (i) { const d = document.createElement('span'); d.className = 'd'; d.textContent = `+${step}د →`; box.appendChild(d); }
+        const m = start + i * step;
+        const t = document.createElement('span');
+        t.className = 't' + (i >= base ? ' new' : '');
+        t.textContent = `${clock(m)} ${period(m)}`;
+        box.appendChild(t);
+      }
+    }
+    el.querySelector('[data-act=add]').addEventListener('click', () => { if (count < 9) { count++; render(); } });
+    el.querySelector('[data-act=reset]').addEventListener('click', () => { count = base; render(); });
+    render();
+  };
+
+  /* ---------- b) nested squares segment pattern ---------- */
+  W.nestedSquares = function (el) {
+    const svg = el.querySelector('svg'), seq = el.querySelector('.seq'), ro = el.querySelector('.readout');
+    const count = (n) => n * n + 3 * n;
+    range(el, (n) => {
+      clear(svg);
+      const u = Math.min(36, 170 / n), ox = 120 - (n * u) / 2, oy = 100 - (n * u) / 2;
+      // unit segments of all nested squares, de-duplicated
+      const seen = new Map();
+      for (let k = 1; k <= n; k++) {
+        for (let i = 0; i < k; i++) {
+          [[i, 0, i + 1, 0], [i, k, i + 1, k], [0, i, 0, i + 1], [k, i, k, i + 1]].forEach((sg) => {
+            const key = sg.join(',');
+            if (!seen.has(key)) seen.set(key, k);
+          });
+        }
+      }
+      seen.forEach((k, key) => {
+        const [x1, y1, x2, y2] = key.split(',').map(Number);
+        const last = k === n && n > 1;
+        s('line', { x1: ox + x1 * u, y1: oy + y1 * u, x2: ox + x2 * u, y2: oy + y2 * u, stroke: last ? C.orange : C.blue, 'stroke-width': last ? 3.5 : 2.5, 'stroke-linecap': 'round' }, svg);
+      });
+      seen.forEach((k, key) => {
+        const [x1, y1, x2, y2] = key.split(',').map(Number);
+        s('circle', { cx: ox + x1 * u, cy: oy + y1 * u, r: 2, fill: C.ink }, svg);
+        s('circle', { cx: ox + x2 * u, cy: oy + y2 * u, r: 2, fill: C.ink }, svg);
+      });
+      // sequence chips
+      seq.innerHTML = '';
+      for (let i = 1; i <= Math.max(n, 5); i++) {
+        if (i > 1) { const d = document.createElement('span'); d.className = 'd'; d.textContent = '+' + (count(i) - count(i - 1)); seq.appendChild(d); }
+        const t = document.createElement('span');
+        t.className = 't' + (i > 5 && i <= n ? ' new' : '');
+        t.textContent = i <= n || i <= 5 ? count(i) : '?';
+        t.style.opacity = i <= n ? 1 : .45;
+        seq.appendChild(t);
+      }
+      ro.innerHTML = `<span class="pill big">الشكل ${n}: <b>${count(n)}</b> قطعة مستقيمة</span>` +
+        (n > 1 ? `<span class="pill" style="color:${C.orange}">القطع الجديدة (برتقالي): ${count(n) - count(n - 1)}</span>` : '');
+    });
+  };
+
+  /* ---------- 1C) Sierpinski triangles ---------- */
+  W.sierpinski = function (el) {
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    function tri(a, b, c, lvl) {
+      if (lvl === 0) { s('polygon', { points: [a, b, c].map((p) => p.join(',')).join(' '), fill: '#7dd3fc', stroke: C.blue, 'stroke-width': .8 }, svg); return; }
+      const m = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+      const ab = m(a, b), bc = m(b, c), ca = m(c, a);
+      tri(a, ab, ca, lvl - 1); tri(ab, b, bc, lvl - 1); tri(ca, bc, c, lvl - 1);
+    }
+    range(el, (k) => {
+      clear(svg);
+      s('polygon', { points: '130,10 250,218 10,218', fill: '#fff', stroke: C.blue, 'stroke-width': 1.5 }, svg);
+      tri([130, 10], [250, 218], [10, 218], k - 1);
+      ro.innerHTML = `<span class="pill big">عدد المثلثات المظللة: <b>${3 ** (k - 1)}</b></span><span class="pill">${Array.from({ length: k }, (_, i) => 3 ** i).join(' ← ')}</span>`;
+    });
+  };
+
+  /* ---------- 2a) parity of a sum, shown with paired dots ---------- */
+  W.parity = function (el) {
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const ra = el.querySelector('[data-k=a]'), rb = el.querySelector('[data-k=b]');
+    function draw() {
+      const a = +ra.value, b = +rb.value;
+      ra.nextElementSibling.textContent = a; rb.nextElementSibling.textContent = b;
+      clear(svg);
+      const cols = [];
+      for (let i = 0; i < Math.floor(a / 2); i++) cols.push(['a', 'a']);
+      for (let i = 0; i < Math.floor(b / 2); i++) cols.push(['b', 'b']);
+      const singles = [];
+      if (a % 2) singles.push('a');
+      if (b % 2) singles.push('b');
+      if (singles.length === 2) cols.push(['a', 'b', 'join']);
+      else if (singles.length === 1) cols.push([singles[0], null, 'lone']);
+      const gap = Math.min(20, 300 / cols.length), x0 = 160 + ((cols.length - 1) * gap) / 2;
+      cols.forEach((c, i) => {
+        const x = x0 - i * gap;   // fill right-to-left
+        if (c[2] === 'join') s('rect', { x: x - 9, y: 12, width: 18, height: 52, rx: 9, fill: '#dcfce7', stroke: C.green, 'stroke-width': 2 }, svg);
+        if (c[2] === 'lone') s('rect', { x: x - 9, y: 12, width: 18, height: 52, rx: 9, fill: 'none', stroke: C.red, 'stroke-width': 2, 'stroke-dasharray': '4 3' }, svg);
+        [0, 1].forEach((r) => { if (c[r]) s('circle', { cx: x, cy: 26 + r * 24, r: 8, fill: c[r] === 'a' ? C.blue : C.orange }, svg); });
+      });
+      const sum = a + b, even = sum % 2 === 0;
+      const kind = (n) => (n % 2 ? 'فردي' : 'زوجي');
+      txt(svg, 160, 84, `${a} + ${b} = ${sum}`, { 'font-size': 14, 'font-weight': 700, direction: 'ltr' });
+      ro.innerHTML = `<span class="pill">${kind(a)} + ${kind(b)}</span><span class="pill big ${even ? 'ok' : 'no'}">المجموع ${sum} ${kind(sum)}</span>` +
+        (a % 2 && b % 2 ? '<span class="pill ok">النقطتان الوحيدتان كوّنتا زوجًا جديدًا!</span>' : '');
+    }
+    ra.addEventListener('input', draw); rb.addEventListener('input', draw);
+    draw();
+  };
+
+  /* ---------- 2b) rectangle diagonals ---------- */
+  W.rectDiag = function (el) {
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    let mode = 'rect';
+    let P = { A: [40, 30], B: [250, 30], C: [250, 170], D: [40, 170] };
+    const U = 20; // px per unit
+    const len = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]) / U;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+    // static layers
+    const poly = s('polygon', { fill: '#ecfeff', stroke: C.teal, 'stroke-width': 3, 'stroke-linejoin': 'round' }, svg);
+    const d1 = s('line', { stroke: C.pink, 'stroke-width': 2.5, 'stroke-dasharray': '7 5' }, svg);
+    const d2 = s('line', { stroke: C.purple, 'stroke-width': 2.5, 'stroke-dasharray': '7 5' }, svg);
+    const labels = {}, handles = {};
+    ['A', 'B', 'C', 'D'].forEach((k) => { labels[k] = txt(svg, 0, 0, k, { 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700, 'font-size': 16 }); });
+    ['A', 'B', 'C', 'D'].forEach((k) => {
+      handles[k] = handle(svg, k === 'C' ? C.orange : C.purple);
+      draggable(svg, handles[k], (x, y) => {
+        x = clamp(x, 15, 305); y = clamp(y, 15, 205);
+        if (mode === 'rect') {
+          // keep a rectangle anchored at A
+          if (k === 'C') { P.C = [Math.max(x, P.A[0] + 40), Math.max(y, P.A[1] + 40)]; P.B = [P.C[0], P.A[1]]; P.D = [P.A[0], P.C[1]]; }
+        } else { P[k] = [x, y]; }
+        draw();
+      });
+    });
+    function draw() {
+      poly.setAttribute('points', ['A', 'B', 'C', 'D'].map((k) => P[k].join(',')).join(' '));
+      [[d1, 'A', 'C'], [d2, 'B', 'D']].forEach(([l, a, b]) => { l.setAttribute('x1', P[a][0]); l.setAttribute('y1', P[a][1]); l.setAttribute('x2', P[b][0]); l.setAttribute('y2', P[b][1]); });
+      const cx = (P.A[0] + P.C[0]) / 2, cy = (P.A[1] + P.C[1]) / 2;
+      ['A', 'B', 'C', 'D'].forEach((k) => {
+        const dx = P[k][0] - cx, dy = P[k][1] - cy, m = Math.hypot(dx, dy) || 1;
+        labels[k].setAttribute('x', P[k][0] + (dx / m) * 18); labels[k].setAttribute('y', P[k][1] + (dy / m) * 18 + 5);
+        place(handles[k], P[k][0], P[k][1]);
+        handles[k].style.display = mode === 'rect' && k !== 'C' ? 'none' : '';
+      });
+      const ac = len(P.A, P.C), bd = len(P.B, P.D), eq = Math.abs(ac - bd) < 0.05;
+      ro.innerHTML = `<span class="pill" style="color:${C.pink}"><span class="m">AC = ${fmt(ac)}</span></span><span class="pill" style="color:${C.purple}"><span class="m">BD = ${fmt(bd)}</span></span>` +
+        `<span class="pill ${eq ? 'ok' : 'no'}">${eq ? '✓ القطران متطابقان' : '✗ القطران غير متطابقين'}</span>`;
+      tex(ro);
+    }
+    el.querySelectorAll('[data-mode]').forEach((b) => b.addEventListener('click', () => {
+      mode = b.dataset.mode;
+      el.querySelectorAll('[data-mode]').forEach((x) => x.setAttribute('aria-pressed', x === b));
+      if (mode === 'rect') P = { A: [40, 30], B: [250, 30], C: [250, 170], D: [40, 170] };
+      else P = { A: [40, 40], B: [260, 25], C: [230, 180], D: [70, 160] };
+      el.querySelector('.hint').innerHTML = mode === 'rect' ? 'اسحب الرأس <b>C</b> لتغيير المستطيل وراقب طولي القطرين' : 'اسحب أي رأس — هل يبقى القطران متساويين؟';
+      draw();
+    }));
+    draw();
+  };
+
+  /* ---------- generic scatter chart ---------- */
+  function chart(svg, o) {
+    // o: {x0,x1,y0,y1,xs:[ticks],ys:[ticks],xl,yl}
+    const L = 50, R = 330, T = 14, B = 196;
+    const X = (v) => L + ((v - o.x0) / (o.x1 - o.x0)) * (R - L);
+    const Y = (v) => B - ((v - o.y0) / (o.y1 - o.y0)) * (B - T);
+    o.ys.forEach((v) => { s('line', { x1: L, x2: R, y1: Y(v), y2: Y(v), stroke: C.grid }, svg); txt(svg, L - 6, Y(v) + 4, v, { 'text-anchor': 'end', 'font-size': 10, fill: '#64748b' }); });
+    o.xs.forEach((v) => { txt(svg, X(v), B + 14, v, { 'font-size': 10, fill: '#64748b' }); });
+    s('line', { x1: L, x2: R, y1: B, y2: B, stroke: C.ink, 'stroke-width': 1.5 }, svg);
+    s('line', { x1: L, x2: L, y1: T, y2: B, stroke: C.ink, 'stroke-width': 1.5 }, svg);
+    txt(svg, (L + R) / 2, B + 32, o.xl, { 'font-size': 12, 'font-weight': 700 });
+    txt(svg, 12, (T + B) / 2, o.yl, { 'font-size': 12, 'font-weight': 700, transform: `rotate(-90 12 ${(T + B) / 2})` });
+    return { X, Y, L, R, T, B };
+  }
+
+  /* ---------- Example 3: salon customers ---------- */
+  W.salon = function (el) {
+    const svg = el.querySelector('svg'), chips = el.querySelector('.chips');
+    svg.setAttribute('viewBox', '0 0 340 236');
+    const series = [
+      { n: 'الخميس', c: C.red, d: [225, 255, 321, 406, 540, 450] },
+      { n: 'الجمعة', c: C.orange, d: [552, 635, 642, 692, 685, 705] },
+      { n: 'السبت', c: C.green, d: [603, 658, 652, 712, 746, 832] },
+      { n: 'المجموع', c: C.blue, d: [1380, 1548, 1615, 1810, 1971, 1987] },
+    ];
+    const on = series.map(() => true);
+    series.forEach((sr, i) => {
+      const b = document.createElement('button');
+      b.className = 'chip'; b.style.color = sr.c; b.setAttribute('aria-pressed', 'true');
+      b.innerHTML = `<span>● ${sr.n}</span>`;
+      b.addEventListener('click', () => { on[i] = !on[i]; b.setAttribute('aria-pressed', on[i]); draw(); });
+      chips.appendChild(b);
+    });
+    function draw() {
+      clear(svg);
+      const g = chart(svg, { x0: 0.5, x1: 6.5, y0: 0, y1: 2100, xs: [1, 2, 3, 4, 5, 6], ys: [0, 400, 800, 1200, 1600, 2000], xl: 'الشهر', yl: 'عدد الزبائن' });
+      series.forEach((sr, i) => {
+        if (!on[i]) return;
+        sr.d.forEach((v, j) => {
+          const c = s('circle', { cx: g.X(j + 1), cy: g.Y(v), r: 0, fill: sr.c, stroke: '#fff', 'stroke-width': 1.5 }, svg);
+          const t = s('title', {}, c); t.textContent = `${sr.n} — الشهر ${j + 1}: ${v}`;
+          setTimeout(() => c.setAttribute('r', 6), 40 * j);
+          c.style.transition = 'r .3s';
+        });
+      });
+    }
+    draw();
+  };
+
+  /* ---------- Check 3: price prediction ---------- */
+  W.price = function (el) {
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    svg.setAttribute('viewBox', '0 0 340 236');
+    const data = [[1414, 20], [1419, 22], [1424, 29], [1429, 32], [1434, 37], [1439, 41]];
+    let guess = 30, showTrend = false, checked = false;
+    let g;
+    const h = handle(svg, C.orange);
+    function draw() {
+      [...svg.childNodes].forEach((n) => { if (n !== h) svg.removeChild(n); });
+      const tmp = s('g', {}, null);
+      svg.insertBefore(tmp, h);
+      g = chart(tmp, { x0: 1410, x1: 1448, y0: 0, y1: 60, xs: [1414, 1424, 1434, 1444], ys: [0, 10, 20, 30, 40, 50, 60], xl: 'السنة (هـ)', yl: 'السعر (ريال)' });
+      if (showTrend) {
+        // least squares line
+        const n = data.length, sx = data.reduce((a, d) => a + d[0], 0), sy = data.reduce((a, d) => a + d[1], 0);
+        const sxx = data.reduce((a, d) => a + d[0] * d[0], 0), sxy = data.reduce((a, d) => a + d[0] * d[1], 0);
+        const m = (n * sxy - sx * sy) / (n * sxx - sx * sx), b = (sy - m * sx) / n;
+        s('line', { x1: g.X(1412), y1: g.Y(m * 1412 + b), x2: g.X(1446), y2: g.Y(m * 1446 + b), stroke: C.teal, 'stroke-width': 2, 'stroke-dasharray': '6 4' }, tmp);
+      }
+      data.forEach(([x, y]) => s('circle', { cx: g.X(x), cy: g.Y(y), r: 6, fill: C.blue, stroke: '#fff', 'stroke-width': 1.5 }, tmp));
+      s('line', { x1: g.X(1444), x2: g.X(1444), y1: g.T, y2: g.B, stroke: C.orange, 'stroke-dasharray': '3 3' }, tmp);
+      place(h, g.X(1444), g.Y(guess));
+      const ok = guess >= 44 && guess <= 47;
+      ro.innerHTML = `<span class="pill big">تخمينك لعام 1444هـ: <b>${guess}</b> ريالًا</span>` +
+        (checked ? `<span class="pill ${ok ? 'ok' : 'no'}">${ok ? '✓ تخمين معقول! يتفق مع النمط' : guess < 44 ? '✗ منخفض — الأسعار تزداد حوالي 4 ريالات كل 5 سنوات' : '✗ مرتفع — الزيادة حوالي 4 ريالات كل 5 سنوات'}</span>` : '');
+    }
+    draggable(svg, h, (x, y) => { guess = Math.round(Math.max(0, Math.min(60, 60 * (g.B - y) / (g.B - g.T)))); checked = false; draw(); });
+    el.querySelector('[data-act=check]').addEventListener('click', () => { checked = true; draw(); });
+    el.querySelector('[data-act=trend]').addEventListener('click', (e) => { showTrend = !showTrend; e.target.textContent = showTrend ? 'أخفِ خط النمط' : 'أظهر خط النمط'; draw(); });
+    draw();
+  };
+
+  /* ---------- Example 4a: n^2 > n ? ---------- */
+  W.squareVsN = function (el) {
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const L = 30, R = 310, T = 10, B = 180;
+    const x0 = -2, x1 = 3, y0 = -2, y1 = 9;
+    const X = (v) => L + ((v - x0) / (x1 - x0)) * (R - L), Y = (v) => B - ((v - y0) / (y1 - y0)) * (B - T);
+    range(el, (n) => {
+      clear(svg);
+      // counterexample zone 0..1
+      s('rect', { x: X(0), y: T, width: X(1) - X(0), height: B - T, fill: '#fee2e2' }, svg);
+      txt(svg, (X(0) + X(1)) / 2, T + 14, 'هنا!', { 'font-size': 11, fill: C.red, 'font-weight': 700 });
+      s('line', { x1: L, x2: R, y1: Y(0), y2: Y(0), stroke: C.ink }, svg);
+      s('line', { x1: X(0), x2: X(0), y1: T, y2: B, stroke: C.ink }, svg);
+      [-2, -1, 1, 2, 3].forEach((v) => txt(svg, X(v), Y(0) + 14, v, { 'font-size': 10, fill: '#64748b' }));
+      let d1 = '', d2 = '';
+      for (let v = x0; v <= x1 + 1e-9; v += 0.05) {
+        d1 += (d1 ? 'L' : 'M') + X(v) + ',' + Y(Math.min(v * v, y1 + 1));
+        d2 += (d2 ? 'L' : 'M') + X(v) + ',' + Y(Math.max(v, y0));
+      }
+      s('path', { d: d1, fill: 'none', stroke: C.blue, 'stroke-width': 3 }, svg);
+      s('path', { d: d2, fill: 'none', stroke: C.orange, 'stroke-width': 3 }, svg);
+      txt(svg, X(2.75), Y(7.6) - 4, 'n²', { fill: C.blue, 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700 });
+      txt(svg, X(2.8), Y(2.8) + 16, 'n', { fill: C.orange, 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700 });
+      s('line', { x1: X(n), x2: X(n), y1: T, y2: B, stroke: C.purple, 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }, svg);
+      s('circle', { cx: X(n), cy: Y(n * n), r: 6, fill: C.blue, stroke: '#fff', 'stroke-width': 2 }, svg);
+      s('circle', { cx: X(n), cy: Y(n), r: 6, fill: C.orange, stroke: '#fff', 'stroke-width': 2 }, svg);
+      const sq = n * n, ok = sq > n;
+      ro.innerHTML = `<span class="pill"><span class="m">n = ${n}</span></span><span class="pill"><span class="m">n² = ${fmt(sq, 4)}</span></span>` +
+        `<span class="pill big ${ok ? 'ok' : 'no'}"><span class="m">${fmt(sq, 4)} ${ok ? '>' : sq === n ? '=' : '<'} ${n}</span></span>` +
+        `<span class="pill ${ok ? 'ok' : 'no'}">${ok ? 'التخمين صحيح هنا — استمر في البحث' : '🎯 وجدت مثالًا مضادًا! التخمين خاطئ'}</span>`;
+      tex(ro);
+    });
+  };
+
+  /* ---------- Example 4b: JK = KL but K not midpoint ---------- */
+  W.midpoint = function (el) {
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const J = [40, 50], Lp = [280, 50], mx = 160;
+    let ky = 130;
+    const layer = s('g', {}, svg);
+    const h = handle(svg, C.orange);
+    const seg = (a, b, col) => s('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: col, 'stroke-width': 3, 'stroke-linecap': 'round' }, layer);
+    function tick(a, b, col) {
+      const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2, ang = Math.atan2(b[1] - a[1], b[0] - a[0]) + Math.PI / 2;
+      s('line', { x1: cx - Math.cos(ang) * 7, y1: cy - Math.sin(ang) * 7, x2: cx + Math.cos(ang) * 7, y2: cy + Math.sin(ang) * 7, stroke: col, 'stroke-width': 2.5 }, layer);
+    }
+    const italic = { 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700, 'font-size': 17 };
+    function draw() {
+      clear(layer);
+      const K = [mx, ky], onLine = ky < 52;
+      s('line', { x1: mx, y1: 20, x2: mx, y2: 185, stroke: C.muted, 'stroke-dasharray': '2 4' }, layer);
+      seg(J, Lp, onLine ? C.green : C.ink);
+      if (!onLine) { seg(J, K, C.blue); seg(K, Lp, C.blue); }
+      tick(J, K, C.pink); tick(K, Lp, C.pink);
+      [['J', J, -14], ['L', Lp, 14]].forEach(([n, p, dx]) => {
+        s('circle', { cx: p[0], cy: p[1], r: 4, fill: C.ink }, layer);
+        txt(layer, p[0] + dx, p[1] + 5, n, italic);
+      });
+      txt(layer, mx + 24, ky + 6, 'K', Object.assign({}, italic, { fill: '#b45309' }));
+      place(h, mx, ky);
+      const jk = Math.hypot(mx - J[0], ky - J[1]) / 20;
+      ro.innerHTML = `<span class="pill"><span class="m">JK = ${fmt(jk)}</span></span><span class="pill"><span class="m">KL = ${fmt(jk)}</span></span>` +
+        `<span class="pill big ${onLine ? 'ok' : 'no'}">${onLine ? '✓ هنا فقط <span class="m">K</span> منتصف <span class="m">JL</span> (النقاط على استقامة واحدة)' : '✗ <span class="m">K</span> ليست منتصف <span class="m">JL</span> رغم أن <span class="m">JK = KL</span> — مثال مضاد!'}</span>`;
+      tex(ro);
+    }
+    draggable(svg, h, (x, y) => { ky = Math.max(50, Math.min(175, y)); if (ky < 56) ky = 50; draw(); });
+    draw();
+  };
+
+  /* ---------- Exercise 10: AP vs PB ---------- */
+  W.quarter = function (el) {
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    range(el, (ab) => {
+      clear(svg);
+      const L = 20, R = 300, u = (R - L) / 16, A = L + (16 - ab) * u / 2, Bx = A + ab * u;
+      const M = A + (ab / 2) * u, P = A + (ab / 4) * u;
+      s('line', { x1: A, x2: Bx, y1: 40, y2: 40, stroke: C.ink, 'stroke-width': 3 }, svg);
+      s('line', { x1: A, x2: P, y1: 40, y2: 40, stroke: C.orange, 'stroke-width': 6, 'stroke-linecap': 'round' }, svg);
+      s('line', { x1: P, x2: Bx, y1: 40, y2: 40, stroke: C.blue, 'stroke-width': 6, 'stroke-linecap': 'round', opacity: .55 }, svg);
+      [['A', A], ['P', P], ['M', M], ['B', Bx]].forEach(([n, x]) => {
+        s('circle', { cx: x, cy: 40, r: 5, fill: '#fff', stroke: C.ink, 'stroke-width': 2 }, svg);
+        txt(svg, x, 24, n, { 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700 });
+      });
+      txt(svg, (A + P) / 2, 66, ab / 4, { fill: '#b45309', 'font-weight': 700, 'font-size': 13 });
+      txt(svg, (P + Bx) / 2, 66, (3 * ab) / 4, { fill: C.blue, 'font-weight': 700, 'font-size': 13 });
+      ro.innerHTML = `<span class="pill" style="color:#b45309"><span class="m">AP = ${ab / 4}</span></span><span class="pill" style="color:${C.blue}"><span class="m">PB = ${(3 * ab) / 4}</span></span><span class="pill big ok"><span class="m">PB = 3 × AP</span></span>`;
+      tex(ro);
+    });
+  };
+
+  /* ---------- Logic lab: negation, AND (series), OR (parallel) ---------- */
+  const STATEMENTS = [
+    ['المستطيل شكل رباعي', true],
+    ['المثلث له أربعة أضلاع', false],
+    ['أبها مدينة سعودية', true],
+    ['عدد أيام الأسبوع 8 أيام', false],
+    ['العدد 7 عدد فردي', true],
+    ['يناير من أشهر فصل الربيع', false],
+    ['المستطيل مضلع محدب', true],
+  ];
+  W.logicLab = function (el) {
+    const sp = el.querySelector('[data-k=p]'), sq = el.querySelector('[data-k=q]');
+    [sp, sq].forEach((sel, j) => {
+      STATEMENTS.forEach(([t, v], i) => { const o = document.createElement('option'); o.value = i; o.textContent = `${t}  (${v ? 'T' : 'F'})`; sel.appendChild(o); });
+      sel.value = j === 0 ? 0 : 6;
+      sel.addEventListener('change', draw);
+    });
+    const tv = (b) => `<span class="tv ${b ? 'T' : 'F'}">${b ? 'T' : 'F'}</span>`;
+    function sw(svg, x1, y, x2, closed, label) {
+      s('circle', { cx: x1, cy: y, r: 4, fill: C.ink }, svg);
+      s('circle', { cx: x2, cy: y, r: 4, fill: C.ink }, svg);
+      const ang = closed ? 0 : -32 * Math.PI / 180, len = x2 - x1;
+      s('line', { x1, y1: y, x2: x1 + Math.cos(ang) * len, y2: y + Math.sin(ang) * len, stroke: closed ? C.green : C.red, 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+      txt(svg, (x1 + x2) / 2, y + 22, label, { 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700, fill: closed ? C.green : C.red });
+    }
+    function bulb(svg, x, y, on) {
+      if (on) s('circle', { cx: x, cy: y, r: 22, fill: '#fde047', opacity: .45 }, svg);
+      s('circle', { cx: x, cy: y, r: 13, fill: on ? '#facc15' : '#e2e8f0', stroke: C.ink, 'stroke-width': 2 }, svg);
+      s('rect', { x: x - 6, y: y + 12, width: 12, height: 8, fill: C.muted }, svg);
+    }
+    const wire = (svg, d, on) => s('path', { d, fill: 'none', stroke: on ? '#f59e0b' : C.muted, 'stroke-width': 3, 'stroke-linejoin': 'round' }, svg);
+    function draw() {
+      const p = STATEMENTS[sp.value][1], q = STATEMENTS[sq.value][1];
+      el.querySelector('[data-out=np]').innerHTML = `<p style="margin:6px 0"><span class="m">p</span> ${tv(p)} ← <span class="m">~p</span> ${tv(!p)}</p><small><span class="m">~p</span>: ليس صحيحًا أن «${STATEMENTS[sp.value][0]}»</small>`;
+      const and = el.querySelector('[data-svg=and]'), or = el.querySelector('[data-svg=or]');
+      clear(and); clear(or);
+      // series circuit
+      const a = p && q;
+      wire(and, 'M20,40 L20,90 L220,90 L220,40', a);
+      wire(and, 'M20,40 L45,40 M95,40 L135,40 M185,40 L220,40', a);
+      sw(and, 45, 40, 95, p, 'p'); sw(and, 135, 40, 185, q, 'q');
+      bulb(and, 120, 82, a);
+      el.querySelector('[data-out=and]').innerHTML = `<span class="m">p ∧ q</span> = ${tv(a)} <small>${a ? 'المصباح يضيء لأن المفتاحين مغلقان' : 'يكفي أن يكون مفتاح واحد مفتوحًا فلا يضيء'}</small>`;
+      // parallel circuit
+      const o = p || q;
+      wire(or, 'M20,30 L20,110 L220,110 L220,30', o);
+      wire(or, 'M20,30 L95,30 M145,30 L220,30', o);
+      wire(or, 'M20,30 L20,62 L95,62 M145,62 L220,62 L220,30', o);
+      sw(or, 95, 30, 145, p, ''); txt(or, 80, 34, 'p', { 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700, fill: p ? C.green : C.red });
+      sw(or, 95, 62, 145, q, ''); txt(or, 80, 66, 'q', { 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700, fill: q ? C.green : C.red });
+      bulb(or, 120, 100, o);
+      el.querySelector('[data-out=or]').innerHTML = `<span class="m">p ∨ q</span> = ${tv(o)} <small>${o ? 'يكفي مفتاح واحد مغلق ليضيء المصباح' : 'المفتاحان مفتوحان فلا يضيء'}</small>`;
+      tex(el);
+    }
+    draw();
+  };
+
+  /* ---------- Truth table quiz ---------- */
+  const EXPRS = [
+    { k: '~p', cols: [['~p', (p) => !p]] },
+    { k: 'p ∧ q', cols: [['p∧q', (p, q) => p && q]] },
+    { k: 'p ∨ q', cols: [['p∨q', (p, q) => p || q]] },
+    { k: '~p ∨ q', cols: [['~p', (p) => !p], ['~p∨q', (p, q) => !p || q]] },
+    { k: '~p ∧ ~q', cols: [['~p', (p) => !p], ['~q', (p, q) => !q], ['~p∧~q', (p, q) => !p && !q]] },
+    { k: 'p ∧ ~q', cols: [['~q', (p, q) => !q], ['p∧~q', (p, q) => p && !q]] },
+    { k: '~p ∨ ~q', cols: [['~p', (p) => !p], ['~q', (p, q) => !q], ['~p∨~q', (p, q) => !p || !q]] },
+  ];
+  W.truthQuiz = function (el) {
+    const sel = el.querySelector('select'), table = el.querySelector('table'), ro = el.querySelector('.readout');
+    sel.dir = 'ltr';
+    EXPRS.forEach((e, i) => { const o = document.createElement('option'); o.value = i; o.textContent = e.k; sel.appendChild(o); });
+    sel.value = 3;
+    const rows = [[true, true], [true, false], [false, true], [false, false]];
+    let cells = [];
+    function build() {
+      const ex = EXPRS[sel.value], onlyP = ex.k === '~p';
+      const rs = onlyP ? [[true], [false]] : rows;
+      table.innerHTML = '';
+      const hr = table.insertRow();
+      (onlyP ? ['p'] : ['p', 'q']).concat(ex.cols.map((c) => c[0])).forEach((h) => { const th = document.createElement('th'); th.innerHTML = `<span class="m">${h}</span>`; hr.appendChild(th); });
+      cells = [];
+      rs.forEach(([p, q]) => {
+        const tr = table.insertRow();
+        (onlyP ? [p] : [p, q]).forEach((v) => { const td = tr.insertCell(); td.className = 'given'; td.textContent = v ? 'T' : 'F'; });
+        ex.cols.forEach(([, f]) => {
+          const td = tr.insertCell(), b = document.createElement('button');
+          b.textContent = '؟'; b.dataset.v = ''; b.dataset.ans = f(p, q) ? 'T' : 'F';
+          b.addEventListener('click', () => { b.dataset.v = b.dataset.v === 'T' ? 'F' : 'T'; b.textContent = b.dataset.v; b.className = ''; ro.innerHTML = ''; });
+          td.appendChild(b); cells.push(b);
+        });
+      });
+      ro.innerHTML = '';
+      tex(table);
+    }
+    sel.addEventListener('change', build);
+    el.querySelector('[data-act=check]').addEventListener('click', () => {
+      let right = 0, empty = 0;
+      cells.forEach((b) => { if (!b.dataset.v) { empty++; b.className = ''; return; } const ok = b.dataset.v === b.dataset.ans; b.className = ok ? 'right' : 'wrong'; if (ok) right++; });
+      const all = right === cells.length;
+      ro.innerHTML = all ? '<span class="pill big ok">🎉 ممتاز! الجدول كله صحيح</span>'
+        : `<span class="pill ${right ? '' : 'no'}">صحيح: ${right} من ${cells.length}</span>` + (empty ? `<span class="pill">خانات فارغة: ${empty}</span>` : '');
+    });
+    el.querySelector('[data-act=show]').addEventListener('click', () => { cells.forEach((b) => { b.dataset.v = b.dataset.ans; b.textContent = b.dataset.ans; b.className = 'right'; }); ro.innerHTML = '<span class="pill">هذا هو الحل — اضغط «مسح» وحاول بنفسك</span>'; });
+    el.querySelector('[data-act=clear]').addEventListener('click', build);
+    build();
+  };
+
+  /* ---------- Venn region highlighter ---------- */
+  W.venn = function (el) {
+    const svg = el.querySelector('svg'), chips = el.querySelector('.chips'), ro = el.querySelector('.readout');
+    const A = [125, 112], B = [195, 112], r = 68;
+    const defs = s('defs', {}, svg);
+    const id = 'v' + Math.random().toString(36).slice(2, 7);
+    const cp = (name, c) => { const p = s('clipPath', { id: id + name }, defs); s('circle', { cx: c[0], cy: c[1], r }, p); };
+    cp('A', A); cp('B', B);
+    const mk = (name, c) => { const m = s('mask', { id: id + 'n' + name }, defs); s('rect', { x: 0, y: 0, width: 320, height: 210, fill: '#fff' }, m); s('circle', { cx: c[0], cy: c[1], r, fill: '#000' }, m); };
+    mk('A', A); mk('B', B);
+    const mOut = s('mask', { id: id + 'out' }, defs);
+    s('rect', { x: 0, y: 0, width: 320, height: 210, fill: '#fff' }, mOut);
+    s('circle', { cx: A[0], cy: A[1], r, fill: '#000' }, mOut); s('circle', { cx: B[0], cy: B[1], r, fill: '#000' }, mOut);
+
+    const regions = {
+      out: { el: s('rect', { x: 6, y: 30, width: 308, height: 174, rx: 10, mask: `url(#${id}out)` }, svg), p: false, q: false, name: 'ليس سداسيًّا وليس محدبًا', ex: '~p ∧ ~q' },
+      a: { el: s('circle', { cx: A[0], cy: A[1], r, mask: `url(#${id}nB)` }, svg), p: true, q: false, name: 'مضلعات سداسية غير محدبة', ex: 'p ∧ ~q' },
+      b: { el: s('circle', { cx: B[0], cy: B[1], r, mask: `url(#${id}nA)` }, svg), p: false, q: true, name: 'مضلعات محدبة غير سداسية', ex: '~p ∧ q' },
+      ab: { el: s('circle', { cx: B[0], cy: B[1], r, 'clip-path': `url(#${id}A)` }, svg), p: true, q: true, name: 'مضلعات سداسية ومحدبة', ex: 'p ∧ q' },
+    };
+    s('rect', { x: 6, y: 30, width: 308, height: 174, rx: 10, fill: 'none', stroke: C.ink, 'stroke-width': 2 }, svg);
+    s('circle', { cx: A[0], cy: A[1], r, fill: 'none', stroke: C.blue, 'stroke-width': 2.5 }, svg);
+    s('circle', { cx: B[0], cy: B[1], r, fill: 'none', stroke: C.orange, 'stroke-width': 2.5 }, svg);
+    txt(svg, 160, 20, 'جميع المضلعات', { 'font-weight': 700 });
+    txt(svg, 85, 50, 'سداسية (p)', { fill: C.blue, 'font-weight': 700, 'font-size': 12 });
+    txt(svg, 238, 50, 'محدبة (q)', { fill: '#b45309', 'font-weight': 700, 'font-size': 12 });
+    const lbl = { a: [95, 116], ab: [160, 116], b: [226, 116], out: [290, 192] };
+    Object.keys(regions).forEach((k) => {
+      const R = regions[k];
+      R.el.style.cursor = 'pointer'; R.el.style.transition = 'fill .3s';
+      R.el.addEventListener('click', () => { highlight((p, q) => p === R.p && q === R.q); ro.innerHTML = `<span class="pill big"><span class="m">${R.ex}</span></span><span class="pill">${R.name}</span>`; tex(ro); setChip(-1); });
+      const t = txt(svg, lbl[k][0], lbl[k][1], R.ex, { 'font-family': 'Georgia', 'font-style': 'italic', 'font-size': 12, 'pointer-events': 'none' });
+      t.setAttribute('direction', 'ltr');
+    });
+    const ops = [
+      ['p', (p) => p, 'جميع المضلعات السداسية'],
+      ['q', (p, q) => q, 'جميع المضلعات المحدبة'],
+      ['~p', (p) => !p, 'كل ما ليس سداسيًّا'],
+      ['p ∧ q', (p, q) => p && q, 'التقاطع: سداسية ومحدبة معًا'],
+      ['p ∨ q', (p, q) => p || q, 'الاتحاد: سداسية أو محدبة أو كلاهما (ثلاث مناطق)'],
+      ['p ∧ ~q', (p, q) => p && !q, 'سداسية غير محدبة'],
+      ['~(p ∨ q)', (p, q) => !(p || q), 'خارج الدائرتين'],
+    ];
+    const chipEls = ops.map(([k, f, d], i) => {
+      const b = document.createElement('button'); b.className = 'chip'; b.style.color = C.purple; b.setAttribute('aria-pressed', 'false');
+      b.innerHTML = `<span class="m">${k}</span>`;
+      b.addEventListener('click', () => { highlight(f); setChip(i); ro.innerHTML = `<span class="pill big"><span class="m">${k}</span></span><span class="pill">${d}</span>`; tex(ro); });
+      chips.appendChild(b); return b;
+    });
+    function setChip(i) { chipEls.forEach((b, j) => b.setAttribute('aria-pressed', i === j)); }
+    function highlight(f) { Object.values(regions).forEach((R) => R.el.setAttribute('fill', f(R.p, R.q) ? 'rgba(124,58,237,.45)' : 'rgba(255,255,255,0)')); }
+    chipEls[4].click();
+  };
+
+  /* ---------- Venn with counts ---------- */
+  W.vennCount = function (el) {
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), sl = el.querySelector('.sliders');
+    const d = el.dataset, v = { a: +d.va, ab: +d.vab, b: +d.vb, out: +d.vout };
+    const A = [190, 98], B = [130, 98], r = 62;   // RTL: first set on the right
+    function draw() {
+      clear(svg);
+      s('rect', { x: 6, y: 6, width: 308, height: 168, rx: 10, fill: '#fff', stroke: C.ink, 'stroke-width': 1.5 }, svg);
+      s('circle', { cx: A[0], cy: A[1], r, fill: 'rgba(220,38,38,.18)', stroke: C.red, 'stroke-width': 2.5 }, svg);
+      s('circle', { cx: B[0], cy: B[1], r, fill: 'rgba(29,78,216,.18)', stroke: C.blue, 'stroke-width': 2.5 }, svg);
+      txt(svg, A[0] + 30, 28, d.a, { fill: C.red, 'font-weight': 800 });
+      txt(svg, B[0] - 30, 28, d.b, { fill: C.blue, 'font-weight': 800 });
+      txt(svg, A[0] + 25, A[1] + 6, v.a, { 'font-size': 20, 'font-weight': 800 });
+      txt(svg, 160, A[1] + 6, v.ab, { 'font-size': 20, 'font-weight': 800, fill: C.purple });
+      txt(svg, B[0] - 25, B[1] + 6, v.b, { 'font-size': 20, 'font-weight': 800 });
+      if (v.out >= 0) txt(svg, 290, 160, v.out, { 'font-size': 16, 'font-weight': 800 });
+      if (ro) ro.innerHTML = `<span class="pill">الاتحاد (أو): <span class="m">${v.a} + ${v.ab} + ${v.b} = ${v.a + v.ab + v.b}</span></span><span class="pill" style="color:${C.purple}">التقاطع (و): <b>${v.ab}</b></span>`;
+      tex(ro);
+    }
+    if (!d.fixed && sl) {
+      [['a', `${d.a} فقط`, 30], ['ab', 'كلاهما', 30], ['b', `${d.b} فقط`, 30]].forEach(([k, label, max]) => {
+        const row = document.createElement('div'); row.className = 'ctrl';
+        row.innerHTML = `<label>${label}</label><input type="range" min="0" max="${max}" value="${v[k]}"><output>${v[k]}</output>`;
+        const inp = row.querySelector('input');
+        inp.addEventListener('input', () => { v[k] = +inp.value; row.querySelector('output').textContent = inp.value; draw(); });
+        sl.appendChild(row);
+      });
+    }
+    draw();
+  };
+
+  /* ===================== Lessons 1-3 … 1-8 ===================== */
+  const tvTag = (b) => `<span class="tv ${b ? 'T' : 'F'}">${b ? 'T' : 'F'}</span>`;
+  const deg = (r) => r * 180 / Math.PI;
+  // angle (math convention, y up) of point p seen from o, in degrees 0..360
+  const angAt = (o, p) => (deg(Math.atan2(o[1] - p[1], p[0] - o[0])) + 360) % 360;
+  function arcPath(o, r, a1, a2) {   // counter-clockwise from a1 to a2 (degrees)
+    let d = ((a2 - a1) % 360 + 360) % 360;
+    const p = (a) => [o[0] + r * Math.cos(a * Math.PI / 180), o[1] - r * Math.sin(a * Math.PI / 180)];
+    const s0 = p(a1), s1 = p(a1 + d);
+    return `M${o[0]},${o[1]} L${s0[0]},${s0[1]} A${r},${r} 0 ${d > 180 ? 1 : 0} 0 ${s1[0]},${s1[1]} Z`;
+  }
+  const ray = (svg, o, a, len, col, w) => s('line', { x1: o[0], y1: o[1], x2: o[0] + len * Math.cos(a * Math.PI / 180), y2: o[1] - len * Math.sin(a * Math.PI / 180), stroke: col, 'stroke-width': w || 3, 'stroke-linecap': 'round' }, svg);
+  function fit(o, a, W, H, pad) {
+    const c = Math.cos(a * Math.PI / 180), sn = -Math.sin(a * Math.PI / 180);
+    let t = 1e9;
+    if (c > 1e-6) t = Math.min(t, (W - pad - o[0]) / c); else if (c < -1e-6) t = Math.min(t, (pad - o[0]) / c);
+    if (sn > 1e-6) t = Math.min(t, (H - pad - o[1]) / sn); else if (sn < -1e-6) t = Math.min(t, (pad - o[1]) / sn);
+    return t;
+  }
+  const italic = (extra) => Object.assign({ 'font-family': 'Georgia', 'font-style': 'italic', 'font-weight': 700, 'font-size': 15 }, extra || {});
+
+  /* ---------- 1-3: truth value of a conditional (Omar's promise) ---------- */
+  W.condTruth = function (el) {
+    el.innerHTML = `<div class="hint">اضغط لتغيير ما حدث، وراقب: هل أوفى عمر بوعده؟</div>
+      <p style="text-align:center;margin:4px 0"><b>«إذا أنهيت واجبي المنزلي، فإني سوف ألعب الكرة معكم.»</b></p>
+      <div class="ctrl" style="justify-content:center;gap:8px">
+        <button class="chip" data-k="p" style="color:var(--teal)"><span></span></button>
+        <button class="chip" data-k="q" style="color:var(--blue)"><span></span></button>
+      </div>
+      <div class="tbl-wrap" style="border:0"><table class="tt"><tr><th>p</th><th>q</th><th>p → q</th></tr></table></div>
+      <div class="readout"></div>`;
+    const st = { p: true, q: true }, table = el.querySelector('table'), ro = el.querySelector('.readout');
+    const rows = [[true, true], [true, false], [false, true], [false, false]].map(([p, q]) => {
+      const tr = table.insertRow();
+      [p, q, !p || q].forEach((v) => { const td = tr.insertCell(); td.className = 'given'; td.innerHTML = `<b class="${v ? 'T' : 'F'}">${v ? 'T' : 'F'}</b>`; });
+      return { tr, p, q };
+    });
+    const label = { p: ['p: أنهى واجبه ✓', 'p: لم يُنهِ واجبه ✗'], q: ['q: لعب الكرة ✓', 'q: لم يلعب الكرة ✗'] };
+    const why = {
+      TT: 'أنهى واجبه ولعب الكرة: أوفى بوعده، فالعبارة صائبة.',
+      TF: 'أنهى واجبه ولم يلعب الكرة: لم يفِ بوعده، فالعبارة <b>خاطئة</b>. هذه هي الحالة الوحيدة!',
+      FT: 'لم يُنهِ واجبه، فوعده لم يُختبر أصلًا؛ لعبه للكرة لا ينقض وعده، فالعبارة صائبة.',
+      FF: 'لم يُنهِ واجبه ولم يلعب: لم يكذب في شيء، فالعبارة صائبة.',
+    };
+    function draw() {
+      el.querySelectorAll('[data-k]').forEach((b) => { const k = b.dataset.k; b.setAttribute('aria-pressed', st[k]); b.firstChild.textContent = label[k][st[k] ? 0 : 1]; });
+      rows.forEach((r) => { r.tr.style.outline = r.p === st.p && r.q === st.q ? '3px solid var(--orange)' : ''; });
+      const v = !st.p || st.q;
+      ro.innerHTML = `<span class="pill big ${v ? 'ok' : 'no'}"><span class="m">p → q</span> = ${tvTag(v)}</span><span class="pill">${why[(st.p ? 'T' : 'F') + (st.q ? 'T' : 'F')]}</span>`;
+      tex(ro);
+    }
+    el.querySelectorAll('[data-k]').forEach((b) => b.addEventListener('click', () => { st[b.dataset.k] = !st[b.dataset.k]; draw(); }));
+    draw(); tex(table);
+  };
+
+  /* ---------- 1-3: related conditionals ---------- */
+  const RELATED = [
+    { s: 'الأسود هي قطط تستطيع أن تزأر.', f: [
+      ['إذا كان الحيوان أسدًا، فإنه قط يستطيع أن يزأر.', true],
+      ['إذا كان الحيوان قطًّا يستطيع أن يزأر، فإنه يكون أسدًا.', false, 'النمر قط يستطيع أن يزأر، لكنه ليس أسدًا.'],
+      ['إذا لم يكن الحيوان أسدًا، فإنه لا يكون قطًّا يستطيع أن يزأر.', false, 'النمر ليس أسدًا، ولكنه قط يستطيع أن يزأر.'],
+      ['إذا لم يكن الحيوان قطًّا يستطيع أن يزأر، فإنه لا يكون أسدًا.', true]] },
+    { s: 'إذا كان m∠A = 35°، فإن ∠A حادة.', f: [
+      ['إذا كان m∠A = 35°، فإن ∠A حادة.', true],
+      ['إذا كانت ∠A حادة، فإن m∠A = 35°.', false, 'm∠A = 50° زاوية حادة.'],
+      ['إذا كان m∠A ≠ 35°، فإن ∠A ليست حادة.', false, 'm∠A = 50° ليست 35° لكنها حادة.'],
+      ['إذا لم تكن ∠A حادة، فإن m∠A ≠ 35°.', true]] },
+    { s: 'إذا كان العدد يقبل القسمة على 2، فإنه يقبل القسمة على 4.', f: [
+      ['إذا كان العدد يقبل القسمة على 2، فإنه يقبل القسمة على 4.', false, 'العدد 6 يقبل القسمة على 2 ولا يقبلها على 4.'],
+      ['إذا كان العدد يقبل القسمة على 4، فإنه يقبل القسمة على 2.', true],
+      ['إذا كان العدد لا يقبل القسمة على 2، فإنه لا يقبل القسمة على 4.', true],
+      ['إذا كان العدد لا يقبل القسمة على 4، فإنه لا يقبل القسمة على 2.', false, 'العدد 6 لا يقبل القسمة على 4 لكنه يقبلها على 2.']] },
+    { s: 'الفأر من القوارض.', f: [
+      ['إذا كان الحيوان فأرًا، فإنه من القوارض.', true],
+      ['إذا كان الحيوان من القوارض، فإنه فأر.', false, 'السنجاب من القوارض وليس فأرًا.'],
+      ['إذا لم يكن الحيوان فأرًا، فإنه ليس من القوارض.', false, 'السنجاب ليس فأرًا لكنه من القوارض.'],
+      ['إذا لم يكن الحيوان من القوارض، فإنه ليس فأرًا.', true]] },
+  ];
+  W.relatedCond = function (el) {
+    el.innerHTML = `<div class="hint">اختر عبارة: العبارات ذات اللون نفسه متكافئة منطقيًّا (لها قيمة الصواب نفسها دائمًا)</div>
+      <div class="ctrl"><select style="flex:1;font:inherit;padding:6px;border-radius:10px;border:2px solid var(--line)"></select></div>
+      <div class="rel-grid"></div>`;
+    const sel = el.querySelector('select'), grid = el.querySelector('.rel-grid');
+    RELATED.forEach((r, i) => { const o = document.createElement('option'); o.value = i; o.textContent = r.s; sel.appendChild(o); });
+    const names = [['العبارة الشرطية', 'p → q', 'a'], ['العكس', 'q → p', 'b'], ['المعكوس', '~p → ~q', 'b'], ['المعاكس الإيجابي', '~q → ~p', 'a']];
+    function draw() {
+      const r = RELATED[sel.value];
+      grid.innerHTML = r.f.map(([t, v, ce], i) => `<div class="rel ${names[i][2]}"><div class="rel-h"><b>${names[i][0]}</b> <span class="m">${names[i][1]}</span> ${tvTag(v)}</div><p>${t}</p>${ce ? `<small>✗ مثال مضاد: ${ce}</small>` : ''}</div>`).join('');
+      tex(grid);
+    }
+    sel.addEventListener('change', draw);
+    draw();
+  };
+
+  /* ---------- 1-4: testing a deduction with a Venn diagram ---------- */
+  W.vennDeduce = function (el) {
+    el.innerHTML = `<div class="hint">اسحب «محمد» إلى أي مكان يتفق مع المعطيات. هل يوجد مكان واحد فقط؟</div><svg viewBox="0 0 320 230"></svg><div class="readout"></div>`;
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const O = [160, 122], R1 = 96, R2 = 46, I = [176, 104];
+    s('rect', { x: 4, y: 4, width: 312, height: 222, rx: 12, fill: '#fff', stroke: C.ink, 'stroke-width': 1.5 }, svg);
+    txt(svg, 160, 20, 'موظفو الشركة', { 'font-weight': 700, 'font-size': 13 });
+    s('circle', { cx: O[0], cy: O[1], r: R1, fill: 'rgba(29,78,216,.10)', stroke: C.blue, 'stroke-width': 2.5 }, svg);
+    s('circle', { cx: I[0], cy: I[1], r: R2, fill: 'rgba(245,158,11,.25)', stroke: C.orange, 'stroke-width': 2.5 }, svg);
+    txt(svg, I[0], I[1] - 4, 'صُرفت لهم', { 'font-size': 12, 'font-weight': 700, fill: '#92400e' });
+    txt(svg, I[0], I[1] + 12, 'مكافآت', { 'font-size': 12, 'font-weight': 700, fill: '#92400e' });
+    txt(svg, 112, 196, 'عملوا أكثر من 175 ساعة', { 'font-size': 12, 'font-weight': 700, fill: C.blue });
+    const h = handle(svg, C.purple), lbl = txt(svg, 0, 0, 'محمد', { 'font-size': 13, 'font-weight': 800, fill: C.purple });
+    let P = [292, 208];
+    const seen = new Set();
+    function draw() {
+      place(h, P[0], P[1]); lbl.setAttribute('x', P[0]); lbl.setAttribute('y', P[1] - 16);
+      const d1 = Math.hypot(P[0] - O[0], P[1] - O[1]), d2 = Math.hypot(P[0] - I[0], P[1] - I[1]);
+      let msg;
+      if (d1 > R1) msg = '<span class="pill no">✗ هنا يخالف المعطيات: محمد عمل أكثر من 175 ساعة، فيجب أن يكون داخل الدائرة الزرقاء.</span>';
+      else if (d2 <= R2) { seen.add('in'); msg = '<span class="pill ok">ممكن: داخل الدائرتين ← صُرفت له مكافأة.</span>'; }
+      else { seen.add('ring'); msg = '<span class="pill ok">ممكن أيضًا: داخل الزرقاء فقط ← لم تُصرف له مكافأة!</span>'; }
+      if (seen.size === 2) msg += '<span class="pill big no">الموقعان ممكنان، إذن الاستنتاج «صُرف لمحمد مكافأة» غير صائب.</span>';
+      ro.innerHTML = msg;
+    }
+    draggable(svg, h, (x, y) => { P = [Math.max(14, Math.min(306, x)), Math.max(30, Math.min(216, y))]; draw(); });
+    draw();
+  };
+
+  /* ---------- 1-5: postulates about points, lines and planes ---------- */
+  W.twoPoints = function (el) {
+    el.innerHTML = `<div class="hint">اسحب النقاط A و B و C. ضع C على المستقيم ثم أبعدها عنه</div><svg viewBox="0 0 320 220"></svg><div class="readout"></div>`;
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const layer = s('g', {}, svg);
+    const pts = { A: [70, 150], B: [230, 110], C: [180, 40] }, hs = {};
+    ['A', 'B', 'C'].forEach((k) => {
+      hs[k] = handle(svg, k === 'C' ? C.orange : C.purple);
+      draggable(svg, hs[k], (x, y) => {
+        let p = [Math.max(12, Math.min(308, x)), Math.max(12, Math.min(208, y))];
+        if (k === 'C') { const q = proj(p); if (Math.hypot(q[0] - p[0], q[1] - p[1]) < 9) p = q; }
+        pts[k] = p; draw();
+      });
+    });
+    function proj(p) {
+      const [a, b] = [pts.A, pts.B], dx = b[0] - a[0], dy = b[1] - a[1], t = ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy);
+      return [a[0] + t * dx, a[1] + t * dy];
+    }
+    function draw() {
+      clear(layer);
+      const [a, b, c] = [pts.A, pts.B, pts.C], dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1;
+      const q = proj(c), on = Math.hypot(q[0] - c[0], q[1] - c[1]) < 1;
+      if (!on) {
+        // a plane through A, B, C drawn as a parallelogram around the triangle
+        const cx = (a[0] + b[0] + c[0]) / 3, cy = (a[1] + b[1] + c[1]) / 3, grow = (p) => [cx + (p[0] - cx) * 1.6, cy + (p[1] - cy) * 1.6];
+        s('polygon', { points: [a, b, c].map(grow).map((p) => p.join(',')).join(' '), fill: 'rgba(14,165,233,.15)', stroke: '#0ea5e9', 'stroke-dasharray': '5 4', 'stroke-linejoin': 'round' }, layer);
+        txt(layer, grow(c)[0], grow(c)[1] - 6, '𝒫', { 'font-size': 18, fill: '#0369a1' });
+      }
+      s('line', { x1: a[0] - dx / L * 400, y1: a[1] - dy / L * 400, x2: a[0] + dx / L * 400, y2: a[1] + dy / L * 400, stroke: on ? C.green : C.teal, 'stroke-width': 3 }, layer);
+      ['A', 'B', 'C'].forEach((k) => { place(hs[k], pts[k][0], pts[k][1]); txt(layer, pts[k][0] + 16, pts[k][1] - 12, k, italic()); });
+      ro.innerHTML = '<span class="pill">مسلّمة 1.1: يمر بالنقطتين A و B مستقيم واحد فقط.</span>' +
+        (on ? '<span class="pill no">A, B, C على استقامة واحدة ← لا تحدد مستوى وحيدًا (يمر بها عدد لا نهائي من المستويات).</span>'
+            : '<span class="pill ok">مسلّمة 1.2: ثلاث نقاط ليست على استقامة واحدة يمر بها مستوى واحد فقط.</span>');
+    }
+    draw();
+  };
+
+  /* ---------- 1-6: choose the reason for each step of a proof ---------- */
+  const REASONS = ['المعطيات', 'خاصية التوزيع', 'خاصية الجمع للمساواة', 'خاصية الطرح للمساواة', 'خاصية الضرب للمساواة', 'خاصية القسمة للمساواة', 'بالتبسيط', 'خاصية التعويض', 'خاصية التماثل', 'خاصية التعدي', 'تعريف تطابق الزوايا'];
+  const PROOFS = {
+    eq: [['−5(x + 4) = 70', 0], ['−5x − 20 = 70', 1], ['−5x − 20 + 20 = 70 + 20', 2], ['−5x = 90', 6], ['−5x ÷ (−5) = 90 ÷ (−5)', 5], ['x = −18', 6]],
+    angle: [['∠FGJ ≅ ∠JGK, ∠JGK ≅ ∠KGH', 0], ['m∠FGJ = m∠JGK, m∠JGK = m∠KGH', 10], ['m∠FGJ = m∠KGH', 9], ['6x + 7 = 8x − 5', 7], ['6x + 12 = 8x', 2], ['12 = 2x', 3], ['6 = x', 5], ['x = 6', 8]],
+  };
+  W.reasonQuiz = function (el) {
+    const steps = PROOFS[el.dataset.proof];
+    el.insertAdjacentHTML('beforeend', `<div class="tbl-wrap" style="border:0"><table class="data proof"><tr><th>العبارات</th><th>المبررات</th></tr></table></div>
+      <div class="readout"></div><div class="ctrl" style="justify-content:center"><button class="btn sm" data-act="check">تحقق</button><button class="btn sm ghost" data-act="show">أظهر الحل</button></div>`);
+    const table = el.querySelector('table'), ro = el.querySelector('.readout');
+    const sels = steps.map(([st], i) => {
+      const tr = table.insertRow();
+      tr.insertCell().innerHTML = `${i + 1}) <span class="m">${st}</span>`;
+      const sel = document.createElement('select');
+      sel.innerHTML = '<option value="">— اختر المبرر —</option>' + REASONS.map((r, j) => `<option value="${j}">${r}</option>`).join('');
+      sel.addEventListener('change', () => { sel.className = ''; ro.innerHTML = ''; });
+      tr.insertCell().appendChild(sel);
+      return sel;
+    });
+    el.querySelector('[data-act=check]').addEventListener('click', () => {
+      let ok = 0;
+      sels.forEach((sel, i) => { const r = sel.value !== '' && +sel.value === steps[i][1]; sel.className = sel.value === '' ? '' : r ? 'right' : 'wrong'; if (r) ok++; });
+      ro.innerHTML = ok === steps.length ? '<span class="pill big ok">🎉 ممتاز! كل المبررات صحيحة</span>' : `<span class="pill">صحيح: ${ok} من ${steps.length}</span>`;
+    });
+    el.querySelector('[data-act=show]').addEventListener('click', () => { sels.forEach((sel, i) => { sel.value = steps[i][1]; sel.className = 'right'; }); });
+    tex(table);
+  };
+
+  /* ---------- 1-6: Celsius → Fahrenheit ---------- */
+  W.tempConvert = function (el) {
+    el.innerHTML = `<div class="hint">حرّك المنزلق: درجة الحرارة بالسيليزي، وشاهد قيمتها بالفهرنهايتي</div>
+      <div class="ctrl"><label>°C</label><input type="range" min="-40" max="100" value="20"><output></output></div>
+      <svg viewBox="0 0 320 70"></svg><div class="readout"></div>`;
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    range(el, (c) => {
+      clear(svg);
+      const f = 9 / 5 * c + 32, X = (v) => 20 + (v + 40) / 140 * 280;
+      s('rect', { x: 20, y: 26, width: 280, height: 14, rx: 7, fill: '#e2e8f0' }, svg);
+      s('rect', { x: 20, y: 26, width: X(c) - 20, height: 14, rx: 7, fill: c <= 0 ? '#38bdf8' : c >= 100 ? '#dc2626' : '#f97316' }, svg);
+      [[0, 'تجمد الماء'], [100, 'غليان الماء']].forEach(([v, t]) => { s('line', { x1: X(v), x2: X(v), y1: 20, y2: 46, stroke: C.ink }, svg); txt(svg, X(v), 62, t, { 'font-size': 11 }); });
+      ro.innerHTML = `<span class="pill big"><span class="m">F = (9/5)(${c}) + 32 = ${fmt(f)}</span></span>` +
+        (c === 0 ? '<span class="pill ok">الماء يتجمد عند 32°F</span>' : c === 100 ? '<span class="pill ok">الماء يغلي عند 212°F</span>' : '');
+      tex(ro);
+    });
+  };
+
+  /* ---------- 1-7: segment addition postulate ---------- */
+  W.segmentAdd = function (el) {
+    el.innerHTML = `<div class="hint">اسحب النقطة B على المستقيم: متى يكون AB + BC = AC ؟</div><svg viewBox="0 0 320 100"></svg><div class="readout"></div>`;
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const A = 40, Cx = 260, y = 50, U = 20;
+    let B = 120;
+    const h = handle(svg, C.orange);
+    function draw() {
+      clear(layer);
+      s('line', { x1: 8, x2: 312, y1: y, y2: y, stroke: C.muted, 'stroke-width': 2 }, layer);
+      s('line', { x1: A, x2: Cx, y1: y + 22, y2: y + 22, stroke: C.teal, 'stroke-width': 3 }, layer);
+      txt(layer, (A + Cx) / 2, y + 40, `AC = ${fmt((Cx - A) / U)}`, italic({ fill: C.teal, 'font-size': 13 }));
+      s('line', { x1: Math.min(A, B), x2: Math.max(A, B), y1: y - 16, y2: y - 16, stroke: C.blue, 'stroke-width': 3 }, layer);
+      s('line', { x1: Math.min(B, Cx), x2: Math.max(B, Cx), y1: y - 24, y2: y - 24, stroke: C.pink, 'stroke-width': 3 }, layer);
+      [['A', A], ['C', Cx]].forEach(([n, x]) => { s('circle', { cx: x, cy: y, r: 5, fill: C.ink }, layer); txt(layer, x, y + 20, n, italic()); });
+      txt(layer, B, y + 20, 'B', italic({ fill: '#b45309' }));
+      place(h, B, y);
+      const ab = Math.abs(B - A) / U, bc = Math.abs(Cx - B) / U, ac = (Cx - A) / U, ok = Math.abs(ab + bc - ac) < 0.05;
+      ro.innerHTML = `<span class="pill" style="color:${C.blue}"><span class="m">AB = ${fmt(ab)}</span></span><span class="pill" style="color:${C.pink}"><span class="m">BC = ${fmt(bc)}</span></span>` +
+        `<span class="pill big ${ok ? 'ok' : 'no'}"><span class="m">AB + BC = ${fmt(ab + bc)}</span> ${ok ? '= AC ✓ (B تقع بين A و C)' : '≠ AC ✗ (B ليست بين A و C)'}</span>`;
+      tex(ro);
+    }
+    draggable(svg, h, (x) => { B = Math.max(10, Math.min(310, x)); draw(); });
+    draw();
+  };
+
+  /* ---------- 1-8: angle addition postulate ---------- */
+  W.angleAdd = function (el) {
+    el.innerHTML = `<div class="hint">اسحب نهايات الأشعة A و C و D وراقب قياسات الزوايا</div><svg viewBox="0 0 320 220"></svg><div class="readout"></div>`;
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const O = [160, 196], VW = 320, VH = 220;
+    const a = { A: 150, D: 95, C: 25 }, hs = {};
+    ['A', 'D', 'C'].forEach((k) => {
+      hs[k] = handle(svg, k === 'D' ? C.orange : C.purple);
+      draggable(svg, hs[k], (x, y) => { let t = angAt(O, [x, y]); if (t > 180 && t < 270) t = 178; if (t >= 270) t = 2; a[k] = Math.round(Math.max(2, Math.min(178, t))); draw(); });
+    });
+    function draw() {
+      clear(layer);
+      const lo = Math.min(a.A, a.C), hi = Math.max(a.A, a.C), inside = a.D > lo && a.D < hi;
+      s('path', { d: arcPath(O, 46, lo, inside ? a.D : hi), fill: 'rgba(29,78,216,.25)' }, layer);
+      if (inside) s('path', { d: arcPath(O, 56, a.D, hi), fill: 'rgba(219,39,119,.22)' }, layer);
+      ['A', 'D', 'C'].forEach((k) => {
+        const L = fit(O, a[k], VW, VH, 6), r = Math.min(L - 22, 150);
+        ray(layer, O, a[k], L, k === 'D' ? C.orange : C.ink);
+        const p = [O[0] + r * Math.cos(a[k] * Math.PI / 180), O[1] - r * Math.sin(a[k] * Math.PI / 180)];
+        place(hs[k], p[0], p[1]); txt(layer, p[0] + 18 * Math.cos((a[k] + 90) * Math.PI / 180), p[1] - 18 * Math.sin((a[k] + 90) * Math.PI / 180) + 5, k, italic());
+      });
+      s('circle', { cx: O[0], cy: O[1], r: 4, fill: C.ink }, layer); txt(layer, O[0] - 12, O[1] + 16, 'B', italic());
+      const abc = hi - lo, abd = Math.abs(a.A - a.D), dbc = Math.abs(a.D - a.C);
+      ro.innerHTML = inside
+        ? `<span class="pill"><span class="m">m∠ABD = ${abd}°</span></span><span class="pill"><span class="m">m∠DBC = ${dbc}°</span></span><span class="pill big ok"><span class="m">${abd}° + ${dbc}° = ${abc}° = m∠ABC</span> ✓</span>`
+        : `<span class="pill no">D ليست داخل <span class="m">∠ABC</span>، فلا تنطبق المسلّمة: <span class="m">${abd}° + ${dbc}° ≠ ${abc}°</span></span>`;
+      tex(ro);
+    }
+    draw();
+  };
+
+  /* ---------- 1-8: supplementary / complementary adjacent angles ---------- */
+  W.compSupp = function (el) {
+    el.innerHTML = `<div class="hint">اسحب الشعاع البرتقالي</div><svg viewBox="0 0 320 190"></svg>
+      <div class="chips" style="margin-top:6px"><button class="chip" data-m="s" aria-pressed="true" style="color:var(--teal)"><span>متكاملتان (على مستقيم)</span></button><button class="chip" data-m="c" aria-pressed="false" style="color:var(--purple)"><span>متتامتان (زاوية قائمة)</span></button></div>
+      <div class="readout"></div>`;
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const O = [160, 160], L = 140;
+    let mode = 's', t = 60;
+    const h = handle(svg, C.orange);
+    draggable(svg, h, (x, y) => { let v = angAt(O, [x, y]); if (v > 180) v = v > 270 ? 0 : 180; const max = mode === 's' ? 180 : 90; t = Math.round(Math.max(0, Math.min(max, mode === 'c' ? v : v))); if (mode === 'c' && t > 90) t = 90; draw(); });
+    function draw() {
+      clear(layer);
+      const top = mode === 's' ? 180 : 90;
+      s('path', { d: arcPath(O, 40, 0, t), fill: 'rgba(29,78,216,.25)' }, layer);
+      s('path', { d: arcPath(O, 50, t, top), fill: 'rgba(219,39,119,.22)' }, layer);
+      if (mode === 's') s('line', { x1: 10, x2: 310, y1: O[1], y2: O[1], stroke: C.ink, 'stroke-width': 3 }, layer);
+      else { ray(layer, O, 0, L, C.ink); ray(layer, O, 90, L, C.ink); s('rect', { x: O[0], y: O[1] - 14, width: 14, height: 14, fill: 'none', stroke: C.red, 'stroke-width': 2 }, layer); }
+      const fl = Math.min(fit(O, t, 320, 190, 4), L);
+      ray(layer, O, t, fl, C.orange);
+      const p = [O[0] + (fl - 18) * Math.cos(t * Math.PI / 180), O[1] - (fl - 18) * Math.sin(t * Math.PI / 180)];
+      place(h, p[0], p[1]);
+      const m1 = t, m2 = top - t;
+      const l1 = [O[0] + 64 * Math.cos(t / 2 * Math.PI / 180), O[1] - 64 * Math.sin(t / 2 * Math.PI / 180)], l2 = [O[0] + 74 * Math.cos((t + top) / 2 * Math.PI / 180), O[1] - 74 * Math.sin((t + top) / 2 * Math.PI / 180)];
+      txt(layer, l1[0], l1[1] + 5, '1', italic({ fill: C.blue })); txt(layer, l2[0], l2[1] + 5, '2', italic({ fill: C.pink }));
+      ro.innerHTML = `<span class="pill" style="color:${C.blue}"><span class="m">m∠1 = ${m1}°</span></span><span class="pill" style="color:${C.pink}"><span class="m">m∠2 = ${m2}°</span></span><span class="pill big ok"><span class="m">m∠1 + m∠2 = ${top}°</span> ← ${mode === 's' ? 'نظرية الزاويتين المتكاملتين 1.3' : 'نظرية الزاويتين المتتامتين 1.4'}</span>`;
+      tex(ro);
+    }
+    el.querySelectorAll('[data-m]').forEach((b) => b.addEventListener('click', () => {
+      mode = b.dataset.m; t = mode === 's' ? 60 : 35;
+      el.querySelectorAll('[data-m]').forEach((x) => x.setAttribute('aria-pressed', x === b));
+      draw();
+    }));
+    draw();
+  };
+
+  /* ---------- 1-8: vertical angles ---------- */
+  W.vertical = function (el) {
+    el.innerHTML = `<div class="hint">اسحب النقطة لتدوير أحد المستقيمين</div><svg viewBox="0 0 320 210"></svg><div class="readout"></div>`;
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const O = [160, 105], VW = 320, VH = 210, base = 20;
+    let t = 120;
+    const h = handle(svg, C.orange);
+    draggable(svg, h, (x, y) => { let v = angAt(O, [x, y]); v = v > 180 ? v - 180 : v; t = Math.round(Math.max(base + 15, Math.min(base + 165, v))); draw(); });
+    function draw() {
+      clear(layer);
+      const cols = ['rgba(29,78,216,.25)', 'rgba(219,39,119,.22)'];
+      const angs = [[base, t], [t, base + 180], [base + 180, t + 180], [t + 180, base + 360]];
+      angs.forEach(([a1, a2], i) => s('path', { d: arcPath(O, 34 + (i % 2) * 8, a1, a2), fill: cols[i % 2] }, layer));
+      [[base, C.ink], [base + 180, C.ink], [t, C.orange], [t + 180, C.orange]].forEach(([g, col]) => ray(layer, O, g, fit(O, g, VW, VH, 4), col));
+      angs.forEach(([a1, a2], i) => { const m = (a1 + a2) / 2; txt(layer, O[0] + 58 * Math.cos(m * Math.PI / 180), O[1] - 58 * Math.sin(m * Math.PI / 180) + 5, String(i + 1), italic({ fill: i % 2 ? C.pink : C.blue })); });
+      const r = Math.min(fit(O, t, VW, VH, 4) - 20, 120);
+      place(h, O[0] + r * Math.cos(t * Math.PI / 180), O[1] - r * Math.sin(t * Math.PI / 180));
+      const a = t - base, b = 180 - a;
+      ro.innerHTML = `<span class="pill" style="color:${C.blue}"><span class="m">m∠1 = m∠3 = ${a}°</span></span><span class="pill" style="color:${C.pink}"><span class="m">m∠2 = m∠4 = ${b}°</span></span><span class="pill ok"><span class="m">m∠1 + m∠2 = 180°</span></span><span class="pill big ok">الزاويتان المتقابلتان بالرأس متطابقتان (نظرية 1.8)</span>`;
+      tex(ro);
+    }
+    draw();
+  };
+
+  document.querySelectorAll('[data-widget]').forEach((el) => {
+    const f = W[el.dataset.widget];
+    if (f) { try { f(el); } catch (e) { console.error('widget', el.dataset.widget, e); } }
+  });
+})();

@@ -1,0 +1,1746 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e3a5f">
+<title>الفصل 1: التبرير والبرهان — الرياضيات 1-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/book.css">
+</head>
+<body data-chapter="1">
+<div class="app">
+
+  <header class="topbar">
+    <a class="icon-btn" href="index.html" aria-label="فهرس الكتاب" title="فهرس الكتاب">⌂</a>
+    <button class="icon-btn" id="tocBtn" aria-label="محتويات الفصل">☰</button>
+    <div class="brand">الرياضيات <span class="num">1-1</span><small>الفصل 1 · التبرير والبرهان</small></div>
+    <button class="icon-btn" id="soundBtn" aria-label="صوت قلب الصفحة" aria-pressed="true">🔊</button>
+  </header>
+  <div class="progress"><i id="prog"></i></div>
+
+  <main class="stage">
+    <div class="book" id="book">
+
+      <!-- ================= 0: COVER ================= -->
+      <section class="page cover" data-title="الغلاف">
+        <div class="face front"><div class="scroll"><div class="cover-full">
+          <div class="cv-grid" aria-hidden="true"></div>
+          <svg class="cv-s s-tl fl f4" viewBox="0 0 70 70" aria-hidden="true"><g fill="none" stroke="#a7f3d0" stroke-width="2.5"><rect x="4" y="4" width="15" height="15"/><rect x="4" y="4" width="30" height="30"/><rect x="4" y="4" width="45" height="45"/><rect x="4" y="4" width="60" height="60"/></g></svg>
+          <svg class="cv-s s-tr fl f2" viewBox="0 0 110 76" aria-hidden="true"><circle cx="38" cy="38" r="34" fill="rgba(56,189,248,.18)" stroke="#7dd3fc" stroke-width="2.5"/><circle cx="72" cy="38" r="34" fill="rgba(251,146,60,.16)" stroke="#fdba74" stroke-width="2.5"/></svg>
+          <svg class="cv-s s-bl fl f1" viewBox="0 0 104 92" aria-hidden="true"><polygon points="4,88 52,4 100,88" fill="rgba(253,224,71,.18)" stroke="#fde047" stroke-width="2.5"/></svg>
+          <svg class="cv-s s-br fl f3" viewBox="0 0 76 76" aria-hidden="true"><rect x="3" y="3" width="70" height="70" rx="4" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="2"/><line x1="3" y1="3" x2="73" y2="73" stroke="#f9a8d4" stroke-width="2" stroke-dasharray="6 5"/><line x1="73" y1="3" x2="3" y2="73" stroke="#f9a8d4" stroke-width="2" stroke-dasharray="6 5"/></svg>
+          <div class="cv-content">
+            <div class="cv-top">التعليم الثانوي · نظام المسارات</div>
+            <div class="cv-title">الرياضيات <span>1-1</span></div>
+            <div class="cv-sub">السنة الأولى المشتركة</div>
+            <div class="cv-chapter"><b>الفصل 1</b><span>التبرير والبرهان</span><i>Reasoning and Proof</i></div>
+            <button class="cv-start" data-next>ابدأ القراءة <span>←</span></button>
+            <div class="cv-badge">✦ نسخة تفاعلية ✦</div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1: HOW TO USE ================= -->
+      <section class="page" data-title="كيف تستعمل هذا الكتاب؟">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">👋</div>
+            <h1>مرحبًا بك!</h1>
+            <div class="en" style="direction:rtl;text-align:right;font-family:inherit;font-weight:500">هذا الكتاب تفاعلي: اقرأ، جرّب بنفسك، ثم تحقق من فهمك.</div>
+          </div>
+          <h2 class="sec-title">كيف تستعمل هذا الكتاب؟</h2>
+          <div class="how">
+            <div class="card"><div class="ic" style="background:#dcfce7">✋</div><div><b>اسحب الأشكال</b><br>النقاط الملوّنة النابضة يمكنك سحبها بإصبعك أو بالفأرة لترى كيف يتغير الشكل.</div></div>
+            <div class="card"><div class="ic" style="background:#dbeafe">🎚️</div><div><b>حرّك المنزلق</b><br>غيّر القيم بالمنزلق وراقب النمط والنتيجة مباشرة.</div></div>
+            <div class="card"><div class="ic" style="background:#ede9fe">💡</div><div><b>عرض الحل خطوة بخطوة</b><br>حاول أولًا، ثم اضغط «عرض الحل» واكشف الخطوات واحدة تلو الأخرى.</div></div>
+            <div class="card"><div class="ic" style="background:#fef3c7">📖</div><div><b>قلّب الصفحات</b><br>اسحب الصفحة من طرفها، أو اضغط الزاوية المطوية، أو استعمل الأزرار في الأسفل.</div></div>
+          </div>
+          <p class="swipe-hint">اسحب الصفحة نحو <b>اليمين ⟶</b> للانتقال إلى الصفحة التالية</p>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الرياضيات 1-1</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1: CONTENTS ================= -->
+      <section class="page" data-title="فهرس الفصل 1">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1</div>
+            <h1>التبرير والبرهان</h1>
+            <div class="en">Reasoning and Proof</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درست القطع المستقيمة وعلاقات الزوايا.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أكتب تخمينات وأجد أمثلة مضادة.</li><li>أستعمل التبرير الاستقرائي والاستنتاجي.</li><li>أكتب براهين للعلاقات الهندسية.</li></ul></div>
+          </div>
+          <h2 class="sec-title">دروس الفصل</h2>
+          <ul class="toc-list">
+            <li><span class="no">1-1</span><span class="ttl">التبرير الاستقرائي والتخمين</span><button class="btn sm go" data-goto="3">افتح ←</button></li>
+            <li><span class="no">1-2</span><span class="ttl">المنطق</span><button class="btn sm go" data-goto="10">افتح ←</button></li>
+            <li><span class="no">1-3</span><span class="ttl">العبارات الشرطية</span><button class="btn sm go" data-goto="14">افتح ←</button></li>
+            <li><span class="no">1-4</span><span class="ttl">التبرير الاستنتاجي</span><button class="btn sm go" data-goto="18">افتح ←</button></li>
+            <li><span class="no">1-5</span><span class="ttl">المسلمات والبراهين الحرة</span><button class="btn sm go" data-goto="21">افتح ←</button></li>
+            <li><span class="no">1-6</span><span class="ttl">البرهان الجبري</span><button class="btn sm go" data-goto="23">افتح ←</button></li>
+            <li><span class="no">1-7</span><span class="ttl">إثبات علاقات بين القطع المستقيمة</span><button class="btn sm go" data-goto="26">افتح ←</button></li>
+            <li><span class="no">1-8</span><span class="ttl">إثبات علاقات بين الزوايا</span><button class="btn sm go" data-goto="28">افتح ←</button></li>
+            <li><span class="no">★</span><span class="ttl">ملخص الفصل</span><button class="btn sm go" data-goto="32">افتح ←</button></li>
+          </ul>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 1 · التبرير والبرهان</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 2: LESSON 1-1 INTRO ================= -->
+      <section class="page" data-title="1-1 التبرير الاستقرائي والتخمين">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1-1</div>
+            <h1>التبرير الاستقرائي والتخمين</h1>
+            <div class="en">Inductive Reasoning and Conjecture</div>
+          </div>
+
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ استعمال البيانات لإيجاد أنماط والتوصل إلى توقعات.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أكتب تخمينات مبنية على التبرير الاستقرائي.</li><li>أجد أمثلة مضادة.</li></ul></div>
+          </div>
+
+          <div class="card why">
+            <h3>لماذا؟</h3>
+            <p>في أبحاث التسويق، يتم تحليل إجابات مجموعة من الأشخاص عن أسئلة محددة حول المنتج، ثم يتم البحث عن نمطية معينة في الإجابات حتى الوصول إلى نتيجة. وتسمى هذه العملية <b>التبرير الاستقرائي</b>.</p>
+          </div>
+
+          <div class="card def">
+            <h3>التخمين</h3>
+            <p><span class="hl">التبرير الاستقرائي</span> هو تبرير تُستعمل فيه أمثلة محددة للوصول إلى نتيجة. وعندما تفترض استمرار نمط على نفس الوتيرة، فإنك تستعمل التبرير الاستقرائي، وتُسمّى العبارة النهائية التي توصلت إليها <span class="hl">تخمينًا</span>.</p>
+          </div>
+
+          <h2 class="sec-title">المفردات</h2>
+          <div class="vocab">
+            <span><b>التبرير الاستقرائي</b><i>inductive reasoning</i></span>
+            <span><b>التخمين</b><i>conjecture</i></span>
+            <span><b>المثال المضاد</b><i>counterexample</i></span>
+          </div>
+
+          <div class="card tip" style="margin-top:16px">
+            <h4>مراجعة المفردات: المتتابعة</h4>
+            هي مجموعة من الأعداد أو الأشياء المنظمة بترتيب معيّن.
+          </div>
+          <div class="card tip warn">
+            <h4>تاريخ الرياضيات</h4>
+            <b>أبو علي الحسن بن الهيثم</b> (354 – 430هـ) عالم موسوعي من أعظم علماء الرياضيات والفيزياء، اعتمد في بحوثه على منهجين هما: الاستقراء والاستنباط، وفي الحالتين كان يعتمد على التجربة والملاحظة.
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-1</span> · التبرير الاستقرائي والتخمين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 3: EXAMPLE 1 ================= -->
+      <section class="page" data-title="مثال 1: الأنماط والتخمين">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>الأنماط والتخمين</h3></header>
+            <div class="body">
+              <p class="q">اكتب تخمينًا يصف النمط في كلٍّ من المتتابعات الآتية، ثم استعمله لإيجاد الحد التالي في كلٍّ منها.</p>
+
+              <div class="part">
+                <span class="lbl">a</span> مواعيد وصول الحافلات إلى محطة الركوب هي: <span class="num">8:30</span> صباحًا، <span class="num">9:10</span> صباحًا، <span class="num">9:50</span> صباحًا، <span class="num">10:30</span> صباحًا، ......
+                <div class="widget" data-widget="timeSeq" data-start="510" data-step="40" data-count="4">
+                  <div class="hint">اضغط «الحد التالي» لترى كيف يستمر النمط</div>
+                  <div class="seq"></div>
+                  <div class="ctrl" style="justify-content:center"><button class="btn sm" data-act="add">+ الحد التالي</button><button class="btn sm ghost" data-act="reset">إعادة</button></div>
+                </div>
+                <div class="sol" data-sol>
+                  <ol class="steps">
+                    <li><b>الخطوة 1: ابحث عن نمط.</b> الفرق بين كل موعدين متتاليين هو <b>40 دقيقة</b>.</li>
+                    <li><b>الخطوة 2: ضع تخمينًا.</b> يزيد موعد وصول الحافلة 40 دقيقة عن موعد وصول الحافلة التي سبقتها.</li>
+                    <li><b>الخطوة 3: جد الحد التالي.</b> <span class="num">10:30</span> صباحًا + 40 دقيقة = <span class="num">11:10</span> صباحًا.</li>
+                    <li class="final">الحد التالي هو: <b><span class="num">11:10</span> صباحًا</b>.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="part">
+                <span class="lbl">b</span> عدد القطع المستقيمة في الأشكال: <span class="num">4, 10, 18, 28, 40, ......</span>
+                <div class="widget" data-widget="nestedSquares">
+                  <div class="hint">حرّك المنزلق لبناء الشكل التالي، وعُدّ القطع المستقيمة</div>
+                  <svg viewBox="0 0 240 200"></svg>
+                  <div class="ctrl"><label>رقم الشكل</label><input type="range" min="1" max="7" value="3"><output></output></div>
+                  <div class="seq"></div>
+                  <div class="readout"></div>
+                </div>
+                <div class="sol" data-sol>
+                  <ol class="steps">
+                    <li><b>الخطوة 1: ابحث عن نمط.</b> <span class="num">4 → 10 → 18 → 28 → 40</span> والزيادات هي: <span class="num">+6, +8, +10, +12</span>.</li>
+                    <li><b>الخطوة 2: ضع تخمينًا.</b> يزيد عدد القطع المستقيمة في كل شكل عن الشكل الذي يسبقه بمقدار الزيادة السابقة مضافًا لها 2.</li>
+                    <li><b>الخطوة 3: جد الحد التالي.</b> الزيادة التالية <span class="num">12 + 2 = 14</span>، إذن <span class="num">40 + 14 = 54</span>.</li>
+                    <li class="final">الشكل التالي يحتوي على <b>54</b> قطعة مستقيمة. <b>تحقّق:</b> حرّك المنزلق إلى الشكل 6 وعُدّ!</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card tip">
+            <h4>إرشادات للدراسة</h4>
+            اختبر جميع العمليات الحسابية الأساسية بما فيها الجذور والقوى عند البحث عن قاعدة تحدد النمط، وقد تتضمن القاعدة استعمال عمليتين حسابيتين.
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-1</span> · التبرير الاستقرائي والتخمين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 4: CHECK 1 ================= -->
+      <section class="page" data-title="تحقق من فهمك 1">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card check">
+            <h3>تحقق من فهمك</h3>
+            <p class="q">اكتب تخمينًا يصف النمط في كلٍّ من المتتابعات الآتية، ثم استعمله لإيجاد الحد التالي في كلٍّ منها.</p>
+
+            <div class="part">
+              <span class="lbl">1A</span> متتابعة أشهر: صفر، رجب، ذو الحجة، جمادى الأولى، ......
+              <div class="ans" data-answer="شوال|شوّال"><input placeholder="اكتب الشهر"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol>
+                <ol class="steps">
+                  <li>رتّب الأشهر الهجرية: محرم(1)، صفر(2)، ربيع الأول(3)، ربيع الآخر(4)، جمادى الأولى(5)، جمادى الآخرة(6)، رجب(7)، شعبان(8)، رمضان(9)، شوال(10)، ذو القعدة(11)، ذو الحجة(12).</li>
+                  <li>صفر(2) ← رجب(7) ← ذو الحجة(12) ← جمادى الأولى(5 من السنة التالية). كل مرة نتقدم <b>5 أشهر</b>.</li>
+                  <li><b>التخمين:</b> كل شهر يأتي بعد الشهر السابق بخمسة أشهر.</li>
+                  <li class="final">جمادى الأولى(5) + 5 = (10) ← <b>شوال</b>.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="part">
+              <span class="lbl">1B</span> <span class="num">10, 4, −2, −8, ......</span>
+              <div class="ans" data-answer="-14"><input inputmode="numeric" placeholder="الحد التالي"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol>
+                <ol class="steps">
+                  <li>احسب الفرق: <span class="num">4 − 10 = −6</span> ، <span class="num">−2 − 4 = −6</span> ، <span class="num">−8 − (−2) = −6</span>.</li>
+                  <li><b>التخمين:</b> كل حد يساوي الحد السابق مطروحًا منه 6.</li>
+                  <li class="final">الحد التالي: <span class="num">−8 − 6 = −14</span>.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="part">
+              <span class="lbl">1C</span> عدد المثلثات المظللة: <span class="num">1, 3, 9, ......</span>
+              <div class="widget" data-widget="sierpinski">
+                <div class="hint">حرّك المنزلق لترى المرحلة التالية</div>
+                <svg viewBox="0 0 260 230"></svg>
+                <div class="ctrl"><label>المرحلة</label><input type="range" min="1" max="5" value="1"><output></output></div>
+                <div class="readout"></div>
+              </div>
+              <div class="ans" data-answer="27"><input inputmode="numeric" placeholder="عدد المثلثات"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol>
+                <ol class="steps">
+                  <li>لاحظ أن <span class="num">1 × 3 = 3</span> ، <span class="num">3 × 3 = 9</span>.</li>
+                  <li>في كل مرحلة، كل مثلث مظلل يُقسم إلى 4 مثلثات ويُزال الأوسط، فيبقى <b>3</b> مثلثات مظللة مكان كل مثلث.</li>
+                  <li><b>التخمين:</b> عدد المثلثات المظللة في كل شكل يساوي 3 أمثال عددها في الشكل السابق.</li>
+                  <li class="final">الشكل التالي: <span class="num">9 × 3 = 27</span> مثلثًا مظللًا.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-1</span> · التبرير الاستقرائي والتخمين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 5: EXAMPLE 2 ================= -->
+      <section class="page" data-title="مثال 2: التخمينات الجبرية والهندسية">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <p>لوضع تخمينات جبرية أو هندسية يجب أن تقدم أمثلة.</p>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>التخمينات الجبرية والهندسية</h3></header>
+            <div class="body">
+              <p class="q">ضع تخمينًا لكل قيمة أو علاقة هندسية لكلٍّ مما يأتي، وأعطِ أمثلة عددية أو ارسم أشكالًا تساعد على الوصول لهذا التخمين.</p>
+
+              <div class="part">
+                <span class="lbl">a</span> ناتج جمع عددين فرديين.
+                <div class="widget" data-widget="parity">
+                  <div class="hint">اختر عددين بالمنزلقين: كل عمود نقطتين = زوج، والنقطة الوحيدة تبقى بلا شريك</div>
+                  <div class="ctrl"><label>العدد الأول</label><input type="range" min="1" max="15" step="1" value="3" data-k="a"><output></output></div>
+                  <div class="ctrl"><label>العدد الثاني</label><input type="range" min="1" max="15" step="1" value="5" data-k="b"><output></output></div>
+                  <svg viewBox="0 0 320 90"></svg>
+                  <div class="readout"></div>
+                </div>
+                <div class="sol" data-sol>
+                  <ol class="steps">
+                    <li><b>الخطوة 1: اكتب أمثلة.</b> <span class="num">1 + 3 = 4</span> ، <span class="num">1 + 5 = 6</span> ، <span class="num">3 + 5 = 8</span> ، <span class="num">7 + 9 = 16</span></li>
+                    <li><b>الخطوة 2: ابحث عن نمط.</b> لاحظ أن الأعداد <span class="num">4, 6, 8, 16</span> جميعها زوجية.</li>
+                    <li><b>لماذا؟</b> كل عدد فردي = أزواج + نقطة واحدة. عند الجمع تلتقي النقطتان الوحيدتان فتكوّنان زوجًا جديدًا.</li>
+                    <li class="final"><b>التخمين:</b> ناتج جمع عددين فرديين هو عدد زوجي.</li>
+                  </ol>
+                </div>
+              </div>
+
+              <div class="part">
+                <span class="lbl">b</span> القطعتان المستقيمتان الواصلتان بين كل رأسين متقابلين في المستطيل.
+                <div class="widget" data-widget="rectDiag">
+                  <div class="hint">اسحب الرأس <b>C</b> لتغيير المستطيل وراقب طولي القطرين</div>
+                  <svg viewBox="0 0 320 220"></svg>
+                  <div class="readout"></div>
+                  <div class="chips" style="margin-top:8px"><button class="chip" data-mode="rect" aria-pressed="true" style="color:var(--teal)"><span>مستطيل</span></button><button class="chip" data-mode="quad" aria-pressed="false" style="color:var(--purple)"><span>شكل رباعي عام</span></button></div>
+                </div>
+                <div class="sol" data-sol>
+                  <ol class="steps">
+                    <li><b>الخطوة 1:</b> ارسم عدة مستطيلات مختلفة وصِل بين كل رأسين متقابلين.</li>
+                    <li><b>الخطوة 2:</b> لاحظ أن أطوال القطع المستقيمة الواصلة بين كل رأسين متقابلين في كل مستطيل تبدو متساوية. استعمل المسطرة أو الفرجار للتحقق.</li>
+                    <li>جرّب «شكل رباعي عام» في الأداة: القطران لا يتساويان دائمًا! إذن التخمين خاص بالمستطيل.</li>
+                    <li class="final"><b>التخمين:</b> القطعتان المستقيمتان الواصلتان بين كل رأسين متقابلين في المستطيل متطابقتان.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card tip">
+            <h4>الأمثلة المؤيدة والبراهين</h4>
+            الأمثلة المؤيدة للتخمين ليست كافية لإثبات صحته، ولإثبات صحة تخمين جبري أو هندسي، يجب تقديم مبررات صحيحة في صورة تعريفات أو نظريات أو مسلّمات تسمى براهين. وسوف تتعلم المزيد عن البرهان في الدرس <span class="num">1-5</span>.
+          </div>
+
+          <div class="card check">
+            <h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">2A</span> ناتج جمع عددين زوجيين.
+              <div class="sol" data-sol><ol class="steps">
+                <li>أمثلة: <span class="num">2 + 4 = 6</span> ، <span class="num">6 + 8 = 14</span> ، <span class="num">10 + 12 = 22</span>.</li>
+                <li>جرّبها في أداة المثال (a): العدد الزوجي كله أزواج، فلا تبقى نقاط وحيدة.</li>
+                <li class="final"><b>التخمين:</b> ناتج جمع عددين زوجيين هو عدد زوجي.</li>
+              </ol></div>
+            </div>
+            <div class="part"><span class="lbl">2B</span> العلاقة بين <span class="m">AB</span> و <span class="m">EF</span>، إذا كانت: <span class="m">AB = CD</span> و <span class="m">CD = EF</span>
+              <div class="sol" data-sol><ol class="steps">
+                <li>ارسم مثالًا: <span class="m up">AB = 5 cm</span> ، إذن <span class="m up">CD = 5 cm</span> ، إذن <span class="m up">EF = 5 cm</span>.</li>
+                <li>القطعتان <span class="m">AB</span> و <span class="m">EF</span> كلتاهما تساوي <span class="m">CD</span>.</li>
+                <li class="final"><b>التخمين:</b> <span class="m">AB = EF</span></li>
+              </ol></div>
+            </div>
+            <div class="part"><span class="lbl">2C</span> مجموع مربعَي عددين كليين متتاليين.
+              <div class="sol" data-sol><ol class="steps">
+                <li>أمثلة: <span class="num">0² + 1² = 1</span> ، <span class="num">1² + 2² = 5</span> ، <span class="num">2² + 3² = 13</span> ، <span class="num">3² + 4² = 25</span>.</li>
+                <li>النواتج <span class="num">1, 5, 13, 25</span> جميعها أعداد فردية.</li>
+                <li class="final"><b>التخمين:</b> مجموع مربعَي عددين كليين متتاليين هو عدد فردي.</li>
+              </ol></div>
+            </div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-1</span> · التبرير الاستقرائي والتخمين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 6: EXAMPLE 3 ================= -->
+      <section class="page" data-title="مثال 3: تخمين من مجموعة بيانات">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <p>تعتمد التخمينات في المواقف الحياتية على بيانات يتم جمعها حول موضوع التخمين.</p>
+          <div class="card example">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>وضع تخمين من مجموعة بيانات</h3></header>
+            <div class="body">
+              <p><b>حلاقة:</b> قام صاحب صالون حلاقة بجمع معلومات حول عدد الزبائن الذين يرتادون الصالون أيام الخميس والجمعة والسبت مدة ستة أشهر؛ كي يقرر ما إذا كان يجب زيادة عدد الحلاقين العاملين لديه في الأيام الثلاثة الأخيرة من كل أسبوع.</p>
+              <div class="tbl-wrap"><table class="data">
+                <tr><th>اليوم</th><th>الشهر 1</th><th>الشهر 2</th><th>الشهر 3</th><th>الشهر 4</th><th>الشهر 5</th><th>الشهر 6</th></tr>
+                <tr><td>الخميس</td><td>225</td><td>255</td><td>321</td><td>406</td><td>540</td><td>450</td></tr>
+                <tr><td>الجمعة</td><td>552</td><td>635</td><td>642</td><td>692</td><td>685</td><td>705</td></tr>
+                <tr><td>السبت</td><td>603</td><td>658</td><td>652</td><td>712</td><td>746</td><td>832</td></tr>
+                <tr><td><b>المجموع</b></td><td>1380</td><td>1548</td><td>1615</td><td>1810</td><td>1971</td><td>1987</td></tr>
+              </table></div>
+
+              <div class="part">
+                <span class="lbl">a</span> أنشئ التمثيل البياني الأنسب لعرض هذه البيانات.
+                <div class="widget" data-widget="salon">
+                  <div class="hint">اضغط على اليوم لإظهاره أو إخفائه في التمثيل البياني</div>
+                  <div class="chips"></div>
+                  <svg viewBox="0 0 340 240"></svg>
+                </div>
+                <div class="sol" data-sol><ol class="steps">
+                  <li>بما أنك تبحث عن نمط له علاقة بالزمن، استعمل <b>شكل الانتشار</b>.</li>
+                  <li>اجعل المحور الأفقي يمثل الأشهر، والمحور الرأسي يمثل عدد الزبائن.</li>
+                  <li class="final">ارسم كل مجموعة من البيانات بلون مختلف، وضع مفتاحًا للتمثيل البياني (كما في الأداة أعلاه).</li>
+                </ol></div>
+              </div>
+
+              <div class="part">
+                <span class="lbl">b</span> ضع تخمينًا يعتمد على هذه البيانات، مفسرًا كيف يؤيد التمثيل البياني هذا التخمين.
+                <div class="sol" data-sol><ol class="steps">
+                  <li>ابحث عن نمط: عدد الزبائن لكلٍّ من الأيام الثلاثة يبدو آخذًا في الازدياد بمرور الأشهر.</li>
+                  <li>المجموع الكلي (النقاط الزرقاء) يزداد كل شهر عن الشهر السابق.</li>
+                  <li class="final"><b>التخمين:</b> العمل في الأيام الثلاثة الأخيرة من كل أسبوع يزداد؛ مما يتطلب زيادة عدد الحلاقين العاملين في هذه الأيام.</li>
+                </ol></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card check">
+            <h3>تحقق من فهمك</h3>
+            <p><span class="lbl" style="display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--blue);color:#fff;font-weight:800">3</span> <b>أسعار:</b> يبين الجدول المجاور سعر منتج خلال السنوات من 1414هـ إلى 1439هـ.</p>
+            <div class="widget" data-widget="price">
+              <div class="hint">اسحب النقطة البرتقالية عند 1444هـ إلى السعر الذي تتوقعه</div>
+              <svg viewBox="0 0 340 230"></svg>
+              <div class="readout"></div>
+              <div class="ctrl" style="justify-content:center"><button class="btn sm" data-act="check">تحقق من تخميني</button><button class="btn sm ghost" data-act="trend">أظهر خط النمط</button></div>
+            </div>
+            <div class="part"><span class="lbl">A</span> أنشئ التمثيل البياني الأنسب لعرض هذه البيانات.
+              <div class="sol" data-sol><ol class="steps">
+                <li>البيانات مرتبطة بالزمن ← نستعمل <b>شكل الانتشار</b>.</li>
+                <li class="final">المحور الأفقي: السنة، والمحور الرأسي: السعر بالريال (كما في الأداة).</li>
+              </ol></div>
+            </div>
+            <div class="part"><span class="lbl">B</span> ضع تخمينًا لسعر المنتج عام 1444هـ.
+              <div class="sol" data-sol><ol class="steps">
+                <li>الزيادات كل 5 سنوات: <span class="num">+2, +7, +3, +5, +4</span> ، ومتوسطها تقريبًا <span class="num">21 ÷ 5 ≈ 4.2</span> ريال.</li>
+                <li>نضيف الزيادة المتوسطة إلى آخر سعر: <span class="num">41 + 4.2 ≈ 45</span>.</li>
+                <li class="final">تخمين معقول: سعر المنتج عام 1444هـ حوالي <b>45 ريالًا</b> (أي قيمة بين 44 و 47 مقبولة).</li>
+              </ol></div>
+            </div>
+            <div class="part"><span class="lbl">C</span> هل من المنطقي القول بأن هذا النمط سيستمر بمرور الزمن؟ وإذا لم يكن كذلك، فكيف سيتغير؟ فسّر إجابتك.
+              <div class="sol" data-sol><ol class="steps">
+                <li>الأسعار تتأثر بعوامل كثيرة مثل العرض والطلب والتضخم وتكاليف الإنتاج.</li>
+                <li class="final">ليس بالضرورة؛ فقد يتباطأ ارتفاع السعر أو يثبت أو ينخفض إذا تغيرت هذه العوامل، لذلك التخمين يصلح لفترة قريبة فقط.</li>
+              </ol></div>
+            </div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 1 · التبرير والبرهان</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 7: EXAMPLE 4 ================= -->
+      <section class="page" data-title="مثال 4: إيجاد أمثلة مضادة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def">
+            <h3>إيجاد أمثلة مضادة</h3>
+            <p>إثبات صحة تخمين معين لكل الحالات، يتطلب تقديم برهان لذلك التخمين. بينما لإثبات عدم صحة التخمين يكفي تقديم <b>مثال واحد</b> معاكس للتخمين، وقد يكون عددًا أو رسمًا أو عبارة، وهذا المثال المعاكس يُسمى <span class="hl">المثال المضاد</span>.</p>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>إيجاد أمثلة مضادة</h3></header>
+            <div class="body">
+              <p class="q">أعطِ مثالًا مضادًا يبين أن كلًّا من التخمينات الآتية خاطئة.</p>
+              <div class="part">
+                <span class="lbl">a</span> إذا كان <span class="m">n</span> عددًا حقيقيًّا، فإن <span class="m">n² &gt; n</span>.
+                <div class="widget" data-widget="squareVsN">
+                  <div class="hint">حرّك المنزلق وابحث عن قيمة لـ n تجعل التخمين خاطئًا</div>
+                  <div class="ctrl"><label class="m">n =</label><input type="range" min="-2" max="3" step="0.25" value="2"><output></output></div>
+                  <svg viewBox="0 0 320 200"></svg>
+                  <div class="readout"></div>
+                </div>
+                <div class="sol" data-sol><ol class="steps">
+                  <li>جرّب <span class="m up">n = 2</span>: <span class="num">2² = 4 &gt; 2</span> ✓ صحيح.</li>
+                  <li>جرّب <span class="m up">n = 1</span>: <span class="num">1² = 1</span> ، و <span class="num">1 ≯ 1</span> ✗</li>
+                  <li class="final">إذا كان <span class="m">n</span> يساوي 1، فإن التخمين خاطئ؛ لأن <span class="num">1² ≯ 1</span>. (كذلك أي عدد بين 0 و 1 مثل <span class="num">0.5</span>)</li>
+                </ol></div>
+              </div>
+              <div class="part">
+                <span class="lbl">b</span> إذا كان <span class="m">JK = KL</span>، فإن <span class="m">K</span> منتصف <span class="m">JL</span>.
+                <div class="widget" data-widget="midpoint">
+                  <div class="hint">اسحب النقطة <b>K</b> لأعلى وأسفل — يبقى <span class="m">JK = KL</span> دائمًا</div>
+                  <svg viewBox="0 0 320 190"></svg>
+                  <div class="readout"></div>
+                </div>
+                <div class="sol" data-sol><ol class="steps">
+                  <li>نحتاج نقطة <span class="m">K</span> تحقق <span class="m">JK = KL</span> لكنها ليست منتصف <span class="m">JL</span>.</li>
+                  <li>عندما لا تقع <span class="m">J, K, L</span> على استقامة واحدة، يكون التخمين خاطئًا.</li>
+                  <li class="final">ففي الشكل، <span class="m">JK = KL</span>، ولكن <span class="m">K</span> ليست نقطة منتصف <span class="m">JL</span>.</li>
+                </ol></div>
+              </div>
+            </div>
+          </div>
+          <div class="card tip">
+            <h4>ربط المفردات: المثال المضاد</h4>
+            <b>المعنى اللغوي:</b> المضاد هو المخالف.<br><b>المعنى الرياضي:</b> المثال المضاد هو مثال معاكس لمثال مُعطى.
+          </div>
+          <div class="card check">
+            <h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">4A</span> إذا كان <span class="m">n</span> عددًا حقيقيًّا، فإن <span class="m">−n</span> يكون سالبًا.
+              <div class="sol" data-sol><ol class="steps">
+                <li>نبحث عن عدد حقيقي <span class="m">n</span> يجعل <span class="m">−n</span> غير سالب.</li>
+                <li>جرّب <span class="m up">n = −3</span>: <span class="num">−(−3) = 3</span> وهو عدد موجب.</li>
+                <li class="final">المثال المضاد: <span class="m up">n = −3</span> (أو أي عدد سالب، أو <span class="m up">n = 0</span>).</li>
+              </ol></div>
+            </div>
+            <div class="part"><span class="lbl">4B</span> إذا كان <span class="m">∠ABE ≅ ∠DBC</span>، فإن <span class="m">∠ABE</span> و <span class="m">∠DBC</span> متقابلتان بالرأس.
+              <div class="sol" data-sol><ol class="steps">
+                <li>الزاويتان المتطابقتان لهما القياس نفسه فقط، ولا يشترط موقع معين.</li>
+                <li>ارسم <span class="m up">m∠ABE = 30°</span> و <span class="m up">m∠DBC = 30°</span> متجاورتين (يفصل بينهما <span class="m">∠EBD</span>).</li>
+                <li class="final">الزاويتان متطابقتان لكنهما ليستا متقابلتين بالرأس ← التخمين خاطئ.</li>
+              </ol></div>
+            </div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-1</span> · التبرير الاستقرائي والتخمين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 8: EXERCISES 1-1 ================= -->
+      <section class="page" data-title="تأكد: تمارين 1-1">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — اكتب تخمينًا يصف النمط في كل متتابعة، ثم استعمله لإيجاد الحد التالي:</div>
+
+          <div class="ex"><span class="exn">1</span> التكلفة: <span class="num">4.50</span> ريالات، <span class="num">6.75</span> ريالات، <span class="num">9.00</span> ريالات، ......
+            <div class="ans" data-answer="11.25"><input inputmode="decimal" placeholder="بالريال"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps">
+              <li>الفرق: <span class="num">6.75 − 4.50 = 2.25</span> ، <span class="num">9.00 − 6.75 = 2.25</span></li>
+              <li><b>التخمين:</b> تزيد التكلفة 2.25 ريال في كل مرة.</li>
+              <li class="final"><span class="num">9.00 + 2.25 = 11.25</span> ريالًا.</li>
+            </ol></div>
+          </div>
+
+          <div class="ex"><span class="exn">2</span> مواعيد انطلاق الحافلات: <span class="num">10:15</span> صباحًا، <span class="num">11:00</span> صباحًا، <span class="num">11:45</span> صباحًا، ......
+            <div class="ans" data-answer="12:30"><input placeholder="00:00"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps">
+              <li>الفرق بين كل موعدين متتاليين: <b>45 دقيقة</b>.</li>
+              <li><b>التخمين:</b> تنطلق كل حافلة بعد 45 دقيقة من سابقتها.</li>
+              <li class="final"><span class="num">11:45</span> صباحًا + 45 دقيقة = <b><span class="num">12:30</span> مساءً</b>.</li>
+            </ol></div>
+          </div>
+
+          <div class="ex"><span class="exn">4</span> عدد الدوائر في كل شكل:
+            <svg viewBox="0 0 300 70" style="max-width:300px;display:block;margin:6px auto" aria-hidden="true">
+              <g fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="40" cy="35" r="8"/><circle cx="120" cy="35" r="8"/><circle cx="120" cy="35" r="16"/><circle cx="220" cy="35" r="8"/><circle cx="220" cy="35" r="16"/><circle cx="220" cy="35" r="24"/></g>
+              <text x="275" y="40" font-size="18" fill="#64748b">…</text>
+            </svg>
+            <div class="sol" data-sol><ol class="steps">
+              <li>الشكل 1: دائرة واحدة، الشكل 2: دائرتان، الشكل 3: ثلاث دوائر متحدة المركز.</li>
+              <li><b>التخمين:</b> كل شكل يزيد دائرة واحدة أكبر بنفس المركز.</li>
+              <li class="final">الشكل التالي: <b>4 دوائر</b> متحدة المركز.</li>
+            </ol></div>
+          </div>
+
+          <div class="ex"><span class="exn">5</span> <span class="num">3, 3, 6, 9, 15, ......</span>
+            <div class="ans" data-answer="24"><input inputmode="numeric" placeholder="الحد التالي"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps">
+              <li>لاحظ: <span class="num">3 + 3 = 6</span> ، <span class="num">3 + 6 = 9</span> ، <span class="num">6 + 9 = 15</span></li>
+              <li><b>التخمين:</b> كل حد يساوي مجموع الحدين السابقين له.</li>
+              <li class="final"><span class="num">9 + 15 = 24</span></li>
+            </ol></div>
+          </div>
+
+          <div class="ex"><span class="exn">6</span> <span class="num">2, 6, 14, 30, 62, ......</span>
+            <div class="ans" data-answer="126"><input inputmode="numeric" placeholder="الحد التالي"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps">
+              <li>الفروق: <span class="num">+4, +8, +16, +32</span> — كل فرق ضعف السابق.</li>
+              <li>أو: <span class="num">2×2+2 = 6</span> ، <span class="num">6×2+2 = 14</span> ، <span class="num">14×2+2 = 30</span></li>
+              <li><b>التخمين:</b> كل حد = (الحد السابق × 2) + 2.</li>
+              <li class="final"><span class="num">62 × 2 + 2 = 126</span></li>
+            </ol></div>
+          </div>
+
+          <div class="ex-group">المثال 2 — ضع تخمينًا لكل قيمة أو علاقة هندسية مما يأتي:</div>
+          <div class="ex"><span class="exn">7</span> ناتج ضرب عددين زوجيين.
+            <div class="sol" data-sol><ol class="steps">
+              <li>أمثلة: <span class="num">2 × 4 = 8</span> ، <span class="num">6 × 10 = 60</span> ، <span class="num">4 × 4 = 16</span></li>
+              <li class="final"><b>التخمين:</b> ناتج ضرب عددين زوجيين هو عدد زوجي.</li>
+            </ol></div>
+          </div>
+          <div class="ex"><span class="exn">8</span> العلاقة بين العددين <span class="m">a</span> و <span class="m">b</span> إذا كان <span class="m">a + b = 0</span>.
+            <div class="sol" data-sol><ol class="steps">
+              <li>أمثلة: <span class="num">3 + (−3) = 0</span> ، <span class="num">−7 + 7 = 0</span> ، <span class="num">0 + 0 = 0</span></li>
+              <li class="final"><b>التخمين:</b> العددان <span class="m">a</span> و <span class="m">b</span> متعاكسان جمعيًّا، أي <span class="m">a = −b</span>.</li>
+            </ol></div>
+          </div>
+          <div class="ex"><span class="exn">9</span> العلاقة بين مجموعة النقاط في المستوى التي تبعد المسافة نفسها عن النقطة <span class="m">A</span>.
+            <div class="sol" data-sol><ol class="steps">
+              <li>ارسم عدة نقاط تبعد مثلًا <span class="m up">2 cm</span> عن <span class="m">A</span> في اتجاهات مختلفة.</li>
+              <li>تلاحظ أنها تكوّن شكلًا منحنيًا مغلقًا حول <span class="m">A</span>.</li>
+              <li class="final"><b>التخمين:</b> هذه النقاط تكوّن <b>دائرة</b> مركزها <span class="m">A</span>.</li>
+            </ol></div>
+          </div>
+          <div class="ex"><span class="exn">10</span> العلاقة بين <span class="m">AP</span> و <span class="m">PB</span> إذا كانت <span class="m">M</span> نقطة منتصف <span class="m">AB</span> والنقطة <span class="m">P</span> نقطة منتصف <span class="m">AM</span>.
+            <div class="widget" data-widget="quarter">
+              <div class="hint">غيّر طول <span class="m">AB</span> وراقب العلاقة بين <span class="m">AP</span> و <span class="m">PB</span></div>
+              <svg viewBox="0 0 320 80"></svg>
+              <div class="ctrl"><label>طول <span class="m">AB</span></label><input type="range" min="4" max="16" step="2" value="8"><output></output></div>
+              <div class="readout"></div>
+            </div>
+            <div class="sol" data-sol><ol class="steps">
+              <li>إذا كان <span class="m up">AB = 8</span> ، فإن <span class="m up">AM = 4</span> ، و <span class="m up">AP = 2</span>.</li>
+              <li><span class="m up">PB = 8 − 2 = 6</span></li>
+              <li class="final"><b>التخمين:</b> <span class="m up">PB = 3 AP</span></li>
+            </ol></div>
+          </div>
+
+          <div class="ex-group">المثال 4 — أعطِ مثالًا مضادًا يبين أن كلًّا من التخمينات الآتية خاطئة:</div>
+          <div class="ex"><span class="exn">12</span> إذا كانت <span class="m">∠A</span> و <span class="m">∠B</span> متتامتين، فإن لهما ضلعًا مشتركًا.
+            <div class="sol" data-sol><ol class="steps">
+              <li>الزاويتان المتتامتان مجموع قياسيهما <span class="num">90°</span> فقط.</li>
+              <li class="final">مثال مضاد: <span class="m up">m∠A = 30°</span> في مثلث، و <span class="m up">m∠B = 60°</span> في مثلث آخر بعيد؛ متتامتان وليس لهما ضلع مشترك.</li>
+            </ol></div>
+          </div>
+          <div class="ex"><span class="exn">13</span> إذا قطع نصف مستقيم قطعةً مستقيمةً عند منتصفها، فإنه يعامدها.
+            <div class="sol" data-sol><ol class="steps">
+              <li>ارسم قطعة <span class="m">AB</span> ومنتصفها <span class="m">M</span>.</li>
+              <li class="final">مثال مضاد: نصف مستقيم يمر بـ <span class="m">M</span> ويصنع مع <span class="m">AB</span> زاوية <span class="num">45°</span>؛ ينصّفها لكنه لا يعامدها.</li>
+            </ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-1</span> · التبرير الاستقرائي والتخمين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 9: LESSON 1-2 INTRO ================= -->
+      <section class="page" data-title="1-2 المنطق">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1-2</div>
+            <h1>المنطق</h1>
+            <div class="en">Logic</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ إيجاد أمثلة مضادة لتخمينات خاطئة. (الدرس <span class="num">1-1</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أعيّن قيم الصواب لعبارة الوصل وعبارة الفصل.</li><li>أمثّل عبارتي الوصل والفصل باستعمال أشكال ڤن.</li></ul></div>
+          </div>
+          <div class="card why">
+            <h3>لماذا؟</h3>
+            <p>عند إجابتك عن «أسئلة من النوع صح أو خطأ» في اختبار، فإنك تستعمل مبدأً أساسيًّا في المنطق. فمثلًا: «أبها مدينة سعودية» — صحيح أو خطأ؟ أنت تعرف أنه يوجد إجابة وحيدة صائبة، إما صحيح أو خاطئ.</p>
+          </div>
+
+          <div class="card def">
+            <h3>تحديد قيم الصواب</h3>
+            <p><span class="hl">العبارة</span> هي جملة خبرية لها حالتان فقط: إما أن تكون صائبة أو تكون خاطئة، ولا تحتمل أي حالة أخرى. وصواب العبارة (T) أو خطؤها (F) يسمى <span class="hl">قيمة الصواب</span> لها، ويرمز للعبارة برمز مثل <span class="m">p</span> أو <span class="m">q</span>.</p>
+            <p><span class="hl">نفي العبارة</span> يفيد معنًى مُضادًّا لمعنى العبارة، وقيمة الصواب له هو عكس قيمة الصواب للعبارة الأصلية. نفي <span class="m">p</span> هو <span class="m">~p</span> ويُقرأ «ليس <span class="m">p</span>».</p>
+            <p>تحتوي <span class="hl">عبارة الوصل</span> على (و)، وتكون صائبة فقط عندما تكون جميع العبارات المكونة لها صائبة: <span class="m">p ∧ q</span>.</p>
+            <p>تحتوي <span class="hl">عبارة الفصل</span> على (أو)، وتكون صائبة إذا كانت إحدى العبارات المكونة لها صائبة، وتكون خاطئة إذا كانت جميع العبارات خاطئة: <span class="m">p ∨ q</span>.</p>
+          </div>
+
+          <div class="widget" data-widget="logicLab">
+            <div class="hint">اختر العبارتين وشاهد: «و» مثل مفتاحين على التوالي، «أو» مثل مفتاحين على التوازي</div>
+            <div class="stmt">
+              <div><b class="m">p</b>: <select data-k="p"></select></div>
+              <div><b class="m">q</b>: <select data-k="q"></select></div>
+            </div>
+            <div class="circuits">
+              <div class="circuit"><h4>نفي العبارة <span class="m">~p</span></h4><div data-out="np"></div></div>
+              <div class="circuit"><h4>عبارة الوصل <span class="m">p ∧ q</span> (و)</h4><svg data-svg="and" viewBox="0 0 240 110"></svg><div data-out="and"></div></div>
+              <div class="circuit" style="grid-column:1/-1"><h4>عبارة الفصل <span class="m">p ∨ q</span> (أو)</h4><svg data-svg="or" viewBox="0 0 240 130" style="max-width:340px;margin:auto"></svg><div data-out="or"></div></div>
+            </div>
+          </div>
+
+          <h2 class="sec-title">المفردات</h2>
+          <div class="vocab">
+            <span><b>العبارة</b><i>statement</i></span>
+            <span><b>قيمة الصواب</b><i>truth value</i></span>
+            <span><b>نفي العبارة</b><i>negation</i></span>
+            <span><b>العبارة المركبة</b><i>compound statement</i></span>
+            <span><b>عبارة الوصل</b><i>conjunction</i></span>
+            <span><b>عبارة الفصل</b><i>disjunction</i></span>
+            <span><b>جدول الصواب</b><i>truth table</i></span>
+          </div>
+          <div class="card tip warn" style="margin-top:14px">
+            <h4>تنبيه! نفي العبارة</h4>
+            كما أن معكوس العدد الصحيح لا يكون سالبًا دائمًا، فإن نفي العبارة ليس بالضرورة أن يكون خاطئًا، وإنما له عكس قيمة صواب العبارة الأصلية.
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-2</span> · المنطق</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 10: LOGIC EXAMPLES 1,2 ================= -->
+      <section class="page" data-title="أمثلة: قيم الصواب للوصل والفصل">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>قيم الصواب لعبارات الوصل</h3></header>
+            <div class="body">
+              <div class="two">
+                <div>
+                  <p class="q">استعمل العبارات <span class="m">p, q, r</span> والشكل المجاور لكتابة عبارة الوصل في كلٍّ مما يأتي، ثم أوجد قيمة الصواب لها مبررًا إجابتك:</p>
+                  <p><b class="m">p</b>: الشكل مثلث.<br><b class="m">q</b>: في الشكل ضلعان متطابقان.<br><b class="m">r</b>: جميع زوايا الشكل حادة.</p>
+                </div>
+                <svg viewBox="0 0 200 150" style="max-width:200px;margin:auto;display:block" aria-label="مثلث قائم الزاوية متطابق الضلعين">
+                  <polygon points="40,20 40,130 150,130" fill="#e0f2fe" stroke="#1d4ed8" stroke-width="3"/>
+                  <rect x="40" y="114" width="16" height="16" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+                  <line x1="33" y1="75" x2="47" y2="75" stroke="#dc2626" stroke-width="2.5"/>
+                  <line x1="95" y1="123" x2="95" y2="137" stroke="#dc2626" stroke-width="2.5"/>
+                </svg>
+              </div>
+              <div class="part"><span class="lbl">a</span> <span class="m">p</span> و <span class="m">r</span>
+                <div class="sol" data-sol><ol class="steps">
+                  <li><span class="m">p</span> و <span class="m">r</span>: الشكل مثلث وجميع زوايا الشكل حادة.</li>
+                  <li><span class="m">p</span> صائبة <span class="tv T">T</span> (الشكل مثلث).</li>
+                  <li><span class="m">r</span> خاطئة <span class="tv F">F</span> (في الشكل زاوية قائمة).</li>
+                  <li class="final">عبارة الوصل تحتاج أن تكون كلتا العبارتين صائبة ← <span class="m">p ∧ r</span> <b>خاطئة</b> <span class="tv F">F</span>.</li>
+                </ol></div>
+              </div>
+              <div class="part"><span class="lbl">b</span> <span class="m">q ∧ ~r</span>
+                <div class="sol" data-sol><ol class="steps">
+                  <li><span class="m">q ∧ ~r</span>: في الشكل ضلعان متطابقان، وليس جميع زوايا الشكل حادة.</li>
+                  <li><span class="m">q</span> صائبة <span class="tv T">T</span> ، و <span class="m">r</span> خاطئة لذا <span class="m">~r</span> صائبة <span class="tv T">T</span>.</li>
+                  <li class="final">بما أن كلتا العبارتين صائبتان ← <span class="m">q ∧ ~r</span> <b>صائبة</b> <span class="tv T">T</span>.</li>
+                </ol></div>
+              </div>
+            </div>
+          </div>
+          <div class="card check">
+            <h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">1A</span> <span class="m">p ∧ q</span>
+              <div class="sol" data-sol><ol class="steps">
+                <li>الشكل مثلث <b>و</b> في الشكل ضلعان متطابقان.</li>
+                <li><span class="m">p</span>: <span class="tv T">T</span> ، <span class="m">q</span>: <span class="tv T">T</span></li>
+                <li class="final"><span class="m">p ∧ q</span> صائبة <span class="tv T">T</span></li>
+              </ol></div>
+            </div>
+            <div class="part"><span class="lbl">1B</span> ليس <span class="m">p</span> و ليس <span class="m">r</span>
+              <div class="sol" data-sol><ol class="steps">
+                <li><span class="m">~p ∧ ~r</span>: الشكل ليس مثلثًا، وليس جميع زوايا الشكل حادة.</li>
+                <li><span class="m">~p</span>: <span class="tv F">F</span> لأن الشكل مثلث.</li>
+                <li class="final">يكفي أن تكون إحداهما خاطئة ← <span class="m">~p ∧ ~r</span> خاطئة <span class="tv F">F</span></li>
+              </ol></div>
+            </div>
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>قيم الصواب لعبارات الفصل</h3></header>
+            <div class="body">
+              <p class="q">استعمل العبارات <span class="m">p, q, r</span> لكتابة عبارة الفصل في كلٍّ مما يأتي، ثم أوجد قيمة الصواب لها مبررًا إجابتك.</p>
+              <p><b class="m">p</b>: يناير من أشهر فصل الربيع.<br><b class="m">q</b>: عدد أيام شهر يناير 30 يومًا فقط.<br><b class="m">r</b>: يناير هو أول أشهر السنة الميلادية.</p>
+              <div class="part"><span class="lbl">a</span> <span class="m">q</span> أو <span class="m">r</span>
+                <div class="sol" data-sol><ol class="steps">
+                  <li>عدد أيام شهر يناير 30 يومًا فقط، أو يناير هو أول أشهر السنة الميلادية.</li>
+                  <li><span class="m">q</span>: <span class="tv F">F</span> (يناير 31 يومًا) ، <span class="m">r</span>: <span class="tv T">T</span></li>
+                  <li class="final">يكفي أن تكون إحداهما صائبة ← <span class="m">q ∨ r</span> صائبة <span class="tv T">T</span>. وكون العبارة <span class="m">q</span> خاطئة لا يؤثر.</li>
+                </ol></div>
+              </div>
+              <div class="part"><span class="lbl">b</span> <span class="m">p ∨ q</span>
+                <div class="sol" data-sol><ol class="steps">
+                  <li>يناير من أشهر فصل الربيع، أو عدد أيام شهر يناير 30 يومًا فقط.</li>
+                  <li><span class="m">p</span>: <span class="tv F">F</span> (يناير في الشتاء) ، <span class="m">q</span>: <span class="tv F">F</span></li>
+                  <li class="final">بما أن كلًّا من العبارتين خاطئة ← <span class="m">p ∨ q</span> خاطئة <span class="tv F">F</span></li>
+                </ol></div>
+              </div>
+              <div class="part"><span class="lbl">c</span> <span class="m">~p ∨ r</span>
+                <div class="sol" data-sol><ol class="steps">
+                  <li>يناير ليس من أشهر فصل الربيع، أو يناير هو أول أشهر السنة الميلادية.</li>
+                  <li><span class="m">~p</span>: <span class="tv T">T</span> ، <span class="m">r</span>: <span class="tv T">T</span></li>
+                  <li class="final"><span class="m">~p ∨ r</span> صائبة <span class="tv T">T</span></li>
+                </ol></div>
+              </div>
+            </div>
+          </div>
+          <div class="card check">
+            <h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">2A</span> <span class="m">p</span> أو <span class="m">r</span>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">p</span>: <span class="tv F">F</span> ، <span class="m">r</span>: <span class="tv T">T</span></li><li class="final"><span class="m">p ∨ r</span> صائبة <span class="tv T">T</span></li></ol></div>
+            </div>
+            <div class="part"><span class="lbl">2B</span> <span class="m">q ∨ ~r</span>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">q</span>: <span class="tv F">F</span> ، <span class="m">~r</span>: <span class="tv F">F</span></li><li class="final">كلتاهما خاطئة ← <span class="m">q ∨ ~r</span> خاطئة <span class="tv F">F</span></li></ol></div>
+            </div>
+            <div class="part"><span class="lbl">2C</span> <span class="m">p ∨ ~q</span>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">p</span>: <span class="tv F">F</span> ، <span class="m">~q</span>: <span class="tv T">T</span></li><li class="final"><span class="m">p ∨ ~q</span> صائبة <span class="tv T">T</span></li></ol></div>
+            </div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 1 · التبرير والبرهان</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 11: TRUTH TABLES ================= -->
+      <section class="page" data-title="جداول الصواب">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">جداول الصواب</h2>
+          <p>يمكن تنظيم قيم الصواب للعبارات في جداول تسمى <span class="hl">جداول الصواب</span>. ويمكن استعمال جداول الصواب لتحديد قيم الصواب لنفي العبارة ولعبارتَي الوصل والفصل.</p>
+          <div class="tbl-wrap"><table class="data" style="direction:ltr">
+            <tr><th colspan="2">نفي العبارة</th><th style="background:#fff"></th><th colspan="3">عبارة الوصل</th><th style="background:#fff"></th><th colspan="3">عبارة الفصل</th></tr>
+            <tr><td><i>p</i></td><td><i>~p</i></td><td></td><td><i>p</i></td><td><i>q</i></td><td><i>p∧q</i></td><td></td><td><i>p</i></td><td><i>q</i></td><td><i>p∨q</i></td></tr>
+            <tr><td>T</td><td class="F">F</td><td></td><td>T</td><td>T</td><td class="T"><b>T</b></td><td></td><td>T</td><td>T</td><td class="T">T</td></tr>
+            <tr><td>F</td><td class="T">T</td><td></td><td>T</td><td>F</td><td class="F">F</td><td></td><td>T</td><td>F</td><td class="T">T</td></tr>
+            <tr><td></td><td></td><td></td><td>F</td><td>T</td><td class="F">F</td><td></td><td>F</td><td>T</td><td class="T">T</td></tr>
+            <tr><td></td><td></td><td></td><td>F</td><td>F</td><td class="F">F</td><td></td><td>F</td><td>F</td><td class="F"><b>F</b></td></tr>
+          </table></div>
+          <div class="card tip">
+            <h4>إرشادات للدراسة: كي يسهل عليك التذكر</h4>
+            <ul style="margin:0;padding-inline-start:18px">
+              <li>عبارة الوصل تكون صائبة <b>فقط</b> إذا كانت جميع العبارات المكونة لها صائبة.</li>
+              <li>عبارة الفصل تكون خاطئة <b>فقط</b> إذا كانت جميع العبارات المكونة لها خاطئة.</li>
+            </ul>
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>إنشاء جداول الصواب</h3></header>
+            <div class="body">
+              <p class="q">أنشئ جدول الصواب للعبارة <span class="m">~p ∨ q</span></p>
+              <div class="sol" data-sol><ol class="steps">
+                <li>أنشئ عمودًا لكلٍّ من <span class="m">p, q, ~p, ~p∨q</span>.</li>
+                <li>ضع جميع حالات قيم صواب <span class="m">p, q</span>: <span class="num">TT, TF, FT, FF</span>.</li>
+                <li>استعمل قيم صواب العبارة <span class="m">p</span> لتحديد قيم صواب <span class="m">~p</span>: <span class="num">F, F, T, T</span>.</li>
+                <li>استعمل قيم صواب <span class="m">q</span> و <span class="m">~p</span> لتحديد قيم صواب <span class="m">~p ∨ q</span>.</li>
+                <li class="final">النتيجة: <span class="num">T, F, T, T</span> — تكون خاطئة فقط عندما <span class="m">p</span> صائبة و <span class="m">q</span> خاطئة. (جرّبها في المختبر أدناه!)</li>
+              </ol></div>
+            </div>
+          </div>
+
+          <div class="widget" data-widget="truthQuiz">
+            <div class="hint">مختبر جداول الصواب: اختر عبارة، ثم اضغط على كل خانة لتعبئتها بـ T أو F</div>
+            <div class="ctrl"><label>العبارة</label><select style="flex:1;font:inherit;padding:6px;border-radius:10px;border:2px solid var(--line)"></select></div>
+            <div class="tbl-wrap" style="border:0"><table class="tt"></table></div>
+            <div class="readout"></div>
+            <div class="ctrl" style="justify-content:center"><button class="btn sm" data-act="check">تحقق</button><button class="btn sm ghost" data-act="show">أظهر الحل</button><button class="btn sm ghost" data-act="clear">مسح</button></div>
+          </div>
+
+          <div class="card check">
+            <h3>تحقق من فهمك</h3>
+            <p><b>3)</b> أنشئ جدول الصواب للعبارة <span class="m">~p ∧ ~q</span> <small>(اخترها في المختبر أعلاه)</small></p>
+            <div class="sol" data-sol><ol class="steps">
+              <li>الأعمدة: <span class="m">p, q, ~p, ~q, ~p∧~q</span></li>
+              <li><span class="m">~p</span>: <span class="num">F, F, T, T</span> ، <span class="m">~q</span>: <span class="num">F, T, F, T</span></li>
+              <li class="final"><span class="m">~p ∧ ~q</span>: <span class="num">F, F, F, T</span> — صائبة فقط عندما تكون <span class="m">p</span> و <span class="m">q</span> خاطئتين.</li>
+            </ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-2</span> · المنطق</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 12: VENN ================= -->
+      <section class="page" data-title="أشكال ڤن">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">أشكال ڤن</h2>
+          <p>يمكن تمثيل عبارة الوصل باستعمال أشكال ڤن: <span class="hl">تقاطع</span> مجموعتين هو مجموعة العناصر المشتركة بينهما، و <span class="hl">اتحاد</span> مجموعتين هو مجموعة عناصرهما كلها.</p>
+          <p><b class="m">p</b>: الشكل سداسي. &nbsp; <b class="m">q</b>: الشكل مضلع محدب.</p>
+
+          <div class="widget" data-widget="venn">
+            <div class="hint">اختر عبارة لتلوين المنطقة التي تمثلها، أو اضغط على أي منطقة لمعرفة اسمها</div>
+            <div class="chips"></div>
+            <svg viewBox="0 0 320 210"></svg>
+            <div class="readout"></div>
+          </div>
+
+          <div class="card tip">
+            <h4>إرشادات للدراسة: أشكال ڤن</h4>
+            المستطيل الذي يُحيط بأشكال ڤن يمثل المجموعة الكلية. شكل ڤن الذي يحوي دائرتين يقسم المجموعة الكلية إلى أربع مناطق على الأكثر. ويمكن إثبات أن شكل ڤن الذي يحوي <span class="m">n</span> من الدوائر يقسم المجموعة الكلية إلى <span class="m">2ⁿ</span> من المناطق على الأكثر.
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 4 من واقع الحياة</span><h3>استعمال أشكال ڤن</h3></header>
+            <div class="body">
+              <p><b>بيئة:</b> يُظهر شكل ڤن المجاور عدد الأشخاص الذين شاركوا في حملة بيئية للتوعية بأهمية الاقتصاد في استعمال الورق أقيمت خلال شهرَي رجب وشعبان.</p>
+              <div class="widget" data-widget="vennCount" data-a="رجب" data-b="شعبان" data-va="5" data-vab="6" data-vb="14" data-vout="-1">
+                <div class="hint">غيّر الأعداد بالمنزلقات وراقب الاتحاد والتقاطع</div>
+                <svg viewBox="0 0 320 180"></svg>
+                <div class="sliders"></div>
+                <div class="readout"></div>
+              </div>
+              <div class="part"><span class="lbl">a</span> كم شخصًا شارك في الحملة لشهر رجب أو شعبان؟
+                <div class="sol" data-sol><ol class="steps">
+                  <li>«أو» تعني <b>الاتحاد</b>: جميع الأشخاص الذين شاركوا في رجب أو شعبان أو كليهما.</li>
+                  <li class="final"><span class="num">5 + 6 + 14 = 25</span> شخصًا.</li>
+                </ol></div>
+              </div>
+              <div class="part"><span class="lbl">b</span> كم شخصًا شارك في الحملة خلال شهرَي رجب وشعبان؟
+                <div class="sol" data-sol><ol class="steps">
+                  <li>«و» تعني <b>التقاطع</b>: المنطقة المشتركة بين الدائرتين.</li>
+                  <li class="final"><b>6</b> أشخاص فقط شاركوا خلال كلا الشهرين.</li>
+                </ol></div>
+              </div>
+              <div class="part"><span class="lbl">c</span> ماذا يمثل العدد 14 في الشكل؟
+                <div class="sol" data-sol><ol class="steps">
+                  <li class="final">عدد الأشخاص الذين شاركوا في الحملة خلال شهر شعبان، ولم يشاركوا خلال شهر رجب.</li>
+                </ol></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card check">
+            <h3>تحقق من فهمك</h3>
+            <p><b>4) اختبارات:</b> يبين شكل ڤن عدد طلاب الصف الأول الثانوي الذين نجحوا والذين لم ينجحوا في اختبارَي الرياضيات أو الكيمياء.</p>
+            <div class="widget" data-widget="vennCount" data-a="الرياضيات" data-b="الكيمياء" data-va="4" data-vab="46" data-vb="3" data-vout="2" data-fixed="1">
+              <svg viewBox="0 0 320 180"></svg>
+            </div>
+            <div class="part"><span class="lbl">A</span> ما عدد الطلاب الذين نجحوا في اختبار الرياضيات، ولم ينجحوا في اختبار الكيمياء؟
+              <div class="ans" data-answer="4"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>المنطقة داخل دائرة الرياضيات فقط (خارج التقاطع).</li><li class="final"><b>4</b> طلاب.</li></ol></div>
+            </div>
+            <div class="part"><span class="lbl">B</span> ما عدد الطلاب الذين نجحوا في اختبار الرياضيات واختبار الكيمياء؟
+              <div class="ans" data-answer="46"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>«و» ← منطقة التقاطع.</li><li class="final"><b>46</b> طالبًا.</li></ol></div>
+            </div>
+            <div class="part"><span class="lbl">C</span> ما عدد الطلاب الذين لم ينجحوا في أيٍّ من الاختبارين؟
+              <div class="ans" data-answer="2"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>المنطقة خارج الدائرتين وداخل المستطيل.</li><li class="final"><b>2</b> طالبان.</li></ol></div>
+            </div>
+            <div class="part"><span class="lbl">D</span> ما عدد طلاب الصف الأول الثانوي؟
+              <div class="ans" data-answer="55"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>اجمع جميع المناطق داخل المستطيل.</li><li class="final"><span class="num">4 + 46 + 3 + 2 = 55</span> طالبًا.</li></ol></div>
+            </div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-2</span> · المنطق</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= LESSON 1-3 INTRO ================= -->
+      <section class="page" data-title="1-3 العبارات الشرطية">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1-3</div>
+            <h1>العبارات الشرطية</h1>
+            <div class="en">Conditional Statements</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ استعمال المنطق وأشكال ڤن لتحديد قيم الصواب لعبارات النفي والوصل والفصل. (الدرس <span class="num">1-2</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أحلل العبارات الشرطية (إذا… فإن…).</li><li>أكتب العكس والمعكوس والمعاكس الإيجابي لعبارات (إذا… فإن…).</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>عند إجراء مكالمة هاتفية مع بعض المؤسسات، يحيلك جهاز الرد الآلي إلى قائمة من البدائل تختار منها القسم الذي تريد، ويُسمعك إرشادات بصيغة عبارات شرطية: «إذا كنت تريد التحدث إلى قسم خدمة العملاء، فاضغط الرقم 2».</p></div>
+          <div class="card def">
+            <h3>مفهوم أساسي: العبارة الشرطية</h3>
+            <p><span class="hl">العبارة الشرطية</span> هي عبارة يمكن كتابتها على صورة (إذا … فإن …)، ورمزها <span class="m">p → q</span> وتُقرأ: إذا كان <span class="m">p</span> فإن <span class="m">q</span>، أو <span class="m">p</span> تؤدي إلى <span class="m">q</span>.</p>
+            <p>الجملة التي تلي كلمة (إذا) مباشرة تُسمى <span class="hl">الفرض</span> <span class="m">p</span>، والجملة التي تلي كلمة (فإن) مباشرة تُسمى <span class="hl">النتيجة</span> <span class="m">q</span>.</p>
+            <p>مثال: إذا كان <b style="color:var(--teal)">الشكل مربعًا</b> فإنه <b style="color:var(--blue)">مستطيل</b>.</p>
+          </div>
+          <h2 class="sec-title">المفردات</h2>
+          <div class="vocab">
+            <span><b>العبارة الشرطية</b><i>conditional statement</i></span><span><b>الفرض</b><i>hypothesis</i></span><span><b>النتيجة</b><i>conclusion</i></span>
+            <span><b>العبارات الشرطية المرتبطة</b><i>related conditionals</i></span><span><b>العكس</b><i>converse</i></span><span><b>المعكوس</b><i>inverse</i></span>
+            <span><b>المعاكس الإيجابي</b><i>contrapositive</i></span><span><b>التكافؤ المنطقي</b><i>logically equivalent</i></span>
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>تحديد الفرض والنتيجة</h3></header>
+            <div class="body">
+              <p class="q">حدِّد الفَرض والنتيجة في كلٍّ من العبارات الشرطية الآتية:</p>
+              <div class="part"><span class="lbl">a</span> إذا كان الطقس ماطرًا، فسوف أستعمل المظلة.
+                <div class="sol" data-sol><ol class="steps"><li>الجملة بعد «إذا»: الطقس ماطر.</li><li class="final">الفرض: الطقس ماطر. النتيجة: سوف أستعمل المظلة.</li></ol></div>
+              </div>
+              <div class="part"><span class="lbl">b</span> يقبل العدد القسمة على 10 إذا كان آحاده صفرًا.
+                <div class="sol" data-sol><ol class="steps"><li>الجملة لم تبدأ بـ «إذا»؛ ابحث عن الجملة التي تلي «إذا» أينما وقعت.</li><li class="final">الفرض: آحاد العدد صفر. النتيجة: يقبل العدد القسمة على 10.</li></ol></div>
+              </div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">1A</span> إذا كان لمضلع ستة أضلاع، فإنه سداسي.
+              <div class="sol" data-sol><ol class="steps"><li class="final">الفرض: لمضلع ستة أضلاع. النتيجة: المضلع سداسي.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> سيتم إنجاز طبعة ثانية من الكتاب، إذا بيعت نسخ الطبعة الأولى كلها.
+              <div class="sol" data-sol><ol class="steps"><li class="final">الفرض: بيعت نسخ الطبعة الأولى كلها. النتيجة: سيتم إنجاز طبعة ثانية من الكتاب.</li></ol></div></div>
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>كتابة العبارة الشرطية على الصورة (إذا… فإن…)</h3></header>
+            <div class="body">
+              <p class="q">حدِّد الفرض والنتيجة في كل عبارة شرطية مما يأتي، ثم اكتبها على صورة (إذا… فإن…):</p>
+              <div class="part"><span class="lbl">a</span> الثدييات حيوانات من ذوات الدم الحار.
+                <div class="sol" data-sol><ol class="steps"><li>الفرض: الحيوان من الثدييات.</li><li>النتيجة: هو من ذوات الدم الحار.</li><li class="final">إذا كان الحيوان من الثدييات، فإنه من ذوات الدم الحار.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> المنشور الذي قاعدتاه مضلعان منتظمان، يكون منتظمًا.
+                <div class="sol" data-sol><ol class="steps"><li>الفرض: قاعدتا المنشور مضلعان منتظمان.</li><li>النتيجة: يكون المنشور منتظمًا.</li><li class="final">إذا كانت قاعدتا المنشور مضلعين منتظمين، فإنه يكون منتظمًا.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card tip"><h4>قراءة الرياضيات: (إذا) و (فإن)</h4>كلمة (إذا) ليست جزءًا من الفرض، وكذلك كلمة (فإن) ليست جزءًا من النتيجة.</div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">2A</span> يمكن تبديل 5 قطع نقدية من فئة الريال بورقة نقدية واحدة من فئة 5 ريالات.
+              <div class="sol" data-sol><ol class="steps"><li>الفرض: لديك 5 قطع نقدية من فئة الريال. النتيجة: يمكن تبديلها بورقة نقدية واحدة من فئة 5 ريالات.</li><li class="final">إذا كان لديك 5 قطع نقدية من فئة الريال، فإنه يمكن تبديلها بورقة نقدية واحدة من فئة 5 ريالات.</li></ol></div></div>
+            <div class="part"><span class="lbl">2B</span> مجموع قياسَي الزاويتين المتتامتين يساوي <span class="num">90°</span>.
+              <div class="sol" data-sol><ol class="steps"><li>الفرض: الزاويتان متتامتان. النتيجة: مجموع قياسيهما <span class="num">90°</span>.</li><li class="final">إذا كانت الزاويتان متتامتين، فإن مجموع قياسيهما يساوي <span class="num">90°</span>.</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-3</span> · العبارات الشرطية</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-3 TRUTH VALUES ================= -->
+      <section class="page" data-title="مثال 3: قيم الصواب للعبارات الشرطية">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">متى تكون العبارة الشرطية خاطئة؟</h2>
+          <p>الفرض والنتيجة والعبارة الشرطية نفسها جميعها عبارات قد تكون صائبة وقد تكون خاطئة. قال عمر لزملائه: إذا أنهيت واجبي المنزلي، فإني سوف ألعب الكرة معكم.</p>
+          <div class="widget" data-widget="condTruth"></div>
+          <div class="card def"><h3>تذكّر</h3><p>العبارة الشرطية تكون صائبة في جميع الحالات، <b>إلا</b> أن يكون الفرض صائبًا والنتيجة خاطئة.</p><p>لإثبات صحة العبارة الشرطية يجب إثبات أنه عندما يكون الفرض صائبًا تكون النتيجة صائبة أيضًا. ولإثبات أنها خاطئة يكفي أن تعطي <b>مثالًا مضادًّا</b>.</p></div>
+          <div class="card tip warn"><h4>تنبيه: تحليل العبارات الشرطية</h4>عند تحديد قيم الصواب للعبارة الشرطية، لا تحاول أن تحدد ما إذا كان للعبارة معنى أم لا، بل اهتم بالسؤال: هل النتيجة تتبع الفرض بالضرورة؟</div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>قيم الصواب للعبارات الشرطية</h3></header>
+            <div class="body">
+              <p class="q">حدِّد قيمة الصواب لكل عبارة شرطية فيما يأتي، وإذا كانت صائبة، ففسِّر تبريرك، أما إذا كانت خاطئة، فأعطِ مثالًا مضادًّا:</p>
+              <div class="part"><span class="lbl">a</span> عند قسمة عدد صحيح على عدد صحيح آخر، يكون الناتج عددًا صحيحًا أيضًا.
+                <div class="sol" data-sol><ol class="steps"><li>نبحث عن حالة يكون فيها الفرض صائبًا والنتيجة خاطئة.</li><li>مثال مضاد: عند قسمة 1 على 2، يكون الناتج <span class="num">0.5</span>.</li><li class="final">بما أن <span class="num">0.5</span> ليس عددًا صحيحًا، فالنتيجة خاطئة، والعبارة الشرطية <b>خاطئة</b> <span class="tv F">F</span>.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> إذا كان الشهر القادم هو رمضان، فإن هذا الشهر هو شهر شعبان.
+                <div class="sol" data-sol><ol class="steps"><li>رمضان هو الشهر الذي يلي شهر شعبان.</li><li class="final">كلما كان الفرض صائبًا تكون النتيجة صائبة أيضًا، فالعبارة الشرطية <b>صائبة</b> <span class="tv T">T</span>.</li></ol></div></div>
+              <div class="part"><span class="lbl">c</span> إذا كان للمثلث أربعة أضلاع، فإنه مضلع مقعر.
+                <div class="sol" data-sol><ol class="steps"><li>لا يمكن أن يكون للمثلث أربعة أضلاع؛ إذن الفرض خاطئ.</li><li class="final">عندما يكون الفرض خاطئًا تكون العبارة الشرطية <b>صائبة</b> <span class="tv T">T</span> بغض النظر عن النتيجة.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">3A</span> إذا كانت <span class="m">m∠A = 35°</span>، فإن <span class="m">∠A</span> حادة.
+              <div class="sol" data-sol><ol class="steps"><li>الزاوية الحادة قياسها بين <span class="num">0°</span> و <span class="num">90°</span>، و <span class="num">35°</span> تقع بينهما.</li><li class="final">العبارة <b>صائبة</b> <span class="tv T">T</span>.</li></ol></div></div>
+            <div class="part"><span class="lbl">3B</span> إذا كان <span class="m">√x = −1</span>، فإن <span class="m">(−1)² = −1</span>.
+              <div class="sol" data-sol><ol class="steps"><li>الجذر التربيعي لا يكون سالبًا، فلا يوجد عدد حقيقي يحقق <span class="m">√x = −1</span>؛ الفرض خاطئ دائمًا.</li><li class="final">عندما يكون الفرض خاطئًا تكون العبارة الشرطية <b>صائبة</b> <span class="tv T">T</span>.</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-3</span> · العبارات الشرطية</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-3 RELATED CONDITIONALS ================= -->
+      <section class="page" data-title="العبارات الشرطية المرتبطة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">العبارات الشرطية المرتبطة</h2>
+          <div class="tbl-wrap"><table class="data">
+            <tr><th>العبارة</th><th>الرموز</th><th>كيف تنتج؟</th></tr>
+            <tr><td><b>الشرطية</b></td><td><span class="m">p → q</span></td><td>إذا كان <span class="m">p</span> فإن <span class="m">q</span></td></tr>
+            <tr><td><b><span class="hl">العكس</span></b></td><td><span class="m">q → p</span></td><td>تبديل الفرض مع النتيجة</td></tr>
+            <tr><td><b><span class="hl">المعكوس</span></b></td><td><span class="m">~p → ~q</span></td><td>نفي كلٍّ من الفرض والنتيجة</td></tr>
+            <tr><td><b><span class="hl">المعاكس الإيجابي</span></b></td><td><span class="m">~q → ~p</span></td><td>نفي الفرض والنتيجة في عكس العبارة</td></tr>
+          </table></div>
+          <p>تسمى العبارات التي لها قيم الصواب نفسها <span class="hl">عبارات متكافئة منطقيًّا</span>: العبارة الشرطية ومعاكسها الإيجابي متكافئتان، وعكس العبارة ومعكوسها متكافئان.</p>
+          <div class="widget" data-widget="relatedCond"></div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>جداول الصواب والعبارات المتكافئة منطقيًّا</h3></header>
+            <div class="body">
+              <p class="q">أوجد قيم الصواب للعبارة الشرطية وعكسها ومعكوسها ومعاكسها الإيجابي على نفس الجدول، ثم اكتب عبارتين متكافئتين منطقيًّا.</p>
+              <div class="tbl-wrap"><table class="data" style="direction:ltr">
+                <tr><th><i>p</i></th><th><i>q</i></th><th><i>~p</i></th><th><i>~q</i></th><th><i>p→q</i></th><th><i>q→p</i></th><th><i>~p→~q</i></th><th><i>~q→~p</i></th></tr>
+                <tr><td>T</td><td>T</td><td>F</td><td>F</td><td class="T">T</td><td class="T">T</td><td class="T">T</td><td class="T">T</td></tr>
+                <tr><td>T</td><td>F</td><td>F</td><td>T</td><td class="F">F</td><td class="T">T</td><td class="T">T</td><td class="F">F</td></tr>
+                <tr><td>F</td><td>T</td><td>T</td><td>F</td><td class="T">T</td><td class="F">F</td><td class="F">F</td><td class="T">T</td></tr>
+                <tr><td>F</td><td>F</td><td>T</td><td>T</td><td class="T">T</td><td class="T">T</td><td class="T">T</td><td class="T">T</td></tr>
+              </table></div>
+              <div class="sol" data-sol><ol class="steps"><li>قارن عمود <span class="m">p → q</span> بعمود <span class="m">~q → ~p</span>: <span class="num">T, F, T, T</span> في الاثنين.</li><li>وقارن <span class="m">q → p</span> بـ <span class="m">~p → ~q</span>: <span class="num">T, T, F, T</span> في الاثنين.</li><li class="final">للعبارتين <span class="m">p → q</span> و <span class="m">~q → ~p</span> قيم الصواب نفسها، لذا فهما متكافئتان منطقيًّا.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> أوجد قيم الصواب للعبارات: <span class="m">~(p∧q)</span>، <span class="m">~p∨~q</span>، <span class="m">~(p∨q)</span>، <span class="m">~p∧~q</span> على نفس الجدول، ثم اكتب زوجين من العبارات المتكافئة منطقيًّا.</p>
+            <div class="sol" data-sol><ol class="steps">
+              <li><span class="m">~(p∧q)</span>: <span class="num">F, T, T, T</span> و <span class="m">~p∨~q</span>: <span class="num">F, T, T, T</span></li>
+              <li><span class="m">~(p∨q)</span>: <span class="num">F, F, F, T</span> و <span class="m">~p∧~q</span>: <span class="num">F, F, F, T</span></li>
+              <li class="final"><span class="m">~(p∧q)</span> تكافئ منطقيًّا <span class="m">~p∨~q</span>، و <span class="m">~(p∨q)</span> تكافئ منطقيًّا <span class="m">~p∧~q</span>.</li>
+            </ol></div>
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 5 من واقع الحياة</span><h3>العبارات الشرطية المرتبطة</h3></header>
+            <div class="body">
+              <p><b>طبيعة:</b> اكتب العكس والمعكوس والمعاكس الإيجابي للعبارة الشرطية الآتية، ثم حدِّد ما إذا كان أيٌّ منها صائبًا أم خاطئًا، وإذا كان خاطئًا فأعطِ مثالًا مضادًّا: <b>الأسود هي قطط تستطيع أن تزأر.</b></p>
+              <p class="tip" style="padding:6px 10px;border-radius:10px">تُعد الأسود والنمور من فصيلة القطط، وهي القطط الوحيدة التي تزأر، ولا تموء. <small>(اختر هذه العبارة في الأداة أعلاه)</small></p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>الشرطية:</b> إذا كان الحيوان أسدًا، فإنه قط يستطيع أن يزأر. <span class="tv T">T</span></li>
+                <li><b>العكس:</b> إذا كان الحيوان قطًّا يستطيع أن يزأر، فإنه يكون أسدًا. <span class="tv F">F</span> مثال مضاد: النمر.</li>
+                <li><b>المعكوس:</b> إذا لم يكن الحيوان أسدًا، فإنه لا يكون قطًّا يستطيع أن يزأر. <span class="tv F">F</span> مثال مضاد: النمر.</li>
+                <li><b>المعاكس الإيجابي:</b> إذا لم يكن الحيوان قطًّا يستطيع أن يزأر، فإنه لا يكون أسدًا. <span class="tv T">T</span></li>
+                <li class="final">تحقّق: الشرطية ومعاكسها الإيجابي كلاهما صائب، والعكس والمعكوس كلاهما خاطئ ✓</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>اكتب العكس والمعكوس والمعاكس الإيجابي لكلٍّ من العبارتين، ثم حدِّد ما إذا كان أيٌّ منها صائبًا أم خاطئًا:</p>
+            <div class="part"><span class="lbl">5A</span> الزاويتان اللتان لهما القياس نفسه متطابقتان.
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>الشرطية:</b> إذا كان لزاويتين القياس نفسه، فإنهما متطابقتان. <span class="tv T">T</span></li>
+                <li><b>العكس:</b> إذا كانت الزاويتان متطابقتين، فإن لهما القياس نفسه. <span class="tv T">T</span></li>
+                <li><b>المعكوس:</b> إذا لم يكن للزاويتين القياس نفسه، فإنهما غير متطابقتين. <span class="tv T">T</span></li>
+                <li class="final"><b>المعاكس الإيجابي:</b> إذا لم تكن الزاويتان متطابقتين، فليس لهما القياس نفسه. <span class="tv T">T</span> — جميعها صائبة.</li>
+              </ol></div></div>
+            <div class="part"><span class="lbl">5B</span> الفأر من القوارض.
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>الشرطية:</b> إذا كان الحيوان فأرًا، فإنه من القوارض. <span class="tv T">T</span></li>
+                <li><b>العكس:</b> إذا كان الحيوان من القوارض، فإنه فأر. <span class="tv F">F</span> مثال مضاد: السنجاب.</li>
+                <li><b>المعكوس:</b> إذا لم يكن الحيوان فأرًا، فإنه ليس من القوارض. <span class="tv F">F</span> مثال مضاد: السنجاب.</li>
+                <li class="final"><b>المعاكس الإيجابي:</b> إذا لم يكن الحيوان من القوارض، فإنه ليس فأرًا. <span class="tv T">T</span></li>
+              </ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-3</span> · العبارات الشرطية</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-3 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 1-3">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — حدِّد الفرض والنتيجة في كلٍّ من العبارات الشرطية الآتية:</div>
+          <div class="ex"><span class="exn">1</span> يوم غد هو السبت إذا كان اليوم هو الجمعة.
+            <div class="sol" data-sol><ol class="steps"><li class="final">الفرض: اليوم هو الجمعة. النتيجة: يوم غد هو السبت.</li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> إذا كان <span class="m">2x + 5 &gt; 7</span>، فإن <span class="m">x &gt; 1</span>.
+            <div class="sol" data-sol><ol class="steps"><li class="final">الفرض: <span class="m">2x + 5 &gt; 7</span>. النتيجة: <span class="m">x &gt; 1</span>.</li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> إذا كانت الزاويتان متكاملتين، فإن مجموع قياسيهما <span class="num">180°</span>.
+            <div class="sol" data-sol><ol class="steps"><li class="final">الفرض: الزاويتان متكاملتان. النتيجة: مجموع قياسيهما <span class="num">180°</span>.</li></ol></div></div>
+          <div class="ex"><span class="exn">4</span> يكون المستقيمان متعامدين إذا نتج عن تقاطعهما زاوية قائمة.
+            <div class="sol" data-sol><ol class="steps"><li class="final">الفرض: نتج عن تقاطع المستقيمين زاوية قائمة. النتيجة: المستقيمان متعامدان.</li></ol></div></div>
+
+          <div class="ex-group">المثال 2 — اكتب كل عبارة شرطية مما يأتي على صورة (إذا… فإن…):</div>
+          <div class="ex"><span class="exn">5</span> الشخص الذي تجاوز عمره 18 عامًا يمكنه استخراج رخصة قيادة.
+            <div class="sol" data-sol><ol class="steps"><li class="final">إذا تجاوز عمر الشخص 18 عامًا، فإنه يمكنه استخراج رخصة قيادة.</li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> يحتوي الجبن على عنصر الكالسيوم.
+            <div class="sol" data-sol><ol class="steps"><li class="final">إذا كان الطعام جبنًا، فإنه يحتوي على عنصر الكالسيوم.</li></ol></div></div>
+          <div class="ex"><span class="exn">7</span> قياس الزاوية الحادة بين <span class="num">0°</span> و <span class="num">90°</span>.
+            <div class="sol" data-sol><ol class="steps"><li class="final">إذا كانت الزاوية حادة، فإن قياسها بين <span class="num">0°</span> و <span class="num">90°</span>.</li></ol></div></div>
+          <div class="ex"><span class="exn">8</span> المثلث المتطابق الأضلاع متطابق الزوايا.
+            <div class="sol" data-sol><ol class="steps"><li class="final">إذا كان المثلث متطابق الأضلاع، فإنه متطابق الزوايا.</li></ol></div></div>
+
+          <div class="ex-group">المثال 3 — حدِّد قيمة الصواب لكل عبارة شرطية، وإذا كانت خاطئة فأعطِ مثالًا مضادًّا:</div>
+          <div class="ex"><span class="exn">10</span> إذا كان <span class="m">x² = 16</span>، فإن <span class="m">x = 4</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">(−4)² = 16</span> أيضًا.</li><li class="final">خاطئة <span class="tv F">F</span>؛ مثال مضاد: <span class="m">x = −4</span>.</li></ol></div></div>
+          <div class="ex"><span class="exn">11</span> إذا كنت تعيش في الرياض، فإنك تعيش في الكويت.
+            <div class="sol" data-sol><ol class="steps"><li class="final">خاطئة <span class="tv F">F</span>؛ الرياض في المملكة العربية السعودية، فمن يعيش في الرياض لا يعيش في الكويت.</li></ol></div></div>
+          <div class="ex"><span class="exn">12</span> إذا كان يوم غد هو الجمعة، فإن اليوم هو الخميس.
+            <div class="sol" data-sol><ol class="steps"><li class="final">صائبة <span class="tv T">T</span>؛ اليوم الذي يسبق الجمعة هو الخميس دائمًا.</li></ol></div></div>
+          <div class="ex"><span class="exn">13</span> إذا كان للحيوان قرنان، فإنه كبش.
+            <div class="sol" data-sol><ol class="steps"><li class="final">خاطئة <span class="tv F">F</span>؛ مثال مضاد: الغزال أو الثور له قرنان وليس كبشًا.</li></ol></div></div>
+          <div class="ex"><span class="exn">14</span> إذا كان قياس الزاوية القائمة <span class="num">95°</span>، فإن الزاوية تكون حادة.
+            <div class="sol" data-sol><ol class="steps"><li>قياس الزاوية القائمة <span class="num">90°</span> دائمًا، فالفرض خاطئ.</li><li class="final">صائبة <span class="tv T">T</span>؛ لأن الفرض خاطئ.</li></ol></div></div>
+
+          <div class="ex-group">المثال 4 — أوجد قيم الصواب لكل عبارتين، ثم قرر هل هما متكافئتان منطقيًّا؟</div>
+          <div class="ex"><span class="exn">15</span> <span class="m">~p∧q</span> ، <span class="m">~(p∧q)</span>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">~p∧q</span>: <span class="num">F, F, T, F</span></li><li><span class="m">~(p∧q)</span>: <span class="num">F, T, T, T</span></li><li class="final">قيم الصواب مختلفة، فهما <b>غير متكافئتين</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">16</span> <span class="m">~p∨~q</span> ، <span class="m">~(p∨q)</span>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">~p∨~q</span>: <span class="num">F, T, T, T</span></li><li><span class="m">~(p∨q)</span>: <span class="num">F, F, F, T</span></li><li class="final">قيم الصواب مختلفة، فهما <b>غير متكافئتين</b>.</li></ol></div></div>
+
+          <div class="ex-group">المثال 5 — اكتب العكس والمعكوس والمعاكس الإيجابي، وحدِّد صواب كلٍّ منها:</div>
+          <div class="ex"><span class="exn">17</span> إذا كان العدد يقبل القسمة على 2، فإنه يقبل القسمة على 4. <small>(جرّبها في أداة العبارات المرتبطة)</small>
+            <div class="sol" data-sol><ol class="steps">
+              <li><b>الشرطية:</b> <span class="tv F">F</span> مثال مضاد: 6.</li>
+              <li><b>العكس:</b> إذا كان العدد يقبل القسمة على 4، فإنه يقبل القسمة على 2. <span class="tv T">T</span></li>
+              <li><b>المعكوس:</b> إذا كان العدد لا يقبل القسمة على 2، فإنه لا يقبل القسمة على 4. <span class="tv T">T</span></li>
+              <li class="final"><b>المعاكس الإيجابي:</b> إذا كان العدد لا يقبل القسمة على 4، فإنه لا يقبل القسمة على 2. <span class="tv F">F</span> مثال مضاد: 6.</li>
+            </ol></div></div>
+          <div class="ex"><span class="exn">18</span> جميع الأعداد الكلية أعداد صحيحة.
+            <div class="sol" data-sol><ol class="steps">
+              <li><b>الشرطية:</b> إذا كان العدد كليًّا، فإنه عدد صحيح. <span class="tv T">T</span></li>
+              <li><b>العكس:</b> إذا كان العدد صحيحًا، فإنه عدد كلي. <span class="tv F">F</span> مثال مضاد: <span class="num">−3</span>.</li>
+              <li><b>المعكوس:</b> إذا لم يكن العدد كليًّا، فإنه ليس عددًا صحيحًا. <span class="tv F">F</span> مثال مضاد: <span class="num">−3</span>.</li>
+              <li class="final"><b>المعاكس الإيجابي:</b> إذا لم يكن العدد صحيحًا، فإنه ليس عددًا كليًّا. <span class="tv T">T</span></li>
+            </ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-3</span> · العبارات الشرطية</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= LESSON 1-4 INTRO ================= -->
+      <section class="page" data-title="1-4 التبرير الاستنتاجي">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1-4</div>
+            <h1>التبرير الاستنتاجي</h1>
+            <div class="en">Deductive Reasoning</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ استعمال التبرير الاستقرائي لتحليل الأنماط ووضع تخمينات. (الدرس <span class="num">1-1</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أستعمل قانون الفصل المنطقي للتبرير الاستنتاجي.</li><li>أستعمل قانون القياس المنطقي للتبرير الاستنتاجي.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>عندما يقوم المحققون بتحليل قضية جنائية، فإنهم يجمعون الأدلة مثل بصمات الأصابع، ويستعملونها لتقليص قائمة الاتهام، باستبعاد المتهمين وتحديد الجاني في نهاية الأمر.</p></div>
+          <div class="card def"><h3>التبرير الاستنتاجي</h3><p><span class="hl">التبرير الاستنتاجي</span> يستعمل حقائق وقواعد وتعريفات وخصائص من أجل الوصول إلى نتائج منطقية من عبارات معطاة، على خلاف التبرير الاستقرائي الذي تستعمل فيه أنماط من الأمثلة أو المشاهدات لعمل تخمين.</p></div>
+          <div class="vocab"><span><b>التبرير الاستنتاجي</b><i>deductive reasoning</i></span><span><b>قانون الفصل المنطقي</b><i>Law of Detachment</i></span><span><b>قانون القياس المنطقي</b><i>Law of Syllogism</i></span></div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 1 من واقع الحياة</span><h3>التبرير الاستقرائي والتبرير الاستنتاجي</h3></header>
+            <div class="body">
+              <p class="q">حدِّد ما إذا كانت النتيجة قائمة على التبرير الاستنتاجي أم التبرير الاستقرائي في كلٍّ مما يأتي:</p>
+              <div class="part"><span class="lbl">a</span> في كل مرة تستخدم هند الخلطة الجاهزة لإعداد قالب كيك، تلاحظ أن قالبها صغير لا يكفي لخبز الكيك. جهزت هند اليوم خلطة الكيك فاستنتجت أنّ قالبها لن يكفي لخبز الكيك.
+                <div class="sol" data-sol><ol class="steps"><li>اعتمدت هند على تكرار ما لاحظته في المرات السابقة.</li><li class="final">اعتمدت على المشاهدات ← <b>تبرير استقرائي</b>.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> تأخر مشاري مرتين عن الحضور إلى مقر العمل في الوقت المحدد، فاستنتج أنه سيتم خصم <span class="num">5%</span> من أجر اليومين.
+                <div class="sol" data-sol><ol class="steps"><li>اعتمد مشاري على حقائق ينص عليها عقده الوظيفي.</li><li class="final">اعتمد على قاعدة معطاة ← <b>تبرير استنتاجي</b>.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">1A</span> يُجري طالب تجربة دمج الألوان، فقام بثلاث محاولات للحصول على درجة معينة من اللون الرمادي، فاكتشف أنه كلما زادت كمية اللون الأسود كانت درجة اللون الرمادي أغمق.
+              <div class="sol" data-sol><ol class="steps"><li class="final">بنى النتيجة على تجارب ومشاهدات متكررة ← <b>تبرير استقرائي</b>.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> دُعي خالد إلى حفل عشاء، وقد حضر جميع المدعوين الحفل؛ إذن فقد حضر خالد الحفل.
+              <div class="sol" data-sol><ol class="steps"><li class="final">طبّق حقيقة عامة معطاة (جميع المدعوين حضروا) على حالة خاصة ← <b>تبرير استنتاجي</b>.</li></ol></div></div>
+          </div>
+
+          <div class="card def"><h3>مفهوم أساسي: قانون الفَصل المنطقي</h3>
+            <p>إذا كانت العبارة الشرطية <span class="m">p → q</span> صائبة، والفرض <span class="m">p</span> صائبًا، فإن النتيجة <span class="m">q</span> تكون صائبة أيضًا.</p>
+            <p><b>مثال:</b> المعطيات: إذا لم يكن في السيارة وقود، فإنها لن تعمل. لا يوجد وقود في سيارة عبدالله.<br><b>نتيجة صائبة:</b> لن تعمل سيارة عبدالله.</p>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>استعمال قانون الفَصل المنطقي</h3></header>
+            <div class="body">
+              <p class="q">حدِّد ما إذا كان الاستنتاج صائبًا في كلٍّ مما يأتي أم لا اعتمادًا على المعطيات. فسِّر تبريرك.</p>
+              <div class="part"><span class="lbl">a</span> <b>المعطيات:</b> إذا كانت الزاويتان متجاورتين على مستقيم، فإن ضلعيهما غير المشتركين يكوّنان نصفَي مستقيم متعاكسين. <span class="m">∠AED</span> و <span class="m">∠AEB</span> متجاورتان على مستقيم.<br><b>الاستنتاج:</b> <span class="m">ED</span> و <span class="m">EB</span> نصفا مستقيم متعاكسان.
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">p</span>: زاويتان متجاورتان على مستقيم. <span class="m">q</span>: ضلعاهما غير المشتركين يكونان نصفَي مستقيم متعاكسين.</li><li>العبارة المعطاة «<span class="m">∠AED</span> و <span class="m">∠AEB</span> متجاورتان على مستقيم» تحقق الفرض <span class="m">p</span>.</li><li class="final">بتطبيق قانون الفصل المنطقي: الاستنتاج <b>صائب</b>.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <b>المعطيات:</b> عندما يذهب مالك إلى النادي الرياضي، فإنه يرتدي ملابس رياضية. ارتدى مالك ملابس رياضية.<br><b>الاستنتاج:</b> ذهب مالك إلى النادي الرياضي.
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">p</span>: ذهب مالك إلى النادي. <span class="m">q</span>: ارتدى ملابس رياضية.</li><li>العبارة المعطاة «ارتدى مالك ملابس رياضية» تحقق النتيجة <span class="m">q</span> لا الفرض.</li><li class="final">صواب النتيجة لا يعني صواب الفرض؛ فقد يرتدي ملابس رياضية ولا يذهب إلى النادي ← الاستنتاج <b>غير صائب</b>.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">2A</span> <b>المعطيات:</b> إذا كانت ثلاث نقاط لا تقع على استقامة واحدة، فإنها تحدد مستوى. النقاط <span class="m">A, B, C</span> تقع في المستوى <span class="m">G</span>.<br><b>الاستنتاج:</b> النقاط <span class="m">A, B, C</span> لا تقع على استقامة واحدة.
+              <div class="sol" data-sol><ol class="steps"><li>العبارة المعطاة تتحدث عن نتيجة العبارة الشرطية (تقع في مستوى)، لا عن فرضها.</li><li class="final">الاستنتاج <b>غير صائب</b>؛ فقد تقع النقاط في مستوى وتكون على استقامة واحدة.</li></ol></div></div>
+            <div class="part"><span class="lbl">2B</span> <b>المعطيات:</b> إذا أحضر الطالب موافقة من ولي أمره، فإنه يمكنه الذهاب في الرحلة المدرسية. أحضر سلمان موافقة من ولي أمره.<br><b>الاستنتاج:</b> يمكن أن يذهب سلمان في الرحلة المدرسية.
+              <div class="sol" data-sol><ol class="steps"><li>العبارة المعطاة تحقق الفرض.</li><li class="final">بتطبيق قانون الفصل المنطقي: الاستنتاج <b>صائب</b>.</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-4</span> · التبرير الاستنتاجي</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-4 VENN + SYLLOGISM ================= -->
+      <section class="page" data-title="أشكال ڤن وقانون القياس المنطقي">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>الحكم على الاستنتاج باستعمال أشكال ڤن</h3></header>
+            <div class="body">
+              <p><b>مكافآت وحوافز:</b> صرفت شركة خاصة مكافآت وحوافز لبعض موظفيها. حدِّد ما إذا كان الاستنتاج صائبًا أم لا:</p>
+              <p><b>المعطيات:</b> إذا صُرف للموظف مكافأة، فإن عدد ساعات عمله تكون قد تجاوزت 175 ساعة في الشهر. تجاوز عدد الساعات التي عملها محمد 175 ساعة في الشهر.<br><b>الاستنتاج:</b> صُرف لمحمد مكافأة.</p>
+              <div class="widget" data-widget="vennDeduce"></div>
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>افهم:</b> ارسم دائرة تمثل الموظفين الذين تجاوز عدد ساعات عملهم 175 ساعة.</li>
+                <li><b>خطط:</b> الذين صُرفت لهم مكافآت يمثلون مجموعة جزئية داخل هذه الدائرة.</li>
+                <li><b>حل:</b> محمد داخل الدائرة الكبرى، لكن ليس بالضرورة داخل الدائرة الصغرى؛ فربما يكون داخلها أو خارجها.</li>
+                <li class="final">الاستنتاج <b>غير صائب</b>. <b>تحقق:</b> لا نعرف أن كل موظف تجاوزت ساعاته 175 ساعة قد صُرفت له مكافأة ✓</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> <b>المعطيات:</b> إذا كان الشكل مربعًا، فإنه مضلع. الشكل <span class="m">A</span> مربع. <b>الاستنتاج:</b> الشكل <span class="m">A</span> مضلع.</p>
+            <div class="sol" data-sol><ol class="steps"><li>دائرة المربعات تقع بالكامل داخل دائرة المضلعات.</li><li>الشكل <span class="m">A</span> داخل دائرة المربعات، فهو حتمًا داخل دائرة المضلعات.</li><li class="final">الاستنتاج <b>صائب</b>.</li></ol></div>
+          </div>
+
+          <div class="card def"><h3>مفهوم أساسي: قانون القياس المنطقي</h3>
+            <p>إذا كانت العبارتان الشرطيتان <span class="m">p → q</span> و <span class="m">q → r</span> صائبتين، فإن العبارة الشرطية <span class="m">p → r</span> صائبة أيضًا.</p>
+            <p><b>مثال:</b> إذا حصلت على عمل، فسوف تكسب نقودًا. إذا كسبت نقودًا، فسوف تتمكن من شراء سيارة.<br><b>نتيجة صائبة:</b> إذا حصلت على عمل، فسوف تتمكن من شراء سيارة.</p>
+            <p style="margin:0"><small>لا يمكن استعمال القانون إذا لم تكن نتيجة العبارة الأولى هي الفرض في العبارة الثانية.</small></p>
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 4 من الاختبار</span><h3>اختيار من متعدد</h3></header>
+            <div class="body">
+              <p class="q">أي العبارات الآتية تنتج منطقيًّا عن العبارتين: (1) إذا أمطرت اليوم فسوف تؤجل المباراة. (2) إذا اعتذر أحد الفريقين فسوف تؤجل المباراة.</p>
+              <p><b>A</b> إذا اعتذر أحد الفريقين فسوف تمطر اليوم. <b>B</b> إذا أمطرت اليوم فسوف يعتذر أحد الفريقين. <b>C</b> إذا لم تمطر فلن يعتذر أحد الفريقين. <b>D</b> لا توجد نتيجة صائبة.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">p</span>: أمطرت اليوم، <span class="m">q</span>: تأجلت المباراة، <span class="m">r</span>: اعتذر أحد الفريقين.</li><li>العبارة (1): <span class="m">p → q</span>، والعبارة (2): <span class="m">r → q</span>.</li><li>نتيجة العبارة الأولى ليست فرضًا للثانية؛ فلا يمكن استعمال قانون القياس المنطقي.</li><li class="final">الإجابة الصحيحة: <b>D</b>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> (1) إذا لم تأخذ قسطًا كافيًا من النوم، فسوف تكون مرهقًا. (2) إذا كنت مرهقًا، فلن يكون أداؤك في الاختبار جيدًا.</p>
+            <p><b>A</b> إذا كنت مرهقًا فإنك لم تأخذ قسطًا كافيًا من النوم. <b>B</b> إذا لم تأخذ قسطًا كافيًا من النوم، فلن يكون أداؤك في الاختبار جيدًا. <b>C</b> إذا لم يكن أداؤك في الاختبار جيدًا فإنك لم تأخذ قسطًا كافيًا من النوم. <b>D</b> لا توجد نتيجة صائبة.</p>
+            <div class="ans" data-answer="B|ب"><input placeholder="A أو B أو C أو D"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>(1) <span class="m">p → q</span>، (2) <span class="m">q → r</span>: نتيجة الأولى هي فرض الثانية.</li><li class="final">بقانون القياس المنطقي: <span class="m">p → r</span> ← الإجابة <b>B</b>.</li></ol></div>
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 5</span><h3>تطبيق قوانين التبرير الاستنتاجي</h3></header>
+            <div class="body">
+              <p><b>المعطيات:</b> إذا كان عمرك 18 عامًا، فإنه يمكنك التقدم للحصول على رخصة قيادة السيارات. عُمر سلمان 18 عامًا.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">p</span>: عمرك 18 عامًا. <span class="m">q</span>: يمكنك التقدم للحصول على رخصة القيادة.</li><li>عمر سلمان 18 عامًا يحقق الفرض <span class="m">p</span>.</li><li class="final">بقانون الفصل المنطقي: «يمكن أن يتقدم سلمان للحصول على رخصة القيادة» نتيجة صائبة.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>5)</b> <b>المعطيات:</b> إذا كانت القطعتان المستقيمتان متطابقتين فإن طوليهما متساويان. <span class="m">M</span> نقطة منتصف <span class="m">AB</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>من تعريف نقطة المنتصف: <span class="m">AM ≅ MB</span>؛ وهذا يحقق فرض العبارة الشرطية.</li><li class="final">بقانون الفصل المنطقي: <span class="m">AM = MB</span>.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-4</span> · التبرير الاستنتاجي</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-4 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 1-4">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — هل النتيجة قائمة على التبرير الاستنتاجي أم الاستقرائي؟</div>
+          <div class="ex"><span class="exn">1</span> جميع الطلاب الذين تم تكريمهم معدلهم العام يزيد على <span class="num">95%</span>. محمد من الطلاب الذين تم تكريمهم؛ إذن معدل محمد العام يزيد على <span class="num">95%</span>.
+            <div class="sol" data-sol><ol class="steps"><li class="final">طُبّقت قاعدة عامة معطاة على حالة خاصة ← <b>استنتاجي</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> لاحظ خالد أن جاره يسقي أشجار حديقته كل يوم جمعة. واليوم هو الجمعة، فاستنتج أن جاره سوف يسقي أشجار حديقته اليوم.
+            <div class="sol" data-sol><ol class="steps"><li class="final">بُنيت النتيجة على مشاهدات متكررة ← <b>استقرائي</b>.</li></ol></div></div>
+
+          <div class="ex-group">المثال 2 — هل الاستنتاج صائب اعتمادًا على المعطيات؟</div>
+          <div class="ex"><span class="exn">3</span> <b>المعطيات:</b> إذا كان العدد يقبل القسمة على 4، فإنه يقبل القسمة على 2. العدد 12 يقبل القسمة على 4. <b>الاستنتاج:</b> العدد 12 يقبل القسمة على 2.
+            <div class="sol" data-sol><ol class="steps"><li class="final">المعطى يحقق الفرض ← بقانون الفصل المنطقي، الاستنتاج <b>صائب</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">4</span> <b>المعطيات:</b> إذا ذهب فيصل إلى النوم متأخرًا، فسوف يكون مرهقًا في اليوم التالي. فيصل مرهق. <b>الاستنتاج:</b> ذهب فيصل إلى النوم متأخرًا.
+            <div class="sol" data-sol><ol class="steps"><li>المعطى «فيصل مرهق» يحقق النتيجة لا الفرض.</li><li class="final">الاستنتاج <b>غير صائب</b>؛ فقد يكون مرهقًا لسبب آخر.</li></ol></div></div>
+
+          <div class="ex-group">المثال 3 — فسِّر تبريرك باستعمال أشكال ڤن:</div>
+          <div class="ex"><span class="exn">5</span> <b>المعطيات:</b> إذا كان الشاطئ عامًّا، فإنه لا يوجد فيه منقذون. الشاطئ الجنوبي لا يوجد فيه منقذون. <b>الاستنتاج:</b> الشاطئ الجنوبي عام.
+            <div class="sol" data-sol><ol class="steps"><li>دائرة «الشواطئ العامة» داخل دائرة «شواطئ بلا منقذين».</li><li>الشاطئ الجنوبي داخل الدائرة الكبرى، وقد يكون خارج دائرة الشواطئ العامة.</li><li class="final">الاستنتاج <b>غير صائب</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> <b>المعطيات:</b> إذا اجتاز الطلاب اختبار القبول، فسوف يُقبلون في الكلية. اجتاز عبدالله اختبار القبول. <b>الاستنتاج:</b> سيُقبل عبدالله في الكلية.
+            <div class="sol" data-sol><ol class="steps"><li>دائرة «اجتازوا الاختبار» داخل دائرة «قُبلوا في الكلية»، وعبدالله داخل الدائرة الصغرى.</li><li class="final">الاستنتاج <b>صائب</b>.</li></ol></div></div>
+
+          <div class="ex-group">المثال 4 — اختيار من متعدد:</div>
+          <div class="ex"><span class="exn">7</span> (1) إذا كان المثلث قائم الزاوية، فإن قياس إحدى زواياه <span class="num">90°</span>. (2) إذا كان قياس إحدى زوايا المثلث <span class="num">90°</span>، فإن زاويتيه الحادتين تكونان متتامتين.<br>
+            <b>A</b> إذا كان المثلث قائم الزاوية، فإنه يحوي زاوية قياسها <span class="num">90°</span>. <b>B</b> إذا كان قياس إحدى زوايا المثلث <span class="num">90°</span>، فإن زاويتيه الحادتين لا تكونان متتامتين. <b>C</b> إذا كان المثلث قائم الزاوية، فإن زاويتيه الحادتين متتامتان. <b>D</b> إذا كان قياس إحدى زوايا المثلث <span class="num">90°</span>، فإنه لا يكون مثلثًا قائم الزاوية.
+            <div class="ans" data-answer="C|ج"><input placeholder="A أو B أو C أو D"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>(1) <span class="m">p → q</span> و (2) <span class="m">q → r</span>.</li><li class="final">بقانون القياس المنطقي: <span class="m">p → r</span> ← <b>C</b>.</li></ol></div></div>
+
+          <div class="ex-group">المثال 5 — استعمل قانون الفصل أو القياس المنطقي، أو اكتب «لا نتيجة صائبة»:</div>
+          <div class="ex"><span class="exn">8</span> إذا أنهى وليد عمله، فإنه سيحصل على أجر. إذا حصل وليد على أجر، فإنه سيشتري مذياعًا.
+            <div class="sol" data-sol><ol class="steps"><li class="final">بقانون القياس المنطقي: إذا أنهى وليد عمله، فإنه سيشتري مذياعًا.</li></ol></div></div>
+          <div class="ex"><span class="exn">9</span> الزاويتان المتقابلتان بالرأس متطابقتان. <span class="m">∠1 ≅ ∠2</span>.
+            <div class="sol" data-sol><ol class="steps"><li>المعطى الثاني يحقق النتيجة (التطابق) لا الفرض (التقابل بالرأس).</li><li class="final"><b>لا نتيجة صائبة</b>؛ فليست كل زاويتين متطابقتين متقابلتين بالرأس.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-4</span> · التبرير الاستنتاجي</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= LESSON 1-5 ================= -->
+      <section class="page" data-title="1-5 المسلمات والبراهين الحرة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1-5</div>
+            <h1>المسلّمات والبراهين الحرة</h1>
+            <div class="en">Postulates and Paragraph Proofs</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ استعمال التبرير الاستنتاجي بتطبيق قانونَي الفصل والقياس المنطقي. (الدرس <span class="num">1-4</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أتعرف المسلّمات الأساسية حول النقاط والمستقيمات والمستويات وأستعملها.</li><li>أكتب برهانًا حرًّا.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>التجربة التي تُظهر سقوط الريشة والتفاحة بالسرعة نفسها في حجرة مفرغة من الهواء توضح قوانين نيوتن في الجاذبية الأرضية، والتي تُقبل على أنها حقائق أساسية في الفيزياء. وفي الهندسة أيضًا توجد قوانين تقبل على أنها صحيحة دون برهان.</p></div>
+          <div class="card def"><h3>المسلّمة</h3><p><span class="hl">المسلّمة</span> أو البديهية عبارة تعطي وصفًا لعلاقة أساسية بين المفاهيم الهندسية الأولية، وتُقبل على أنها صحيحة دون برهان.</p></div>
+          <div class="vocab"><span><b>المسلّمة</b><i>postulate</i></span><span><b>البرهان</b><i>proof</i></span><span><b>النظرية</b><i>theorem</i></span><span><b>البرهان الحر</b><i>paragraph proof</i></span></div>
+          <div class="tbl-wrap" style="margin-top:12px"><table class="data">
+            <tr><th>#</th><th>المسلّمة</th></tr>
+            <tr><td><span class="num">1.1</span></td><td>أي نقطتين يمر بهما مستقيم واحد فقط.</td></tr>
+            <tr><td><span class="num">1.2</span></td><td>أي ثلاث نقاط لا تقع على استقامة واحدة يمر بها مستوى واحد فقط.</td></tr>
+            <tr><td><span class="num">1.3</span></td><td>كل مستقيم يحوي نقطتين على الأقل.</td></tr>
+            <tr><td><span class="num">1.4</span></td><td>كل مستوى يحوي ثلاث نقاط على الأقل ليست على استقامة واحدة.</td></tr>
+            <tr><td><span class="num">1.5</span></td><td>إذا وقعت نقطتان في مستوى، فإن المستقيم الوحيد المار بهما يقع كليًّا في ذلك المستوى.</td></tr>
+            <tr><td><span class="num">1.6</span></td><td>إذا تقاطع مستقيمان، فإنهما يتقاطعان في نقطة واحدة فقط.</td></tr>
+            <tr><td><span class="num">1.7</span></td><td>إذا تقاطع مستويان، فإن تقاطعهما يكون مستقيمًا.</td></tr>
+          </table></div>
+          <div class="widget" data-widget="twoPoints"></div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 1 من واقع الحياة</span><h3>تحديد المسلّمات</h3></header>
+            <div class="body">
+              <p class="q"><b>هندسة معمارية:</b> اذكر المسلّمة التي تبرر صحة كل عبارة:</p>
+              <div class="part"><span class="lbl">a</span> يحتوي المستقيم <span class="m">m</span> على النقطتين <span class="m">F</span> و <span class="m">G</span>، ويمكن أن تقع النقطة <span class="m">E</span> أيضًا على المستقيم <span class="m">m</span>.
+                <div class="sol" data-sol><ol class="steps"><li class="final">المسلّمة <span class="num">1.3</span>: كل مستقيم يحوي نقطتين على الأقل؛ فحافة البناية مستقيم تقع عليه <span class="m">E, F, G</span>.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> يتقاطع المستقيمان <span class="m">s</span> و <span class="m">t</span> في النقطة <span class="m">D</span>.
+                <div class="sol" data-sol><ol class="steps"><li class="final">المسلّمة <span class="num">1.6</span>: إذا تقاطع مستقيمان فإنهما يتقاطعان في نقطة واحدة فقط.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">1A</span> النقاط <span class="m">A, B, C</span> تحدد مستوى.
+              <div class="sol" data-sol><ol class="steps"><li class="final">المسلّمة <span class="num">1.2</span>: أي ثلاث نقاط لا تقع على استقامة واحدة يمر بها مستوى واحد فقط.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> يتقاطع المستويان <span class="m">P</span> و <span class="m">Q</span> في المستقيم <span class="m">m</span>.
+              <div class="sol" data-sol><ol class="steps"><li class="final">المسلّمة <span class="num">1.7</span>: إذا تقاطع مستويان، فإن تقاطعهما يكون مستقيمًا.</li></ol></div></div>
+          </div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>تحليل العبارات باستعمال المسلّمات</h3></header>
+            <div class="body">
+              <p class="q">حدِّد ما إذا كانت كل جملة صائبة دائمًا أو صائبة أحيانًا أو غير صائبة أبدًا. فسِّر تبريرك.</p>
+              <div class="part"><span class="lbl">a</span> إذا تقاطع مستقيمان واقعان في مستوى واحد، فإن نقطة تقاطعهما تقع أيضًا في المستوى الذي يحويهما.
+                <div class="sol" data-sol><ol class="steps"><li>المسلّمة <span class="num">1.5</span>: المستقيم المار بنقطتين في مستوى يقع بكامله فيه.</li><li class="final"><b>صائبة دائمًا</b>؛ أي نقطة على المستقيمين، بما فيها نقطة التقاطع، تقع في المستوى نفسه.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> أي أربع نقاط لا تقع على استقامة واحدة.
+                <div class="sol" data-sol><ol class="steps"><li>المسلّمة <span class="num">1.3</span>: المستقيم يحوي نقطتين على الأقل، أي يمكن أن يحوي أربعًا أو أكثر.</li><li class="final"><b>صائبة أحيانًا</b>؛ قد تكون مثل <span class="m">A, E, C, D</span> ليست على استقامة واحدة، أو مثل <span class="m">A, B, C, D</span> على استقامة واحدة.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">2A</span> المستقيمان المتقاطعان يحددان مستوى.
+              <div class="sol" data-sol><ol class="steps"><li>خذ نقطة التقاطع ونقطة أخرى على كل مستقيم: ثلاث نقاط ليست على استقامة واحدة.</li><li class="final"><b>صائبة دائمًا</b> (المسلّمة <span class="num">1.2</span>).</li></ol></div></div>
+            <div class="part"><span class="lbl">2B</span> تقاطع ثلاثة مستقيمات في نقطتين.
+              <div class="sol" data-sol><ol class="steps"><li>إذا كان مستقيمان متوازيين وقطعهما الثالث، تنتج نقطتا تقاطع.</li><li class="final"><b>صائبة أحيانًا</b>؛ فقد تتقاطع الثلاثة في نقطة واحدة، أو في ثلاث نقاط.</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-5</span> · المسلمات والبراهين الحرة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-5 PROOFS + EXERCISES ================= -->
+      <section class="page" data-title="البرهان الحر وتمارين 1-5">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>مفهوم أساسي: خطوات كتابة البرهان</h3>
+            <p><span class="hl">البرهان</span> دليل منطقي كل عبارة فيه مبرَّرة بعبارة سبق إثباتها أو قبول صحتها. وفي حال إثبات صحة عبارة فإنها تُسمى <span class="hl">نظرية</span>.</p>
+            <ol style="margin:0;padding-inline-start:20px">
+              <li>اكتب المعطيات، وارسم شكلًا يوضحها إن أمكن.</li>
+              <li>اكتب العبارة أو التخمين المطلوب إثباته.</li>
+              <li>استعمل التبرير الاستنتاجي لتكوين سلسلة منطقية من العبارات.</li>
+              <li>برِّر كل عبارة مستعملًا تعريفات أو خصائص جبرية أو مسلّمات أو نظريات.</li>
+              <li>اكتب العبارة أو التخمين الذي قمت بإثباته.</li>
+            </ol>
+          </div>
+          <p><span class="hl">البرهان الحر</span> هو أحد أنواع البراهين، وفيه تُكتب فقرة تفسّر أسباب صحة التخمين في موقف معطًى.</p>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>كتابة البرهان الحر</h3></header>
+            <div class="body">
+              <p><b>المعطيات:</b> <span class="m">M</span> نقطة منتصف <span class="m">XY</span>. اكتب برهانًا حرًّا لإثبات أن <span class="m">XM ≅ MY</span>.</p>
+              <svg viewBox="0 0 300 50" style="max-width:300px;display:block;margin:4px auto" aria-hidden="true"><line x1="20" y1="25" x2="280" y2="25" stroke="#1e293b" stroke-width="3"/><g fill="#1e293b"><circle cx="20" cy="25" r="4"/><circle cx="150" cy="25" r="4"/><circle cx="280" cy="25" r="4"/></g><g stroke="#db2777" stroke-width="2.5"><line x1="85" y1="17" x2="85" y2="33"/><line x1="215" y1="17" x2="215" y2="33"/></g><g font-family="Georgia" font-style="italic" font-size="15" text-anchor="middle"><text x="20" y="48">X</text><text x="150" y="48">M</text><text x="280" y="48">Y</text></g></svg>
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>الخطوتان 1 و 2:</b> المعطيات: <span class="m">M</span> نقطة منتصف <span class="m">XY</span>. المطلوب: <span class="m">XM ≅ MY</span>.</li>
+                <li><b>الخطوتان 3 و 4:</b> إذا كانت <span class="m">M</span> نقطة منتصف <span class="m">XY</span>، فإنه بحسب تعريف نقطة منتصف القطعة المستقيمة تكون <span class="m">XM</span> و <span class="m">MY</span> لهما الطول نفسه.</li>
+                <li>ومن تعريف التطابق، إذا كانت القطعتان المستقيمتان لهما الطول نفسه، فإنهما تكونان متطابقتين.</li>
+                <li class="final"><b>الخطوة 5:</b> لذا <span class="m">XM ≅ MY</span>.</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> إذا علمت أن <span class="m">C</span> تقع على <span class="m">AB</span>، حيث <span class="m">AC ≅ CB</span>، فاكتب برهانًا حرًّا لإثبات أن <span class="m">C</span> هي نقطة منتصف <span class="m">AB</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>المعطيات: <span class="m">C</span> تقع على <span class="m">AB</span> و <span class="m">AC ≅ CB</span>. المطلوب: <span class="m">C</span> نقطة منتصف <span class="m">AB</span>.</li><li>من تعريف التطابق: <span class="m">AC = CB</span>.</li><li class="final">بما أن <span class="m">C</span> تقع على <span class="m">AB</span> وتقسمها إلى قطعتين متساويتين في الطول، فإن <span class="m">C</span> نقطة منتصف <span class="m">AB</span> بحسب تعريف نقطة المنتصف.</li></ol></div>
+          </div>
+          <div class="card def"><h3>نظرية 1.1: نظرية نقطة المنتصف</h3><p>إذا كانت <span class="m">M</span> نقطة منتصف <span class="m">AB</span>، فإن <span class="m">AM ≅ MB</span>.</p></div>
+
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 2 — هل كل جملة صحيحة دائمًا أو أحيانًا أو غير صحيحة أبدًا؟</div>
+          <div class="ex"><span class="exn">7</span> تقاطع ثلاثة مستويات في مستقيم.
+            <div class="sol" data-sol><ol class="steps"><li class="final"><b>صحيحة أحيانًا</b>؛ صفحات الكتاب تتقاطع في مستقيم واحد (الكعب)، أما الجداران والأرضية في ركن الغرفة فتتقاطع في نقطة.</li></ol></div></div>
+          <div class="ex"><span class="exn">8</span> المستقيم <span class="m">r</span> يحوي النقطة <span class="m">P</span> فقط.
+            <div class="sol" data-sol><ol class="steps"><li class="final"><b>غير صحيحة أبدًا</b>؛ المسلّمة <span class="num">1.3</span>: كل مستقيم يحوي نقطتين على الأقل.</li></ol></div></div>
+          <div class="ex"><span class="exn">9</span> يمر مستقيم واحد فقط بنقطتين معلومتين.
+            <div class="sol" data-sol><ol class="steps"><li class="final"><b>صحيحة دائمًا</b>؛ المسلّمة <span class="num">1.1</span>.</li></ol></div></div>
+          <div class="ex-group">المثال 3 — برهان:</div>
+          <div class="ex"><span class="exn">13</span> في الشكل: <span class="m">AE ≅ DB</span>، والنقطة <span class="m">C</span> نقطة منتصف كلٍّ من <span class="m">AE</span> و <span class="m">DB</span>. اكتب برهانًا حرًّا لإثبات أن <span class="m">AC = CB</span>.
+            <svg viewBox="0 0 200 120" style="max-width:200px;display:block;margin:6px auto" aria-hidden="true"><g stroke="#1d4ed8" stroke-width="3"><line x1="30" y1="15" x2="170" y2="105"/><line x1="170" y1="15" x2="30" y2="105"/></g><g font-family="Georgia" font-style="italic" font-size="14" text-anchor="middle"><text x="22" y="14">A</text><text x="178" y="14">B</text><text x="100" y="52">C</text><text x="22" y="118">D</text><text x="178" y="118">E</text></g></svg>
+            <div class="sol" data-sol><ol class="steps"><li>بما أن <span class="m">C</span> نقطة منتصف <span class="m">AE</span>، فإن <span class="m">AC = ½ AE</span>.</li><li>وبما أن <span class="m">C</span> نقطة منتصف <span class="m">DB</span>، فإن <span class="m">CB = ½ DB</span>.</li><li>ومن <span class="m">AE ≅ DB</span> وتعريف التطابق: <span class="m">AE = DB</span>، إذن <span class="m">½ AE = ½ DB</span>.</li><li class="final">بالتعويض: <span class="m">AC = CB</span>.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-5</span> · المسلمات والبراهين الحرة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= LESSON 1-6 ================= -->
+      <section class="page" data-title="1-6 البرهان الجبري">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1-6</div>
+            <h1>البرهان الجبري</h1>
+            <div class="en">Algebraic Proof</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ المسلّمات الأساسية حول النقاط والمستقيمات والمستويات. (الدرس <span class="num">1-5</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أستعمل الجبر لكتابة برهان ذي عمودين.</li><li>أستعمل خصائص المساواة لكتابة برهان هندسي.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>تحتوي بعض السيارات على شاشة تعرض درجة الحرارة الخارجية بالمقياس الفهرنهايتي أو السيليزي. يتجمد الماء عند <span class="num">32°F</span> ويغلي عند <span class="num">212°F</span>، أما بالسيليزي فيتجمد عند <span class="num">0°</span> ويغلي عند <span class="num">100°</span>.</p></div>
+          <div class="widget" data-widget="tempConvert"></div>
+          <div class="card def"><h3>مفهوم أساسي: خصائص الأعداد الحقيقية</h3>
+            <p style="margin-top:0">الخصائص الآتية صحيحة لأي ثلاثة أعداد حقيقية <span class="m">a, b, c</span>:</p>
+            <div class="tbl-wrap"><table class="data">
+              <tr><th>الخاصية</th><th>الصيغة</th></tr>
+              <tr><td>الجمع للمساواة</td><td>إذا كان <span class="m">a = b</span>، فإن <span class="m">a + c = b + c</span></td></tr>
+              <tr><td>الطرح للمساواة</td><td>إذا كان <span class="m">a = b</span>، فإن <span class="m">a − c = b − c</span></td></tr>
+              <tr><td>الضرب للمساواة</td><td>إذا كان <span class="m">a = b</span>، فإن <span class="m">a · c = b · c</span></td></tr>
+              <tr><td>القسمة للمساواة</td><td>إذا كان <span class="m">a = b</span> و <span class="m">c ≠ 0</span>، فإن <span class="m">a/c = b/c</span></td></tr>
+              <tr><td>الانعكاس</td><td><span class="m">a = a</span></td></tr>
+              <tr><td>التماثل</td><td>إذا كان <span class="m">a = b</span>، فإن <span class="m">b = a</span></td></tr>
+              <tr><td>التعدي</td><td>إذا كان <span class="m">a = b</span> و <span class="m">b = c</span>، فإن <span class="m">a = c</span></td></tr>
+              <tr><td>التعويض</td><td>إذا كان <span class="m">a = b</span>، يمكننا أن نضع <span class="m">b</span> مكان <span class="m">a</span> في أي معادلة أو عبارة</td></tr>
+              <tr><td>التوزيع</td><td><span class="m">a(b + c) = ab + ac</span></td></tr>
+            </table></div>
+          </div>
+          <p><span class="hl">البرهان الجبري</span> هو برهان يتكون من سلسلة عبارات جبرية، وتبرر خصائص المساواة كثيرًا من العبارات المستعملة فيه.</p>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>تبرير كل خطوة عند حل المعادلة</h3></header>
+            <div class="body">
+              <p class="q">أثبت أنه إذا كان <span class="m">−5(x + 4) = 70</span>، فإن <span class="m">x = −18</span>. اكتب تبريرًا لكل خطوة.</p>
+              <div class="widget" data-widget="reasonQuiz" data-proof="eq"><div class="hint">اختر المبرر المناسب لكل خطوة، ثم اضغط «تحقق»</div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>اذكر الخاصية التي تبرر كلًّا من العبارتين:</p>
+            <div class="part"><span class="lbl">1A</span> إذا كان <span class="m">4 + (−5) = −1</span>، فإن <span class="m">x + 4 + (−5) = x − 1</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">خاصية التعويض: وضعنا <span class="m">−1</span> مكان <span class="m">4 + (−5)</span>.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> إذا كانت <span class="m">5 = y</span>، فإن <span class="m">y = 5</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">خاصية التماثل للمساواة.</li></ol></div></div>
+            <div class="part"><span class="lbl">1C</span> أثبت أنه إذا كان <span class="m">2x − 13 = −5</span>، فإن <span class="m">x = 4</span>. اكتب تبريرًا لكل خطوة.
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">2x − 13 = −5</span> المعطيات</li><li><span class="m">2x − 13 + 13 = −5 + 13</span> خاصية الجمع للمساواة</li><li><span class="m">2x = 8</span> بالتبسيط</li><li><span class="m">2x ÷ 2 = 8 ÷ 2</span> خاصية القسمة للمساواة</li><li class="final"><span class="m">x = 4</span> بالتبسيط</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-6</span> · البرهان الجبري</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-6 TWO-COLUMN ================= -->
+      <section class="page" data-title="البرهان ذو العمودين">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <p>تكتب براهين النظريات والتخمينات الهندسية عادةً على شكل <span class="hl">البرهان ذو العمودين</span>، حيث العبارات مرتبة في عمود، والتبريرات في عمود موازٍ.</p>
+          <div class="card example">
+            <header><span class="tag">مثال 2 من واقع الحياة</span><h3>كتابة البرهان الجبري</h3></header>
+            <div class="body">
+              <p><b>علوم:</b> إذا كانت الصيغة التي تحول من فهرنهايتية إلى سيليزية هي <span class="m">C = (5/9)(F − 32)</span>، فإن الصيغة التي تحول من سيليزية إلى فهرنهايتية هي <span class="m">F = (9/5)C + 32</span>. اكتب برهانًا ذا عمودين.</p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><span class="m">C = (5/9)(F − 32)</span> ← المعطيات</li>
+                <li><span class="m">(9/5)C = (9/5)·(5/9)(F − 32)</span> ← خاصية الضرب للمساواة</li>
+                <li><span class="m">(9/5)C = F − 32</span> ← بالتبسيط</li>
+                <li><span class="m">(9/5)C + 32 = F − 32 + 32</span> ← خاصية الجمع للمساواة</li>
+                <li><span class="m">(9/5)C + 32 = F</span> ← بالتبسيط</li>
+                <li class="final"><span class="m">F = (9/5)C + 32</span> ← خاصية التماثل للمساواة</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">2A</span> إذا كان <span class="m">(5x + 1)/2 − 8 = 0</span>، فإن <span class="m">x = 3</span>.
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">(5x + 1)/2 − 8 = 0</span> المعطيات</li><li><span class="m">(5x + 1)/2 = 8</span> خاصية الجمع للمساواة (وبالتبسيط)</li><li><span class="m">5x + 1 = 16</span> خاصية الضرب للمساواة</li><li><span class="m">5x = 15</span> خاصية الطرح للمساواة</li><li class="final"><span class="m">x = 3</span> خاصية القسمة للمساواة</li></ol></div></div>
+            <div class="part"><span class="lbl">2B</span> <b>فيزياء:</b> إذا كانت المسافة <span class="m">d</span> التي يقطعها جسم بسرعة ابتدائية <span class="m">u</span> وسرعة نهائية <span class="m">v</span> في زمن <span class="m">t</span> هي <span class="m">d = t · (u + v)/2</span>، فإن <span class="m">u = 2d/t − v</span>.
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">d = t(u + v)/2</span> المعطيات</li><li><span class="m">2d = t(u + v)</span> خاصية الضرب للمساواة</li><li><span class="m">2d/t = u + v</span> خاصية القسمة للمساواة</li><li><span class="m">2d/t − v = u</span> خاصية الطرح للمساواة</li><li class="final"><span class="m">u = 2d/t − v</span> خاصية التماثل للمساواة</li></ol></div></div>
+          </div>
+          <div class="card def"><h3>البرهان الهندسي</h3><p>بما أن أطوال القطع المستقيمة وقياس الزوايا أعداد حقيقية، فإن خصائص المساواة تُستعمل أيضًا في الهندسة: مثل الانعكاس <span class="m">AB = AB</span>، والتماثل: إذا كان <span class="m">m∠1 = m∠2</span> فإن <span class="m">m∠2 = m∠1</span>، والتعدي: إذا كان <span class="m">AB = CD</span> و <span class="m">CD = EF</span> فإن <span class="m">AB = EF</span>.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>كتابة البرهان الهندسي</h3></header>
+            <div class="body">
+              <p class="q">إذا كانت <span class="m">∠FGJ ≅ ∠JGK</span>، <span class="m">∠JGK ≅ ∠KGH</span>، و <span class="m">m∠FGJ = (6x + 7)°</span>، <span class="m">m∠KGH = (8x − 5)°</span>، فأثبت أن <span class="m">x = 6</span>.</p>
+              <div class="widget" data-widget="reasonQuiz" data-proof="angle"><div class="hint">اختر المبرر المناسب لكل خطوة، ثم اضغط «تحقق»</div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">3A</span> إذا كان <span class="m">∠A ≅ ∠B</span>، <span class="m">m∠A = 37°</span>، فإن <span class="m">m∠B = 37°</span>.
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠A ≅ ∠B</span>، <span class="m">m∠A = 37°</span> المعطيات</li><li><span class="m">m∠A = m∠B</span> تعريف تطابق الزوايا</li><li><span class="m">37° = m∠B</span> خاصية التعويض</li><li class="final"><span class="m">m∠B = 37°</span> خاصية التماثل</li></ol></div></div>
+            <div class="part"><span class="lbl">3B</span> إذا كان <span class="m">CD ≅ EF</span>، حيث <span class="m">CD = 3y − 9</span> و <span class="m">EF = 15</span>، فإن <span class="m">y = 8</span>.
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">CD ≅ EF</span> المعطيات</li><li><span class="m">CD = EF</span> تعريف تطابق القطع المستقيمة</li><li><span class="m">3y − 9 = 15</span> خاصية التعويض</li><li><span class="m">3y = 24</span> خاصية الجمع للمساواة</li><li class="final"><span class="m">y = 8</span> خاصية القسمة للمساواة</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-6</span> · البرهان الجبري</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-6 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 1-6">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex"><span class="exn">1</span> اذكر الخاصية التي تبرر العبارة: إذا كان <span class="m">x = 5</span>، فإن <span class="m">5 = x</span>.
+            <div class="sol" data-sol><ol class="steps"><li class="final">خاصية التماثل للمساواة.</li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> أثبت أنه إذا كان <span class="m">2(x + 5) = 11</span>، فإن <span class="m">x = 1/2</span>. اكتب تبريرًا لكل خطوة.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">2(x + 5) = 11</span> المعطيات</li><li><span class="m">2x + 10 = 11</span> خاصية التوزيع</li><li><span class="m">2x = 1</span> خاصية الطرح للمساواة</li><li class="final"><span class="m">x = 1/2</span> خاصية القسمة للمساواة</li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> أكمل البرهان: المعطيات <span class="m">(y + 2)/3 = 3</span>، المطلوب <span class="m">y = 7</span>.
+            <div class="sol" data-sol><ol class="steps"><li>(a) <span class="m">(y + 2)/3 = 3</span> ← المعطيات</li><li>(b) <span class="m">3((y + 2)/3) = 3(3)</span> ← <b>خاصية الضرب للمساواة</b></li><li>(c) <span class="m">y + 2 = 9</span> ← <b>بالتبسيط</b></li><li class="final">(d) <span class="m">y = 7</span> ← خاصية الطرح للمساواة</li></ol></div></div>
+          <div class="ex"><span class="exn">4</span> <b>برهان:</b> إذا كان <span class="m">−4(x − 3) + 5x = 24</span>، فإن <span class="m">x = 12</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">−4(x − 3) + 5x = 24</span> المعطيات</li><li><span class="m">−4x + 12 + 5x = 24</span> خاصية التوزيع</li><li><span class="m">x + 12 = 24</span> بالتبسيط</li><li class="final"><span class="m">x = 12</span> خاصية الطرح للمساواة</li></ol></div></div>
+          <div class="ex"><span class="exn">5</span> <b>برهان:</b> إذا كان <span class="m">AB ≅ CD</span>، حيث <span class="m">AB = 4x − 6</span> و <span class="m">CD = 22</span>، فإن <span class="m">x = 7</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">AB ≅ CD</span> المعطيات</li><li><span class="m">AB = CD</span> تعريف تطابق القطع المستقيمة</li><li><span class="m">4x − 6 = 22</span> خاصية التعويض</li><li><span class="m">4x = 28</span> خاصية الجمع للمساواة</li><li class="final"><span class="m">x = 7</span> خاصية القسمة للمساواة</li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> <b>صحة:</b> يقدَّر معدل نبضات القلب في الدقيقة بالصيغة <span class="m">T = 0.75(220 − a)</span>، حيث <span class="m">T</span> معدل نبضات القلب و <span class="m">a</span> عمر الشخص.<br>(a) أثبت أن <span class="m">a = 220 − T/0.75</span>. (b) إذا كان معدل نبضات قلب بدر 153، فكم يكون عمره؟
+            <div class="ans" data-answer="16"><input inputmode="numeric" placeholder="العمر (b)"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>(a) <span class="m">T = 0.75(220 − a)</span> المعطيات</li><li><span class="m">T/0.75 = 220 − a</span> خاصية القسمة للمساواة</li><li><span class="m">T/0.75 + a = 220</span> خاصية الجمع للمساواة</li><li><span class="m">a = 220 − T/0.75</span> خاصية الطرح للمساواة</li><li>(b) <span class="m">a = 220 − 153/0.75 = 220 − 204</span> ← خاصية التعويض</li><li class="final">عمر بدر <b>16</b> سنة. تحقّق: <span class="m">0.75(220 − 16) = 153</span> ✓</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-6</span> · البرهان الجبري</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= LESSON 1-7 ================= -->
+      <section class="page" data-title="1-7 إثبات علاقات بين القطع المستقيمة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1-7</div>
+            <h1>إثبات علاقات بين القطع المستقيمة</h1>
+            <div class="en">Proving Segment Relationships</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ كتابة البرهان الجبري والبرهان ذي العمودين. (الدرس <span class="num">1-6</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أكتب براهين تتضمن جمع أطوال القطع المستقيمة.</li><li>أكتب براهين تتضمن تطابق قطع مستقيمة.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>يعمل عبدالله في محل لبيع الأقمشة. ولكي يقيس طولًا مثل <span class="num">125 cm</span>، يقيس مترًا ويضع علامة، ثم يقيس من تلك العلامة <span class="num">25 cm</span> أخرى: <span class="m up">100 cm + 25 cm = 125 cm</span>.</p></div>
+          <div class="card def"><h3>مسلّمة 1.8: مسلّمة أطوال القطع المستقيمة</h3><p>النقاط التي تقع على مستقيم أو قطعة مستقيمة يمكن ربطها بأعداد حقيقية (مسلّمة المسطرة).</p></div>
+          <div class="card def"><h3>مسلّمة 1.9: مسلّمة جمع أطوال القطع المستقيمة</h3><p>إذا علمت أن النقاط <span class="m">A, B, C</span> على استقامة واحدة، فإن النقطة <span class="m">B</span> تقع بين <span class="m">A</span> و <span class="m">C</span> إذا كان <span class="m">AB + BC = AC</span>، والعكس.</p></div>
+          <div class="widget" data-widget="segmentAdd"></div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>استعمال مسلّمة جمع أطوال القطع المستقيمة</h3></header>
+            <div class="body">
+              <p class="q">أثبت أنه إذا كان <span class="m">CE ≅ FE</span>، <span class="m">ED ≅ EG</span>، فإن <span class="m">CD ≅ FG</span>.</p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><span class="m">CE ≅ FE, ED ≅ EG</span> ← معطيات</li>
+                <li><span class="m">CE = FE, ED = EG</span> ← تعريف تطابق القطع المستقيمة</li>
+                <li><span class="m">CE + ED = CD</span> ← مسلّمة جمع أطوال القطع المستقيمة</li>
+                <li><span class="m">FE + EG = CD</span> ← بالتعويض من الخطوة 2 في الخطوة 3</li>
+                <li><span class="m">FE + EG = FG</span> ← مسلّمة جمع أطوال القطع المستقيمة</li>
+                <li><span class="m">CD = FG</span> ← بالتعويض من الخطوة 4 في الخطوة 5</li>
+                <li class="final"><span class="m">CD ≅ FG</span> ← تعريف تطابق القطع المستقيمة</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>1)</b> أكمل البرهان: المعطيات <span class="m">JL ≅ KM</span>، المطلوب <span class="m">JK ≅ LM</span>. (النقاط <span class="m">J, K, L, M</span> بهذا الترتيب على مستقيم)</p>
+            <div class="sol" data-sol><ol class="steps">
+              <li>(a) <span class="m">JL ≅ KM</span> ← معطيات</li>
+              <li>(b) <span class="m">JL = KM</span> ← <b>تعريف تطابق القطع المستقيمة</b></li>
+              <li>(c) <span class="m">JK + KL = JL</span> ، <span class="m">KL + LM = KM</span> ← مسلّمة جمع أطوال القطع المستقيمة</li>
+              <li>(d) <span class="m">JK + KL = KL + LM</span> ← <b>بالتعويض</b></li>
+              <li>(e) <span class="m">JK + KL − KL = KL + LM − KL</span> ← بالطرح</li>
+              <li>(f) <span class="m">JK = LM</span> ← بالتبسيط</li>
+              <li class="final">(g) <span class="m">JK ≅ LM</span> ← تعريف تطابق القطع المستقيمة</li>
+            </ol></div>
+          </div>
+
+          <div class="card def"><h3>نظرية 1.2: خصائص تطابق القطع المستقيمة</h3>
+            <p><b>الانعكاس:</b> <span class="m">AB ≅ AB</span><br><b>التماثل:</b> إذا كان <span class="m">AB ≅ CD</span>، فإن <span class="m">CD ≅ AB</span><br><b>التعدي:</b> إذا كان <span class="m">AB ≅ CD</span> و <span class="m">CD ≅ EF</span>، فإن <span class="m">AB ≅ EF</span></p>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2 من واقع الحياة</span><h3>البرهان باستعمال تطابق القطع المستقيمة</h3></header>
+            <div class="body">
+              <p><b>ماراثون:</b> تقع المحطتان <span class="m">X</span> و <span class="m">Z</span> عند نقطتَي المنتصف بين نقطة البداية <span class="m">S</span> والمحطة <span class="m">Y</span>، ونقطة النهاية <span class="m">F</span> والمحطة <span class="m">Y</span> على التوالي. إذا كان <span class="m">XY = YZ</span>، فأثبت أن <span class="m">ZF ≅ SX</span>.</p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><span class="m">X</span> منتصف <span class="m">SY</span>، <span class="m">Z</span> منتصف <span class="m">YF</span>، <span class="m">XY = YZ</span> ← معطيات</li>
+                <li><span class="m">SX ≅ XY</span> ، <span class="m">YZ ≅ ZF</span> ← نظرية نقطة المنتصف</li>
+                <li><span class="m">XY ≅ YZ</span> ← تعريف تطابق القطع المستقيمة</li>
+                <li><span class="m">SX ≅ YZ</span> ← خاصية التعدي للتطابق</li>
+                <li><span class="m">SX ≅ ZF</span> ← خاصية التعدي للتطابق</li>
+                <li class="final"><span class="m">ZF ≅ SX</span> ← خاصية التماثل للتطابق</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2) نجارة:</b> قص نجار قطعة خشبية <span class="m">RS</span> طولها <span class="m up">22 in</span>، ثم استعملها نموذجًا ليقص قطعة أخرى <span class="m">PQ</span> مطابقة لها، ثم استعمل <span class="m">PQ</span> ليقص <span class="m">MN</span>، ثم استعمل <span class="m">MN</span> ليقص <span class="m">KL</span>. أثبت أن <span class="m">RS = KL</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">PQ ≅ RS, MN ≅ PQ, KL ≅ MN</span> ← معطيات</li><li><span class="m">MN ≅ RS</span> ← خاصية التعدي للتطابق</li><li><span class="m">KL ≅ RS</span> ← خاصية التعدي للتطابق</li><li><span class="m">RS ≅ KL</span> ← خاصية التماثل للتطابق</li><li class="final"><span class="m">RS = KL</span> ← تعريف تطابق القطع المستقيمة</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-7</span> · إثبات علاقات بين القطع المستقيمة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-7 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 1-7">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex"><span class="exn">1</span> أكمل البرهان: المعطيات <span class="m">LK ≅ NM</span> ، <span class="m">KJ ≅ MJ</span>، المطلوب <span class="m">LJ ≅ NJ</span>.
+            <svg viewBox="0 0 160 110" style="max-width:160px;display:block;margin:6px auto" aria-hidden="true"><polygon points="20,50 140,10 130,100" fill="none" stroke="#1d4ed8" stroke-width="2.5"/><g fill="#1e293b"><circle cx="20" cy="50" r="3"/><circle cx="140" cy="10" r="3"/><circle cx="130" cy="100" r="3"/><circle cx="100" cy="23" r="3"/><circle cx="90" cy="83" r="3"/></g><g font-family="Georgia" font-style="italic" font-size="13" text-anchor="middle"><text x="10" y="54">J</text><text x="148" y="12">N</text><text x="140" y="106">L</text><text x="98" y="16">M</text><text x="86" y="98">K</text></g></svg>
+            <div class="sol" data-sol><ol class="steps">
+              <li>(a) <span class="m">LK ≅ NM, KJ ≅ MJ</span> ← <b>معطيات</b></li>
+              <li>(b) <span class="m">LK = NM, KJ = MJ</span> ← تعريف تطابق القطع المستقيمة</li>
+              <li>(c) <span class="m">LK + KJ = NM + KJ</span> ← <b>خاصية الجمع للمساواة</b></li>
+              <li>(d) <span class="m">LK + KJ = NM + MJ</span> ← <b>بالتعويض</b></li>
+              <li>(e) <span class="m">LK + KJ = LJ</span> ، <span class="m">NM + MJ = NJ</span> ← مسلّمة جمع أطوال القطع المستقيمة</li>
+              <li>(f) <span class="m">LJ = NJ</span> ← <b>بالتعويض</b></li>
+              <li class="final">(g) <span class="m">LJ ≅ NJ</span> ← <b>تعريف تطابق القطع المستقيمة</b></li>
+            </ol></div></div>
+          <div class="ex"><span class="exn">2</span> <b>مقص:</b> في الشكل، <span class="m">AR ≅ CR</span> ، <span class="m">DR ≅ BR</span>، أثبت أن <span class="m">AR + DR = CR + BR</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">AR ≅ CR, DR ≅ BR</span> ← معطيات</li><li><span class="m">AR = CR, DR = BR</span> ← تعريف تطابق القطع المستقيمة</li><li><span class="m">AR + DR = CR + DR</span> ← خاصية الجمع للمساواة</li><li class="final"><span class="m">AR + DR = CR + BR</span> ← بالتعويض</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-7</span> · إثبات علاقات بين القطع المستقيمة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= LESSON 1-8 ================= -->
+      <section class="page" data-title="1-8 إثبات علاقات بين الزوايا">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">1-8</div>
+            <h1>إثبات علاقات بين الزوايا</h1>
+            <div class="en">Proving Angle Relationships</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ تعيين أزواج خاصة من الزوايا واستعمالها. (مهارة سابقة)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أكتب براهين تتضمن زوايا متتامة وزوايا متكاملة.</li><li>أكتب براهين تتضمن زوايا متطابقة وزوايا قائمة.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>لاحظ أن <span class="m">∠1</span> بين شفرتَي المقص، و <span class="m">∠2</span> بين الشفرة ومقبض المقص تشكلان زوجًا من الزوايا المتجاورة على مستقيم. وبالمثل فإن <span class="m">∠2</span> و <span class="m">∠3</span> بين مقبضَي المقص تشكلان أيضًا زوجًا من الزوايا المتجاورة على مستقيم.</p></div>
+          <div class="card def"><h3>مسلّمة 1.10: مسلّمة المنقلة</h3><p>تستعمل المنقلة للربط بين قياس زاوية وعدد حقيقي يقع بين <span class="num">0°</span> و <span class="num">180°</span>.</p></div>
+          <div class="card def"><h3>مسلّمة 1.11: مسلّمة جمع قياسات الزوايا</h3><p>تقع النقطة <span class="m">D</span> داخل <span class="m">∠ABC</span> إذا وفقط إذا كان <span class="m">m∠ABD + m∠DBC = m∠ABC</span>.</p></div>
+          <div class="widget" data-widget="angleAdd"></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>استعمال مسلّمة جمع قياسات الزوايا</h3></header>
+            <div class="body">
+              <p class="q">إذا كان <span class="m">m∠JKL = 145°</span> ، <span class="m">m∠2 = 56°</span>، فأوجد <span class="m">m∠1</span>. برِّر خطوات حلّك.</p>
+              <div class="ans" data-answer="89|89°"><input inputmode="numeric" placeholder="m∠1"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠1 + m∠2 = m∠JKL</span> ← مسلّمة جمع قياسات الزوايا</li><li><span class="m">m∠1 + 56° = 145°</span> ← عوّض</li><li><span class="m">m∠1 + 56° − 56° = 145° − 56°</span> ← اطرح 56 من الطرفين</li><li class="final"><span class="m">m∠1 = 89°</span> ← بسّط</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>1)</b> إذا كان <span class="m">m∠ABC = 131°</span> ، <span class="m">m∠1 = 23°</span>، فأوجد <span class="m">m∠3</span>، علمًا بأن <span class="m">∠2</span> زاوية قائمة. برِّر خطوات حلّك.</p>
+            <div class="ans" data-answer="18|18°"><input inputmode="numeric" placeholder="m∠3"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠1 + m∠2 + m∠3 = m∠ABC</span> ← مسلّمة جمع قياسات الزوايا</li><li><span class="m">23° + 90° + m∠3 = 131°</span> ← عوّض (<span class="m">∠2</span> قائمة)</li><li><span class="m">113° + m∠3 = 131°</span> ← بسّط</li><li class="final"><span class="m">m∠3 = 18°</span> ← اطرح 113 من الطرفين</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-8</span> · إثبات علاقات بين الزوايا</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-8 SUPP / COMP ================= -->
+      <section class="page" data-title="الزوايا المتكاملة والمتتامة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>نظريتان</h3>
+            <p><b>1.3 نظرية الزاويتين المتكاملتين:</b> إذا كانت الزاويتان متجاورتين على مستقيم، فإنهما متكاملتان: <span class="m">m∠1 + m∠2 = 180°</span>.</p>
+            <p><b>1.4 نظرية الزاويتين المتتامتين:</b> إذا شكّل الضلعان غير المشتركين لزاويتين متجاورتين زاوية قائمة، فإن الزاويتين تكونان متتامتين: <span class="m">m∠1 + m∠2 = 90°</span>.</p>
+          </div>
+          <div class="widget" data-widget="compSupp"></div>
+          <div class="card example">
+            <header><span class="tag">مثال 2 من واقع الحياة</span><h3>استعمال خصائص الزوايا المتكاملة أو المتتامة</h3></header>
+            <div class="body">
+              <p><b>مسح الأراضي:</b> قام مسّاح بقياس الزاوية بين خط نظره إلى قمة تلة والمستقيم الرأسي فكانت <span class="num">73°</span> تقريبًا. ما قياس الزاوية بين خط نظره والخط الأفقي؟ برِّر خطوات الحل.</p>
+              <div class="ans" data-answer="17|17°"><input inputmode="numeric" placeholder="m∠2"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><b>افهم:</b> نصفا المستقيمين الأفقي والرأسي يكوّنان زاوية قائمة، و <span class="m">∠1</span> و <span class="m">∠2</span> تقعان داخلها.</li><li><b>خطط:</b> استعمل نظرية الزاويتين المتتامتين: <span class="m">m∠1 + m∠2 = 90°</span>.</li><li><b>حل:</b> <span class="m">73° + m∠2 = 90°</span> ← <span class="m">m∠2 = 17°</span>.</li><li class="final">قياس الزاوية بين خط نظر المسّاح وخط الأفق <b><span class="num">17°</span></b>. تحقّق: <span class="m">17° + 73° = 90°</span> ✓</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> <span class="m">∠6</span> و <span class="m">∠7</span> متجاورتان على مستقيم. إذا كان <span class="m">m∠6 = (3x + 32)°</span> و <span class="m">m∠7 = (5x + 12)°</span>، فأوجد قيمة <span class="m">x</span> و <span class="m">m∠6</span> و <span class="m">m∠7</span>.</p>
+            <div class="ans" data-answer="17"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠6 + m∠7 = 180°</span> ← نظرية الزاويتين المتكاملتين</li><li><span class="m">3x + 32 + 5x + 12 = 180</span> ← عوّض</li><li><span class="m">8x + 44 = 180</span> ← <span class="m">8x = 136</span> ← <span class="m">x = 17</span></li><li class="final"><span class="m">m∠6 = 3(17) + 32 = 83°</span> ، <span class="m">m∠7 = 5(17) + 12 = 97°</span></li></ol></div>
+          </div>
+          <div class="card def"><h3>نظرية 1.5: خصائص تطابق الزوايا</h3><p><b>الانعكاس:</b> <span class="m">∠1 ≅ ∠1</span>. <b>التماثل:</b> إذا كانت <span class="m">∠1 ≅ ∠2</span>، فإن <span class="m">∠2 ≅ ∠1</span>. <b>التعدي:</b> إذا كانت <span class="m">∠1 ≅ ∠2</span> و <span class="m">∠2 ≅ ∠3</span>، فإن <span class="m">∠1 ≅ ∠3</span>.</p></div>
+          <div class="card def"><h3>نظريتان</h3>
+            <p><b>1.6 نظرية تطابق المكمّلات:</b> الزاويتان المكملتان للزاوية نفسها أو لزاويتين متطابقتين تكونان متطابقتين.</p>
+            <p><b>1.7 نظرية تطابق المتممات:</b> الزاويتان المتممتان للزاوية نفسها أو لزاويتين متطابقتين تكونان متطابقتين.</p>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-8</span> · إثبات علاقات بين الزوايا</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-8 VERTICAL ANGLES ================= -->
+      <section class="page" data-title="الزاويتان المتقابلتان بالرأس">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>براهين تستعمل فيها نظريتا تطابق المكملات أو المتممات</h3></header>
+            <div class="body">
+              <p class="q">أثبت أن الزاويتين المتقابلتين بالرأس <span class="m">∠2</span> و <span class="m">∠4</span> متطابقتان.</p>
+              <div class="widget" data-widget="vertical"></div>
+              <div class="sol" data-sol><ol class="steps">
+                <li><span class="m">∠2</span> و <span class="m">∠4</span> متقابلتان بالرأس ← معطيات</li>
+                <li><span class="m">∠2</span> و <span class="m">∠3</span> متجاورتان على مستقيم، <span class="m">∠3</span> و <span class="m">∠4</span> متجاورتان على مستقيم ← تعريف الزاويتين المتجاورتين على مستقيم</li>
+                <li><span class="m">∠2</span> و <span class="m">∠3</span> متكاملتان، <span class="m">∠3</span> و <span class="m">∠4</span> متكاملتان ← نظرية الزاويتين المتكاملتين</li>
+                <li class="final"><span class="m">∠4 ≅ ∠2</span> ← نظرية تطابق المكملات</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card def"><h3>نظرية 1.8: نظرية الزاويتين المتقابلتين بالرأس</h3><p>الزاويتان المتقابلتان بالرأس متطابقتان: <span class="m">∠1 ≅ ∠3</span> ، <span class="m">∠2 ≅ ∠4</span>.</p></div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> في الشكل، <span class="m">∠ABE</span> و <span class="m">∠DBC</span> قائمتان. أثبت أن <span class="m">∠ABD ≅ ∠EBC</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠ABE</span> و <span class="m">∠DBC</span> قائمتان ← معطيات</li><li><span class="m">∠ABD</span> و <span class="m">∠DBE</span> متتامتان، <span class="m">∠DBE</span> و <span class="m">∠EBC</span> متتامتان ← نظرية الزاويتين المتتامتين</li><li class="final"><span class="m">∠ABD ≅ ∠EBC</span> ← نظرية تطابق المتممات (متممتان للزاوية نفسها <span class="m">∠DBE</span>)</li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>استعمال الزوايا المتقابلة بالرأس</h3></header>
+            <div class="body">
+              <p class="q">أثبت أنه إذا كان <span class="m">DB</span> ينصف <span class="m">∠ADC</span>، فإن <span class="m">∠2 ≅ ∠3</span> (حيث <span class="m">∠1</span> و <span class="m">∠3</span> متقابلتان بالرأس).</p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><span class="m">DB</span> ينصف <span class="m">∠ADC</span> ← معطيات</li>
+                <li><span class="m">∠1 ≅ ∠2</span> ← تعريف منصف الزاوية</li>
+                <li><span class="m">∠1</span> و <span class="m">∠3</span> متقابلتان بالرأس ← تعريف الزاويتين المتقابلتين بالرأس</li>
+                <li><span class="m">∠3 ≅ ∠1</span> ← نظرية الزاويتين المتقابلتين بالرأس</li>
+                <li><span class="m">∠3 ≅ ∠2</span> ← خاصية التعدي للتطابق</li>
+                <li class="final"><span class="m">∠2 ≅ ∠3</span> ← خاصية التماثل للتطابق</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> إذا كانت <span class="m">∠3</span> و <span class="m">∠4</span> متقابلتين بالرأس، وكان <span class="m">m∠3 = (6x + 2)°</span> و <span class="m">m∠4 = (8x − 14)°</span>، فأوجد <span class="m">m∠3</span> و <span class="m">m∠4</span>.</p>
+            <div class="ans" data-answer="50|50°"><input inputmode="numeric" placeholder="m∠3"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠3 = m∠4</span> ← نظرية الزاويتين المتقابلتين بالرأس وتعريف التطابق</li><li><span class="m">6x + 2 = 8x − 14</span> ← عوّض</li><li><span class="m">16 = 2x</span> ← <span class="m">x = 8</span></li><li class="final"><span class="m">m∠3 = 6(8) + 2 = 50°</span> ، <span class="m">m∠4 = 8(8) − 14 = 50°</span></li></ol></div>
+          </div>
+          <div class="card def"><h3>نظريات الزاوية القائمة</h3>
+            <p><b>1.9</b> يتقاطع المستقيمان المتعامدان ويكونان أربع زوايا قائمة.<br><b>1.10</b> جميع الزوايا القائمة متطابقة.<br><b>1.11</b> المستقيمان المتعامدان يكونان زوايا متجاورة متطابقة.<br><b>1.12</b> إذا كانت الزاويتان متكاملتين ومتطابقتين، فإنهما قائمتان.<br><b>1.13</b> إذا تجاورت زاويتان على مستقيم، وكانتا متطابقتين، فإنهما قائمتان.</p>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-8</span> · إثبات علاقات بين الزوايا</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1-8 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 1-8">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — أوجد قياس الزوايا المرقّمة، واذكر النظريات التي تبرر حلك:</div>
+          <div class="ex"><span class="exn">1</span> <span class="m">∠1</span> قائمة، و <span class="m">∠2</span> و <span class="m">∠3</span> تقعان داخل الزاوية القائمة المجاورة لها، <span class="m">m∠2 = x°</span> ، <span class="m">m∠3 = (x − 16)°</span>.
+            <svg viewBox="0 0 220 100" style="max-width:220px;display:block;margin:6px auto" aria-hidden="true"><line x1="10" y1="80" x2="210" y2="80" stroke="#1d4ed8" stroke-width="3"/><line x1="100" y1="80" x2="100" y2="10" stroke="#1d4ed8" stroke-width="3"/><line x1="100" y1="80" x2="190" y2="30" stroke="#1d4ed8" stroke-width="3"/><rect x="86" y="66" width="14" height="14" fill="none" stroke="#dc2626" stroke-width="2"/><g font-family="Georgia" font-style="italic" font-size="14"><text x="70" y="72">1</text><text x="112" y="50">2</text><text x="145" y="74">3</text></g></svg>
+            <div class="ans" data-answer="53"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠1 = 90°</span>، فالضلعان غير المشتركين لـ <span class="m">∠2</span> و <span class="m">∠3</span> يكوّنان زاوية قائمة ← نظرية الزاويتين المتتامتين: <span class="m">m∠2 + m∠3 = 90°</span></li><li><span class="m">x + x − 16 = 90</span> ← <span class="m">2x = 106</span> ← <span class="m">x = 53</span></li><li class="final"><span class="m">m∠1 = 90°</span> ، <span class="m">m∠2 = 53°</span> ، <span class="m">m∠3 = 37°</span></li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <span class="m">∠4</span> و <span class="m">∠5</span> متجاورتان على مستقيم، <span class="m">m∠4 = (3(x − 1))°</span> ، <span class="m">m∠5 = (x + 7)°</span>.
+            <div class="ans" data-answer="44"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠4 + m∠5 = 180°</span> ← نظرية الزاويتين المتكاملتين</li><li><span class="m">3x − 3 + x + 7 = 180</span> ← <span class="m">4x + 4 = 180</span> ← <span class="m">x = 44</span></li><li class="final"><span class="m">m∠4 = 3(43) = 129°</span> ، <span class="m">m∠5 = 51°</span></li></ol></div></div>
+          <div class="ex-group">المثال 3 — برهان:</div>
+          <div class="ex"><span class="exn">4</span> أكمل برهان إحدى حالات نظرية تطابق المتممات: المعطيات <span class="m">∠1</span> و <span class="m">∠3</span> متتامتان، <span class="m">∠2</span> و <span class="m">∠3</span> متتامتان. المطلوب <span class="m">∠1 ≅ ∠2</span>.
+            <div class="sol" data-sol><ol class="steps"><li>(a) <span class="m">∠1</span> و <span class="m">∠3</span> متتامتان، <span class="m">∠2</span> و <span class="m">∠3</span> متتامتان ← <b>معطيات</b></li><li>(b) <span class="m">m∠1 + m∠3 = 90°</span> ، <span class="m">m∠2 + m∠3 = 90°</span> ← <b>تعريف الزاويتين المتتامتين</b></li><li>(c) <span class="m">m∠1 + m∠3 = m∠2 + m∠3</span> ← <b>بالتعويض</b></li><li>(d) <span class="m">m∠1 = m∠2</span> ← <b>خاصية الطرح للمساواة</b></li><li class="final">(e) <span class="m">∠1 ≅ ∠2</span> ← <b>تعريف تطابق الزوايا</b></li></ol></div></div>
+          <div class="ex-group">المثال 4 — برهان ذو عمودين:</div>
+          <div class="ex"><span class="exn">5</span> المعطيات: <span class="m">∠7 ≅ ∠4</span>. المطلوب: <span class="m">∠5 ≅ ∠6</span>. (<span class="m">∠4</span> و <span class="m">∠5</span> متقابلتان بالرأس، و <span class="m">∠6</span> و <span class="m">∠7</span> متقابلتان بالرأس)
+            <svg viewBox="0 0 240 90" style="max-width:240px;display:block;margin:6px auto" aria-hidden="true"><line x1="10" y1="45" x2="230" y2="45" stroke="#1d4ed8" stroke-width="3"/><line x1="60" y1="8" x2="95" y2="82" stroke="#1d4ed8" stroke-width="3"/><line x1="185" y1="8" x2="150" y2="82" stroke="#1d4ed8" stroke-width="3"/><g font-family="Georgia" font-style="italic" font-size="13"><text x="84" y="38">5</text><text x="62" y="62">4</text><text x="152" y="38">6</text><text x="176" y="62">7</text></g></svg>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠7 ≅ ∠4</span> ← معطيات</li><li><span class="m">∠4 ≅ ∠5</span> ، <span class="m">∠6 ≅ ∠7</span> ← نظرية الزاويتين المتقابلتين بالرأس</li><li><span class="m">∠7 ≅ ∠5</span> ← خاصية التعدي للتطابق (من 1 و 2)</li><li><span class="m">∠6 ≅ ∠5</span> ← خاصية التعدي للتطابق</li><li class="final"><span class="m">∠5 ≅ ∠6</span> ← خاصية التماثل للتطابق</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">1-8</span> · إثبات علاقات بين الزوايا</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 13: END ================= -->
+      <section class="page" data-title="ملخص المفهوم">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">ملخص المفهوم</h2>
+          <div class="tbl-wrap"><table class="data">
+            <tr><th>العبارة</th><th>التعبير اللفظي</th><th>الرموز</th></tr>
+            <tr><td><b>نفي العبارة</b></td><td>عبارة تفيد معنًى مضادًّا لمعنى العبارة الأصلية، وقيمة الصواب لها عكس قيمة صواب العبارة الأصلية.</td><td><span class="m">~p</span><br>وتُقرأ ليس <span class="m">p</span></td></tr>
+            <tr><td><b>عبارة الوصل</b></td><td>عبارة مركبة ناتجة عن ربط عبارتين أو أكثر باستعمال (و).</td><td><span class="m">p ∧ q</span><br>وتُقرأ <span class="m">p</span> و <span class="m">q</span></td></tr>
+            <tr><td><b>عبارة الفصل</b></td><td>عبارة مركبة ناتجة عن ربط عبارتين أو أكثر باستعمال (أو).</td><td><span class="m">p ∨ q</span><br>وتُقرأ <span class="m">p</span> أو <span class="m">q</span></td></tr>
+          </table></div>
+
+          <div class="card def">
+            <h3>ماذا تعلمت في الفصل الأول؟</h3>
+            <ul style="margin:0;padding-inline-start:18px">
+              <li><b>التبرير الاستقرائي <span class="num">(1-1)</span>:</b> أمثلة محددة ← تخمين. مثال مضاد واحد يكفي لإثبات خطأ التخمين.</li>
+              <li><b>المنطق <span class="num">(1-2)</span>:</b> الوصل <span class="m">p ∧ q</span> صائبة فقط إذا كانت العبارتان صائبتين، والفصل <span class="m">p ∨ q</span> خاطئة فقط إذا كانت العبارتان خاطئتين.</li>
+              <li><b>العبارات الشرطية <span class="num">(1-3)</span>:</b> <span class="m">p → q</span> خاطئة فقط عندما يكون الفرض صائبًا والنتيجة خاطئة. الشرطية تكافئ معاكسها الإيجابي، والعكس يكافئ المعكوس.</li>
+              <li><b>التبرير الاستنتاجي <span class="num">(1-4)</span>:</b> قانون الفصل: <span class="m">p → q</span> و <span class="m">p</span> ← <span class="m">q</span>. قانون القياس: <span class="m">p → q</span> و <span class="m">q → r</span> ← <span class="m">p → r</span>.</li>
+              <li><b>المسلّمات والبرهان الحر <span class="num">(1-5)</span>:</b> المسلّمة تُقبل دون برهان، والنظرية عبارة ثبتت صحتها.</li>
+              <li><b>البرهان الجبري <span class="num">(1-6)</span>:</b> كل خطوة في حل المعادلة لها مبرر من خصائص المساواة.</li>
+              <li><b>القطع المستقيمة <span class="num">(1-7)</span>:</b> <span class="m">AB + BC = AC</span> عندما تقع <span class="m">B</span> بين <span class="m">A</span> و <span class="m">C</span>؛ والتطابق انعكاسي ومتماثل ومتعدٍّ.</li>
+              <li><b>الزوايا <span class="num">(1-8)</span>:</b> المتجاورتان على مستقيم متكاملتان، والمتقابلتان بالرأس متطابقتان، ومكملات (أو متممات) الزاوية نفسها متطابقة.</li>
+            </ul>
+          </div>
+
+
+          <div class="card" style="text-align:center;background:linear-gradient(135deg,#ecfdf5,#eff6ff)">
+            <div style="font-size:42px">🎉</div>
+            <h3 style="color:var(--teal)">أحسنت! أكملت الفصل الأول</h3>
+            <p>الفصل الثاني «التوازي والتعامد» سيضاف قريبًا.</p>
+            <div class="ctrl" style="justify-content:center"><a class="btn" href="index.html" style="text-decoration:none">⌂ فهرس الكتاب</a><button class="btn ghost" data-goto="0">⟲ غلاف الفصل</button></div>
+          </div>
+        </div></div><div class="pg-foot"><span>الفصل 1 · التبرير والبرهان</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <nav class="navbar">
+    <button class="nav-btn" id="prevBtn" aria-label="الصفحة السابقة">→ السابق</button>
+    <div class="page-ind" id="pageInd"></div>
+    <button class="nav-btn primary" id="nextBtn" aria-label="الصفحة التالية">التالي ←</button>
+  </nav>
+</div>
+
+<aside class="drawer" id="drawer" aria-label="الفهرس">
+  <h3>محتويات الكتاب</h3>
+  <ol id="drawerList"></ol>
+</aside>
+<div class="drawer-bg" id="drawerBg"></div>
+
+<script src="js/math.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" async></script>
+<script src="js/widgets.js"></script>
+<script src="js/book.js"></script>
+</body>
+</html>
