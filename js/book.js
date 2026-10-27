@@ -353,6 +353,22 @@
   window.addEventListener('pointerup', endDrag);
   window.addEventListener('pointercancel', endDrag);
 
+  /* ---------- jump to a page: tap the page indicator ---------- */
+  const jump = document.createElement('div');
+  jump.className = 'jump'; jump.hidden = true;
+  jump.innerHTML = `<div class="jump-t"></div><div class="ctrl"><input type="range" min="1" max="${P}" step="1"><output></output></div>
+    <div class="ctrl" style="justify-content:center"><button class="btn" data-j="go">اذهب</button><button class="btn ghost" data-j="x">إلغاء</button></div>`;
+  document.body.appendChild(jump);
+  const jr = jump.querySelector('input'), jo = jump.querySelector('output'), jt = jump.querySelector('.jump-t');
+  const jsync = () => { jo.textContent = jr.value; jt.innerHTML = `صفحة ${jr.value}: <b>${(sections[jr.value - 1].dataset.title || '').replace(/^(\d-\d)/, '<span class="num">$1</span>')}</b>`; };
+  jr.addEventListener('input', jsync);
+  pageInd.setAttribute('role', 'button'); pageInd.tabIndex = 0; pageInd.title = 'اذهب إلى صفحة';
+  const openJump = () => { jr.value = firstPage() + 1; jsync(); jump.hidden = !jump.hidden; };
+  pageInd.addEventListener('click', openJump);
+  pageInd.addEventListener('keydown', (e) => { if (e.key === 'Enter') openJump(); });
+  jump.querySelector('[data-j=go]').addEventListener('click', () => { jump.hidden = true; goToPage(jr.value - 1); });
+  jump.querySelector('[data-j=x]').addEventListener('click', () => { jump.hidden = true; });
+
   /* ---------- flip sound: a soft paper swish ---------- */
   const soundBtn = $('soundBtn');
   let soundOn = load('sound') !== '0', actx = null;

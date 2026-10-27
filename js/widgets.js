@@ -982,62 +982,76 @@
       if (!ia && !ib) return same ? 'خارجيتان في جهة واحدة' : 'متبادلتان خارجيًّا';
       return 'ليس لهما اسم خاص';
     }
-    const measure = (a) => { const g = find(given[0]); return cls(a.p) === cls(g.p) ? given[1] : 180 - given[1]; };
+    // tr = measure of the TR/BL angle class; the other class is 180 − tr
+    let tr = given ? (cls(find(given[0]).p) === 1 ? given[1] : 180 - given[1]) : 62;
+    let showDeg = !!given;
+    const mOf = (a) => (cls(a.p) === 1 ? tr : 180 - tr);
+    const COLS = [['rgba(219,39,119,.22)', '#db2777'], ['rgba(29,78,216,.20)', '#1d4ed8']];   // class 0 (TL/BR), class 1 (TR/BL)
     let picks = [];
-    function geom() {
-      // angle (deg) of the transversal so the figure matches the given measure
-      let base = 62;
-      if (given) {
-        const g = find(given[0]);
-        const tr = cls(g.p) === 1 ? given[1] : 180 - given[1];      // measure of the TR/BL class
-        base = orient === 'h' ? tr : 90 - tr;
-      }
-      return base;
-    }
+    const hT = handle(svg, C.orange);
     function draw() {
       clear(layer);
-      const th = geom(), rad = th * Math.PI / 180;
-      const X = orient === 'h' ? [[0, 70], [0, 150]] : [[110, 0], [220, 0]];
-      // intersection points
+      const th = orient === 'h' ? tr : 90 - tr, rad = th * Math.PI / 180;
       const I = orient === 'h'
         ? [[160 + (105 - 70) / Math.tan(rad), 70], [160 - (150 - 105) / Math.tan(rad), 150]]
         : [[110, 105 - (110 - 160) * Math.tan(rad)], [220, 105 - (220 - 160) * Math.tan(rad)]];
       const arrow = (x, y, a) => s('path', { d: `M${x},${y} l${-9 * Math.cos(a - 0.5)},${9 * Math.sin(a - 0.5)} M${x},${y} l${-9 * Math.cos(a + 0.5)},${9 * Math.sin(a + 0.5)}`, stroke: C.pink, 'stroke-width': 2.5, fill: 'none' }, layer);
+      const lineDir = orient === 'h' ? 0 : 90;
+      const rays = [lineDir, th, lineDir + 180, th + 180].map((x) => (x + 360) % 360).sort((x, y) => x - y);
+      const wedges = rays.map((r, k) => { const r2 = rays[(k + 1) % 4] + (k === 3 ? 360 : 0); return [r, r2, (r + r2) / 2]; });
+      const wedgeOf = (pos) => {
+        const want = { TL: [-1, -1], TR: [1, -1], BR: [1, 1], BL: [-1, 1] }[pos];
+        return wedges.find(([, , m]) => Math.sign(Math.round(Math.cos(m * Math.PI / 180) * 1000)) === want[0] && Math.sign(Math.round(-Math.sin(m * Math.PI / 180) * 1000)) === want[1]) || wedges[0];
+      };
+      // arcs first, so lines sit on top of them
+      all.forEach((a) => {
+        const w = wedgeOf(a.p), c = COLS[cls(a.p)], picked = picks.includes(a);
+        s('path', { d: arcPath(I[a.i], picked ? 30 : 24, w[0], w[1]), fill: picked ? (picks[0] === a ? 'rgba(245,158,11,.45)' : 'rgba(124,58,237,.4)') : c[0], stroke: picked ? C.ink : c[1], 'stroke-width': picked ? 2 : 1.2 }, layer);
+      });
       if (orient === 'h') {
         [70, 150].forEach((y, i) => { s('line', { x1: 8, x2: 312, y1: y, y2: y, stroke: C.blue, 'stroke-width': 3 }, layer); if (given) arrow(290, y, 0); if (nm[i + 1]) txt(layer, 304, y - 8, nm[i + 1], italic()); });
       } else {
         [110, 220].forEach((x, i) => { s('line', { x1: x, x2: x, y1: 6, y2: 204, stroke: C.blue, 'stroke-width': 3 }, layer); if (given) arrow(x, 22, Math.PI / 2); if (nm[i + 1]) txt(layer, x + 12, 16, nm[i + 1], italic()); });
       }
       const L = 400, mid = [(I[0][0] + I[1][0]) / 2, (I[0][1] + I[1][1]) / 2];
-      s('line', { x1: mid[0] - L * Math.cos(rad), y1: mid[1] + L * Math.sin(rad), x2: mid[0] + L * Math.cos(rad), y2: mid[1] - L * Math.sin(rad), stroke: C.ink, 'stroke-width': 3 }, layer);
-      if (nm[0]) { const tp = orient === 'h' ? [I[0][0] + 70 / Math.tan(rad) + 10, 12] : [304, 105 - 144 * Math.tan(rad) - 8]; txt(layer, tp[0], tp[1], nm[0], italic()); }
-      // label positions: bisector directions of the 4 angles
-      const lineDir = orient === 'h' ? 0 : 90;
-      const rays = [lineDir, th, lineDir + 180, th + 180].map((a) => (a + 360) % 360).sort((a, b) => a - b);
+      const u = [Math.cos(rad), -Math.sin(rad)];
+      s('line', { x1: mid[0] - L * u[0], y1: mid[1] - L * u[1], x2: mid[0] + L * u[0], y2: mid[1] + L * u[1], stroke: C.ink, 'stroke-width': 3 }, layer);
+      // handle on the transversal (beyond the first intersection) to rotate it
+      const hr = Math.min(fit(mid, th, 320, 210, 8) - 14, 96);
+      place(hT, mid[0] + hr * u[0], mid[1] + hr * u[1]);
+      if (nm[0]) txt(layer, mid[0] + (hr + 2) * u[0] - 16 * u[1], mid[1] + (hr + 2) * u[1] + 16 * u[0] + 5, nm[0], italic());
       all.forEach((a) => {
-        const P = I[a.i];
-        // find which wedge corresponds to the position
-        const wedges = rays.map((r, k) => { const r2 = rays[(k + 1) % 4] + (k === 3 ? 360 : 0); return [r, r2, (r + r2) / 2]; });
-        const want = { TL: [-1, -1], TR: [1, -1], BR: [1, 1], BL: [-1, 1] }[a.p];
-        const w = wedges.find(([, , m]) => Math.sign(Math.round(Math.cos(m * Math.PI / 180) * 1000)) === want[0] && Math.sign(Math.round(-Math.sin(m * Math.PI / 180) * 1000)) === want[1]) || wedges[0];
-        const picked = picks.includes(a);
-        if (picked) s('path', { d: arcPath(P, 26, w[0], w[1]), fill: picks[0] === a ? 'rgba(245,158,11,.4)' : 'rgba(124,58,237,.35)' }, layer);
-        const q = [P[0] + 19 * Math.cos(w[2] * Math.PI / 180), P[1] - 19 * Math.sin(w[2] * Math.PI / 180)];
-        const t = txt(layer, q[0], q[1] + 5, a.n, { 'font-size': 14, 'font-weight': 800, fill: picked ? C.ink : '#475569' });
-        const hit = s('circle', { cx: q[0], cy: q[1], r: 13, fill: 'transparent', style: 'cursor:pointer' }, layer);
+        const P = I[a.i], w = wedgeOf(a.p), picked = picks.includes(a), c = COLS[cls(a.p)];
+        const q = [P[0] + 37 * Math.cos(w[2] * Math.PI / 180), P[1] - 37 * Math.sin(w[2] * Math.PI / 180)];
+        txt(layer, q[0], q[1] + (showDeg ? 0 : 5), a.n, { 'font-size': 14, 'font-weight': 800, fill: picked ? C.ink : c[1], 'pointer-events': 'none' });
+        if (showDeg) txt(layer, q[0], q[1] + 13, mOf(a) + '°', { 'font-size': 10, 'font-weight': 700, fill: c[1], 'pointer-events': 'none' });
+        const hit = s('circle', { cx: q[0], cy: q[1] + 3, r: 14, fill: 'transparent', style: 'cursor:pointer' }, layer);
         hit.addEventListener('click', () => { picks = picks.length >= 2 || picks.includes(a) ? [a] : picks.concat(a); draw(); });
-        t.style.pointerEvents = 'none';
       });
       let html = '';
-      if (picks.length === 0) html = `<span class="pill">${given ? 'اضغط على رقم أي زاوية لمعرفة قياسها' : 'اضغط على رقمَي زاويتين لمعرفة نوع العلاقة بينهما'}</span>`;
-      if (given && picks[0]) { const a = picks[0], g = find(given[0]); html += `<span class="pill big ok"><span class="m">m∠${a.n} = ${measure(a)}°</span></span>` + (String(a.n) !== String(g.n) ? `<span class="pill">∠${a.n} و ∠${g.n}: ${relation(a, g)}</span>` : '<span class="pill">هذه هي الزاوية المعطاة</span>'); }
-      if (picks.length === 2) html += `<span class="pill big" style="color:${C.purple}">∠${picks[0].n} و ∠${picks[1].n}: ${relation(picks[0], picks[1])}</span>`;
+      if (picks.length === 0) html = `<span class="pill">${given ? 'اضغط على رقم أي زاوية لمعرفة قياسها' : 'اضغط على رقمَي زاويتين لمعرفة نوع العلاقة بينهما'}</span><span class="pill">الزوايا ذات اللون نفسه متطابقة، والزاويتان مختلفتا اللون متكاملتان</span>`;
+      if (given && picks[0]) { const a = picks[0], g = find(given[0]); html += `<span class="pill big ok"><span class="m">m∠${a.n} = ${mOf(a)}°</span></span>` + (String(a.n) !== String(g.n) ? `<span class="pill">∠${a.n} و ∠${g.n}: ${relation(a, g)}</span>` : '<span class="pill">هذه هي الزاوية المعطاة</span>'); }
+      if (picks.length === 2) html += `<span class="pill big" style="color:${C.purple}">∠${picks[0].n} و ∠${picks[1].n}: ${relation(picks[0], picks[1])}</span>` + (showDeg && !given ? `<span class="pill"><span class="m">${mOf(picks[0])}°</span> و <span class="m">${mOf(picks[1])}°</span></span>` : '');
       ro.innerHTML = html;
+      tex(ro);
     }
+    const rng = el.querySelector('input[type=range]'), out = el.querySelector('output');
+    function syncGiven() {
+      if (!given) return;
+      given[1] = cls(find(given[0]).p) === 1 ? tr : 180 - tr;
+      rng.value = given[1]; out.textContent = given[1] + '°';
+    }
+    draggable(svg, hT, (x, y) => {
+      const I0 = orient === 'h' ? 105 : 160;   // the figure pivots around its centre
+      let a = angAt(orient === 'h' ? [160, 105] : [165, 105], [x, y]);
+      if (a > 180) a -= 180;
+      if (orient === 'h') tr = Math.round(Math.max(22, Math.min(158, a)));
+      else { const t = a > 90 ? a - 180 : a; tr = Math.round(90 - Math.max(-68, Math.min(68, t))); }
+      showDeg = true; syncGiven(); draw();
+    });
     if (given) {
-      const r = el.querySelector('input[type=range]'), out = el.querySelector('output');
-      r.value = given[1]; out.textContent = given[1] + '°';
-      r.addEventListener('input', () => { given[1] = +r.value; out.textContent = r.value + '°'; draw(); });
+      syncGiven();
+      rng.addEventListener('input', () => { given[1] = +rng.value; out.textContent = rng.value + '°'; tr = cls(find(given[0]).p) === 1 ? given[1] : 180 - given[1]; draw(); });
     }
     draw();
   };

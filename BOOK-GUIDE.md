@@ -224,6 +224,22 @@ Mark it in HTML, JS does the rest:
 | `truthQuiz` | Fill-in truth table quiz | 1-2 |
 | `venn` | Highlight Venn regions by expression | 1-2 |
 | `vennCount` | Venn with numbers + sliders (`data-a/b`, `data-va/vab/vb/vout`, `data-fixed`) | 1-2 |
+| `condTruth` | Conditional p → q truth with toggles (Omar's promise) | 1-3 |
+| `relatedCond` | Conditional / converse / inverse / contrapositive, equivalent ones colored the same | 1-3 |
+| `vennDeduce` | Drag a point in a Venn diagram to judge a deduction | 1-4 |
+| `twoPoints` | Postulates 1.1/1.2: line through 2 points, plane through 3 | 1-5 |
+| `reasonQuiz` | Choose each proof step's reason (`data-proof` = key in `PROOFS`) | 1-6 |
+| `tempConvert` | °C → °F slider | 1-6 |
+| `segmentAdd` | Segment addition AB + BC = AC | 1-7 |
+| `angleAdd` | Angle addition (drag rays) | 1-8 |
+| `compSupp` | Supplementary / complementary adjacent angles | 1-8 |
+| `vertical` | Vertical angles | 1-8 |
+| `box3d` | Rectangular prism: tap an edge → parallel / skew / intersecting (`data-labels` = 8 vertices) | 2-1 |
+| `transFig` | Two lines + transversal: tap 2 angles → relationship; `data-given="5:72"` → measures + slider (`data-orient` h/v, `data-labels` "TL,TR,BR,BL\|…", `data-names`) | 2-1, 2-2 |
+| `slope` | Slope on a grid with rise/run triangle; optional parallel and perpendicular lines | 2-4 |
+| `lineEq` | y = mx + b with m and b sliders | 2-5 |
+| `plans` | Compare two linear offers (`data-a`/`data-b` = "rate,fixed", `data-max`, `data-label`, `data-names`) | 2-5 |
+| `pointLine` | Distance from a point to a line (perpendicular vs slanted segment) | 2-6 |
 
 ### Rules for a new widget
 - Write it as `W.myWidget = function (el) { … }` in `js/widgets.js`.
@@ -258,6 +274,10 @@ Chapter colors on the home page: 1 teal, 2 blue, 3 orange-red, 4 purple.
 - Wide screen (≥ 840px and landscape): two-page spread (book.js switches automatically).
 - Inside a page, use `@container page (min-width: 600px)` for two columns, **not** `@media`, because in spread view the page is narrower than the screen.
 - Don't add new colors or fonts; use the tokens.
+
+**Navigation:** «التالي/السابق» buttons, swipe/drag, the ☰ contents list, and the page indicator (tap it → slider to jump to any page). All automatic.
+
+**Performance:** only the current page and its neighbours are rendered (`.page.gone { display:none }`). Never add heavy effects (SVG filters, backdrop-filter, large images) to every page, or iPhone Safari will crash.
 
 **Page flip:** Apple Books-style curl (`book.js`). Don't change it per chapter. `.curl` (the folded corner) goes on every page.
 

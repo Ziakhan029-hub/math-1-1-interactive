@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e3a5f">
+<title>الفصل 2: التوازي والتعامد — الرياضيات 1-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/book.css">
+</head>
+<body data-chapter="2">
+<div class="app">
+
+  <header class="topbar">
+    <a class="icon-btn" href="index.html" aria-label="فهرس الكتاب" title="فهرس الكتاب">⌂</a>
+    <button class="icon-btn" id="tocBtn" aria-label="محتويات الفصل">☰</button>
+    <div class="brand">الرياضيات <span class="num">1-1</span><small>الفصل 2 · التوازي والتعامد</small></div>
+    <button class="icon-btn" id="soundBtn" aria-label="صوت قلب الصفحة" aria-pressed="true">🔊</button>
+  </header>
+  <div class="progress"><i id="prog"></i></div>
+
+  <main class="stage">
+    <div class="book" id="book">
+
+      <!-- ================= 0: COVER ================= -->
+      <section class="page cover" data-title="الغلاف">
+        <div class="face front"><div class="scroll"><div class="cover-full" style="background:radial-gradient(circle at 70% 20%, rgba(96,165,250,.35), transparent 50%),linear-gradient(160deg,#1e3a8a 0%,#1d4ed8 45%,#0e7490 80%,#064e3b 100%)">
+          <div class="cv-grid" aria-hidden="true"></div>
+          <svg class="cv-s s-tl fl f4" viewBox="0 0 80 70" aria-hidden="true"><g stroke="#a7f3d0" stroke-width="2.5"><line x1="4" y1="20" x2="76" y2="20"/><line x1="4" y1="50" x2="76" y2="50"/><line x1="20" y1="66" x2="60" y2="4"/></g></svg>
+          <svg class="cv-s s-tr fl f2" viewBox="0 0 80 80" aria-hidden="true"><g stroke="#fde047" stroke-width="2.5" fill="none"><line x1="40" y1="4" x2="40" y2="76"/><line x1="4" y1="40" x2="76" y2="40"/><rect x="40" y="28" width="12" height="12" stroke="#f9a8d4"/></g></svg>
+          <svg class="cv-s s-bl fl f1" viewBox="0 0 80 80" aria-hidden="true"><g stroke="#fff" stroke-width="2" fill="none"><path d="M6 74 L74 6"/><path d="M6 74 H74 M6 74 V6" stroke="#7dd3fc"/><path d="M40 40 H60 V20" stroke="#fdba74" stroke-dasharray="4 3"/></g></svg>
+          <svg class="cv-s s-br fl f3" viewBox="0 0 80 60" aria-hidden="true"><g stroke="#f9a8d4" stroke-width="2.5"><line x1="4" y1="14" x2="76" y2="14"/><line x1="4" y1="46" x2="76" y2="46"/></g><g fill="#f9a8d4"><path d="M64 9 l8 5 -8 5z"/><path d="M64 41 l8 5 -8 5z"/></g></svg>
+          <div class="cv-content">
+            <div class="cv-top">الرياضيات <span class="num">1-1</span> · التعليم الثانوي</div>
+            <div class="cv-title">الفصل <span>2</span></div>
+            <div class="cv-chapter"><b>الفصل 2</b><span>التوازي والتعامد</span><i>Parallel and Perpendicular Lines</i></div>
+            <button class="cv-start" data-next>ابدأ القراءة <span>←</span></button>
+            <div class="cv-badge">✦ نسخة تفاعلية ✦</div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1: HOW TO USE ================= -->
+      <section class="page" data-title="كيف تستعمل هذا الكتاب؟">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">👋</div>
+            <h1>مرحبًا بك!</h1>
+            <div class="en" style="direction:rtl;text-align:right;font-family:inherit;font-weight:500">هذا الكتاب تفاعلي: اقرأ، جرّب بنفسك، ثم تحقق من فهمك.</div>
+          </div>
+          <h2 class="sec-title">كيف تستعمل هذا الكتاب؟</h2>
+          <div class="how">
+            <div class="card"><div class="ic" style="background:#dcfce7">✋</div><div><b>اسحب الأشكال واضغط عليها</b><br>النقاط الملوّنة النابضة تُسحب، والأرقام والقطع في الأشكال تُضغط.</div></div>
+            <div class="card"><div class="ic" style="background:#dbeafe">🎚️</div><div><b>حرّك المنزلق</b><br>غيّر القيم بالمنزلق وراقب النتيجة مباشرة.</div></div>
+            <div class="card"><div class="ic" style="background:#ede9fe">💡</div><div><b>عرض الحل خطوة بخطوة</b><br>حاول أولًا، ثم اضغط «عرض الحل» واكشف الخطوات واحدة تلو الأخرى.</div></div>
+            <div class="card"><div class="ic" style="background:#fef3c7">📖</div><div><b>قلّب الصفحات</b><br>اسحب الصفحة من طرفها، أو اضغط الزاوية المطوية، أو استعمل الأزرار في الأسفل.</div></div>
+          </div>
+          <p class="swipe-hint">اسحب الصفحة نحو <b>اليمين ⟶</b> للانتقال إلى الصفحة التالية</p>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 2 · التوازي والتعامد</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 2: CONTENTS ================= -->
+      <section class="page" data-title="فهرس الفصل 2">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8 55%,#0ea5e9)">
+            <div class="no">2</div>
+            <h1>التوازي والتعامد</h1>
+            <div class="en">Parallel and Perpendicular Lines</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ المستقيمات والزوايا واستعمال التبرير الاستنتاجي لكتابة براهين هندسية.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أحدد علاقات بين زوايا ناتجة عن قطع مستقيم لمستقيمين متوازيين، وأبرهن توازي مستقيمين.</li><li>أستعمل الميل لتحليل المستقيم وكتابة معادلته.</li><li>أجد البعد بين نقطة ومستقيم، والبعد بين مستقيمين متوازيين.</li></ul></div>
+          </div>
+          <h2 class="sec-title">دروس الفصل</h2>
+          <ul class="toc-list">
+            <li><span class="no">2-1</span><span class="ttl">المستقيمان والقاطع</span><button class="btn sm go" data-goto="3">افتح ←</button></li>
+            <li><span class="no">2-2</span><span class="ttl">الزوايا والمستقيمات المتوازية</span><button class="btn sm go" data-goto="6">افتح ←</button></li>
+            <li><span class="no">2-3</span><span class="ttl">إثبات توازي مستقيمين</span><button class="btn sm go" data-goto="9">افتح ←</button></li>
+            <li><span class="no">2-4</span><span class="ttl">ميل المستقيم</span><button class="btn sm go" data-goto="11">افتح ←</button></li>
+            <li><span class="no">2-5</span><span class="ttl">صيغ معادلة المستقيم</span><button class="btn sm go" data-goto="14">افتح ←</button></li>
+            <li><span class="no">2-6</span><span class="ttl">الأعمدة والمسافة</span><button class="btn sm go" data-goto="17">افتح ←</button></li>
+            <li><span class="no">★</span><span class="ttl">ملخص الفصل</span><button class="btn sm go" data-goto="19">افتح ←</button></li>
+          </ul>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 2 · التوازي والتعامد</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 3: LESSON 2-1 ================= -->
+      <section class="page" data-title="2-1 المستقيمان والقاطع">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">2-1</div>
+            <h1>المستقيمان والقاطع</h1>
+            <div class="en">Lines and Transversals</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>استعملتُ علاقات الزوايا والقطع المستقيمة لأبرهن نظريات. (الدروس من <span class="num">1-5</span> إلى <span class="num">1-8</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أتعرّف العلاقات بين مستقيمين أو مستويين.</li><li>أسمّي أزواج الزوايا الناتجة عن مستقيمين وقاطع لهما.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>تُظهر غرفة الخداع البصري أن الشخص الواقف في الزاوية اليمنى أكبر من الشخص الواقف في الزاوية اليسرى. ويبدو السقف والأرضية أفقيين، ولكنهما في الحقيقة ليسا أفقيين؛ لقد استُعملت مستقيمات متوازية ومتقاطعة ومتخالفة لتصميم هذه الغرفة.</p></div>
+          <div class="card def"><h3>مفاهيم أساسية: التوازي والتخالف</h3>
+            <p><span class="hl">المستقيمان المتوازيان</span> هما مستقيمان لا يتقاطعان أبدًا ويقعان في المستوى نفسه، ونكتب <span class="m">JK ∥ LM</span>.</p>
+            <p><span class="hl">المستقيمان المتخالفان</span> هما مستقيمان لا يتقاطعان، ولا يقعان في المستوى نفسه.</p>
+            <p><span class="hl">المستويان المتوازيان</span> هما مستويان غير متقاطعين.</p>
+          </div>
+          <div class="vocab"><span><b>المستقيمان المتوازيان</b><i>parallel lines</i></span><span><b>المستقيمان المتخالفان</b><i>skew lines</i></span><span><b>المستويان المتوازيان</b><i>parallel planes</i></span><span><b>القاطع</b><i>transversal</i></span></div>
+
+          <div class="card example" style="margin-top:14px">
+            <header><span class="tag">مثال 1 من واقع الحياة</span><h3>تحديد علاقات التوازي والتخالف</h3></header>
+            <div class="body">
+              <p class="q">حدِّد كلًّا مما يأتي مستعملًا قطعة الجبن (منشور ثلاثي قاعدته العليا <span class="m">JKL</span> والسفلى <span class="m">PQR</span>):</p>
+              <div class="part"><span class="lbl">a</span> جميع القطع المستقيمة التي توازي <span class="m">JP</span>.
+                <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">KQ</span> ، <span class="m">LR</span> (الأحرف الجانبية الأخرى).</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> جميع القطع المستقيمة التي تخالف <span class="m">KL</span>.
+                <div class="sol" data-sol><ol class="steps"><li>نبحث عن قطع لا تقطع <span class="m">KL</span> ولا توازيها.</li><li class="final"><span class="m">JP</span> ، <span class="m">PQ</span> ، <span class="m">PR</span></li></ol></div></div>
+              <div class="part"><span class="lbl">c</span> مستوى يوازي المستوى <span class="m">PQR</span>.
+                <div class="sol" data-sol><ol class="steps"><li class="final">المستوى <span class="m">JKL</span> هو المستوى الوحيد الموازي للمستوى <span class="m">PQR</span>.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>استعمل المكعب: اضغط على أي حرف (قطعة) لترى ما يوازيه ويخالفه ويقطعه.</p>
+            <div class="widget" data-widget="box3d" data-labels="A,D,C,B,F,E,H,G"><div class="hint">اضغط على أي قطعة مستقيمة في الشكل</div></div>
+            <div class="part"><span class="lbl">1A</span> جميع القطع المستقيمة التي تخالف <span class="m">BC</span>.
+              <div class="sol" data-sol><ol class="steps"><li>القطع التي توازي <span class="m">BC</span>: <span class="m">AD, GH, FE</span>، والتي تقطعها: <span class="m">AB, CD, BG, CH</span>.</li><li class="final">القطع المتخالفة مع <span class="m">BC</span>: <span class="m">AF</span> ، <span class="m">DE</span> ، <span class="m">FG</span> ، <span class="m">EH</span>.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> قطعة مستقيمة توازي <span class="m">EH</span>.
+              <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">AB</span> أو <span class="m">DC</span> أو <span class="m">FG</span>.</li></ol></div></div>
+            <div class="part"><span class="lbl">1C</span> جميع المستويات التي توازي المستوى <span class="m">DCH</span>.
+              <div class="sol" data-sol><ol class="steps"><li>المستوى <span class="m">DCH</span> هو الوجه الأيمن <span class="m">DCHE</span>.</li><li class="final">يوازيه الوجه المقابل: المستوى <span class="m">ABG</span> (أي <span class="m">ABGF</span>).</li></ol></div></div>
+          </div>
+          <div class="card tip warn"><h4>تنبيه! التوازي والتخالف</h4>القطعتان اللتان لا تتقاطعان قد تكونان متوازيتين لا متخالفتين، وذلك عندما تقعان في المستوى نفسه.</div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-1</span> · المستقيمان والقاطع</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 4: ANGLE PAIRS ================= -->
+      <section class="page" data-title="أزواج الزوايا الناتجة عن القاطع">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>علاقات أزواج الزوايا الناتجة عن القاطع</h3>
+            <p><span class="hl">القاطع</span> هو المستقيم الذي يقطع مستقيمين أو أكثر في المستوى نفسه وفي نقاط مختلفة، ويُشكّل معهما ثماني زوايا.</p>
+            <div class="tbl-wrap"><table class="data">
+              <tr><th>الاسم</th><th>الوصف</th><th>أمثلة</th></tr>
+              <tr><td><span class="hl">زوايا داخلية</span></td><td>بين المستقيمين</td><td><span class="m">∠3, ∠4, ∠5, ∠6</span></td></tr>
+              <tr><td><span class="hl">زوايا خارجية</span></td><td>ليست بين المستقيمين</td><td><span class="m">∠1, ∠2, ∠7, ∠8</span></td></tr>
+              <tr><td><span class="hl">متحالفتان</span></td><td>داخليتان في جهة واحدة من القاطع</td><td><span class="m">∠4, ∠5</span> و <span class="m">∠3, ∠6</span></td></tr>
+              <tr><td><span class="hl">متبادلتان داخليًّا</span></td><td>داخليتان غير متجاورتين في جهتين مختلفتين</td><td><span class="m">∠3, ∠5</span> و <span class="m">∠4, ∠6</span></td></tr>
+              <tr><td><span class="hl">متبادلتان خارجيًّا</span></td><td>خارجيتان غير متجاورتين في جهتين مختلفتين</td><td><span class="m">∠1, ∠7</span> و <span class="m">∠2, ∠8</span></td></tr>
+              <tr><td><span class="hl">متناظرتان</span></td><td>في جهة واحدة من القاطع، إحداهما داخلية والأخرى خارجية</td><td><span class="m">∠1, ∠5</span> و <span class="m">∠2, ∠6</span></td></tr>
+            </table></div>
+          </div>
+          <div class="widget" data-widget="transFig" data-orient="h" data-labels="1,2,3,4|5,6,7,8" data-names="t,q,r"><div class="hint">اضغط على رقمَي زاويتين لمعرفة نوع العلاقة بينهما، واسحب النقطة البرتقالية لتدوير القاطع</div></div>
+
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>تصنيف علاقات أزواج الزوايا</h3></header>
+            <div class="body">
+              <p class="q">مستعملًا الشكل، صنِّف كل زوج من الزوايا إلى زاويتين متبادلتين داخليًّا، أو متبادلتين خارجيًّا، أو متناظرتين، أو متحالفتين:</p>
+              <div class="widget" data-widget="transFig" data-orient="v" data-labels="1,2,7,8|3,4,5,6"><div class="hint">اضغط على رقمَي الزاويتين لتتحقق من إجابتك، واسحب النقطة البرتقالية لتدوير القاطع</div></div>
+              <div class="part"><span class="lbl">a</span> <span class="m">∠1</span> و <span class="m">∠5</span>
+                <div class="sol" data-sol><ol class="steps"><li class="final">خارجيتان في جهتين مختلفتين من القاطع ← <b>متبادلتان خارجيًّا</b>.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m">∠7</span> و <span class="m">∠6</span>
+                <div class="sol" data-sol><ol class="steps"><li class="final">داخليتان في جهة واحدة ← <b>متحالفتان</b>.</li></ol></div></div>
+              <div class="part"><span class="lbl">c</span> <span class="m">∠4</span> و <span class="m">∠2</span>
+                <div class="sol" data-sol><ol class="steps"><li class="final">في الموقع نفسه عند كل نقطة تقاطع ← <b>متناظرتان</b>.</li></ol></div></div>
+              <div class="part"><span class="lbl">d</span> <span class="m">∠6</span> و <span class="m">∠2</span>
+                <div class="sol" data-sol><ol class="steps"><li class="final">داخليتان في جهتين مختلفتين ← <b>متبادلتان داخليًّا</b>.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">2A</span> <span class="m">∠3</span> و <span class="m">∠7</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">متبادلتان داخليًّا.</li></ol></div></div>
+            <div class="part"><span class="lbl">2B</span> <span class="m">∠5</span> و <span class="m">∠7</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">متناظرتان.</li></ol></div></div>
+            <div class="part"><span class="lbl">2C</span> <span class="m">∠4</span> و <span class="m">∠8</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">متبادلتان خارجيًّا.</li></ol></div></div>
+            <div class="part"><span class="lbl">2D</span> <span class="m">∠2</span> و <span class="m">∠3</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">متحالفتان.</li></ol></div></div>
+          </div>
+          <div class="card tip"><h4>إرشادات للدراسة: القاطع</h4>عندما يوجد في الشكل أكثر من قاطع واحد، عيّن أولًا القاطع الذي ينتج عنه زوج الزوايا المعطاة، بتعيين المستقيم الذي يصل بين رأسيهما.</div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-1</span> · المستقيمان والقاطع</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 5: 2-1 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 2-1">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 2 — مستعملًا الشكل، صنِّف كل زوج من الزوايا:</div>
+          <div class="widget" data-widget="transFig" data-orient="v" data-labels="1,2,6,5|3,4,8,7"><div class="hint">اضغط على رقمَي زاويتين لتتحقق، واسحب النقطة البرتقالية لتدوير القاطع</div></div>
+          <div class="ex"><span class="exn">5</span> <span class="m">∠1</span> و <span class="m">∠8</span>
+            <div class="sol" data-sol><ol class="steps"><li class="final">متبادلتان خارجيًّا.</li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> <span class="m">∠2</span> و <span class="m">∠4</span>
+            <div class="sol" data-sol><ol class="steps"><li class="final">متناظرتان.</li></ol></div></div>
+          <div class="ex"><span class="exn">7</span> <span class="m">∠3</span> و <span class="m">∠6</span>
+            <div class="sol" data-sol><ol class="steps"><li class="final">متبادلتان داخليًّا.</li></ol></div></div>
+          <div class="ex"><span class="exn">8</span> <span class="m">∠6</span> و <span class="m">∠7</span>
+            <div class="sol" data-sol><ol class="steps"><li class="final">متحالفتان.</li></ol></div></div>
+          <div class="ex-group">المثال 1 — استعمل المكعب في الصفحة السابقة:</div>
+          <div class="ex"><span class="exn">★</span> هل يمكن أن يكون مستقيمان غير متقاطعين وغير متوازيين؟ أعطِ مثالًا من المكعب.
+            <div class="sol" data-sol><ol class="steps"><li>نعم، إذا لم يقعا في المستوى نفسه.</li><li class="final">مثال: <span class="m">BC</span> و <span class="m">AF</span> مستقيمان متخالفان.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-1</span> · المستقيمان والقاطع</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 6: LESSON 2-2 ================= -->
+      <section class="page" data-title="2-2 الزوايا والمستقيمات المتوازية">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">2-2</div>
+            <h1>الزوايا والمستقيمات المتوازية</h1>
+            <div class="en">Angles and Parallel Lines</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ تسمية أزواج الزوايا الناتجة عن مستقيمين وقاطع لهما. (الدرس <span class="num">2-1</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أستعمل نظريات المستقيمين المتوازيين لتحديد العلاقات بين أزواج محددة من الزوايا.</li><li>أستعمل الجبر لأجد قياسات الزوايا.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>تستعمل السقالات كثيرًا في أعمال البناء، وتتكون من أذرع معدنية موصولة بطريقة هندسية توفر مساحات عمل أفقية عند ارتفاعات مختلفة. فالقاطع <span class="m">t</span> في الصورة يوفر دعامة لمساحتَي العمل المتوازيتين.</p></div>
+          <div class="card def"><h3>مسلّمة 2.1: مسلّمة الزاويتين المتناظرتين</h3><p>إذا قطع قاطع مستقيمين متوازيين، فإن كل زاويتين متناظرتين متطابقتان.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>استعمال مسلّمة الزاويتين المتناظرتين</h3></header>
+            <div class="body">
+              <p class="q">في الشكل: <span class="m">m∠5 = 72°</span>. أوجد قياس كلٍّ من الزاويتين الآتيتين، واذكر المسلّمات أو النظريات التي استعملتها.</p>
+              <div class="widget" data-widget="transFig" data-orient="h" data-labels="1,2,3,4|8,7,6,5" data-given="5:72" data-names="t,n,p"><div class="hint">اضغط على أي زاوية لمعرفة قياسها والعلاقة بينها وبين ∠5. غيّر القياس بالمنزلق!، واسحب النقطة البرتقالية لتدوير القاطع</div></div>
+              <div class="part"><span class="lbl">a</span> <span class="m">∠4</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">∠4 ≅ ∠5</span> ← مسلّمة الزاويتين المتناظرتين</li><li><span class="m">m∠4 = m∠5</span> ← تعريف تطابق الزوايا</li><li class="final"><span class="m">m∠4 = 72°</span> ← بالتعويض</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m">∠2</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">∠2 ≅ ∠4</span> ← نظرية الزاويتين المتقابلتين بالرأس</li><li><span class="m">∠4 ≅ ∠5</span> ← مسلّمة الزاويتين المتناظرتين</li><li><span class="m">∠2 ≅ ∠5</span> ← خاصية التعدي للتطابق</li><li class="final"><span class="m">m∠2 = 72°</span> ← تعريف تطابق الزوايا والتعويض</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في الشكل نفسه، إذا كان <span class="m">m∠8 = 105°</span>، فأوجد قياس كلٍّ من الزوايا الآتية: <small>(حرّك المنزلق إلى 105° واضغط على ∠8 ثم على كل زاوية)</small></p>
+            <div class="part"><span class="lbl">1A</span> <span class="m">∠1</span>
+              <div class="ans" data-answer="105"><input inputmode="numeric" placeholder="بالدرجات"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">∠1 ≅ ∠8</span> متناظرتان ← <span class="m">m∠1 = 105°</span></li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> <span class="m">∠2</span>
+              <div class="ans" data-answer="75"><input inputmode="numeric" placeholder="بالدرجات"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠1</span> و <span class="m">∠2</span> متجاورتان على مستقيم ← متكاملتان</li><li class="final"><span class="m">m∠2 = 180° − 105° = 75°</span></li></ol></div></div>
+            <div class="part"><span class="lbl">1C</span> <span class="m">∠3</span>
+              <div class="ans" data-answer="105"><input inputmode="numeric" placeholder="بالدرجات"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">∠3 ≅ ∠1</span> متقابلتان بالرأس ← <span class="m">m∠3 = 105°</span></li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-2</span> · الزوايا والمستقيمات المتوازية</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 7: 2-2 THEOREMS ================= -->
+      <section class="page" data-title="نظريات المستقيمين المتوازيين">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>نظريات: المستقيمان المتوازيان وأزواج الزوايا</h3>
+            <p>إذا قطع قاطع مستقيمين متوازيين، فإن:</p>
+            <p><b>2.1</b> كل زاويتين <b>متبادلتين داخليًّا</b> متطابقتان.<br><b>2.2</b> كل زاويتين <b>متحالفتين</b> متكاملتان.<br><b>2.3</b> كل زاويتين <b>متبادلتين خارجيًّا</b> متطابقتان.</p>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>إيجاد قيم المتغيرات</h3></header>
+            <div class="body">
+              <p class="q"><b>جبر:</b> استعمل الشكل (<span class="m">r ∥ s</span>، والقاطع <span class="m">q</span>) لإيجاد المتغير في كلٍّ مما يأتي، وبرِّر إجابتك.</p>
+              <div class="widget" data-widget="transFig" data-orient="h" data-labels="1,2,3,8|7,4,5,6" data-given="1:85" data-names="q,r,s"><div class="hint">اضغط على ∠4 لترى علاقتها بـ ∠1، واسحب النقطة البرتقالية لتدوير القاطع</div></div>
+              <div class="part"><span class="lbl">a</span> إذا كان <span class="m">m∠1 = 85°</span> ، <span class="m">m∠4 = (2x − 17)°</span>، فأوجد قيمة <span class="m">x</span>.
+                <div class="ans" data-answer="56"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">∠3 ≅ ∠1</span> ← نظرية الزاويتين المتقابلتين بالرأس، إذن <span class="m">m∠3 = 85°</span></li><li><span class="m">∠3</span> و <span class="m">∠4</span> متحالفتان ← متكاملتان: <span class="m">m∠3 + m∠4 = 180</span></li><li><span class="m">85 + 2x − 17 = 180</span> ← <span class="m">2x + 68 = 180</span> ← <span class="m">2x = 112</span></li><li class="final"><span class="m">x = 56</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> إذا كان <span class="m">m∠3 = (4y + 30)°</span> ، <span class="m">m∠7 = (7y + 6)°</span>، فأوجد قيمة <span class="m">y</span>.
+                <div class="ans" data-answer="8"><input inputmode="numeric" placeholder="y"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">∠3 ≅ ∠7</span> ← نظرية الزاويتين المتبادلتين داخليًّا</li><li><span class="m">4y + 30 = 7y + 6</span></li><li><span class="m">30 = 3y + 6</span> ← <span class="m">24 = 3y</span></li><li class="final"><span class="m">y = 8</span></li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في الشكل: <span class="m">j ∥ k</span> والقاطع <span class="m">ℓ</span>؛ عند <span class="m">j</span> الزوايا 1 (يسار)، 3 (أعلى)، 4 (يمين)، 2 (أسفل)، وعند <span class="m">k</span> الزوايا 5 (يسار)، 7 (أعلى)، 8 (يمين)، 6 (أسفل).</p>
+            <div class="part"><span class="lbl">3A</span> إذا كان <span class="m">m∠2 = (4x + 7)°</span> ، <span class="m">m∠7 = (5x − 13)°</span>، فأوجد قيمة <span class="m">x</span>.
+              <div class="ans" data-answer="20"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠2</span> و <span class="m">∠7</span> متبادلتان خارجيًّا ← متطابقتان (نظرية 2.3)</li><li><span class="m">4x + 7 = 5x − 13</span></li><li class="final"><span class="m">x = 20</span></li></ol></div></div>
+            <div class="part"><span class="lbl">3B</span> إذا كان <span class="m">m∠5 = 68°</span> ، <span class="m">m∠3 = (3y − 2)°</span>، فأوجد قيمة <span class="m">y</span>.
+              <div class="ans" data-answer="38"><input inputmode="numeric" placeholder="y"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠3</span> و <span class="m">∠5</span> متحالفتان ← متكاملتان (نظرية 2.2)</li><li><span class="m">3y − 2 + 68 = 180</span> ← <span class="m">3y = 114</span></li><li class="final"><span class="m">y = 38</span></li></ol></div></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4 من الاختبار</span><h3>مسألة مفتوحة</h3></header>
+            <div class="body">
+              <p class="q">إذا كان <span class="m">a ∥ b</span>، و <span class="m">∠MRQ</span> و <span class="m">∠RPN</span> متبادلتان داخليًّا، حيث <span class="m">m∠MRQ = (5x + 7)°</span> و <span class="m">m∠RPN = (7x − 21)°</span>، فأوجد <span class="m">m∠MRQ</span>.</p>
+              <div class="ans" data-answer="77|77°"><input inputmode="numeric" placeholder="m∠MRQ"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠MRQ = m∠RPN</span> ← زاويتان متبادلتان داخليًّا</li><li><span class="m">5x + 7 = 7x − 21</span> ← <span class="m">28 = 2x</span> ← <span class="m">x = 14</span></li><li><span class="m">m∠MRQ = 5(14) + 7 = 77°</span></li><li class="final">تحقّق: <span class="m">m∠RPN = 7(14) − 21 = 77°</span> ✓ <b>انتبه:</b> المطلوب القياس 77° وليس <span class="m">x = 14</span>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card def"><h3>نظرية 2.4: نظرية القاطع العمودي</h3><p>إذا كان مستقيم عموديًّا على أحد مستقيمين متوازيين في مستوى، فإنه يكون عموديًّا على المستقيم الآخر: إذا كان <span class="m">a ∥ b</span> و <span class="m">t ⊥ a</span>، فإن <span class="m">t ⊥ b</span>.</p></div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> إذا كان <span class="m">e ∥ f</span>، والمستقيم <span class="m">d</span> عموديًّا على <span class="m">e</span>، ويصنع مع <span class="m">f</span> زاوية قياسها <span class="m">(4y + 10)°</span>، فأوجد قيمة <span class="m">y</span>.</p>
+            <div class="ans" data-answer="20"><input inputmode="numeric" placeholder="y"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>بنظرية القاطع العمودي: <span class="m">d ⊥ f</span>، فالزاوية قائمة.</li><li><span class="m">4y + 10 = 90</span> ← <span class="m">4y = 80</span></li><li class="final"><span class="m">y = 20</span></li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-2</span> · الزوايا والمستقيمات المتوازية</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 8: 2-2 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 2-2">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — في الشكل: <span class="m">m∠1 = 94°</span>. أوجد قياس كلٍّ من الزوايا، واذكر المسلّمات أو النظريات:</div>
+          <div class="widget" data-widget="transFig" data-orient="v" data-labels="1,2,7,8|3,4,5,6" data-given="1:94"><div class="hint">حاول أولًا، ثم اضغط على الزاوية لتتحقق، واسحب النقطة البرتقالية لتدوير القاطع</div></div>
+          <div class="ex"><span class="exn">1</span> <span class="m">∠3</span>
+            <div class="ans" data-answer="94"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">∠3 ≅ ∠1</span> ← مسلّمة الزاويتين المتناظرتين: <span class="m">m∠3 = 94°</span></li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <span class="m">∠5</span>
+            <div class="ans" data-answer="94"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠5 ≅ ∠3</span> ← نظرية الزاويتين المتقابلتين بالرأس</li><li class="final"><span class="m">m∠5 = 94°</span></li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> <span class="m">∠4</span>
+            <div class="ans" data-answer="86"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠3</span> و <span class="m">∠4</span> متجاورتان على مستقيم ← متكاملتان</li><li class="final"><span class="m">m∠4 = 180° − 94° = 86°</span></li></ol></div></div>
+
+          <div class="ex-group">المثال 2 — في الشكل: <span class="m">m∠4 = 101°</span>. أوجد قياس كلٍّ من الزوايا:</div>
+          <div class="widget" data-widget="transFig" data-orient="h" data-labels="1,2,3,4|5,6,7,8" data-given="4:101"><div class="hint">حاول أولًا، ثم اضغط على الزاوية لتتحقق، واسحب النقطة البرتقالية لتدوير القاطع</div></div>
+          <div class="ex"><span class="exn">4</span> <span class="m">∠6</span>
+            <div class="ans" data-answer="101"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">∠6 ≅ ∠4</span> ← نظرية الزاويتين المتبادلتين داخليًّا: <span class="m">m∠6 = 101°</span></li></ol></div></div>
+          <div class="ex"><span class="exn">5</span> <span class="m">∠7</span>
+            <div class="ans" data-answer="79"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠6</span> و <span class="m">∠7</span> متجاورتان على مستقيم ← متكاملتان</li><li class="final"><span class="m">m∠7 = 180° − 101° = 79°</span></li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> <span class="m">∠5</span>
+            <div class="ans" data-answer="79"><input inputmode="numeric"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠4</span> و <span class="m">∠5</span> متحالفتان ← متكاملتان (نظرية 2.2)</li><li class="final"><span class="m">m∠5 = 180° − 101° = 79°</span></li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-2</span> · الزوايا والمستقيمات المتوازية</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 9: LESSON 2-3 ================= -->
+      <section class="page" data-title="2-3 إثبات توازي مستقيمين">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">2-3</div>
+            <h1>إثبات توازي مستقيمين</h1>
+            <div class="en">Proving Lines Parallel</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ استعمال خصائص المستقيمات المتوازية لتحديد الزوايا المتطابقة. (الدرس <span class="num">2-2</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أميّز المستقيمات المتوازية بناءً على علاقات بين أزواج الزوايا.</li><li>أبرهن توازي مستقيمين باستعمال العلاقات بين أزواج الزوايا.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>عندما تنظر إلى سكة القطار، تجد أن البعد بين خطَّيها ثابت دائمًا حتى عند المنحنيات والمنعطفات؛ فقد صُممت السكك بدقة، بحيث يكون خطّاها متوازيين عند جميع النقاط ليسير عليها القطار بأمان.</p></div>
+          <div class="card def"><h3>مسلّمة 2.2: عكس مسلّمة الزاويتين المتناظرتين</h3><p>إذا قطع قاطع مستقيمين في مستوى، ونتج عن التقاطع زاويتان متناظرتان متطابقتان، فإن المستقيمين متوازيان.</p></div>
+          <div class="card def"><h3>مسلّمة 2.3: مسلّمة التوازي</h3><p>إذا عُلم مستقيم ونقطة لا تقع عليه، فإنه يوجد مستقيم واحد فقط يمر بتلك النقطة ويوازي المستقيم المعلوم.</p></div>
+          <div class="card def"><h3>نظريات: عكس نظريات التوازي</h3>
+            <p>إذا قطع قاطع مستقيمين في مستوى، ونتج عن التقاطع:</p>
+            <p><b>2.5</b> زاويتان متبادلتان خارجيًّا متطابقتان،<br><b>2.6</b> أو زاويتان متحالفتان متكاملتان،<br><b>2.7</b> أو زاويتان متبادلتان داخليًّا متطابقتان،<br>فإن المستقيمين <b>متوازيان</b>.</p>
+            <p><b>2.8</b> عكس نظرية القاطع العمودي: إذا كان مستقيمان في مستوى عموديين على المستقيم نفسه، فإنهما متوازيان.</p>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>تعيين المستقيمات المتوازية</h3></header>
+            <div class="body">
+              <p class="q">القاطع <span class="m">p</span> يقطع المستقيمات <span class="m">ℓ, m, n</span>: الزاويتان 1 (أعلى يسار) و 2 (أسفل يمين) عند <span class="m">ℓ</span>، و 3 و 4 عند <span class="m">m</span>، و 5 و 6 عند <span class="m">n</span>. هل يمكن إثبات أن أيًّا منها متوازية؟</p>
+              <svg viewBox="0 0 260 170" style="max-width:260px;display:block;margin:6px auto" aria-hidden="true"><g stroke="#1d4ed8" stroke-width="3"><line x1="20" y1="35" x2="230" y2="35"/><line x1="40" y1="85" x2="240" y2="85"/><line x1="60" y1="135" x2="250" y2="135"/></g><line x1="60" y1="5" x2="200" y2="165" stroke="#1e293b" stroke-width="3"/><g font-size="13" font-weight="800" fill="#475569" text-anchor="middle"><text x="74" y="30">1</text><text x="102" y="52">2</text><text x="117" y="80">3</text><text x="146" y="102">4</text><text x="161" y="130">5</text><text x="190" y="152">6</text></g><g font-family="Georgia" font-style="italic" font-size="15"><text x="236" y="31">ℓ</text><text x="244" y="81">m</text><text x="252" y="131">n</text><text x="50" y="14">p</text></g></svg>
+              <div class="part"><span class="lbl">a</span> <span class="m">∠1 ≅ ∠6</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">∠1</span> و <span class="m">∠6</span> متبادلتان خارجيًّا بالنسبة للمستقيمين <span class="m">ℓ, n</span>.</li><li class="final">بما أن <span class="m">∠1 ≅ ∠6</span>، فإن <span class="m">ℓ ∥ n</span> ← عكس نظرية الزاويتين المتبادلتين خارجيًّا.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m">∠2 ≅ ∠3</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">∠2</span> و <span class="m">∠3</span> متبادلتان داخليًّا بالنسبة للمستقيمين <span class="m">ℓ, m</span>.</li><li class="final">بما أن <span class="m">∠2 ≅ ∠3</span>، فإن <span class="m">ℓ ∥ m</span> ← عكس نظرية الزاويتين المتبادلتين داخليًّا.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>المستقيمان <span class="m">a, b</span> يقطعان المستقيمين <span class="m">ℓ, m</span>. الزوايا مرقمة عند كل تقاطع (أعلى يسار، أعلى يمين، أسفل يمين، أسفل يسار): <span class="m">a∩ℓ</span>: 1,2,3,4 ، <span class="m">b∩ℓ</span>: 5,6,7,8 ، <span class="m">a∩m</span>: 9,10,11,12 ، <span class="m">b∩m</span>: 13,14,15,16.</p>
+            <div class="part"><span class="lbl">1A</span> <span class="m">∠2 ≅ ∠8</span>
+              <div class="sol" data-sol><ol class="steps"><li>القاطع <span class="m">ℓ</span>: الزاويتان متبادلتان داخليًّا بالنسبة للمستقيمين <span class="m">a, b</span>.</li><li class="final"><span class="m">a ∥ b</span> ← عكس نظرية الزاويتين المتبادلتين داخليًّا.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> <span class="m">∠3 ≅ ∠11</span>
+              <div class="sol" data-sol><ol class="steps"><li>القاطع <span class="m">a</span>: الزاويتان متناظرتان بالنسبة للمستقيمين <span class="m">ℓ, m</span>.</li><li class="final"><span class="m">ℓ ∥ m</span> ← عكس مسلّمة الزاويتين المتناظرتين.</li></ol></div></div>
+            <div class="part"><span class="lbl">1C</span> <span class="m">∠12 ≅ ∠14</span>
+              <div class="sol" data-sol><ol class="steps"><li>القاطع <span class="m">m</span>: الزاويتان متبادلتان خارجيًّا بالنسبة للمستقيمين <span class="m">a, b</span>.</li><li class="final"><span class="m">a ∥ b</span> ← عكس نظرية الزاويتين المتبادلتين خارجيًّا.</li></ol></div></div>
+            <div class="part"><span class="lbl">1D</span> <span class="m">∠1 ≅ ∠15</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">الزاويتان لا تقعان على قاطع واحد يربط بينهما ← <b>لا يمكن</b> إثبات توازي أي مستقيمين.</li></ol></div></div>
+            <div class="part"><span class="lbl">1E</span> <span class="m">m∠8 + m∠13 = 180°</span>
+              <div class="sol" data-sol><ol class="steps"><li>القاطع <span class="m">b</span>: الزاويتان متحالفتان بالنسبة للمستقيمين <span class="m">ℓ, m</span>.</li><li class="final"><span class="m">ℓ ∥ m</span> ← عكس نظرية الزاويتين المتحالفتين.</li></ol></div></div>
+            <div class="part"><span class="lbl">1F</span> <span class="m">∠8 ≅ ∠6</span>
+              <div class="sol" data-sol><ol class="steps"><li class="final">الزاويتان متقابلتان بالرأس، فهما متطابقتان دائمًا ← <b>لا يمكن</b> إثبات توازي أي مستقيمين.</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-3</span> · إثبات توازي مستقيمين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 10: 2-3 PROVING ================= -->
+      <section class="page" data-title="إثبات توازي مستقيمين وتمارين 2-3">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 2 من واقع الحياة</span><h3>إثبات توازي مستقيمين</h3></header>
+            <div class="body">
+              <p><b>سلالم:</b> كل درجة من درجات السلّم عمودية على دعامتيه الرئيستين. هل يمكن إثبات أن الدعامتين الرئيستين متوازيتان، وأن جميع الدرجات متوازية؟</p>
+              <div class="sol" data-sol><ol class="steps"><li>الدعامتان عموديتان على كل درجة ← فهما متوازيتان بحسب عكس نظرية القاطع العمودي.</li><li class="final">وبما أن أي درجتين عموديتان على كلٍّ من الدعامتين، فهما متوازيتان أيضًا.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2) تجديف:</b> حتى يتحرك قارب التجديف في مسار مستقيم، يجب أن تكون مجاديف كل جانب متوازية. في الصورة يصنع مجدافان مع خط القارب زاويتين قياساهما <span class="num">120°</span> و <span class="num">70°</span>. هل يمكن أن تبرهن أن مجاديف الجانب الأيسر متوازية؟</p>
+            <div class="sol" data-sol><ol class="steps"><li>لكي يكون المجدافان متوازيين، يجب أن تكون الزاويتان المتناظرتان متطابقتين (أو المتحالفتان متكاملتين).</li><li><span class="m">120° ≠ 70°</span> و <span class="m">120° + 70° = 190° ≠ 180°</span></li><li class="final"><b>لا</b>؛ المجدافان ليسا متوازيين.</li></ol></div>
+          </div>
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex"><span class="exn">5</span> <b>برهان:</b> أكمل برهان النظرية 2.5. المعطيات: <span class="m">∠1 ≅ ∠2</span> (حيث <span class="m">∠1</span> عند <span class="m">ℓ</span> و <span class="m">∠2</span> عند <span class="m">m</span> متبادلتان خارجيًّا، و <span class="m">∠3</span> تقابل <span class="m">∠2</span> بالرأس). المطلوب: <span class="m">ℓ ∥ m</span>.
+            <div class="sol" data-sol><ol class="steps"><li>(a) <span class="m">∠1 ≅ ∠2</span> ← معطى</li><li>(b) <span class="m">∠2 ≅ ∠3</span> ← <b>نظرية الزاويتين المتقابلتين بالرأس</b></li><li>(c) <span class="m">∠1 ≅ ∠3</span> ← خاصية التعدي للتطابق</li><li class="final">(d) <span class="m">ℓ ∥ m</span> ← <b>عكس مسلّمة الزاويتين المتناظرتين</b> (<span class="m">∠1</span> و <span class="m">∠3</span> متناظرتان)</li></ol></div></div>
+          <div class="ex"><span class="exn">★</span> قاطع يقطع مستقيمين، فنتجت زاويتان متحالفتان قياساهما <span class="m">(3x + 10)°</span> و <span class="m">(2x + 20)°</span>. ما قيمة <span class="m">x</span> التي تجعل المستقيمين متوازيين؟
+            <div class="ans" data-answer="30"><input inputmode="numeric" placeholder="x"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>بعكس نظرية الزاويتين المتحالفتين: يجب أن تكونا متكاملتين.</li><li><span class="m">3x + 10 + 2x + 20 = 180</span> ← <span class="m">5x = 150</span></li><li class="final"><span class="m">x = 30</span></li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-3</span> · إثبات توازي مستقيمين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 11: LESSON 2-4 ================= -->
+      <section class="page" data-title="2-4 ميل المستقيم">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">2-4</div>
+            <h1>ميل المستقيم</h1>
+            <div class="en">Slope of a Line</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ برهنة توازي مستقيمين باستعمال علاقات الزوايا. (الدرس <span class="num">2-3</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أجد ميل المستقيم.</li><li>أستعمل الميل لتحديد المستقيمات المتوازية والمستقيمات المتعامدة.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>تستعمل لوحات مرورية لتنبيه السائقين إلى حالة الطريق. فاللوحة التي تشير إلى انحدار الطريق بنسبة <span class="num">6%</span> تعني أن الطريق ترتفع أو تهبط بمقدار <span class="m up">6 m</span> رأسيًّا لكل <span class="m up">100 m</span> أفقيًّا.</p></div>
+          <div class="card def"><h3>مفهوم أساسي: ميل المستقيم</h3>
+            <p>في المستوى الإحداثي، <span class="hl">ميل المستقيم</span> هو نسبة التغير في الإحداثي <span class="m">y</span> إلى التغير في الإحداثي <span class="m">x</span> بين أي نقطتين عليه:</p>
+            <p style="text-align:center"><span class="m">m = (y₂ − y₁) / (x₂ − x₁)</span> ، حيث <span class="m">x₁ ≠ x₂</span></p>
+          </div>
+          <div class="widget" data-widget="slope"><div class="hint">اسحب النقطتين: المثلث يُظهر التغير الأفقي (أحمر) والرأسي (أزرق)</div></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>إيجاد ميل المستقيم</h3></header>
+            <div class="body">
+              <p class="q">أوجد ميل كل مستقيم مما يأتي: <small>(ضع النقطتين في الأداة لتتحقق)</small></p>
+              <div class="part"><span class="lbl">a</span> المستقيم المار بالنقطتين <span class="m">(−1, −2)</span> و <span class="m">(3, 3)</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">m = (3 − (−2)) / (3 − (−1))</span></li><li class="final"><span class="m">m = 5/4</span> (موجب)</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> المستقيم المار بالنقطتين <span class="m">(−2, 3)</span> و <span class="m">(1, −3)</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">m = (−3 − 3) / (1 − (−2)) = −6/3</span></li><li class="final"><span class="m">m = −2</span> (سالب)</li></ol></div></div>
+              <div class="part"><span class="lbl">c</span> المستقيم المار بالنقطتين <span class="m">(−4, −3)</span> و <span class="m">(3, −3)</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">m = (−3 − (−3)) / (3 − (−4)) = 0/7</span></li><li class="final"><span class="m">m = 0</span> (مستقيم أفقي)</li></ol></div></div>
+              <div class="part"><span class="lbl">d</span> المستقيم المار بالنقطتين <span class="m">(2, 1)</span> و <span class="m">(2, −4)</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">m = (−4 − 1) / (2 − 2) = −5/0</span></li><li class="final">ميل هذا المستقيم <b>غير معرّف</b>؛ فلا يوجد عدد تضربه في 0 يعطي −5 (مستقيم رأسي).</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card def"><h3>ملخص المفهوم: حالات الميل</h3><p><b>موجب:</b> المستقيم يصعد عند التحرك من اليسار إلى اليمين. <b>سالب:</b> ينزل. <b>صفر:</b> خط أفقي. <b>غير معرّف:</b> خط رأسي.</p></div>
+          <p>يمكن تفسير الميل على أنه <span class="hl">معدّل التغير</span> في الكمية <span class="m">y</span> بالنسبة إلى الكمية <span class="m">x</span>.</p>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-4</span> · ميل المستقيم</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 12: 2-4 RATE + PARALLEL/PERP ================= -->
+      <section class="page" data-title="الميل والمستقيمات المتوازية والمتعامدة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 2 من واقع الحياة</span><h3>استعمال الميل معدلًا للتغير</h3></header>
+            <div class="body">
+              <p><b>طائرات:</b> كانت طائرة على بُعد <span class="m up">500 km</span> من المدينة المنورة بعد <span class="m up">0.5 h</span> من مرورها فوق الرياض، ثم أصبحت على بُعد <span class="m up">152 km</span> بعد ساعة. كم يكون بُعدها عن المدينة المنورة بعد <span class="m up">0.75 h</span> إذا كانت سرعتها ثابتة؟</p>
+              <div class="ans" data-answer="326"><input inputmode="numeric" placeholder="km"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>افهم:</b> النقطتان <span class="m">(0.5, 500)</span> و <span class="m">(1, 152)</span> حيث <span class="m">x</span> الزمن و <span class="m">y</span> البعد.</li>
+                <li><b>الميل:</b> <span class="m">m = (152 − 500) / (1 − 0.5) = −348/0.5 = −696</span> ← السرعة <span class="m up">696 km/h</span> والإشارة السالبة تعني تناقص المسافة.</li>
+                <li><span class="m">−696 = (y − 500) / (0.75 − 0.5)</span> ← <span class="m">−174 = y − 500</span></li>
+                <li class="final"><span class="m">y = 326</span>؛ البعد <b><span class="m up">326 km</span></b>.</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2) مبيعات:</b> كانت مبيعات مصنع معلبات غذائية 20 مليون علبة عام 2016م، و 200 مليون علبة عام 2021م. إذا حافظ المصنع على معدل الزيادة نفسه، فكم تكون مبيعاته عام 2024م؟</p>
+            <div class="ans" data-answer="308"><input inputmode="numeric" placeholder="مليون علبة"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>معدل التغير: <span class="m">(200 − 20) / (2021 − 2016) = 180/5 = 36</span> مليون علبة سنويًّا.</li><li>من 2021 إلى 2024: 3 سنوات ← <span class="m">3 × 36 = 108</span></li><li class="final"><span class="m">200 + 108 = 308</span> مليون علبة.</li></ol></div>
+          </div>
+          <div class="card def"><h3>مسلّمات: المستقيمات المتوازية والمتعامدة</h3>
+            <p><b>2.4 ميلا المستقيمين المتوازيين:</b> يكون للمستقيمين غير الرأسيين الميل نفسه إذا وفقط إذا كانا متوازيين. وجميع المستقيمات الرأسية متوازية.</p>
+            <p><b>2.5 ميلا المستقيمين المتعامدين:</b> يكون المستقيمان غير الرأسيين متعامدين إذا وفقط إذا كان حاصل ضرب ميليهما يساوي <span class="num">−1</span>. والمستقيمات الأفقية والرأسية متعامدة.</p>
+          </div>
+          <div class="card tip"><h4>إرشادات للدراسة: ميلا المستقيمين المتعامدين</h4>إذا كان ميل المستقيم <span class="m">ℓ</span> يساوي <span class="m">a/b</span>، فإن ميل المستقيم العمودي عليه هو مقلوبه مع عكس الإشارة: <span class="m">−b/a</span>، لأن <span class="m">(a/b)(−b/a) = −1</span>. <small>(فعّل «أظهر مستقيمًا موازيًا وآخر عموديًّا» في أداة الميل)</small></div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>تحديد علاقات المستقيمات</h3></header>
+            <div class="body">
+              <p class="q">حدِّد ما إذا كان <span class="m">AB</span> و <span class="m">CD</span> متوازيين أو متعامدين أو غير ذلك، إذا كانت <span class="m">A(1, 1), B(−1, −5), C(3, 2), D(6, 1)</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">AB</span>: <span class="m">(−5 − 1)/(−1 − 1) = −6/−2 = 3</span></li><li>ميل <span class="m">CD</span>: <span class="m">(1 − 2)/(6 − 3) = −1/3</span></li><li>الميلان غير متساويين، وحاصل ضربهما <span class="m">3 × (−1/3) = −1</span></li><li class="final"><span class="m">AB</span> و <span class="m">CD</span> <b>متعامدان</b>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">3A</span> <span class="m">A(14, 13), B(−11, 0), C(−3, 7), D(−4, −5)</span>
+              <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">AB = (0 − 13)/(−11 − 14) = 13/25</span></li><li>ميل <span class="m">CD = (−5 − 7)/(−4 + 3) = 12</span></li><li class="final">الميلان غير متساويين، وحاصل ضربهما ليس <span class="num">−1</span> ← <b>غير ذلك</b>.</li></ol></div></div>
+            <div class="part"><span class="lbl">3B</span> <span class="m">A(3, 6), B(−9, 2), C(5, 4), D(2, 3)</span>
+              <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">AB = (2 − 6)/(−9 − 3) = 1/3</span></li><li>ميل <span class="m">CD = (3 − 4)/(2 − 5) = 1/3</span></li><li class="final">الميلان متساويان ← <b>متوازيان</b>.</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-4</span> · ميل المستقيم</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 13: 2-4 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 2-4">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex"><span class="exn">4</span> <b>علم النبات:</b> الكودزو نبات متسلّق سريع النمو. قيس ارتفاع نبتة عند يوم البداية فكان <span class="m up">0.5 m</span>، وبعد سبعة أيام أصبح ارتفاعها <span class="m up">4 m</span>.<br>(b) ما ميل المستقيم الذي يمثل ارتفاع النبتة مع مرور الزمن؟ وماذا يُمثّل؟ (c) إذا استمرت في النمو وفق هذا المعدل، فكم يكون ارتفاعها بعد 15 يومًا؟
+            <div class="ans" data-answer="8"><input inputmode="decimal" placeholder="الارتفاع بعد 15 يومًا (m)"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>(b) <span class="m">m = (4 − 0.5)/(7 − 0) = 3.5/7 = 0.5</span></li><li>الميل يمثل معدل النمو: <span class="m up">0.5 m</span> يوميًّا.</li><li class="final">(c) <span class="m">0.5 + 0.5 × 15 = 8</span> ← ارتفاعها <b><span class="m up">8 m</span></b>.</li></ol></div></div>
+          <div class="ex-group">المثال 3 — حدِّد ما إذا كان <span class="m">WX</span> و <span class="m">YZ</span> متوازيين أو متعامدين أو غير ذلك:</div>
+          <div class="ex"><span class="exn">5</span> <span class="m">W(2, 4), X(4, 5), Y(4, 1), Z(8, −7)</span>
+            <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">WX = 1/2</span>، ميل <span class="m">YZ = −8/4 = −2</span></li><li class="final"><span class="m">(1/2)(−2) = −1</span> ← <b>متعامدان</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> <span class="m">W(1, 3), X(−2, −5), Y(−6, −2), Z(8, 3)</span>
+            <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">WX = (−5 − 3)/(−2 − 1) = 8/3</span>، ميل <span class="m">YZ = (3 + 2)/(8 + 6) = 5/14</span></li><li class="final">غير متساويين وحاصل ضربهما ليس −1 ← <b>غير ذلك</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">7</span> <span class="m">W(−7, 6), X(−6, 9), Y(6, 3), Z(3, −6)</span>
+            <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">WX = 3/1 = 3</span>، ميل <span class="m">YZ = (−6 − 3)/(3 − 6) = 3</span></li><li class="final">الميلان متساويان ← <b>متوازيان</b>.</li></ol></div></div>
+          <div class="ex"><span class="exn">8</span> <span class="m">W(1, −3), X(0, 2), Y(−2, 0), Z(8, 2)</span>
+            <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">WX = 5/(−1) = −5</span>، ميل <span class="m">YZ = 2/10 = 1/5</span></li><li class="final"><span class="m">(−5)(1/5) = −1</span> ← <b>متعامدان</b>.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-4</span> · ميل المستقيم</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 14: LESSON 2-5 ================= -->
+      <section class="page" data-title="2-5 صيغ معادلة المستقيم">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">2-5</div>
+            <h1>صيغ معادلة المستقيم</h1>
+            <div class="en">Equations of Lines</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ إيجاد ميل المستقيم. (الدرس <span class="num">2-4</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أكتب معادلة مستقيم إذا عرفت معلومات حول تمثيله البياني.</li><li>أحل مسألة بكتابة معادلة مستقيم.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>قدّمت إحدى شركات الاتصالات عرضًا يدفع بموجبه المشترك 30 ريالًا شهريًّا بالإضافة إلى 0.30 ريال عن كل دقيقة اتصال. فإذا رمزنا للتكلفة الشهرية بالرمز <span class="m">C</span>، ولعدد دقائق الاتصال بالرمز <span class="m">t</span>، فإن: <span class="m">C = 0.3t + 30</span>.</p></div>
+          <div class="card def"><h3>مفهوم أساسي: معادلة المستقيم غير الرأسي</h3>
+            <p><span class="hl">صيغة الميل والمقطع:</span> <span class="m">y = mx + b</span>، حيث <span class="m">m</span> الميل، و <span class="m">b</span> مقطع المحور <span class="m">y</span>.</p>
+            <p><span class="hl">صيغة الميل ونقطة:</span> <span class="m">y − y₁ = m(x − x₁)</span>، حيث <span class="m">(x₁, y₁)</span> نقطة على المستقيم، و <span class="m">m</span> ميله.</p>
+          </div>
+          <div class="vocab"><span><b>صيغة الميل والمقطع</b><i>slope-intercept form</i></span><span><b>صيغة الميل ونقطة</b><i>point-slope form</i></span></div>
+          <div class="widget" data-widget="lineEq" style="margin-top:12px"><div class="hint">حرّك المنزلقين وشاهد المستقيم ومعادلته</div></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>معادلة المستقيم بصيغة الميل والمقطع</h3></header>
+            <div class="body">
+              <p class="q">اكتب بصيغة الميل والمقطع معادلة المستقيم الذي ميله 3، ومقطع المحور <span class="m">y</span> له −2، ثم مثّله بيانيًّا.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">y = mx + b</span> ، <span class="m">m = 3, b = −2</span></li><li class="final"><span class="m">y = 3x − 2</span>. للتمثيل: عيّن <span class="m">(0, −2)</span>، ثم انتقل 3 وحدات إلى أعلى ووحدة إلى اليمين (جرّبه في الأداة).</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>1)</b> اكتب بصيغة الميل والمقطع معادلة المستقيم الذي ميله <span class="m">1/2</span>، ومقطع المحور <span class="m">y</span> له 8.</p>
+            <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">y = (1/2)x + 8</span></li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>معادلة المستقيم بصيغة الميل ونقطة</h3></header>
+            <div class="body">
+              <p class="q">اكتب بصيغة الميل ونقطة معادلة المستقيم الذي ميله <span class="m">−3/4</span>، ويمر بالنقطة <span class="m">(−2, 5)</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">y − y₁ = m(x − x₁)</span></li><li><span class="m">y − 5 = −(3/4)[x − (−2)]</span></li><li class="final"><span class="m">y − 5 = −(3/4)(x + 2)</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> اكتب بصيغة الميل ونقطة معادلة المستقيم الذي ميله 4، ويمر بالنقطة <span class="m">(−3, −6)</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">y − (−6) = 4[x − (−3)]</span></li><li class="final"><span class="m">y + 6 = 4(x + 3)</span></li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>معادلة المستقيم المار بنقطتين معلومتين</h3></header>
+            <div class="body">
+              <div class="part"><span class="lbl">a</span> <span class="m">(0, 3), (−2, −1)</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">m = (−1 − 3)/(−2 − 0) = 2</span></li><li class="final">المقطع <span class="m">b = 3</span> ← <span class="m">y = 2x + 3</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m">(−7, 4), (9, −4)</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">m = (−4 − 4)/(9 + 7) = −1/2</span></li><li><span class="m">y − 4 = −(1/2)(x + 7)</span> ← <span class="m">y − 4 = −(1/2)x − 7/2</span></li><li class="final"><span class="m">y = −(1/2)x + 1/2</span></li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">3A</span> <span class="m">(−2, 4), (8, 10)</span>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">m = (10 − 4)/(8 + 2) = 3/5</span></li><li><span class="m">4 = (3/5)(−2) + b</span> ← <span class="m">b = 26/5</span></li><li class="final"><span class="m">y = (3/5)x + 26/5</span></li></ol></div></div>
+            <div class="part"><span class="lbl">3B</span> <span class="m">(0, 0), (2, 6)</span>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">m = 6/2 = 3</span>، والمقطع 0</li><li class="final"><span class="m">y = 3x</span></li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-5</span> · صيغ معادلة المستقيم</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 15: 2-5 SPECIAL LINES + APPLICATIONS ================= -->
+      <section class="page" data-title="المستقيمات الأفقية والرأسية والتطبيقات">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>معادلة المستقيم الأفقي</h3></header>
+            <div class="body">
+              <p class="q">اكتب بصيغة الميل والمقطع معادلة المستقيم الذي يمر بالنقطتين <span class="m">(5, 6), (−2, 6)</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">m = (6 − 6)/(5 + 2) = 0</span></li><li><span class="m">y − 6 = 0[x − (−2)]</span> ← <span class="m">y − 6 = 0</span></li><li class="final"><span class="m">y = 6</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> اكتب بصيغة الميل والمقطع معادلة المستقيم الذي يمر بالنقطتين <span class="m">(3, 0), (5, 0)</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li class="final">الميل 0 والمقطع 0 ← <span class="m">y = 0</span> (المحور x نفسه).</li></ol></div>
+          </div>
+          <div class="card def"><h3>معادلات المستقيمات الأفقية أو الرأسية</h3><p>معادلة المستقيم الأفقي: <span class="m">y = b</span>، حيث <span class="m">b</span> مقطع المحور <span class="m">y</span>. مثال: <span class="m">y = −3</span>.<br>معادلة المستقيم الرأسي: <span class="m">x = a</span>، حيث <span class="m">a</span> مقطع المحور <span class="m">x</span>. مثال: <span class="m">x = −2</span>.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 5</span><h3>معادلات المستقيمات المتوازية أو المتعامدة</h3></header>
+            <div class="body">
+              <p class="q">اكتب بصيغة الميل والمقطع معادلة المستقيم العمودي على <span class="m">y = −3x + 2</span>، والمار بالنقطة <span class="m">(4, 0)</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li>ميل المستقيم المعطى <span class="num">−3</span>؛ لذا ميل العمودي عليه <span class="m">1/3</span>.</li><li><span class="m">0 = (1/3)(4) + b</span> ← <span class="m">b = −4/3</span></li><li class="final"><span class="m">y = (1/3)x − 4/3</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>5)</b> اكتب بصيغة الميل والمقطع معادلة المستقيم الذي يوازي <span class="m">y = −(3/4)x + 3</span>، ويمر بالنقطة <span class="m">(−3, 6)</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>الموازي له الميل نفسه: <span class="m">−3/4</span></li><li><span class="m">6 = −(3/4)(−3) + b = 9/4 + b</span> ← <span class="m">b = 15/4</span></li><li class="final"><span class="m">y = −(3/4)x + 15/4</span></li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 6 من واقع الحياة</span><h3>كتابة معادلة خطية</h3></header>
+            <div class="body">
+              <p><b>هواتف:</b> يقارن علي بين عرضين: العرض X: 20 ريالًا شهريًّا زائد 0.35 ريال عن كل دقيقة اتصال. العرض Y: 30 ريالًا شهريًّا زائد 0.30 ريال عن كل دقيقة. أي العرضين أفضل لعلي؟</p>
+              <div class="widget" data-widget="plans" data-a="0.35,20" data-b="0.30,30" data-max="400" data-step="10" data-label="دقائق الاتصال" data-unit="ريال" data-names="العرض X,العرض Y"><div class="hint">حرّك المنزلق: عند أي عدد دقائق يتساوى العرضان؟</div></div>
+              <div class="sol" data-sol><ol class="steps"><li>العرض X: <span class="m">C = 0.35t + 20</span> ، العرض Y: <span class="m">C = 0.30t + 30</span></li><li>تتساوى التكلفتان: <span class="m">0.35t + 20 = 0.30t + 30</span> ← <span class="m">0.05t = 10</span> ← <span class="m">t = 200</span></li><li class="final">إذا كانت الدقائق أقل من 200 دقيقة فالعرض X أقل تكلفة، وإذا كانت أكثر من 200 فالعرض Y أقل. تحقّق: <span class="m">0.35(200) + 20 = 90 = 0.30(200) + 30</span> ✓</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>6)</b> وضع نادٍ عرضين لروّاده. العرض X: رسوم اشتراك شهرية 75 ريالًا زائد 20 ريالًا عن كل زيارة. العرض Y: 35 ريالًا عن كل زيارة من دون رسوم اشتراك. فأيّ العرضين أفضل؟</p>
+            <div class="widget" data-widget="plans" data-a="20,75" data-b="35,0" data-max="12" data-step="1" data-label="عدد الزيارات" data-unit="ريال" data-names="العرض X,العرض Y"><div class="hint">حرّك المنزلق لتقارن</div></div>
+            <div class="sol" data-sol><ol class="steps"><li>X: <span class="m">C = 20v + 75</span> ، Y: <span class="m">C = 35v</span></li><li><span class="m">20v + 75 = 35v</span> ← <span class="m">v = 5</span></li><li class="final">أقل من 5 زيارات: العرض Y أفضل؛ أكثر من 5 زيارات: العرض X أفضل؛ عند 5 زيارات يتساويان (175 ريالًا).</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-5</span> · صيغ معادلة المستقيم</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 16: 2-5 EXERCISES ================= -->
+      <section class="page" data-title="تأكد: تمارين 2-5">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — اكتب بصيغة الميل والمقطع معادلة المستقيم المُعطى ميله ومقطع المحور y له:</div>
+          <div class="ex"><span class="exn">1</span> <span class="m">m = 4, b = −3</span><div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">y = 4x − 3</span></li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <span class="m">m = 1/2, b = −1</span><div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">y = (1/2)x − 1</span></li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> <span class="m">m = −3/2, b = 5</span><div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">y = −(3/2)x + 5</span></li></ol></div></div>
+          <div class="ex-group">المثال 2 — اكتب بصيغة الميل ونقطة:</div>
+          <div class="ex"><span class="exn">4</span> <span class="m">m = 5, (3, −2)</span><div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">y + 2 = 5(x − 3)</span></li></ol></div></div>
+          <div class="ex"><span class="exn">5</span> <span class="m">m = 1/4, (−2, −3)</span><div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">y + 3 = (1/4)(x + 2)</span></li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> <span class="m">m = −4.25, (−4, 6)</span><div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">y − 6 = −4.25(x + 4)</span></li></ol></div></div>
+          <div class="ex-group">المثالان 3، 4 — اكتب بصيغة الميل والمقطع معادلة المستقيم المار بالنقطتين:</div>
+          <div class="ex"><span class="exn">7</span> <span class="m">(0, −1), (4, 4)</span><div class="sol" data-sol><ol class="steps"><li><span class="m">m = 5/4</span>، المقطع <span class="m">−1</span></li><li class="final"><span class="m">y = (5/4)x − 1</span></li></ol></div></div>
+          <div class="ex"><span class="exn">8</span> <span class="m">(4, 3), (1, −6)</span><div class="sol" data-sol><ol class="steps"><li><span class="m">m = (−6 − 3)/(1 − 4) = 3</span> ، <span class="m">3 = 3(4) + b</span> ← <span class="m">b = −9</span></li><li class="final"><span class="m">y = 3x − 9</span></li></ol></div></div>
+          <div class="ex"><span class="exn">9</span> <span class="m">(6, 5), (−1, −4)</span><div class="sol" data-sol><ol class="steps"><li><span class="m">m = 9/7</span> ، <span class="m">5 = (9/7)(6) + b</span> ← <span class="m">b = −19/7</span></li><li class="final"><span class="m">y = (9/7)x − 19/7</span></li></ol></div></div>
+          <div class="ex-group">المثال 5:</div>
+          <div class="ex"><span class="exn">10</span> المستقيم العمودي على <span class="m">y = −2x + 6</span> والمار بالنقطة <span class="m">(3, 2)</span>.<div class="sol" data-sol><ol class="steps"><li>الميل العمودي <span class="m">1/2</span> ، <span class="m">2 = (1/2)(3) + b</span> ← <span class="m">b = 1/2</span></li><li class="final"><span class="m">y = (1/2)x + 1/2</span></li></ol></div></div>
+          <div class="ex"><span class="exn">11</span> المستقيم المار بالنقطة <span class="m">(−1, 5)</span> ويوازي <span class="m">y = 4x − 5</span>.<div class="sol" data-sol><ol class="steps"><li>الميل 4 ، <span class="m">5 = 4(−1) + b</span> ← <span class="m">b = 9</span></li><li class="final"><span class="m">y = 4x + 9</span></li></ol></div></div>
+          <div class="ex-group">المثال 6:</div>
+          <div class="ex"><span class="exn">12</span> <b>عروض:</b> العرض الأول: اشتراك شهري 100 ريال بالإضافة إلى 10 ريالات عن كل زيارة. العرض الثاني: اشتراك شهري 150 ريالًا يسمح بعشر زيارات شهريًّا. إذا كان سلمان يريد الذهاب 7 مرات شهريًّا، فأيهما يختار؟
+            <div class="widget" data-widget="plans" data-a="10,100" data-b="0,150" data-max="10" data-label="عدد الزيارات" data-unit="ريال" data-names="العرض الأول,العرض الثاني"><div class="hint">حرّك المنزلق إلى 7 زيارات</div></div>
+            <div class="sol" data-sol><ol class="steps"><li>(a) الأول: <span class="m">C = 10v + 100</span> ، الثاني: <span class="m">C = 150</span></li><li>(c) عند 7 زيارات: الأول <span class="m">10(7) + 100 = 170</span> ريالًا، والثاني 150 ريالًا.</li><li class="final">يختار <b>العرض الثاني</b>؛ لأنه أقل تكلفة بـ 20 ريالًا.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-5</span> · صيغ معادلة المستقيم</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 17: LESSON 2-6 ================= -->
+      <section class="page" data-title="2-6 الأعمدة والمسافة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">2-6</div>
+            <h1>الأعمدة والمسافة</h1>
+            <div class="en">Perpendiculars and Distance</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ كتابة معادلة مستقيم عُرفت معلومات حول تمثيله البياني. (الدرس <span class="num">2-5</span>)</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أجد البعد بين نقطة ومستقيم.</li><li>أجد البعد بين مستقيمين متوازيين.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>الخيط الشاقولي عبارة عن خيط مربوط في أحد طرفيه ثقل معدني، وعندما يُعلق من طرفه الآخر يتأرجح ثم يسكن بحيث يكون تحت نقطة التعليق مباشرة. ويُستعمل لإنشاء خط رأسي عند البناء أو عند لصق ورق الجدران.</p></div>
+          <div class="card def"><h3>مفهوم أساسي: البُعد بين نقطة ومستقيم</h3><p>البعد بين مستقيم ونقطة لا تقع عليه هو طول القطعة المستقيمة <span class="hl">العمودية</span> على المستقيم من تلك النقطة، وهي أقصر مسافة بين النقطة والمستقيم.</p></div>
+          <div class="card def"><h3>مسلّمة 2.6: مسلّمة التعامد</h3><p>لأي مستقيم ونقطة لا تقع عليه يوجد مستقيم واحد فقط يمر بالنقطة، ويكون عموديًّا على المستقيم المعلوم.</p></div>
+          <div class="vocab"><span><b>المسافة العمودية</b><i>perpendicular distance</i></span><span><b>البعد بين نقطة ومستقيم</b><i>distance from a point to a line</i></span><span><b>المحل الهندسي</b><i>locus</i></span><span><b>متساوي البعد</b><i>equidistant</i></span></div>
+          <div class="widget" data-widget="pointLine" style="margin-top:12px"><div class="hint">اسحب P، واسحب النقطة البنفسجية على المستقيم: هل توجد قطعة أقصر من العمودية؟</div></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1 من واقع الحياة</span><h3>إنشاء أقصر قطعة مستقيمة بين نقطة ومستقيم</h3></header>
+            <div class="body">
+              <p><b>هندسة مدنية:</b> يريد مهندس أن يضع أنبوب تصريف أرضيًّا من النقطة <span class="m">A</span> إلى خط التصريف الرئيس <span class="m">m</span>. كيف ينشئ أقصر أنبوب؟</p>
+              <div class="sol" data-sol><ol class="steps"><li><b>الخطوة 1:</b> ضع رأس الفرجار عند <span class="m">A</span> وارسم قوسًا يقطع <span class="m">m</span> في نقطتين <span class="m">B, C</span>.</li><li><b>الخطوة 2:</b> من <span class="m">B</span> و <span class="m">C</span>، وبفتحة أكبر من <span class="m">½BC</span>، ارسم قوسين يتقاطعان تحت <span class="m">m</span> في النقطة <span class="m">E</span>.</li><li class="final"><b>الخطوة 3:</b> ارسم <span class="m">AE</span>، وسمِّ نقطة تقاطعه مع <span class="m">m</span> بالرمز <span class="m">D</span>. القطعة <span class="m">AD</span> هي أقصر أنبوب.</li></ol></div>
+            </div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>البعد بين نقطة ومستقيم في المستوى الإحداثي</h3></header>
+            <div class="body">
+              <p class="q">يمر المستقيم <span class="m">ℓ</span> بالنقطتين <span class="m">(−5, 3), (4, −6)</span>. أوجد البعد بين المستقيم <span class="m">ℓ</span> والنقطة <span class="m">P(2, 4)</span>. <small>(ضع P عند (2, 4) في الأداة)</small></p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>الخطوة 1:</b> الميل <span class="m">(−6 − 3)/(4 + 5) = −1</span>، و <span class="m">−6 = −1(4) + b</span> ← <span class="m">b = −2</span>؛ معادلة <span class="m">ℓ</span>: <span class="m">y = −x − 2</span>.</li>
+                <li><b>الخطوة 2:</b> المستقيم العمودي <span class="m">w</span> ميله 1 ويمر بـ <span class="m">P(2, 4)</span>: <span class="m">4 = 2 + b</span> ← <span class="m">y = x + 2</span>.</li>
+                <li><b>الخطوة 3:</b> بجمع المعادلتين: <span class="m">2y = 0</span> ← <span class="m">y = 0</span>، <span class="m">x = −2</span>؛ نقطة التقاطع <span class="m">Q(−2, 0)</span>.</li>
+                <li><b>الخطوة 4:</b> <span class="m">d = √((−2 − 2)² + (0 − 4)²) = √32</span></li>
+                <li class="final">البعد <span class="m">√32 ≈ 5.66</span> وحدات.</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> المستقيم <span class="m">ℓ</span> يمر بالنقطتين <span class="m">(1, 2), (5, 4)</span>. أوجد البعد بين <span class="m">ℓ</span> والنقطة <span class="m">P(1, 7)</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">ℓ</span> = <span class="m">2/4 = 1/2</span> ، <span class="m">2 = 1/2 + b</span> ← <span class="m">y = (1/2)x + 3/2</span></li><li>العمودي من <span class="m">P</span>: ميله <span class="num">−2</span> ← <span class="m">7 = −2 + b</span> ← <span class="m">y = −2x + 9</span></li><li>التقاطع: <span class="m">(1/2)x + 3/2 = −2x + 9</span> ← <span class="m">x = 3, y = 3</span></li><li class="final"><span class="m">d = √((3 − 1)² + (3 − 7)²) = √20 ≈ 4.47</span> وحدات.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-6</span> · الأعمدة والمسافة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 18: 2-6 PARALLEL DISTANCE ================= -->
+      <section class="page" data-title="البعد بين مستقيمين متوازيين">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>مفهوم أساسي: البعد بين مستقيمين متوازيين</h3><p>البعد بين مستقيمين متوازيين هو المسافة العمودية بين أحد المستقيمين وأي نقطة على المستقيم الآخر؛ وهو ثابت دائمًا.</p><p>الشكل الذي تمثله مجموعة النقاط التي تحقق شرطًا ما يسمى <span class="hl">محلًّا هندسيًّا</span>، فالمستقيم الموازي لمستقيم معلوم هو المحل الهندسي للنقاط <span class="hl">المتساوية البعد</span> عنه.</p></div>
+          <div class="card def"><h3>نظرية 2.9: المستقيمان المتساويا البعد عن مستقيم ثالث</h3><p>إذا كان المستقيمان في المستوى متساويَي البعد عن مستقيم ثالث، فإنهما متوازيان.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>المسافة بين مستقيمين متوازيين</h3></header>
+            <div class="body">
+              <p class="q">أوجد البعد بين المستقيمين المتوازيين <span class="m">ℓ: y = 2x + 1</span> و <span class="m">m: y = 2x − 3</span>.</p>
+              <div class="sol" data-sol><ol class="steps">
+                <li><b>الخطوة 1:</b> ارسم مستقيمًا <span class="m">p</span> عموديًّا عليهما ويمر بمقطع <span class="m">m</span>: <span class="m">(0, −3)</span>. ميله <span class="m">−1/2</span> ← <span class="m">y = −(1/2)x − 3</span>.</li>
+                <li><b>الخطوة 2:</b> تقاطع <span class="m">ℓ</span> و <span class="m">p</span>: <span class="m">2x + 1 = −(1/2)x − 3</span> ← <span class="m">(5/2)x = −4</span> ← <span class="m">x = −8/5</span>، <span class="m">y = −11/5</span>؛ النقطة <span class="m">(−1.6, −2.2)</span>.</li>
+                <li><b>الخطوة 3:</b> <span class="m">d = √((−1.6 − 0)² + (−2.2 + 3)²) = √3.2</span></li>
+                <li class="final">البعد بين المستقيمين ≈ <b>1.8</b> وحدة تقريبًا.</li>
+              </ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">3A</span> أوجد البعد بين المستقيمين المتوازيين <span class="m">y = −3x − 5</span> و <span class="m">y = −3x + 6</span>.
+              <div class="sol" data-sol><ol class="steps"><li>العمودي من <span class="m">(0, −5)</span>: ميله <span class="m">1/3</span> ← <span class="m">y = (1/3)x − 5</span></li><li>تقاطعه مع <span class="m">y = −3x + 6</span>: <span class="m">(10/3)x = 11</span> ← <span class="m">x = 3.3, y = −3.9</span></li><li><span class="m">d = √(3.3² + 1.1²) = √12.1</span></li><li class="final">البعد ≈ <b>3.48</b> وحدات.</li></ol></div></div>
+            <div class="part"><span class="lbl">3B</span> أوجد البعد بين المستقيمين المتوازيين <span class="m">x + 3y = 6</span> و <span class="m">x + 3y = −14</span>.
+              <div class="sol" data-sol><ol class="steps"><li>بصيغة الميل والمقطع: <span class="m">y = −(1/3)x + 2</span> و <span class="m">y = −(1/3)x − 14/3</span></li><li>العمودي من <span class="m">(0, 2)</span>: ميله 3 ← <span class="m">y = 3x + 2</span></li><li>التقاطع: <span class="m">3x + 2 = −(1/3)x − 14/3</span> ← <span class="m">x = −2, y = −4</span></li><li class="final"><span class="m">d = √(2² + 6²) = √40 ≈ 6.32</span> وحدات.</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">2-6</span> · الأعمدة والمسافة</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 19: END ================= -->
+      <section class="page" data-title="ملخص الفصل 2">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">ملخص الفصل</h2>
+          <div class="card def">
+            <h3>ماذا تعلمت في الفصل الثاني؟</h3>
+            <ul style="margin:0;padding-inline-start:18px">
+              <li><b>المستقيمان والقاطع <span class="num">(2-1)</span>:</b> متوازيان، متخالفان، ومتقاطعان؛ وأزواج الزوايا: متناظرة، متبادلة داخليًّا وخارجيًّا، ومتحالفة.</li>
+              <li><b>الزوايا والمستقيمات المتوازية <span class="num">(2-2)</span>:</b> إذا كان المستقيمان متوازيين: المتناظرتان والمتبادلتان متطابقتان، والمتحالفتان متكاملتان.</li>
+              <li><b>إثبات التوازي <span class="num">(2-3)</span>:</b> عكس النظريات السابقة يثبت أن المستقيمين متوازيان.</li>
+              <li><b>الميل <span class="num">(2-4)</span>:</b> <span class="m">m = (y₂ − y₁)/(x₂ − x₁)</span>؛ المتوازيان ميلاهما متساويان، والمتعامدان حاصل ضرب ميليهما <span class="num">−1</span>.</li>
+              <li><b>معادلة المستقيم <span class="num">(2-5)</span>:</b> <span class="m">y = mx + b</span> و <span class="m">y − y₁ = m(x − x₁)</span>.</li>
+              <li><b>الأعمدة والمسافة <span class="num">(2-6)</span>:</b> البعد بين نقطة ومستقيم هو طول العمود منها عليه، وهو أقصر مسافة.</li>
+            </ul>
+          </div>
+          <div class="card" style="text-align:center;background:linear-gradient(135deg,#ecfdf5,#eff6ff)">
+            <div style="font-size:42px">🎉</div>
+            <h3 style="color:var(--teal)">أحسنت! أكملت الفصل الثاني</h3>
+            <p>الفصل الثالث «المثلثات المتطابقة» سيضاف قريبًا.</p>
+            <div class="ctrl" style="justify-content:center"><a class="btn" href="index.html" style="text-decoration:none">⌂ فهرس الكتاب</a><a class="btn ghost" href="chapter-1.html" style="text-decoration:none">→ الفصل 1</a></div>
+          </div>
+        </div></div><div class="pg-foot"><span>الفصل 2 · التوازي والتعامد</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <nav class="navbar">
+    <button class="nav-btn" id="prevBtn" aria-label="الصفحة السابقة">→ السابق</button>
+    <div class="page-ind" id="pageInd"></div>
+    <button class="nav-btn primary" id="nextBtn" aria-label="الصفحة التالية">التالي ←</button>
+  </nav>
+</div>
+
+<aside class="drawer" id="drawer" aria-label="الفهرس">
+  <h3>محتويات الكتاب</h3>
+  <ol id="drawerList"></ol>
+</aside>
+<div class="drawer-bg" id="drawerBg"></div>
+
+<script src="js/math.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" async></script>
+<script src="js/widgets.js"></script>
+<script src="js/book.js"></script>
+</body>
+</html>
