@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1e3a5f">
+<title>الفصل 4: العلاقات في المثلث — الرياضيات 1-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/book.css">
+</head>
+<body data-chapter="4">
+<div class="app">
+
+  <header class="topbar">
+    <a class="icon-btn" href="index.html" aria-label="فهرس الكتاب" title="فهرس الكتاب">⌂</a>
+    <button class="icon-btn" id="tocBtn" aria-label="محتويات الفصل">☰</button>
+    <div class="brand">الرياضيات <span class="num">1-1</span><small>الفصل 4 · العلاقات في المثلث</small></div>
+    <button class="icon-btn" id="soundBtn" aria-label="صوت قلب الصفحة" aria-pressed="true">🔊</button>
+  </header>
+  <div class="progress"><i id="prog"></i></div>
+
+  <main class="stage">
+    <div class="book" id="book">
+
+      <!-- ================= 0: COVER ================= -->
+      <section class="page cover" data-title="الغلاف">
+        <div class="face front"><div class="scroll"><div class="cover-full" style="background:radial-gradient(circle at 70% 20%, rgba(196,181,253,.35), transparent 50%),linear-gradient(160deg,#2e1065 0%,#5b21b6 45%,#7c3aed 75%,#1e3a8a 100%)">
+          <div class="cv-grid" aria-hidden="true"></div>
+          <svg class="cv-s s-tl fl f4" viewBox="0 0 80 70" aria-hidden="true"><polygon points="6,64 40,6 74,64" fill="rgba(253,224,71,.15)" stroke="#fde047" stroke-width="2.5"/></svg>
+          <svg class="cv-s s-tr fl f2" viewBox="0 0 110 70" aria-hidden="true"><g fill="none" stroke-width="2.5"><polygon points="4,64 30,8 52,64" stroke="#7dd3fc"/><polygon points="58,64 84,8 106,64" stroke="#7dd3fc"/></g><g stroke="#f9a8d4" stroke-width="2"><line x1="14" y1="34" x2="20" y2="38"/><line x1="68" y1="34" x2="74" y2="38"/></g></svg>
+          <svg class="cv-s s-bl fl f1" viewBox="0 0 80 70" aria-hidden="true"><polygon points="6,64 6,10 74,64" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="2.5"/><rect x="6" y="52" width="12" height="12" fill="none" stroke="#f9a8d4" stroke-width="2"/></svg>
+          <svg class="cv-s s-br fl f3" viewBox="0 0 80 70" aria-hidden="true"><polygon points="6,64 40,6 74,64" fill="none" stroke="#a7f3d0" stroke-width="2.5"/><line x1="40" y1="6" x2="40" y2="64" stroke="#a7f3d0" stroke-dasharray="4 3"/></svg>
+          <div class="cv-content">
+            <div class="cv-top">الرياضيات <span class="num">1-1</span> · التعليم الثانوي</div>
+            <div class="cv-title">الفصل <span>4</span></div>
+            <div class="cv-chapter"><b>الفصل 4</b><span>العلاقات في المثلث</span><i>Relationships in Triangle</i></div>
+            <button class="cv-start" data-next>ابدأ القراءة <span>←</span></button>
+            <div class="cv-badge">✦ نسخة تفاعلية ✦</div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 1: HOW TO USE ================= -->
+      <section class="page" data-title="كيف تستعمل هذا الكتاب؟">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">👋</div>
+            <h1>مرحبًا بك!</h1>
+            <div class="en" style="direction:rtl;text-align:right;font-family:inherit;font-weight:500">هذا الكتاب تفاعلي: اقرأ، جرّب بنفسك، ثم تحقق من فهمك.</div>
+          </div>
+          <h2 class="sec-title">كيف تستعمل هذا الكتاب؟</h2>
+          <div class="how">
+            <div class="card"><div class="ic" style="background:#dcfce7">✋</div><div><b>اسحب رؤوس المثلثات</b><br>النقاط الملوّنة النابضة تُسحب، فتتغير الزوايا والأضلاع مباشرة.</div></div>
+            <div class="card"><div class="ic" style="background:#dbeafe">🎚️</div><div><b>اختر وجرّب</b><br>الأزرار والقوائم تغيّر ما تعرضه الأداة.</div></div>
+            <div class="card"><div class="ic" style="background:#ede9fe">💡</div><div><b>عرض الحل خطوة بخطوة</b><br>حاول أولًا، ثم اضغط «عرض الحل» واكشف الخطوات واحدة تلو الأخرى.</div></div>
+            <div class="card"><div class="ic" style="background:#fef3c7">📖</div><div><b>قلّب الصفحات</b><br>اسحب الصفحة، أو اضغط رقم الصفحة في الأسفل للانتقال إلى أي صفحة.</div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 4 · العلاقات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 2: CONTENTS ================= -->
+      <section class="page" data-title="فهرس الفصل 4">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head" style="background:linear-gradient(135deg,#2e1065,#5b21b6 55%,#7c3aed)">
+            <div class="no">4</div>
+            <h1>العلاقات في المثلث</h1>
+            <div class="en">Relationships in Triangle</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ طرائق تصنيف المثلثات.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أتعرّف القطع المستقيمة والنقاط المرتبطة بالمثلثات.</li><li>أتعرّف العلاقات الخاصة بين أضلاع المثلث وزواياه.</li><li>أكتب برهانًا غير مباشر.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p><b>التصميم الداخلي:</b> تستعمل العلاقات في المثلث لإيجاد الأبعاد وقياسات الزوايا ومقارنتها، ويستعمل مهندسو التصميم الداخلي هذه العلاقات لتحسين تصاميمهم.</p></div>
+          <h2 class="sec-title">دروس الفصل</h2>
+          <ul class="toc-list">
+            <li><span class="no">4-1</span><span class="ttl">المنصّفات في المثلث</span><button class="btn sm go" data-goto="3">افتح ←</button></li>
+            <li><span class="no">4-2</span><span class="ttl">القطع المتوسطة والارتفاعات في المثلث</span><button class="btn sm go" data-goto="8">افتح ←</button></li>
+            <li><span class="no">4-3</span><span class="ttl">المتباينات في المثلث</span><button class="btn sm go" data-goto="11">افتح ←</button></li>
+            <li><span class="no">4-4</span><span class="ttl">البرهان غير المباشر</span><button class="btn sm go" data-goto="14">افتح ←</button></li>
+            <li><span class="no">4-5</span><span class="ttl">متباينة المثلث</span><button class="btn sm go" data-goto="17">افتح ←</button></li>
+            <li><span class="no">4-6</span><span class="ttl">المتباينات في مثلثين</span><button class="btn sm go" data-goto="19">افتح ←</button></li>
+            <li><span class="no">★</span><span class="ttl">ملخص الفصل</span><button class="btn sm go" data-goto="21">افتح ←</button></li>
+          </ul>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الفصل 4 · العلاقات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 3: 4-1 المنصفات في المثلث ================= -->
+      <section class="page" data-title="4-1 المنصفات في المثلث">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">4-1</div>
+            <h1>المنصّفات في المثلث</h1>
+            <div class="en">Bisectors of Triangle</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ منصّف القطعة المستقيمة ومنصّف الزاوية.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أتعرّف الأعمدة المنصّفة في المثلثات وأستعملها.</li><li>أتعرّف منصّفات الزوايا في المثلثات وأستعملها.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>إن تصميم منطقة العمل على شكل مثلث يجعل إعداد الطعام أسرع. ولتعيين النقطة المتساوية البعد عن كلٍّ من الفرن ومصدر الماء والثلاجة، يمكنك استعمال الأعمدة المنصّفة لأضلاع المثلث.</p></div>
+          <div class="card def"><h3>العمود المنصّف</h3>
+            <p>إذا كان منصّف القطعة المستقيمة عموديًّا عليها، سُمّي <span class="hl">عمودًا منصِّفًا</span>.</p>
+            <p><b>النظرية 4.1 (العمود المنصّف):</b> كل نقطة على العمود المنصّف لقطعة مستقيمة تكون على بُعدين متساويين من طرفيها.</p>
+            <p><b>النظرية 4.2 (عكسها):</b> كل نقطة على بُعدين متساويين من طرفي قطعة مستقيمة تقع على العمود المنصّف لها.</p>
+          </div>
+          <div class="widget" data-widget="bisector"><div class="hint">☝ اسحب النقطة P وقارن بُعديها عن A و B</div></div>
+          <div class="vocab"><span><b>العمود المنصّف</b><i>perpendicular bisector</i></span><span><b>المستقيمات المتلاقية</b><i>concurrent lines</i></span><span><b>نقطة التلاقي</b><i>point of concurrency</i></span><span><b>مركز الدائرة الخارجية</b><i>circumcenter</i></span><span><b>مركز الدائرة الداخلية</b><i>incenter</i></span></div>
+          <div class="card example" style="margin-top:14px">
+            <header><span class="tag">مثال 1</span><h3>استعمال نظريات العمود المنصّف</h3></header>
+            <div class="body">
+              <div class="part"><span class="lbl">a</span> <span class="m">CA</span> عمود منصِّف لـ <span class="m">BD</span> ، و <span class="m">AD = 4.1</span>. أوجد <span class="m">AB</span>.
+                <div class="sol" data-sol><ol class="steps"><li>بما أن <span class="m">A</span> على العمود المنصّف لـ <span class="m">BD</span>: <span class="m">AB = AD</span> (نظرية العمود المنصّف).</li><li class="final"><span class="m">AB = 4.1</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m">WX = ZX = 9</span> ، <span class="m">XY ⊥ WZ</span> ، <span class="m">YZ = 3</span>. أوجد <span class="m">WY</span>.
+                <div class="sol" data-sol><ol class="steps"><li>بما أن <span class="m">WX = ZX</span> و <span class="m">XY ⊥ WZ</span>، فإن <span class="m">XY</span> عمود منصِّف لـ <span class="m">WZ</span> (عكس نظرية العمود المنصّف).</li><li>إذن <span class="m">WY = YZ</span> (تعريف منصّف القطعة).</li><li class="final"><span class="m">WY = 3</span></li></ol></div></div>
+              <div class="part"><span class="lbl">c</span> <span class="m">SR</span> عمود منصِّف لـ <span class="m">QT</span> ، <span class="m">RQ = 2x + 3</span> ، <span class="m">RT = 4x − 7</span>. أوجد <span class="m">RT</span>.
+                <div class="ans" data-answer="13"><input inputmode="numeric" placeholder="RT"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+                <div class="sol" data-sol><ol class="steps"><li>نظرية العمود المنصّف: <span class="m">RT = RQ</span></li><li><span class="m">4x − 7 = 2x + 3</span> ← <span class="m">2x = 10</span> ← <span class="m">x = 5</span></li><li class="final"><span class="m">RT = 4(5) − 7 = 13</span></li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في الشكل: المستقيم <span class="m">m</span> يقطع <span class="m">XZ</span> عموديًّا في <span class="m">Y</span>، والنقطة <span class="m">W</span> على <span class="m">m</span>.</p>
+            <div class="part"><span class="lbl">1A</span> إذا كان <span class="m">WX = 25.3</span> ، <span class="m">YZ = 22.4</span> ، <span class="m">WZ = 25.3</span>، فأوجد <span class="m">XY</span>.
+              <div class="ans" data-answer="22.4"><input inputmode="decimal" placeholder="XY"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">WX = WZ</span>؛ إذن <span class="m">W</span> على العمود المنصّف لـ <span class="m">XZ</span> (عكس النظرية)، و <span class="m">m</span> هو هذا العمود.</li><li class="final"><span class="m">XY = YZ = 22.4</span></li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> إذا كان <span class="m">m</span> عمودًا منصِّفًا لـ <span class="m">XZ</span> ، <span class="m">WZ = 14.9</span>، فأوجد <span class="m">WX</span>.
+              <div class="ans" data-answer="14.9"><input inputmode="decimal" placeholder="WX"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li class="final">نظرية العمود المنصّف: <span class="m">WX = WZ = 14.9</span></li></ol></div></div>
+            <div class="part"><span class="lbl">1C</span> إذا كان <span class="m">m</span> عمودًا منصِّفًا لـ <span class="m">XZ</span> ، <span class="m">WX = 4a − 15</span> ، <span class="m">WZ = a + 12</span>، فأوجد <span class="m">WX</span>.
+              <div class="ans" data-answer="21"><input inputmode="numeric" placeholder="WX"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">4a − 15 = a + 12</span> ← <span class="m">3a = 27</span> ← <span class="m">a = 9</span></li><li class="final"><span class="m">WX = 4(9) − 15 = 21</span></li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-1</span> · المنصّفات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 4: مركز الدائرة الخارجية للمثلث ================= -->
+      <section class="page" data-title="مركز الدائرة الخارجية للمثلث">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>المستقيمات المتلاقية</h3>
+            <p>عندما تتقاطع ثلاثة مستقيمات أو أكثر في نقطة مشتركة تُسمّى <span class="hl">مستقيمات متلاقية</span>، والنقطة المشتركة <span class="hl">نقطة التلاقي</span>.</p>
+            <p>للمثلث ثلاثة أعمدة منصّفة متلاقية، ونقطة تلاقيها تسمى <span class="hl">مركز الدائرة الخارجية للمثلث</span>.</p>
+          </div>
+          <div class="card def" data-open><h3>نظرية 4.3: مركز الدائرة الخارجية للمثلث</h3>
+            <p>تلتقي الأعمدة المنصّفة لأضلاع مثلث في نقطة تُسمّى مركز الدائرة الخارجية للمثلث، وهي على أبعاد متساوية من رؤوسه.</p>
+            <p><b>مثال:</b> إذا كانت <span class="m">P</span> مركز الدائرة الخارجية لـ <span class="m">△ABC</span>، فإن <span class="m">PB = PA = PC</span>.</p>
+          </div>
+          <div class="widget" data-widget="centers" data-modes="circ"><div class="hint">☝ اسحب رؤوس المثلث: متى يقع المركز داخل المثلث؟ ومتى يقع خارجه أو على أحد أضلاعه؟</div></div>
+          <div class="card tip"><h4>برهان النظرية 4.3 (حر)</h4>
+            <p>بما أن <span class="m">P</span> تقع على العمود المنصّف لـ <span class="m">AC</span>، فإنها متساوية البعد عن <span class="m">A</span> و <span class="m">C</span>؛ أي أن <span class="m">AP = CP</span>.</p>
+            <p>والعمود المنصّف لـ <span class="m">BC</span> يمر أيضًا بـ <span class="m">P</span>؛ لذا <span class="m">CP = BP</span>. وبالتعدي <span class="m">AP = BP</span>؛ إذن <span class="m">AP = CP = BP</span>.</p>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2 من واقع الحياة</span><h3>استعمال نظرية مركز الدائرة الخارجية</h3></header>
+            <div class="body">
+              <p class="q"><b>تصميم داخلي:</b> وُضع فرن الطبخ <span class="m">S</span> ومصدر الماء <span class="m">K</span> والثلاجة <span class="m">R</span> في مطبخ. أوجد النقطة التي تكون على أبعاد متساوية من النقاط <span class="m">S, K, R</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li>حسب نظرية مركز الدائرة الخارجية، النقطة المتساوية البعد عن الرؤوس الثلاثة هي نقطة تلاقي الأعمدة المنصّفة لأضلاع المثلث.</li><li>انسخ <span class="m">△SKR</span>، واستعمل المسطرة والمنقلة لرسم الأعمدة المنصّفة لأضلاعه.</li><li class="final">نقطة تلاقيها <span class="m">C</span> (مركز الدائرة الخارجية لـ <span class="m">△SKR</span>) هي النقطة المطلوبة.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> يريد عليّ أن يضع مرشّة الماء على أبعاد متساوية من رؤوس حديقته المثلثة الشكل. فأين يتعيّن عليه وضع المرشّة؟</p>
+            <div class="sol" data-sol><ol class="steps"><li>المطلوب نقطة متساوية البعد عن رؤوس المثلث الثلاثة.</li><li class="final">يضعها عند <b>مركز الدائرة الخارجية</b> للمثلث: نقطة تلاقي الأعمدة المنصّفة لأضلاع الحديقة.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-1</span> · المنصّفات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 5: منصفات الزوايا ================= -->
+      <section class="page" data-title="منصفات الزوايا">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def"><h3>منصّفات الزوايا</h3>
+            <p>منصّف الزاوية هو المحل الهندسي للنقاط الواقعة داخل الزاوية والتي تكون على أبعاد متساوية من ضلعيها.</p>
+            <p><b>النظرية 4.4 (منصّف الزاوية):</b> كل نقطة تقع على منصّف زاوية تكون على بُعدين متساويين من ضلعيها.</p>
+            <p><b>النظرية 4.5 (عكسها):</b> كل نقطة تقع داخل الزاوية وتكون على بُعدين متساويين من ضلعيها فإنها تكون واقعة على منصّف الزاوية.</p>
+          </div>
+          <div class="widget" data-widget="bisector" data-mode="angle"><div class="hint">☝ اسحب النقطة P داخل الزاوية وقارن بُعديها عن الضلعين</div></div>
+          <div class="card tip warn"><h4>منصّف الزاوية</h4><p>البعد عن الضلع يُقاس دائمًا بالقطعة <b>العمودية</b> عليه. ولا تكفي المعلومة <span class="m">JL = LM</span> وحدها لاستنتاج أن <span class="m">KL</span> ينصّف <span class="m">∠JKM</span>؛ يجب أن يكون <span class="m">LJ ⊥ KJ</span> و <span class="m">LM ⊥ KM</span>.</p></div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>استعمال نظريتي منصّفات الزوايا</h3></header>
+            <div class="body">
+              <div class="part"><span class="lbl">a</span> <span class="m">ZX</span> ينصّف <span class="m">∠YZW</span> (كل جزء <span class="m">41°</span>)، و <span class="m">XY ⊥ ZY</span> ، <span class="m">XW ⊥ ZW</span> ، <span class="m">XW = 7</span>. أوجد <span class="m">XY</span>.
+                <div class="sol" data-sol><ol class="steps"><li>نظرية منصّف الزاوية: <span class="m">XY = XW</span></li><li class="final"><span class="m">XY = 7</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m">LJ = LM</span> ، <span class="m">LJ ⊥ KJ</span> ، <span class="m">LM ⊥ KM</span> ، <span class="m">m∠LKM = 37°</span>. أوجد <span class="m">m∠JKL</span>.
+                <div class="sol" data-sol><ol class="steps"><li>النقطة <span class="m">L</span> على بُعدين متساويين من ضلعي <span class="m">∠JKM</span>؛ إذن <span class="m">KL</span> ينصّف <span class="m">∠JKM</span> (عكس نظرية منصّف الزاوية).</li><li><span class="m">∠JKL ≅ ∠LKM</span> (تعريف منصّف الزاوية).</li><li class="final"><span class="m">m∠JKL = 37°</span></li></ol></div></div>
+              <div class="part"><span class="lbl">c</span> <span class="m">JS</span> ينصّف <span class="m">∠MJP</span> ، <span class="m">SM = 3x + 5</span> ، <span class="m">SP = 6x − 7</span> (كلاهما عمودي على ضلع). أوجد <span class="m">SP</span>.
+                <div class="ans" data-answer="17"><input inputmode="numeric" placeholder="SP"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+                <div class="sol" data-sol><ol class="steps"><li>نظرية منصّف الزاوية: <span class="m">SP = SM</span></li><li><span class="m">6x − 7 = 3x + 5</span> ← <span class="m">3x = 12</span> ← <span class="m">x = 4</span></li><li class="final"><span class="m">SP = 6(4) − 7 = 17</span></li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في الشكل: النقطة <span class="m">C</span> داخل <span class="m">∠DAB</span>، و <span class="m">CB ⊥ AB</span> ، <span class="m">CD ⊥ AD</span>.</p>
+            <div class="part"><span class="lbl">3A</span> إذا كان <span class="m">m∠BAC = 38°</span> ، <span class="m">BC = 5</span> ، <span class="m">DC = 5</span>، فأوجد <span class="m">m∠DAC</span>.
+              <div class="ans" data-answer="38|38°"><input inputmode="numeric" placeholder="m∠DAC"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">BC = DC</span>؛ إذن <span class="m">AC</span> ينصّف <span class="m">∠DAB</span> (عكس النظرية).</li><li class="final"><span class="m">m∠DAC = m∠BAC = 38°</span></li></ol></div></div>
+            <div class="part"><span class="lbl">3B</span> إذا كان <span class="m">m∠BAC = 40°</span> ، <span class="m">m∠DAC = 40°</span> ، <span class="m">DC = 10</span>، فأوجد <span class="m">BC</span>.
+              <div class="ans" data-answer="10"><input inputmode="numeric" placeholder="BC"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>الزاويتان متساويتان؛ إذن <span class="m">AC</span> ينصّف <span class="m">∠DAB</span>.</li><li class="final">نظرية منصّف الزاوية: <span class="m">BC = DC = 10</span></li></ol></div></div>
+            <div class="part"><span class="lbl">3C</span> إذا كان <span class="m">AC</span> ينصّف <span class="m">∠DAB</span> ، <span class="m">BC = 4x + 8</span> ، <span class="m">DC = 9x − 7</span>، فأوجد <span class="m">BC</span>.
+              <div class="ans" data-answer="20"><input inputmode="numeric" placeholder="BC"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">4x + 8 = 9x − 7</span> ← <span class="m">15 = 5x</span> ← <span class="m">x = 3</span></li><li class="final"><span class="m">BC = 4(3) + 8 = 20</span></li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-1</span> · المنصّفات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 6: مركز الدائرة الداخلية للمثلث ================= -->
+      <section class="page" data-title="مركز الدائرة الداخلية للمثلث">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def" data-open><h3>نظرية 4.6: مركز الدائرة الداخلية للمثلث</h3>
+            <p>تتقاطع منصّفات زوايا أي مثلث عند نقطة تُسمّى <span class="hl">مركز الدائرة الداخلية للمثلث</span>، وهي على أبعاد متساوية من أضلاعه.</p>
+            <p><b>مثال:</b> إذا كانت <span class="m">P</span> مركز الدائرة الداخلية لـ <span class="m">△ABC</span>، فإن <span class="m">PD = PE = PF</span>.</p>
+          </div>
+          <div class="widget" data-widget="centers" data-modes="inc"><div class="hint">☝ اسحب رؤوس المثلث: مركز الدائرة الداخلية يبقى داخل المثلث دائمًا</div></div>
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>استعمال نظرية مركز الدائرة الداخلية</h3></header>
+            <div class="body">
+              <p class="q"><span class="m">J</span> مركز الدائرة الداخلية لـ <span class="m">△ABC</span>. في الشكل: <span class="m">AE = 12</span> ، <span class="m">AJ = 15</span> ، <span class="m">m∠JBE = 28°</span> ، <span class="m">m∠DCJ = 25°</span>، و <span class="m">JD, JE, JF</span> أعمدة على الأضلاع.</p>
+              <div class="part"><span class="lbl">a</span> أوجد <span class="m">JF</span>.
+                <div class="ans" data-answer="9"><input inputmode="numeric" placeholder="JF"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+                <div class="sol" data-sol><ol class="steps"><li>حسب نظرية مركز الدائرة الداخلية: <span class="m">JF = JE = JD</span>؛ لذا نوجد <span class="m">JE</span>.</li><li>نظرية فيثاغورس في <span class="m">△AEJ</span>: <span class="m">JE² + 12² = 15²</span></li><li><span class="m">JE² + 144 = 225</span> ← <span class="m">JE² = 81</span> ← <span class="m">JE = 9</span> (الطول لا يكون سالبًا)</li><li class="final"><span class="m">JF = JE = 9</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> أوجد <span class="m">m∠JAC</span>.
+                <div class="ans" data-answer="37|37°"><input inputmode="numeric" placeholder="m∠JAC"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">BJ</span> ينصّف <span class="m">∠CBE</span>: <span class="m">m∠CBE = 2(28°) = 56°</span>. وبالمثل <span class="m">m∠DCF = 2(25°) = 50°</span>.</li><li>مجموع زوايا المثلث: <span class="m">56° + 50° + m∠FAE = 180°</span> ← <span class="m">m∠FAE = 74°</span></li><li><span class="m">AJ</span> ينصّف <span class="m">∠FAE</span>؛ إذن <span class="m">m∠JAC = ½ m∠FAE</span></li><li class="final"><span class="m">m∠JAC = ½(74°) = 37°</span></li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><span class="m">P</span> مركز الدائرة الداخلية لـ <span class="m">△XYZ</span>. في الشكل: <span class="m">ZP = 30</span> ، <span class="m">ZJ = 24</span> ، <span class="m">m∠PXK = 29°</span> ، <span class="m">m∠PYJ = 24°</span>، و <span class="m">PK, PL, PJ</span> أعمدة على الأضلاع.</p>
+            <div class="part"><span class="lbl">4A</span> أوجد <span class="m">PK</span>.
+              <div class="ans" data-answer="18"><input inputmode="numeric" placeholder="PK"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>فيثاغورس في <span class="m">△ZJP</span>: <span class="m">PJ² + 24² = 30²</span> ← <span class="m">PJ² = 900 − 576 = 324</span> ← <span class="m">PJ = 18</span></li><li class="final">مركز الدائرة الداخلية على أبعاد متساوية من الأضلاع: <span class="m">PK = PJ = 18</span></li></ol></div></div>
+            <div class="part"><span class="lbl">4B</span> أوجد <span class="m">m∠LZP</span>.
+              <div class="ans" data-answer="37|37°"><input inputmode="numeric" placeholder="m∠LZP"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠X = 2(29°) = 58°</span> ، <span class="m">m∠Y = 2(24°) = 48°</span></li><li><span class="m">m∠Z = 180° − 58° − 48° = 74°</span></li><li class="final"><span class="m">ZP</span> ينصّف <span class="m">∠Z</span>: <span class="m">m∠LZP = ½(74°) = 37°</span></li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-1</span> · المنصّفات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 7: تأكد: تمارين 4-1 ================= -->
+      <section class="page" data-title="تأكد: تمارين 4-1">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — أوجد كل قياس مما يأتي:</div>
+          <div class="ex"><span class="exn">1</span> <span class="m">XZ</span> عمود منصِّف لـ <span class="m">WY</span> ، <span class="m">XY = 12</span>. أوجد <span class="m">XW</span>.
+            <div class="ans" data-answer="12"><input inputmode="numeric" placeholder="XW"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li class="final">نظرية العمود المنصّف: <span class="m">XW = XY = 12</span></li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <span class="m">BD ⊥ AC</span> عند <span class="m">D</span> ، <span class="m">BA = BC</span> ، <span class="m">AD = 7</span>. أوجد <span class="m">AC</span>.
+            <div class="ans" data-answer="14"><input inputmode="numeric" placeholder="AC"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">BA = BC</span>؛ إذن <span class="m">BD</span> عمود منصِّف لـ <span class="m">AC</span> (عكس النظرية)، و <span class="m">DC = AD = 7</span>.</li><li class="final"><span class="m">AC = 7 + 7 = 14</span></li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> <span class="m">LN</span> عمود منصِّف لـ <span class="m">MP</span> ، <span class="m">LM = 7x + 1</span> ، <span class="m">LP = 10x − 5</span>. أوجد <span class="m">LP</span>.
+            <div class="ans" data-answer="15"><input inputmode="numeric" placeholder="LP"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">10x − 5 = 7x + 1</span> ← <span class="m">3x = 6</span> ← <span class="m">x = 2</span></li><li class="final"><span class="m">LP = 10(2) − 5 = 15</span></li></ol></div></div>
+          <div class="ex-group">المثال 2</div>
+          <div class="ex"><span class="exn">4</span> <b>إعلانات:</b> يقف ثلاثة أصدقاء في المواقع <span class="m">A, B, C</span> لتوزيع الإعلانات. أين يقف الصديق الرابع <span class="m">D</span> ليكون على أبعاد متساوية من أصدقائه الثلاثة؟
+            <div class="sol" data-sol><ol class="steps"><li>ارسم <span class="m">△ABC</span>، ثم ارسم العمود المنصّف لضلعين منه على الأقل.</li><li class="final">يقف <span class="m">D</span> عند نقطة تلاقي الأعمدة المنصّفة: <b>مركز الدائرة الخارجية</b> لـ <span class="m">△ABC</span>.</li></ol></div></div>
+          <div class="ex-group">المثال 3 — أوجد كل قياس مما يأتي:</div>
+          <div class="ex"><span class="exn">5</span> <span class="m">BP</span> ينصّف <span class="m">∠ABC</span> ، <span class="m">PA ⊥ BA</span> ، <span class="m">PC ⊥ BC</span> ، <span class="m">AP = 8</span>. أوجد <span class="m">CP</span>.
+            <div class="ans" data-answer="8"><input inputmode="numeric" placeholder="CP"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li class="final">نظرية منصّف الزاوية: <span class="m">CP = AP = 8</span></li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> بُعدا <span class="m">W</span> عن الضلعين <span class="m">YX</span> و <span class="m">YZ</span> (عموديًّا) يساوي كلٌّ منهما <span class="m">4</span>، و <span class="m">m∠XYW = 23°</span>. أوجد <span class="m">m∠WYZ</span>.
+            <div class="ans" data-answer="23|23°"><input inputmode="numeric" placeholder="m∠WYZ"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">W</span> على بُعدين متساويين من ضلعي <span class="m">∠XYZ</span>؛ إذن <span class="m">YW</span> ينصّف الزاوية (عكس النظرية).</li><li class="final"><span class="m">m∠WYZ = m∠XYW = 23°</span></li></ol></div></div>
+          <div class="ex"><span class="exn">7</span> <span class="m">NQ</span> ينصّف <span class="m">∠MNP</span> ، <span class="m">QM ⊥ NM</span> ، <span class="m">QP ⊥ NP</span> ، <span class="m">QM = 2x + 2</span> ، <span class="m">QP = 4x − 8</span>. أوجد <span class="m">QM</span>.
+            <div class="ans" data-answer="12"><input inputmode="numeric" placeholder="QM"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">2x + 2 = 4x − 8</span> ← <span class="m">10 = 2x</span> ← <span class="m">x = 5</span></li><li class="final"><span class="m">QM = 2(5) + 2 = 12</span></li></ol></div></div>
+          <div class="ex-group">المثال 4</div>
+          <div class="ex"><span class="exn">8</span> <span class="m">Q</span> مركز الدائرة الداخلية لـ <span class="m">△JLN</span>، و <span class="m">QP ⊥ JN</span> ، <span class="m">QM ⊥ LN</span> ، <span class="m">JP = 16.5</span> ، <span class="m">QM = 9</span>. أوجد <span class="m">JQ</span>.
+            <div class="sol" data-sol><ol class="steps"><li>مركز الدائرة الداخلية على أبعاد متساوية من الأضلاع: <span class="m">QP = QM = 9</span></li><li>فيثاغورس في <span class="m">△JPQ</span>: <span class="m">JQ² = 16.5² + 9² = 272.25 + 81 = 353.25</span></li><li class="final"><span class="m">JQ = √353.25 ≈ 18.8</span></li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-1</span> · المنصّفات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 8: 4-2 القطع المتوسطة والارتفاعات ================= -->
+      <section class="page" data-title="4-2 القطع المتوسطة والارتفاعات">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">4-2</div>
+            <h1>القطع المتوسطة والارتفاعات في المثلث</h1>
+            <div class="en">Medians and Altitudes of Triangle</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ الأعمدة المنصّفة ومنصّفات الزوايا في المثلث واستعمالها.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أتعرّف القطع المتوسطة في المثلث وأستعملها.</li><li>أتعرّف الارتفاعات في المثلث وأستعملها.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>صمّم مهندس طاولة لأحد الزبائن، يتكون سطحها من لوح زجاجي مثلث الشكل يرتكز على دعامة واحدة. ولتحقيق ذلك يحتاج إلى إيجاد النقطة التي يضع عندها الدعامة لكي يحافظ على اتزانها، ويمكن إيجادها برسم القطع المتوسطة وتعيين نقطة تقاطعها.</p></div>
+          <div class="card def"><h3>القطعة المتوسطة ومركز المثلث</h3>
+            <p><span class="hl">القطعة المتوسطة</span> لمثلث: قطعة مستقيمة طرفاها أحد رؤوس المثلث ومنتصف الضلع المقابل لذلك الرأس.</p>
+            <p>لكل مثلث ثلاث قطع متوسطة تتلاقى في نقطة تُسمّى <span class="hl">مركز المثلث</span>، وتقع داخله دائمًا.</p>
+          </div>
+          <div class="card def" data-open><h3>نظرية 4.7: مركز المثلث</h3>
+            <p>يبعد مركز المثلث عن كل رأس من رؤوسه ثُلثَي طول القطعة المستقيمة الواصلة بين ذلك الرأس ومنتصف الضلع المقابل له.</p>
+            <p><b>مثال:</b> إذا كانت <span class="m">P</span> مركز <span class="m">△ABC</span>، فإن <span class="m">AP = 2/3 AK</span> ، <span class="m">BP = 2/3 BL</span> ، <span class="m">CP = 2/3 CJ</span>.</p>
+          </div>
+          <div class="widget" data-widget="centers" data-modes="cent"><div class="hint">☝ اسحب رؤوس المثلث وراقب: الجزء البرتقالي دائمًا ثلثا القطعة المتوسطة</div></div>
+          <div class="vocab"><span><b>القطعة المتوسطة</b><i>median</i></span><span><b>مركز المثلث</b><i>centroid</i></span><span><b>الارتفاع</b><i>altitude</i></span><span><b>ملتقى ارتفاعات المثلث</b><i>orthocenter</i></span></div>
+          <div class="card example" style="margin-top:14px">
+            <header><span class="tag">مثال 1</span><h3>استعمال نظرية مركز المثلث</h3></header>
+            <div class="body">
+              <p class="q">إذا كانت النقطة <span class="m">Q</span> مركز <span class="m">△ABC</span> ، <span class="m">BE = 9</span> (قطعة متوسطة)، فأوجد كلًّا من <span class="m">BQ</span> و <span class="m">QE</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li>نظرية مركز المثلث: <span class="m">BQ = 2/3 BE = 2/3 (9) = 6</span></li><li>جمع أطوال القطع المستقيمة: <span class="m">BQ + QE = 9</span></li><li class="final"><span class="m">6 + QE = 9</span> ← <span class="m">QE = 3</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في <span class="m">△ABC</span> أعلاه، إذا كان <span class="m">FC = 15</span>، فأوجد طولي القطعتين:</p>
+            <div class="part"><span class="lbl">1A</span> <span class="m">FQ</span>
+              <div class="ans" data-answer="5"><input inputmode="numeric" placeholder="FQ"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">QC = 2/3 (15) = 10</span></li><li class="final"><span class="m">FQ = 15 − 10 = 5</span></li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> <span class="m">QC</span>
+              <div class="ans" data-answer="10"><input inputmode="numeric" placeholder="QC"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">QC = 2/3 FC = 2/3 (15) = 10</span></li></ol></div></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>استعمال نظرية مركز المثلث</h3></header>
+            <div class="body">
+              <p class="q">في <span class="m">△JKL</span>: <span class="m">R</span> منتصف <span class="m">JK</span>، و <span class="m">S</span> منتصف <span class="m">KL</span>، و <span class="m">T</span> منتصف <span class="m">LJ</span>، والقطع المتوسطة تتلاقى في <span class="m">P</span>. إذا كان <span class="m">PT = 2</span>، فأوجد <span class="m">KP</span>.</p>
+              <div class="ans" data-answer="4"><input inputmode="numeric" placeholder="KP"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">P</span> مركز <span class="m">△JKL</span>؛ لذا <span class="m">KP = 2/3 KT = 2/3 (KP + PT)</span></li><li>عوّض <span class="m">PT = 2</span>: <span class="m">KP = 2/3 KP + 4/3</span></li><li><span class="m">1/3 KP = 4/3</span></li><li class="final"><span class="m">KP = 4</span> (أو مباشرة: <span class="m">KP = 2PT = 4</span>)</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في <span class="m">△JKL</span> أعلاه، إذا كان <span class="m">RP = 3.5</span> ، <span class="m">JP = 9</span>، فأوجد:</p>
+            <div class="part"><span class="lbl">2A</span> <span class="m">PL</span>
+              <div class="ans" data-answer="7"><input inputmode="numeric" placeholder="PL"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">PL = 2RP = 2(3.5) = 7</span></li></ol></div></div>
+            <div class="part"><span class="lbl">2B</span> <span class="m">PS</span>
+              <div class="ans" data-answer="4.5"><input inputmode="decimal" placeholder="PS"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">PS = ½ JP = ½(9) = 4.5</span></li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-2</span> · القطع المتوسطة والارتفاعات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 9: المركز في المستوى الإحداثي والارتفاعات ================= -->
+      <section class="page" data-title="المركز في المستوى الإحداثي والارتفاعات">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>إيجاد المركز في المستوى الإحداثي</h3></header>
+            <div class="body">
+              <p class="q"><b>فن الأداء:</b> وُضعت قطعة مثلثة على مستوى إحداثي رؤوسها <span class="m">A(1, 10)</span> ، <span class="m">B(5, 0)</span> ، <span class="m">C(9, 5)</span>. ما إحداثيات النقطة التي يجب أن يُثبَّت عندها المثلث حتى يتزن؟</p>
+              <div class="sol" data-sol><ol class="steps"><li><b>افهم:</b> المثلث يتزن عند مركزه (نقطة تلاقي القطع المتوسطة).</li><li>منتصف <span class="m">AB</span>: <span class="m">D((1+5)/2, (10+0)/2) = D(3, 5)</span></li><li><span class="m">DC</span> أفقية، وطولها <span class="m">9 − 3 = 6</span>. المركز يبعد عن <span class="m">C</span> مسافة <span class="m">2/3 (6) = 4</span> وحدات إلى اليسار.</li><li class="final">المثلث يتزن عند النقطة <b><span class="m">(5, 5)</span></b>.</li><li><b>تحقق:</b> متوسط الإحداثيات: <span class="m">((1+5+9)/3, (10+0+5)/3) = (5, 5)</span> ✓</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> تقع رؤوس مثلث آخر عند النقاط <span class="m">(12, 1)</span> ، <span class="m">(6, 11.5)</span> ، <span class="m">(0, 4)</span>. فما إحداثيات النقطة التي يتزن عندها هذا المثلث؟</p>
+            <div class="sol" data-sol><ol class="steps"><li>يتزن المثلث عند مركزه، وإحداثياته متوسط إحداثيات الرؤوس.</li><li><span class="m">x = (12 + 6 + 0)/3 = 6</span> ، <span class="m">y = (1 + 11.5 + 4)/3 = 5.5</span></li><li class="final">نقطة الاتزان <span class="m">(6, 5.5)</span>.</li></ol></div>
+          </div>
+          <div class="card def"><h3>ارتفاعات المثلث</h3>
+            <p><span class="hl">ارتفاع المثلث</span> هو القطعة المستقيمة العمودية النازلة من أحد الرؤوس إلى المستقيم الذي يحوي الضلع المقابل لذلك الرأس، ويمكن أن يقع داخل المثلث أو خارجه أو على أحد أضلاعه.</p>
+            <p><b>مفهوم أساسي:</b> تتقاطع المستقيمات التي تحوي ارتفاعات أي مثلث في نقطة تُسمّى <span class="hl">ملتقى الارتفاعات</span>.</p>
+          </div>
+          <div class="widget" data-widget="centers" data-modes="orth"><div class="hint">☝ اسحب أحد الرؤوس لتجعل المثلث منفرج الزاوية: أين يذهب ملتقى الارتفاعات؟</div></div>
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>إيجاد ملتقى الارتفاعات في المستوى الإحداثي</h3></header>
+            <div class="body">
+              <p class="q"><b>هندسة إحداثية:</b> إذا كانت رؤوس <span class="m">△FGH</span> هي <span class="m">F(−2, 4)</span> ، <span class="m">G(4, 4)</span> ، <span class="m">H(1, −2)</span>، فأوجد إحداثيات ملتقى ارتفاعاته.</p>
+              <div class="sol" data-sol><ol class="steps"><li><b>الخطوة 1:</b> نجد معادلتي ارتفاعين ثم نقطة تقاطعهما.</li><li><b>الارتفاع من F إلى GH:</b> ميل <span class="m">GH = (4 − (−2))/(4 − 1) = 2</span>، فميل الارتفاع <span class="m">−½</span>: <span class="m">y − 4 = −½(x + 2)</span> ← <span class="m">y = −½x + 3</span></li><li><b>الارتفاع من G إلى FH:</b> ميل <span class="m">FH = (−2 − 4)/(1 − (−2)) = −2</span>، فميل الارتفاع <span class="m">½</span>: <span class="m">y − 4 = ½(x − 4)</span> ← <span class="m">y = ½x + 2</span></li><li><b>الخطوة 3:</b> اجمع المعادلتين: <span class="m">2y = 5</span> ← <span class="m">y = 5/2</span>، ثم <span class="m">5/2 = ½x + 2</span> ← <span class="m">x = 1</span></li><li class="final">ملتقى الارتفاعات <span class="m">(1, 5/2)</span> أو <span class="m">(1, 2½)</span>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> أوجد إحداثيات ملتقى ارتفاعات <span class="m">△ABC</span> الذي رؤوسه (من الشكل): <span class="m">A(4, 0)</span> ، <span class="m">B(−2, 4)</span> ، <span class="m">C(0, 6)</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>ميل <span class="m">BC = (6 − 4)/(0 + 2) = 1</span>؛ فالارتفاع من <span class="m">A</span> ميله <span class="m">−1</span>: <span class="m">y = −x + 4</span></li><li>ميل <span class="m">AB = (4 − 0)/(−2 − 4) = −2/3</span>؛ فالارتفاع من <span class="m">C</span> ميله <span class="m">3/2</span>: <span class="m">y = 3/2 x + 6</span></li><li><span class="m">−x + 4 = 3/2 x + 6</span> ← <span class="m">−5/2 x = 2</span> ← <span class="m">x = −0.8</span> ، <span class="m">y = 4.8</span></li><li class="final">ملتقى الارتفاعات <span class="m">(−0.8, 4.8)</span>.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-2</span> · القطع المتوسطة والارتفاعات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 10: ملخص المفاهيم وتمارين 4-2 ================= -->
+      <section class="page" data-title="ملخص المفاهيم وتمارين 4-2">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">ملخص المفاهيم: قطع مستقيمة ونقاط خاصة في المثلث</h2>
+          <div class="tbl-wrap"><table class="data">
+            <tr><th>المفهوم</th><th>نقطة التلاقي</th><th>الخاصية</th></tr>
+            <tr><td>العمود المنصّف</td><td>مركز الدائرة الخارجية</td><td>على أبعاد متساوية من <b>رؤوس</b> المثلث</td></tr>
+            <tr><td>منصّف الزاوية</td><td>مركز الدائرة الداخلية</td><td>على أبعاد متساوية من <b>أضلاع</b> المثلث</td></tr>
+            <tr><td>القطعة المتوسطة</td><td>مركز المثلث</td><td>يبعد عن كل رأس <b>ثلثي</b> طول القطعة المتوسطة</td></tr>
+            <tr><td>الارتفاع</td><td>ملتقى الارتفاعات</td><td>تلتقي المستقيمات التي تحوي الارتفاعات</td></tr>
+          </table></div>
+          <div class="widget" data-widget="centers"><div class="hint">☝ بدّل بين النقاط الأربع واسحب الرؤوس للمقارنة</div></div>
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثالان 1، 2 — النقطة <span class="m">P</span> مركز <span class="m">△ACE</span>، والقطع المتوسطة <span class="m">AD</span> ، <span class="m">CF</span> ، <span class="m">EB</span>، حيث <span class="m">PF = 6</span> ، <span class="m">AD = 15</span>. أوجد:</div>
+          <div class="ex"><span class="exn">1</span> <span class="m">PC</span>
+            <div class="ans" data-answer="12"><input inputmode="numeric" placeholder="PC"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li>المركز يقسم القطعة المتوسطة بنسبة <span class="m">2 : 1</span> من جهة الرأس؛ لذا <span class="m">PC = 2PF</span>.</li><li class="final"><span class="m">PC = 2(6) = 12</span></li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <span class="m">AP</span>
+            <div class="ans" data-answer="10"><input inputmode="numeric" placeholder="AP"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li class="final"><span class="m">AP = 2/3 AD = 2/3 (15) = 10</span></li></ol></div></div>
+          <div class="ex-group">المثال 3</div>
+          <div class="ex"><span class="exn">3</span> <b>تصميم داخلي:</b> رؤوس سطح الطاولة الزجاجي عند النقاط <span class="m">(7, 10)</span> ، <span class="m">(5, 2)</span> ، <span class="m">(3, 6)</span>. عند أي نقطة ستوضع الدعامة؟
+            <div class="sol" data-sol><ol class="steps"><li>توضع الدعامة عند مركز المثلث.</li><li><span class="m">x = (7 + 5 + 3)/3 = 5</span> ، <span class="m">y = (10 + 2 + 6)/3 = 6</span></li><li class="final">الدعامة عند النقطة <span class="m">(5, 6)</span>.</li></ol></div></div>
+          <div class="ex-group">المثال 4</div>
+          <div class="ex"><span class="exn">4</span> <b>هندسة إحداثية:</b> أوجد إحداثيات ملتقى ارتفاعات <span class="m">△ABC</span> الذي رؤوسه <span class="m">A(−3, 3)</span> ، <span class="m">B(−1, 7)</span> ، <span class="m">C(3, 3)</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">AC</span> أفقية (<span class="m">y = 3</span>)؛ فالارتفاع من <span class="m">B</span> رأسي: <span class="m">x = −1</span></li><li>ميل <span class="m">BC = (3 − 7)/(3 + 1) = −1</span>؛ فالارتفاع من <span class="m">A</span> ميله <span class="m">1</span>: <span class="m">y − 3 = x + 3</span> ← <span class="m">y = x + 6</span></li><li class="final">عند <span class="m">x = −1</span>: <span class="m">y = 5</span>؛ ملتقى الارتفاعات <span class="m">(−1, 5)</span>.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-2</span> · القطع المتوسطة والارتفاعات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 11: 4-3 المتباينات في المثلث ================= -->
+      <section class="page" data-title="4-3 المتباينات في المثلث">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">4-3</div>
+            <h1>المتباينات في المثلث</h1>
+            <div class="en">Inequalities in One Triangle</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ العلاقة بين قياسات زوايا المثلث.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أتعرّف خصائص المتباينات، وأطبّقها على قياسات زوايا المثلث.</li><li>أطبّق خصائص المتباينات على العلاقة بين زوايا مثلث وأضلاعه.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>يستعمل المصمّمون طريقة تُسمّى «التثليث» لإعطاء الغرفة مظهرًا يوحي بالاتساع؛ مثل وضع طاولة صغيرة عند كل طرف من طرفي أريكة مع وضع لوحة فوقها، على أن يكون قياس كل زاوية من زاويتي قاعدة المثلث أقل من قياس الزاوية الثالثة.</p></div>
+          <div class="card def"><h3>مفهوم أساسي: تعريف المتباينة</h3>
+            <p>لأي عددين حقيقيين <span class="m">a, b</span>، يكون <span class="m">a &gt; b</span> إذا وفقط إذا وُجد عدد حقيقي موجب <span class="m">c</span> بحيث يكون <span class="m">a = b + c</span>.</p>
+            <p><b>مثال:</b> إذا كان <span class="m">5 = 2 + 3</span>، فإن <span class="m">5 &gt; 2</span>.</p>
+            <p><b>خصائص المتباينة:</b> المقارنة (<span class="m">a &lt; b</span> أو <span class="m">a = b</span> أو <span class="m">a &gt; b</span>)، والتعدي (إذا كان <span class="m">a &lt; b</span> و <span class="m">b &lt; c</span> فإن <span class="m">a &lt; c</span>)، والجمع والطرح (إضافة <span class="m">c</span> أو طرحه من الطرفين لا يغيّر اتجاه المتباينة).</p>
+          </div>
+          <div class="card def" data-open><h3>نظرية 4.8: متباينة الزاوية الخارجية</h3>
+            <p>قياس الزاوية الخارجية لمثلث أكبر من قياس أيٍّ من الزاويتين الداخليتين البعيدتين عنها.</p>
+            <p><b>السبب:</b> <span class="m">m∠1 = m∠A + m∠B</span> (نظرية الزاوية الخارجية)، وبما أن القياسات موجبة، فإن <span class="m">m∠1 &gt; m∠A</span> و <span class="m">m∠1 &gt; m∠B</span>.</p>
+          </div>
+          <div class="widget" data-widget="triAngles"><div class="hint">☝ اختر «الزاوية الخارجية» واسحب الرأس: الزاوية الخارجية = مجموع البعيدتين، فهي أكبر من كلٍّ منهما</div></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>استعمال نظرية متباينة الزاوية الخارجية</h3></header>
+            <div class="body">
+              <p class="q">في الشكل: <span class="m">∠7</span> زاوية خارجية لـ <span class="m">△KML</span> (داخليتاها البعيدتان <span class="m">∠4</span> و <span class="m">∠5</span>)، ولـ <span class="m">△JKL</span> (داخليتاها البعيدتان <span class="m">∠1</span> و <span class="m">∠JKL</span>، حيث <span class="m">m∠JKL = m∠2 + m∠4</span>). وكذلك <span class="m">∠3</span> زاوية خارجية لـ <span class="m">△KLM</span>، و <span class="m">∠8</span> زاوية خارجية لـ <span class="m">△JKL</span>.</p>
+              <div class="part"><span class="lbl">a</span> اكتب جميع الزوايا المرقمة التي قياساتها أقل من <span class="m">m∠7</span>.
+                <div class="sol" data-sol><ol class="steps"><li>في <span class="m">△KML</span>: <span class="m">m∠7 &gt; m∠4</span> ، <span class="m">m∠7 &gt; m∠5</span></li><li>في <span class="m">△JKL</span>: <span class="m">m∠7 &gt; m∠1</span> ، <span class="m">m∠7 &gt; m∠JKL = m∠2 + m∠4</span>؛ إذن <span class="m">m∠7 &gt; m∠2</span></li><li class="final">الزوايا: <span class="m">∠1, ∠2, ∠4, ∠5</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> اكتب جميع الزوايا المرقمة التي قياساتها أكبر من <span class="m">m∠6</span>.
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">∠3</span> زاوية خارجية لـ <span class="m">△KLM</span>: <span class="m">m∠3 &gt; m∠6</span></li><li><span class="m">∠8</span> زاوية خارجية لـ <span class="m">△JKL</span>: <span class="m">m∠8 &gt; m∠6</span></li><li class="final">الزاويتان: <span class="m">∠3, ∠8</span></li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p>في الشكل: <span class="m">S</span> نقطة داخل <span class="m">△PQR</span>؛ <span class="m">∠1</span> زاوية خارجية عند <span class="m">P</span>، و <span class="m">∠2</span> زاوية خارجية عند <span class="m">Q</span>، و <span class="m">∠8</span> هي <span class="m">∠QPR</span>، و <span class="m">QS</span> تقسم <span class="m">∠PQR</span> إلى <span class="m">∠3, ∠4</span>، و <span class="m">RS</span> تقسم <span class="m">∠PRQ</span> إلى <span class="m">∠5, ∠6</span>.</p>
+            <div class="part"><span class="lbl">1A</span> زوايا قياساتها أقل من <span class="m">m∠1</span>.
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠1</span> خارجية لـ <span class="m">△PQR</span>، وداخليتاها البعيدتان <span class="m">∠PQR</span> و <span class="m">∠PRQ</span>.</li><li><span class="m">m∠1 &gt; m∠3 + m∠4</span> و <span class="m">m∠1 &gt; m∠5 + m∠6</span>؛ فهي أكبر من كلٍّ منها.</li><li class="final">الزوايا: <span class="m">∠3, ∠4, ∠5, ∠6</span></li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> زوايا قياساتها أكبر من <span class="m">m∠8</span>.
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">∠8</span> زاوية داخلية بعيدة عن الزاوية الخارجية <span class="m">∠2</span> في <span class="m">△PQR</span>.</li><li class="final"><span class="m">m∠2 &gt; m∠8</span>؛ الزاوية: <span class="m">∠2</span></li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-3</span> · المتباينات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 12: العلاقات بين زوايا المثلث وأضلاعه ================= -->
+      <section class="page" data-title="العلاقات بين زوايا المثلث وأضلاعه">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card def" data-open><h3>نظريتان: العلاقات بين زوايا المثلث وأضلاعه</h3>
+            <p><b>4.9 متباينة ضلع–زاوية:</b> إذا كان أحد أضلاع مثلث أطول من ضلع آخر، فإن قياس الزاوية المقابلة للضلع الأطول يكون أكبر من قياس الزاوية المقابلة للضلع الأقصر.</p>
+            <p><b>4.10 متباينة زاوية–ضلع:</b> إذا كان قياس إحدى زوايا مثلث أكبر من قياس زاوية أخرى، فإن الضلع المقابل للزاوية الكبرى يكون أطول من الضلع المقابل للزاوية الصغرى.</p>
+          </div>
+          <div class="widget" data-widget="sideAngle"><div class="hint">☝ اسحب الرؤوس: كل زاوية بلون الضلع المقابل لها، والأكبر يقابل الأطول دائمًا</div></div>
+          <div class="card tip warn"><h4>تحديد الضلع المقابل</h4><p>الضلعان اللذان يشكّلان الزاوية لا يمكن أن يكون أحدهما مقابلًا لها؛ الضلع المقابل لـ <span class="m">∠A</span> هو <span class="m">BC</span>.</p></div>
+          <div class="card tip"><h4>برهان النظرية 4.9</h4>
+            <p><b>المعطيات:</b> <span class="m">△ABC</span> فيه <span class="m">AB &gt; BC</span>. <b>المطلوب:</b> <span class="m">m∠BCA &gt; m∠A</span>.</p>
+            <p>نعيّن <span class="m">D</span> على <span class="m">AB</span> بحيث <span class="m">BD = BC</span>، فيكون <span class="m">△BCD</span> متطابق الضلعين و <span class="m">m∠1 = m∠2</span>.</p>
+            <p><span class="m">m∠BCA = m∠2 + m∠3 &gt; m∠2 = m∠1</span>، و <span class="m">∠1</span> خارجية لـ <span class="m">△ADC</span>؛ لذا <span class="m">m∠1 &gt; m∠A</span>. وبالتعدي <span class="m">m∠BCA &gt; m∠A</span>.</p>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>ترتيب زوايا المثلث وفقًا لقياساتها</h3></header>
+            <div class="body">
+              <p class="q">اكتب زوايا <span class="m">△PQR</span> مرتبة من الأصغر إلى الأكبر، إذا كان <span class="m">PR = 7.5</span> ، <span class="m">PQ = 8.8</span> ، <span class="m">QR = 9.1</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li>الأضلاع من الأقصر إلى الأطول: <span class="m">PR, PQ, QR</span></li><li>الزوايا المقابلة لها على الترتيب: <span class="m">∠Q, ∠R, ∠P</span></li><li class="final">الزوايا من الأصغر إلى الأكبر: <span class="m">∠Q, ∠R, ∠P</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> اكتب زوايا <span class="m">△ABC</span> مرتبة من الأصغر إلى الأكبر، إذا كان <span class="m">AC = 3.7</span> ، <span class="m">AB = 4.8</span> ، <span class="m">BC = 7</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>الأضلاع من الأقصر: <span class="m">AC, AB, BC</span></li><li class="final">الزوايا المقابلة: <span class="m">∠B, ∠C, ∠A</span></li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>ترتيب أضلاع المثلث وفقًا لأطوالها</h3></header>
+            <div class="body">
+              <p class="q">اكتب أضلاع <span class="m">△FGH</span> مرتبة من الأقصر إلى الأطول، إذا كان <span class="m">m∠G = 45°</span> ، <span class="m">m∠H = 56°</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠F = 180° − (45° + 56°) = 79°</span></li><li>الزوايا من الأصغر إلى الأكبر: <span class="m">∠G, ∠H, ∠F</span></li><li class="final">الأضلاع المقابلة لها: <span class="m">FH, FG, GH</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> اكتب زوايا <span class="m">△WXY</span> وأضلاعه مرتبة من الأصغر إلى الأكبر، إذا كان <span class="m">m∠W = 51°</span> و <span class="m">∠Y</span> قائمة.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠X = 180° − 90° − 51° = 39°</span></li><li>الزوايا: <span class="m">∠X, ∠W, ∠Y</span></li><li class="final">الأضلاع المقابلة: <span class="m">WY, XY, WX</span></li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4 من واقع الحياة</span><h3>العلاقات بين الزوايا والأضلاع</h3></header>
+            <div class="body">
+              <p class="q"><b>تصميم داخلي:</b> أراد المصمّم أن يكون <span class="m">m∠B</span> أقل من <span class="m">m∠A</span> في المثلث <span class="m">ABC</span>. فأي مسافة يجب أن تكون أطول: المسافة بين المصباحين <span class="m">BC</span> أم المسافة بين النقطتين <span class="m">A, C</span>؟</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">AC</span> يقابل <span class="m">∠B</span>، و <span class="m">BC</span> يقابل <span class="m">∠A</span>.</li><li>حسب متباينة زاوية–ضلع: <span class="m">m∠B &lt; m∠A</span> ← <span class="m">AC &lt; BC</span></li><li class="final">المسافة بين المصباحين <span class="m">BC</span> أطول.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4) سبّاحو الإنقاذ:</b> المدرّب عند الرأس العلوي (الزاوية <span class="m">60°</span>)، والمتدرب الثاني عند زاوية <span class="m">59°</span>. أيّ المتدربين أقرب إلى المدرّب؟</p>
+            <div class="sol" data-sol><ol class="steps"><li>زاوية المتدرب الأول: <span class="m">180° − 60° − 59° = 61°</span></li><li>المسافة بين المدرّب والمتدرب الأول تقابل زاوية المتدرب الثاني (<span class="m">59°</span>)، وهي أصغر زاوية.</li><li class="final">أصغر زاوية تقابل أقصر ضلع؛ إذن <b>المتدرب الأول</b> أقرب إلى المدرّب.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-3</span> · المتباينات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 13: تأكد: تمارين 4-3 ================= -->
+      <section class="page" data-title="تأكد: تمارين 4-3">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — في الشكل: <span class="m">△TLR</span>، وشعاع من <span class="m">L</span> يقطع <span class="m">TR</span> في <span class="m">X</span>. عند <span class="m">T</span>: <span class="m">∠1</span>؛ عند <span class="m">L</span>: <span class="m">∠2</span> (أعلى الشعاع) و <span class="m">∠7</span> (أسفله)؛ عند <span class="m">X</span>: <span class="m">∠3</span> (<span class="m">∠TXL</span>)، <span class="m">∠4</span>، <span class="m">∠5</span>، <span class="m">∠6</span> (<span class="m">∠LXR</span>)؛ عند <span class="m">R</span>: <span class="m">∠8</span> داخلية و <span class="m">∠9</span> خارجية. استعمل متباينة الزاوية الخارجية:</div>
+          <div class="ex"><span class="exn">1</span> زوايا قياساتها أقل من <span class="m">m∠4</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">∠4</span> زاوية خارجية لـ <span class="m">△TLX</span> عند <span class="m">X</span>، وداخليتاها البعيدتان <span class="m">∠1</span> و <span class="m">∠2</span>.</li><li class="final"><span class="m">∠1, ∠2</span></li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> زوايا قياساتها أكبر من <span class="m">m∠7</span>.
+            <div class="sol" data-sol><ol class="steps"><li>في <span class="m">△LXR</span>: الزاويتان الخارجيتان عند <span class="m">X</span> هما <span class="m">∠3</span> و <span class="m">∠5</span>، والخارجية عند <span class="m">R</span> هي <span class="m">∠9</span>، و <span class="m">∠7</span> بعيدة عنها جميعًا.</li><li class="final"><span class="m">∠3, ∠5, ∠9</span></li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> زوايا قياساتها أكبر من <span class="m">m∠2</span>.
+            <div class="sol" data-sol><ol class="steps"><li>في <span class="m">△TLX</span>: الخارجيتان عند <span class="m">X</span> هما <span class="m">∠4</span> و <span class="m">∠6</span>.</li><li>وفي <span class="m">△TLR</span>: <span class="m">m∠9 &gt; m∠TLR = m∠2 + m∠7 &gt; m∠2</span></li><li class="final"><span class="m">∠4, ∠6, ∠9</span></li></ol></div></div>
+          <div class="ex"><span class="exn">4</span> زوايا قياساتها أقل من <span class="m">m∠9</span>.
+            <div class="sol" data-sol><ol class="steps"><li>في <span class="m">△LXR</span>: <span class="m">m∠9 &gt; m∠6</span> ، <span class="m">m∠9 &gt; m∠7</span> (و <span class="m">∠4</span> تقابل <span class="m">∠6</span> بالرأس فتساويها).</li><li>في <span class="m">△TLR</span>: <span class="m">m∠9 &gt; m∠1</span> ، <span class="m">m∠9 &gt; m∠2 + m∠7</span></li><li class="final"><span class="m">∠1, ∠2, ∠4, ∠6, ∠7</span></li></ol></div></div>
+          <div class="ex-group">المثالان 2، 3 — اكتب زوايا كل مثلث مرتبة من الأصغر إلى الأكبر:</div>
+          <div class="ex"><span class="exn">5</span> <span class="m">△ABC</span>: <span class="m">AB = 2.8</span> ، <span class="m">BC = 1.7</span> ، <span class="m">AC = 3.1</span>
+            <div class="sol" data-sol><ol class="steps"><li>الأضلاع من الأقصر: <span class="m">BC, AB, AC</span></li><li class="final">الزوايا المقابلة: <span class="m">∠A, ∠C, ∠B</span></li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> <span class="m">△JKL</span>: <span class="m">m∠J = 46°</span> ، <span class="m">m∠L = 87°</span>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">m∠K = 180° − 46° − 87° = 47°</span></li><li class="final"><span class="m">∠J, ∠K, ∠L</span></li></ol></div></div>
+          <div class="ex-group">المثال 4</div>
+          <div class="ex"><span class="exn">7</span> <b>طيران شراعي:</b> في مثلث الدعائم <span class="m">ABC</span>: <span class="m">m∠A = 64°</span> ، <span class="m">m∠B = 44°</span> ، <span class="m">m∠C = 72°</span>. أي دعامة أطول: <span class="m">AC</span> أم <span class="m">BC</span>؟
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">AC</span> يقابل <span class="m">∠B (44°)</span>، و <span class="m">BC</span> يقابل <span class="m">∠A (64°)</span>.</li><li class="final"><span class="m">64° &gt; 44°</span>؛ إذن <span class="m">BC</span> أطول.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-3</span> · المتباينات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 14: 4-4 البرهان غير المباشر ================= -->
+      <section class="page" data-title="4-4 البرهان غير المباشر">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">4-4</div>
+            <h1>البرهان غير المباشر</h1>
+            <div class="en">Indirect Proof</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ البراهين الحرّة وذات العمودين والتسلسلية.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أكتب براهين جبرية غير مباشرة.</li><li>أكتب براهين هندسية غير مباشرة.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>أعلن محل تخفيضًا مقداره <span class="num">25%</span>. اشترت هند قطعة ثمنها بعد التخفيض <span class="num">80</span> ريالًا، فهل كان ثمنها أكثر من <span class="num">100</span> ريال قبل التخفيض؟ أجابت مها: نعم؛ لأنه لو كان ثمن القطعة قبل التخفيض <span class="num">100</span> ريال أو أقل، فإن ثمنها بعد التخفيض سيكون <span class="num">75</span> ريالًا أو أقل.</p></div>
+          <div class="card def"><h3>البرهان غير المباشر</h3>
+            <p>في <span class="hl">التبرير غير المباشر</span> نفترض أن النتيجة خطأ، ثم نبيّن أن هذا الافتراض يؤدي إلى تناقض مع المعطيات أو مع حقيقة سابقة؛ ويسمى <span class="hl">برهانًا غير مباشر</span> أو <span class="hl">برهانًا بالتناقض</span>.</p>
+          </div>
+          <div class="card def" data-open><h3>مفهوم أساسي: خطوات كتابة البرهان غير المباشر</h3>
+            <p><b>الخطوة 1:</b> حدّد النتيجة التي ستبرهنها، ثم افترض خطأها؛ وذلك بافتراض أن نفيها صحيح.</p>
+            <p><b>الخطوة 2:</b> استعمل التبرير المنطقي لتبيّن أن هذا الافتراض يؤدي إلى تناقض مع المعطيات أو مع حقيقة أخرى (تعريف، أو مسلّمة، أو نظرية).</p>
+            <p><b>الخطوة 3:</b> بما أن الافتراض أدى إلى تناقض، فإن النتيجة الأصلية يجب أن تكون صحيحة.</p>
+          </div>
+          <div class="vocab"><span><b>التبرير المباشر</b><i>direct reasoning</i></span><span><b>البرهان المباشر</b><i>direct proof</i></span><span><b>التبرير غير المباشر</b><i>indirect reasoning</i></span><span><b>البرهان غير المباشر</b><i>indirect proof</i></span><span><b>البرهان بالتناقض</b><i>proof by contradiction</i></span></div>
+          <div class="card example" style="margin-top:14px">
+            <header><span class="tag">مثال 1</span><h3>صياغة افتراض للبدء في برهان غير مباشر</h3></header>
+            <div class="body">
+              <p class="q">اكتب الافتراض الضروري الذي تبدأ به برهانًا غير مباشر لكل عبارة:</p>
+              <div class="part"><span class="lbl">a</span> <span class="m">∠ABC ≇ ∠XYZ</span>
+                <div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: <span class="m">∠ABC ≅ ∠XYZ</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> إذا كان العدد <span class="num">6</span> عاملًا للعدد <span class="m">n</span>، فإن <span class="num">2</span> عامل للعدد <span class="m">n</span>.
+                <div class="sol" data-sol><ol class="steps"><li>نتيجة العبارة الشرطية: «<span class="num">2</span> عامل للعدد <span class="m">n</span>».</li><li class="final">الافتراض: العدد <span class="num">2</span> ليس عاملًا للعدد <span class="m">n</span>.</li></ol></div></div>
+              <div class="part"><span class="lbl">c</span> <span class="m">∠3</span> زاوية منفرجة.
+                <div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: <span class="m">∠3</span> ليست زاوية منفرجة.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك: اختر الافتراض الصحيح</h3>
+            <div class="widget" data-widget="assumeQuiz" data-set="c4"><div class="hint">☝ اضغط الافتراض الذي تبدأ به البرهان غير المباشر</div></div>
+            <div class="part"><span class="lbl">1A</span> <span class="m">x &gt; 5</span> <div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: <span class="m">x ≤ 5</span></li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> النقاط <span class="m">J, K, L</span> تقع على استقامة واحدة. <div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: النقاط <span class="m">J, K, L</span> لا تقع على استقامة واحدة.</li></ol></div></div>
+            <div class="part"><span class="lbl">1C</span> <span class="m">△XYZ</span> متطابق الأضلاع. <div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: <span class="m">△XYZ</span> ليس متطابق الأضلاع.</li></ol></div></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2</span><h3>كتابة برهان جبري غير مباشر</h3></header>
+            <div class="body">
+              <p class="q">اكتب برهانًا غير مباشر لتبيّن أنه: إذا كان <span class="m">−3x + 4 &gt; 16</span>، فإن <span class="m">x &lt; −4</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><b>الخطوة 1:</b> نفي <span class="m">x &lt; −4</span> هو <span class="m">x ≥ −4</span>؛ لذا افترض أن <span class="m">x ≥ −4</span> صحيحة.</li><li><b>الخطوة 2:</b> اضرب الطرفين في <span class="m">−3</span>: <span class="m">−3x ≤ 12</span>، ثم أضف <span class="m">4</span>: <span class="m">−3x + 4 ≤ 16</span>. ولكن المعطى <span class="m">−3x + 4 &gt; 16</span>.</li><li class="final"><b>الخطوة 3:</b> الافتراض أدى إلى تناقض مع المعطى؛ فهو خطأ، والنتيجة <span class="m">x &lt; −4</span> صحيحة.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">2A</span> إذا كانت <span class="m">7x &gt; 56</span>، فإن <span class="m">x &gt; 8</span>.
+              <div class="sol" data-sol><ol class="steps"><li>افترض أن <span class="m">x ≤ 8</span>.</li><li>اضرب في <span class="m">7</span>: <span class="m">7x ≤ 56</span>، وهذا يناقض المعطى <span class="m">7x &gt; 56</span>.</li><li class="final">إذن الافتراض خطأ، و <span class="m">x &gt; 8</span>.</li></ol></div></div>
+            <div class="part"><span class="lbl">2B</span> إذا كان <span class="m">−c</span> موجبًا، فإن <span class="m">c</span> سالب.
+              <div class="sol" data-sol><ol class="steps"><li>افترض أن <span class="m">c</span> ليس سالبًا؛ أي <span class="m">c ≥ 0</span>.</li><li>اضرب في <span class="m">−1</span>: <span class="m">−c ≤ 0</span>؛ أي أن <span class="m">−c</span> ليس موجبًا، وهذا يناقض المعطى.</li><li class="final">إذن <span class="m">c</span> سالب.</li></ol></div></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-4</span> · البرهان غير المباشر</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 15: البرهان غير المباشر في الحياة والأعداد والهندسة ================= -->
+      <section class="page" data-title="البرهان غير المباشر في الحياة والأعداد والهندسة">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>استعمال البرهان الجبري غير المباشر</h3></header>
+            <div class="body">
+              <p class="q"><b>تسوّق:</b> اشترى فهد قميصين بأكثر من <span class="num">60</span> ريالًا، ولم يتذكر ثمن كل قميص. استعمل البرهان غير المباشر لتبيّن أن أحد القميصين على الأقل ثمنه أكثر من <span class="num">30</span> ريالًا.</p>
+              <div class="sol" data-sol><ol class="steps"><li><b>المعطيات:</b> <span class="m">x + y &gt; 60</span>، حيث <span class="m">x, y</span> ثمنا القميصين. <b>المطلوب:</b> <span class="m">x &gt; 30</span> أو <span class="m">y &gt; 30</span>.</li><li><b>الخطوة 1:</b> افترض أن <span class="m">x ≤ 30</span> و <span class="m">y ≤ 30</span>.</li><li><b>الخطوة 2:</b> إذن <span class="m">x + y ≤ 30 + 30 = 60</span>، وهذا يناقض أن ثمنهما أكثر من <span class="num">60</span> ريالًا.</li><li class="final"><b>الخطوة 3:</b> الافتراض خطأ؛ لذا يجب أن يكون ثمن أحد القميصين على الأقل أكثر من <span class="num">30</span> ريالًا.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3) رحلة:</b> قطع رياض أكثر من <span class="num">360</span> كيلومترًا في رحلة، وتوقف في أثناء سفره مرتين فقط. أثبت أن رياضًا قطع أكثر من <span class="num">120</span> كيلومترًا في إحدى مراحل رحلته الثلاث على الأقل.</p>
+            <div class="sol" data-sol><ol class="steps"><li>لتكن أطوال المراحل <span class="m">a, b, c</span>، حيث <span class="m">a + b + c &gt; 360</span>.</li><li>افترض أن <span class="m">a ≤ 120</span> و <span class="m">b ≤ 120</span> و <span class="m">c ≤ 120</span>.</li><li>إذن <span class="m">a + b + c ≤ 360</span>، وهذا يناقض المعطى.</li><li class="final">إذن قطع أكثر من <span class="num">120</span> كيلومترًا في مرحلة واحدة على الأقل.</li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>براهين غير مباشرة في نظرية الأعداد</h3></header>
+            <div class="body">
+              <p class="q">اكتب برهانًا غير مباشر لإثبات أنه إذا كان <span class="m">x + 2</span> عددًا زوجيًّا، فإن <span class="m">x</span> عدد زوجي.</p>
+              <div class="sol" data-sol><ol class="steps"><li><b>الخطوة 1:</b> افترض أن <span class="m">x</span> عدد فردي؛ أي <span class="m">x = 2k + 1</span>، حيث <span class="m">k</span> عدد صحيح.</li><li><b>الخطوة 2:</b> <span class="m">x + 2 = (2k + 1) + 2 = (2k + 2) + 1 = 2(k + 1) + 1</span></li><li>بما أن <span class="m">k + 1</span> عدد صحيح، فإن <span class="m">x + 2</span> على الصورة <span class="m">2m + 1</span>؛ أي عدد فردي، وهذا يناقض المعطى.</li><li class="final"><b>الخطوة 3:</b> الافتراض خطأ؛ إذن <span class="m">x</span> عدد زوجي.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> اكتب برهانًا غير مباشر لإثبات أنه «إذا كان مربع عدد صحيح فرديًّا، فإن العدد الصحيح فردي».</p>
+            <div class="sol" data-sol><ol class="steps"><li>افترض أن العدد الصحيح <span class="m">n</span> زوجي؛ أي <span class="m">n = 2k</span>.</li><li><span class="m">n² = 4k² = 2(2k²)</span>، وهو عدد زوجي؛ وهذا يناقض أن <span class="m">n²</span> فردي.</li><li class="final">إذن العدد الصحيح فردي.</li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 5</span><h3>برهان هندسي</h3></header>
+            <div class="body">
+              <p class="q">أثبت أن قياس الزاوية الخارجية لمثلث يكون أكبر من قياس كلٍّ من الزاويتين الداخليتين البعيدتين عنها. <b>المعطيات:</b> <span class="m">∠4</span> زاوية خارجية لـ <span class="m">△ABC</span>. <b>المطلوب:</b> <span class="m">m∠4 &gt; m∠1</span> و <span class="m">m∠4 &gt; m∠2</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><b>الخطوة 1:</b> افترض أن <span class="m">m∠4 ≤ m∠1</span> (والحالة <span class="m">m∠4 ≤ m∠2</span> مماثلة).</li><li><b>الحالة 1:</b> <span class="m">m∠4 = m∠1</span>. ونظرية الزاوية الخارجية: <span class="m">m∠4 = m∠1 + m∠2</span>؛ إذن <span class="m">m∠2 = 0</span>، وهذا يناقض أن قياس الزاوية أكبر من <span class="num">0</span>.</li><li><b>الحالة 2:</b> <span class="m">m∠4 &lt; m∠1</span>. ولكن <span class="m">m∠4 = m∠1 + m∠2</span> و <span class="m">m∠2 &gt; 0</span>؛ إذن <span class="m">m∠4 &gt; m∠1</span>، وهذا تناقض.</li><li class="final"><b>الخطوة 3:</b> الافتراض أدى إلى تناقض في الحالتين؛ إذن <span class="m">m∠4 &gt; m∠1</span> و <span class="m">m∠4 &gt; m∠2</span>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>5)</b> اكتب برهانًا غير مباشر. <b>المعطيات:</b> <span class="m">MO ≅ ON</span> ، <span class="m">MP ≇ NP</span>. <b>المطلوب:</b> <span class="m">∠MOP ≇ ∠NOP</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>افترض أن <span class="m">∠MOP ≅ ∠NOP</span>.</li><li><span class="m">MO ≅ ON</span> (معطى)، و <span class="m">OP ≅ OP</span> (خاصية الانعكاس)؛ إذن <span class="m">△MOP ≅ △NOP</span> (SAS).</li><li>إذن <span class="m">MP ≅ NP</span> (العناصر المتناظرة في مثلثين متطابقين)، وهذا يناقض المعطى <span class="m">MP ≇ NP</span>.</li><li class="final">إذن <span class="m">∠MOP ≇ ∠NOP</span>.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-4</span> · البرهان غير المباشر</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 16: تأكد: تمارين 4-4 ================= -->
+      <section class="page" data-title="تأكد: تمارين 4-4">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — اكتب الافتراض الذي تبدأ به برهانًا غير مباشر لكل عبارة:</div>
+          <div class="ex"><span class="exn">1</span> <span class="m">AB ≅ CD</span><div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: <span class="m">AB ≇ CD</span></li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <span class="m">△XYZ</span> مختلف الأضلاع.<div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: <span class="m">△XYZ</span> ليس مختلف الأضلاع (له ضلعان متطابقان على الأقل).</li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> إذا كان <span class="m">4x &lt; 24</span>، فإن <span class="m">x &lt; 6</span>.<div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: <span class="m">x ≥ 6</span></li></ol></div></div>
+          <div class="ex"><span class="exn">4</span> <span class="m">∠A</span> ليست زاوية قائمة.<div class="sol" data-sol><ol class="steps"><li class="final">الافتراض: <span class="m">∠A</span> زاوية قائمة.</li></ol></div></div>
+          <div class="ex-group">المثال 2 — اكتب برهانًا غير مباشر لكل عبارة:</div>
+          <div class="ex"><span class="exn">5</span> إذا كان <span class="m">2x + 3 &lt; 7</span>، فإن <span class="m">x &lt; 2</span>.
+            <div class="sol" data-sol><ol class="steps"><li>افترض أن <span class="m">x ≥ 2</span>.</li><li><span class="m">2x ≥ 4</span> ← <span class="m">2x + 3 ≥ 7</span>، وهذا يناقض المعطى <span class="m">2x + 3 &lt; 7</span>.</li><li class="final">إذن <span class="m">x &lt; 2</span>.</li></ol></div></div>
+          <div class="ex"><span class="exn">6</span> إذا كان <span class="m">3x − 4 &gt; 8</span>، فإن <span class="m">x &gt; 4</span>.
+            <div class="sol" data-sol><ol class="steps"><li>افترض أن <span class="m">x ≤ 4</span>.</li><li><span class="m">3x ≤ 12</span> ← <span class="m">3x − 4 ≤ 8</span>، وهذا يناقض المعطى.</li><li class="final">إذن <span class="m">x &gt; 4</span>.</li></ol></div></div>
+          <div class="ex-group">المثال 3</div>
+          <div class="ex"><span class="exn">7</span> <b>كرة قدم:</b> سجّل فهد <span class="num">13</span> هدفًا لصالح فريقه في المباريات الست الأخيرة. أثبت أن متوسط عدد الأهداف التي سجلها في كل مباراة كان أقل من <span class="num">3</span>.
+            <div class="sol" data-sol><ol class="steps"><li>افترض أن المتوسط <span class="num">3</span> أهداف أو أكثر.</li><li>عندئذ يكون مجموع الأهداف <span class="m">≥ 3 × 6 = 18</span>، وهذا يناقض أنه سجّل <span class="num">13</span> هدفًا فقط.</li><li class="final">إذن المتوسط أقل من <span class="num">3</span> (وهو في الحقيقة <span class="m">13 ÷ 6 ≈ 2.2</span>).</li></ol></div></div>
+          <div class="ex-group">المثال 4</div>
+          <div class="ex"><span class="exn">8</span> اكتب برهانًا غير مباشر لإثبات أنه إذا كان <span class="m">5x − 2</span> عددًا فرديًّا، فإن <span class="m">x</span> عدد فردي.
+            <div class="sol" data-sol><ol class="steps"><li>افترض أن <span class="m">x</span> عدد زوجي؛ أي <span class="m">x = 2k</span>.</li><li><span class="m">5x − 2 = 10k − 2 = 2(5k − 1)</span>، وهو عدد زوجي؛ وهذا يناقض المعطى.</li><li class="final">إذن <span class="m">x</span> عدد فردي.</li></ol></div></div>
+          <div class="ex-group">المثال 5 — اكتب برهانًا غير مباشر لكل عبارة:</div>
+          <div class="ex"><span class="exn">9</span> وتر المثلث القائم الزاوية هو أطول أضلاعه.
+            <div class="sol" data-sol><ol class="steps"><li>افترض أن الوتر ليس أطول الأضلاع؛ أي يوجد ساق طوله أكبر من الوتر أو يساويه.</li><li>الوتر يقابل الزاوية القائمة (<span class="num">90°</span>)، ومجموع الزاويتين الأخريين <span class="num">90°</span>؛ فكل منهما أصغر من <span class="num">90°</span>.</li><li>حسب متباينة ضلع–زاوية (والمثلث المتطابق الضلعين في حالة التساوي)، الزاوية المقابلة لذلك الساق تكون <span class="m">≥ 90°</span>، وهذا تناقض.</li><li class="final">إذن الوتر أطول أضلاع المثلث القائم الزاوية.</li></ol></div></div>
+          <div class="ex"><span class="exn">10</span> إذا كانت الزاويتان متكاملتين، فإنه لا يمكن أن تكونا منفرجتين معًا.
+            <div class="sol" data-sol><ol class="steps"><li>افترض أن الزاويتين المتكاملتين منفرجتان معًا: <span class="m">m∠1 &gt; 90°</span> و <span class="m">m∠2 &gt; 90°</span>.</li><li>إذن <span class="m">m∠1 + m∠2 &gt; 180°</span>، وهذا يناقض تعريف الزاويتين المتكاملتين (مجموعهما <span class="num">180°</span>).</li><li class="final">إذن لا يمكن أن تكونا منفرجتين معًا.</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-4</span> · البرهان غير المباشر</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 17: 4-5 متباينة المثلث ================= -->
+      <section class="page" data-title="4-5 متباينة المثلث">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">4-5</div>
+            <h1>متباينة المثلث</h1>
+            <div class="en">The Triangle Inequality</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ خصائص المتباينات وتطبيقها على العلاقات بين زوايا المثلث وأضلاعه.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أستعمل نظرية متباينة المثلث لأعيّن الأطوال التي تكوّن مثلثًا.</li><li>أثبت العلاقات في المثلث باستعمال نظرية متباينة المثلث.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>يريد أحد المصمّمين أن يستعمل قطع الخيوط المجدولة المتبقية من أعماله لتزيين وسائد مثلثة الشكل. فاختار ثلاث قطع عشوائيًّا وحاول أن يشكّل مثلثًا: القطع <span class="m up">3 in, 3 in, 8 in</span> لم تكوّن مثلثًا، أما <span class="m up">3 in, 6 in, 8 in</span> فكوّنت مثلثًا.</p></div>
+          <div class="card def" data-open><h3>نظرية 4.11: متباينة المثلث</h3>
+            <p>مجموع طولي أي ضلعين في مثلث أكبر من طول الضلع الثالث.</p>
+            <p><b>أمثلة:</b> <span class="m">PQ + QR &gt; PR</span> ، <span class="m">QR + PR &gt; PQ</span> ، <span class="m">PR + PQ &gt; QR</span></p>
+          </div>
+          <div class="widget" data-widget="triIneq"><div class="hint">🎚 حرّك المنزلقات: متى يلتقي القوسان ليكوّنا رأسًا ثالثًا؟</div></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>تعيين الأطوال التي تكوّن مثلثًا</h3></header>
+            <div class="body">
+              <p class="q">حدّد ما إذا كانت القياسات المعطاة يمكن أن تمثل أطوال أضلاع مثلث، وإذا لم يكن ذلك ممكنًا فوضّح السبب:</p>
+              <div class="part"><span class="lbl">a</span> <span class="m up">8 in, 15 in, 17 in</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">8 + 15 = 23 &gt; 17</span> ✓ ، <span class="m">15 + 17 = 32 &gt; 8</span> ✓ ، <span class="m">8 + 17 = 25 &gt; 15</span> ✓</li><li class="final">مجموع طولي أي قطعتين أكبر من الثالثة؛ إذن <b>تكوّن مثلثًا</b>.</li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m up">6 m, 8 m, 14 m</span>
+                <div class="sol" data-sol><ol class="steps"><li><span class="m">6 + 8 = 14 ≯ 14</span> ✗</li><li class="final">مجموع طولي قطعتين ليس أكبر من الثالثة؛ إذن <b>لا تكوّن مثلثًا</b>.</li></ol></div></div>
+            </div>
+          </div>
+          <div class="card tip"><h4>إرشادات للدراسة</h4><p>يكفي أن تتحقق من أن مجموع <b>أقصر</b> طولين أكبر من الطول الثالث.</p></div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">1A</span> <span class="m up">15 cm, 16 cm, 30 cm</span>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">15 + 16 = 31 &gt; 30</span> ✓ (والمتباينتان الأخريان واضحتان)</li><li class="final">نعم، تكوّن مثلثًا.</li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> <span class="m up">2 ft, 8 ft, 11 ft</span>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">2 + 8 = 10 ≯ 11</span> ✗</li><li class="final">لا، لا تكوّن مثلثًا.</li></ol></div></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2 من الاختبار</span><h3>تحديد مدى القيم الممكنة للضلع الثالث</h3></header>
+            <div class="body">
+              <p class="q">إذا كان طولا ضلعين في مثلث هما <span class="m up">3 cm, 7 cm</span>، فما أصغر عدد طبيعي يمكن أن يمثل طول الضلع الثالث؟ <b>A</b> <span class="m up">3 cm</span> <b>B</b> <span class="m up">4 cm</span> <b>C</b> <span class="m up">5 cm</span> <b>D</b> <span class="m up">10 cm</span></p>
+              <div class="ans" data-answer="C|c|5|ج"><input placeholder="A / B / C / D"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+              <div class="sol" data-sol><ol class="steps"><li>ليكن طول الضلع الثالث <span class="m">x</span>. اكتب المتباينات الثلاث:</li><li><span class="m">3 + 7 &gt; x</span> ← <span class="m">x &lt; 10</span> ، <span class="m">3 + x &gt; 7</span> ← <span class="m">x &gt; 4</span> ، <span class="m">x + 7 &gt; 3</span> ← <span class="m">x &gt; −4</span> (صحيحة دائمًا)</li><li>مدى القيم: <span class="m">4 &lt; x &lt; 10</span></li><li class="final">أصغر عدد طبيعي أكبر من <span class="num">4</span> هو <span class="num">5</span>؛ الإجابة <b>C</b>.</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2)</b> في مثلث طولا ضلعين منه <span class="m up">13 cm</span> و <span class="m up">9 cm</span>، والثالث <span class="m up">n cm</span>. أيّ الأعداد الآتية <b>لا</b> يمكن أن يكون قيمة لـ <span class="m">n</span>؟ <b>A</b> 7 <b>B</b> 13 <b>C</b> 10 <b>D</b> 22</p>
+            <div class="ans" data-answer="D|d|22|د"><input placeholder="A / B / C / D"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">13 − 9 &lt; n &lt; 13 + 9</span> ← <span class="m">4 &lt; n &lt; 22</span></li><li class="final"><span class="num">22</span> ليست أقل من <span class="num">22</span>؛ الإجابة <b>D</b>.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-5</span> · متباينة المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 18: متباينة المثلث في البراهين وتمارين 4-5 ================= -->
+      <section class="page" data-title="متباينة المثلث في البراهين وتمارين 4-5">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 3 من واقع الحياة</span><h3>استعمال نظرية متباينة المثلث في البرهان</h3></header>
+            <div class="body">
+              <p class="q"><b>طيران:</b> المسافة الجوية من الرياض إلى ينبع تساوي المسافة الجوية من الرياض إلى أبها. أثبت أن الطيران من الرياض إلى ينبع مرورًا ببريدة يقطع مسافة أكبر من الطيران المباشر من الرياض إلى أبها.</p>
+              <p><b>المعطيات:</b> <span class="m">RY = RA</span>. <b>المطلوب:</b> <span class="m">RB + BY &gt; RA</span>.</p>
+              <div class="tbl-wrap"><table class="data proof"><tr><th>العبارات</th><th>المبررات</th></tr>
+                <tr><td>1) <span class="m">RY = RA</span></td><td>معطى</td></tr>
+                <tr><td>2) <span class="m">RB + BY &gt; RY</span></td><td>نظرية متباينة المثلث (في <span class="m">△RBY</span>)</td></tr>
+                <tr><td>3) <span class="m">RB + BY &gt; RA</span></td><td>بالتعويض</td></tr>
+              </table></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> اكتب برهانًا ذا عمودين. <b>المعطيات:</b> <span class="m">GL = LK</span>، والنقطة <span class="m">L</span> على <span class="m">GJ</span>. <b>المطلوب:</b> <span class="m">JH + GH &gt; JK</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">JH + GH &gt; GJ</span> (متباينة المثلث في <span class="m">△GHJ</span>)</li><li><span class="m">GJ = GL + LJ</span> (مسلّمة جمع أطوال القطع المستقيمة)</li><li><span class="m">GJ = LK + LJ</span> (بالتعويض، <span class="m">GL = LK</span>)</li><li><span class="m">LK + LJ &gt; JK</span> (متباينة المثلث في <span class="m">△JLK</span>)</li><li class="final"><span class="m">JH + GH &gt; GJ &gt; JK</span>؛ إذن <span class="m">JH + GH &gt; JK</span> (خاصية التعدي)</li></ol></div>
+          </div>
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — حدّد ما إذا كانت القياسات تمثل أطوال أضلاع مثلث، ووضّح السبب:</div>
+          <div class="ex"><span class="exn">1</span> <span class="m up">5 cm, 7 cm, 10 cm</span>
+            <div class="ans" data-answer="نعم|yes"><input placeholder="نعم / لا"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">5 + 7 = 12 &gt; 10</span> ✓</li><li class="final">نعم، تكوّن مثلثًا.</li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <span class="m up">3 in, 4 in, 8 in</span>
+            <div class="ans" data-answer="لا|no"><input placeholder="نعم / لا"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">3 + 4 = 7 ≯ 8</span> ✗</li><li class="final">لا، لا تكوّن مثلثًا.</li></ol></div></div>
+          <div class="ex"><span class="exn">3</span> <span class="m up">6 m, 14 m, 10 m</span>
+            <div class="ans" data-answer="نعم|yes"><input placeholder="نعم / لا"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">6 + 10 = 16 &gt; 14</span> ✓</li><li class="final">نعم، تكوّن مثلثًا.</li></ol></div></div>
+          <div class="ex-group">المثال 2</div>
+          <div class="ex"><span class="exn">4</span> <b>اختيار من متعدد:</b> إذا كان طولا ضلعين في مثلث <span class="m up">5 m, 9 m</span>، فما أصغر عدد صحيح يمكن أن يمثل طول الضلع الثالث؟ <b>A</b> <span class="m up">5 m</span> <b>B</b> <span class="m up">4 m</span> <b>C</b> <span class="m up">14 m</span> <b>D</b> <span class="m up">6 m</span>
+            <div class="ans" data-answer="A|a|5|أ"><input placeholder="A / B / C / D"><button class="btn sm">تحقق</button><span class="fb"></span></div>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">9 − 5 &lt; x &lt; 9 + 5</span> ← <span class="m">4 &lt; x &lt; 14</span></li><li class="final">أصغر عدد صحيح هو <span class="num">5</span>؛ الإجابة <b>A</b>.</li></ol></div></div>
+          <div class="ex-group">المثال 3</div>
+          <div class="ex"><span class="exn">5</span> <b>برهان:</b> اكتب برهانًا ذا عمودين. <b>المعطيات:</b> <span class="m">XW ≅ YW</span>. <b>المطلوب:</b> <span class="m">YZ + ZW &gt; XW</span>.
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">XW ≅ YW</span> (معطى) ← <span class="m">XW = YW</span> (تعريف تطابق القطع)</li><li><span class="m">YZ + ZW &gt; YW</span> (متباينة المثلث في <span class="m">△YZW</span>)</li><li class="final"><span class="m">YZ + ZW &gt; XW</span> (بالتعويض)</li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-5</span> · متباينة المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 19: 4-6 المتباينات في مثلثين ================= -->
+      <section class="page" data-title="4-6 المتباينات في مثلثين">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="lesson-head">
+            <div class="no">4-6</div>
+            <h1>المتباينات في مثلثين</h1>
+            <div class="en">Inequalities in Two Triangles</div>
+          </div>
+          <div class="side-grid">
+            <div class="mini before"><h4>فيما سبق</h4>درستُ المتباينات في المثلث الواحد.</div>
+            <div class="mini now"><h4>والآن</h4><ul><li>أطبّق متباينة SAS أو عكسها؛ لإجراء مقارنات بين عناصر مثلثين.</li><li>أثبت صحة العلاقات في مثلثين باستعمال متباينة SAS أو عكسها.</li></ul></div>
+          </div>
+          <div class="card why"><h3>لماذا؟</h3><p>تُستعمل الرافعة عند تغيير إطارات السيارات. لاحظ أنه عندما تُنزَّل الرافعة فإن ساقي <span class="m">△ABC</span> يظلّان متطابقين، في حين تزداد الزاوية <span class="m">A</span> اتساعًا ويزداد طول الضلع <span class="m">BC</span> المقابل لها.</p></div>
+          <div class="card def" data-open><h3>نظريتان: المتباينات في مثلثين</h3>
+            <p><b>4.12 متباينة SAS:</b> إذا طابق ضلعان في مثلث ضلعين مناظرين في مثلث آخر، وكان قياس الزاوية المحصورة في المثلث الأول أكبر من قياس الزاوية المحصورة في الثاني، فإن الضلع الثالث في الأول أطول من الضلع الثالث في الثاني.</p>
+            <p><b>4.13 عكس متباينة SAS (SSS):</b> إذا طابق ضلعان في مثلث ضلعين مناظرين في مثلث آخر، وكان الضلع الثالث في الأول أطول من الضلع الثالث في الثاني، فإن قياس الزاوية المحصورة في الأول أكبر من قياس الزاوية المحصورة في الثاني.</p>
+          </div>
+          <div class="widget" data-widget="hinge"><div class="hint">🎚 حرّك المنزلق لتغيير الزاوية المحصورة؛ الضلعان ثابتان مثل ساقي الرافعة</div></div>
+          <div class="card example">
+            <header><span class="tag">مثال 1</span><h3>استعمال متباينة SAS وعكسها</h3></header>
+            <div class="body">
+              <p class="q">قارن بين القياسين المحددين في كلٍّ مما يأتي:</p>
+              <div class="part"><span class="lbl">a</span> <span class="m">WX, XY</span>: في <span class="m">△WXZ</span> و <span class="m">△YXZ</span>: <span class="m">WZ ≅ YZ</span> ، <span class="m">XZ ≅ XZ</span> ، <span class="m">m∠WZX = 51°</span> ، <span class="m">m∠YZX = 55°</span>.
+                <div class="sol" data-sol><ol class="steps"><li>ضلعان متطابقان، والزاوية المحصورة <span class="m">m∠YZX &gt; m∠WZX</span>.</li><li class="final">حسب متباينة SAS: <span class="m">WX &lt; XY</span></li></ol></div></div>
+              <div class="part"><span class="lbl">b</span> <span class="m">m∠FCD, m∠BFC</span>: في <span class="m">△BCF</span> و <span class="m">△DFC</span>: <span class="m">BF ≅ DC</span> ، <span class="m">FC ≅ CF</span> ، <span class="m">BC = 3.6</span> ، <span class="m">FD = 3</span>.
+                <div class="sol" data-sol><ol class="steps"><li>ضلعان متطابقان، والضلع الثالث <span class="m">BC &gt; FD</span>.</li><li>الزاوية المقابلة لـ <span class="m">BC</span> هي <span class="m">∠BFC</span>، والمقابلة لـ <span class="m">FD</span> هي <span class="m">∠DCF</span>.</li><li class="final">حسب عكس متباينة SAS: <span class="m">m∠BFC &gt; m∠DCF</span></li></ol></div></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <div class="part"><span class="lbl">1A</span> <span class="m">JK, MQ</span>: في <span class="m">△JKL</span>: <span class="m">KL = 12</span> ، <span class="m">JL = 15</span> ، <span class="m">m∠L = 72°</span>؛ وفي <span class="m">△MPQ</span>: <span class="m">PQ = 12</span> ، <span class="m">MP = 15</span> ، <span class="m">m∠P = 61°</span>.
+              <div class="sol" data-sol><ol class="steps"><li>ضلعان متطابقان، والزاوية المحصورة <span class="m">72° &gt; 61°</span>.</li><li class="final">متباينة SAS: <span class="m">JK &gt; MQ</span></li></ol></div></div>
+            <div class="part"><span class="lbl">1B</span> <span class="m">m∠SRT, m∠VRT</span>: <span class="m">RS = RV = 8</span> ، <span class="m">RT</span> مشترك ، <span class="m">ST = 6</span> ، <span class="m">VT = 11</span>.
+              <div class="sol" data-sol><ol class="steps"><li>ضلعان متطابقان، والضلع الثالث <span class="m">ST &lt; VT</span>.</li><li class="final">عكس متباينة SAS: <span class="m">m∠SRT &lt; m∠VRT</span></li></ol></div></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 2 من واقع الحياة</span><h3>استعمال متباينة SAS</h3></header>
+            <div class="body">
+              <p class="q"><b>التزلج على الجليد:</b> انطلق متزلجان من المكان نفسه. قطع المتزلج A مسافة <span class="m up">17.5 m</span> غربًا، ثم انحرف <span class="num">35°</span> شمال الغرب قاطعًا <span class="m up">15 m</span>. وقطع المتزلج B <span class="m up">17.5 m</span> شرقًا، ثم انحرف <span class="num">40°</span> شمال الشرق قاطعًا <span class="m up">15 m</span>. أيهما الأبعد عن مكان الانطلاق؟</p>
+              <div class="sol" data-sol><ol class="steps"><li>مسار كل متزلج مع بُعده عن الانطلاق يشكّل مثلثًا ضلعاه <span class="m up">17.5 m</span> و <span class="m up">15 m</span>.</li><li>الزاوية المحصورة للمتزلج A: <span class="m">180° − 35° = 145°</span>، وللمتزلج B: <span class="m">180° − 40° = 140°</span>.</li><li class="final"><span class="m">145° &gt; 140°</span>؛ إذن حسب متباينة SAS: <span class="m">AC &gt; BC</span>، فالمتزلج <b>A</b> أبعد.</li><li><b>تحقق:</b> المتزلج B انحرف <span class="num">5°</span> أكثر في اتجاه مكان الانطلاق، فهو أقرب ✓</li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>2) التزلج على الجليد:</b> قطعت المجموعة A <span class="m up">4 mi</span> شرقًا، ثم انحرفت <span class="num">70°</span> شمال الشرق قاطعةً <span class="m up">3 mi</span>. وقطعت المجموعة B <span class="m up">4 mi</span> غربًا، ثم انحرفت <span class="num">75°</span> شمال الغرب قاطعةً <span class="m up">3 mi</span>. أي المجموعتين الأبعد عن مكان الانطلاق؟</p>
+            <div class="sol" data-sol><ol class="steps"><li>الزاوية المحصورة للمجموعة A: <span class="m">180° − 70° = 110°</span>، وللمجموعة B: <span class="m">180° − 75° = 105°</span>.</li><li class="final"><span class="m">110° &gt; 105°</span>؛ إذن المجموعة <b>A</b> أبعد.</li></ol></div>
+          </div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-6</span> · المتباينات في مثلثين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 20: متباينة SAS بالجبر والبراهين وتمارين 4-6 ================= -->
+      <section class="page" data-title="متباينة SAS بالجبر والبراهين وتمارين 4-6">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <div class="card example">
+            <header><span class="tag">مثال 3</span><h3>استعمال الجبر في العلاقات بين مثلثين</h3></header>
+            <div class="body">
+              <p class="q"><b>جبر:</b> في الشكل: <span class="m">JH ≅ GH</span> ، <span class="m">EH ≅ EH</span> ، <span class="m">JE = 11</span> ، <span class="m">EG = 9</span> ، <span class="m">m∠JHE = (6x + 15)°</span> ، <span class="m">m∠EHG = 65°</span>. أوجد متباينة تمثل مدى القيم الممكنة لـ <span class="m">x</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><b>الخطوة 1:</b> <span class="m">JE &gt; EG</span>؛ إذن حسب عكس متباينة SAS: <span class="m">m∠JHE &gt; m∠EHG</span></li><li><span class="m">6x + 15 &gt; 65</span> ← <span class="m">6x &gt; 50</span> ← <span class="m">x &gt; 8⅓</span></li><li><b>الخطوة 2:</b> قياس أي زاوية في المثلث أقل من <span class="num">180°</span>: <span class="m">6x + 15 &lt; 180</span> ← <span class="m">x &lt; 27.5</span></li><li class="final"><b>الخطوة 3:</b> <span class="m">8⅓ &lt; x &lt; 27.5</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>3)</b> في الشكل مثلثان: في الأول ضلعان أحدهما <span class="num">50</span> والزاوية المحصورة بينهما <span class="num">68°</span>، والضلع المقابل لها <span class="num">47</span>؛ وفي الثاني ضلعان مطابقان لهما والزاوية المحصورة <span class="num">55°</span>، والضلع المقابل لها <span class="m">5x + 2</span>. أوجد متباينة تمثل مدى القيم الممكنة لـ <span class="m">x</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li>ضلعان متطابقان، و <span class="m">68° &gt; 55°</span>؛ إذن حسب متباينة SAS: <span class="m">47 &gt; 5x + 2</span> ← <span class="m">x &lt; 9</span></li><li>الطول موجب: <span class="m">5x + 2 &gt; 0</span> ← <span class="m">x &gt; −0.4</span></li><li class="final"><span class="m">−0.4 &lt; x &lt; 9</span></li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 4</span><h3>إثبات علاقات المثلث باستعمال متباينة SAS</h3></header>
+            <div class="body">
+              <p class="q">اكتب برهانًا ذا عمودين. <b>المعطيات:</b> <span class="m">AB ≅ AD</span>. <b>المطلوب:</b> <span class="m">EB &gt; ED</span>.</p>
+              <div class="tbl-wrap"><table class="data proof"><tr><th>العبارات</th><th>المبررات</th></tr>
+                <tr><td>1) <span class="m">AB ≅ AD</span></td><td>معطى</td></tr>
+                <tr><td>2) <span class="m">AE ≅ AE</span></td><td>خاصية الانعكاس</td></tr>
+                <tr><td>3) <span class="m">m∠EAB = m∠EAD + m∠DAB</span></td><td>مسلّمة جمع قياسات الزوايا</td></tr>
+                <tr><td>4) <span class="m">m∠EAB &gt; m∠EAD</span></td><td>تعريف المتباينة</td></tr>
+                <tr><td>5) <span class="m">EB &gt; ED</span></td><td>متباينة SAS</td></tr>
+              </table></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>4)</b> <b>المعطيات:</b> <span class="m">RQ ≅ ST</span>، والنقطة <span class="m">Q</span> على <span class="m">RT</span>، و <span class="m">∠1 = ∠RQS</span> ، <span class="m">∠2 = ∠QST</span>. <b>المطلوب:</b> <span class="m">RS &gt; TQ</span>.</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">RQ ≅ ST</span> (معطى)، <span class="m">QS ≅ QS</span> (خاصية الانعكاس)</li><li><span class="m">∠1</span> زاوية خارجية لـ <span class="m">△QST</span>، و <span class="m">∠2</span> داخلية بعيدة عنها؛ إذن <span class="m">m∠1 &gt; m∠2</span> (متباينة الزاوية الخارجية).</li><li class="final">في <span class="m">△RQS</span> و <span class="m">△TSQ</span>: حسب متباينة SAS <span class="m">RS &gt; TQ</span>.</li></ol></div>
+          </div>
+          <div class="card example">
+            <header><span class="tag">مثال 5</span><h3>إثبات علاقات باستعمال عكس متباينة SAS</h3></header>
+            <div class="body">
+              <p class="q">اكتب برهانًا تسلسليًّا. <b>المعطيات:</b> <span class="m">T</span> نقطة منتصف <span class="m">ZX</span> ، <span class="m">ST ≅ WT</span> ، <span class="m">SZ &gt; WX</span>. <b>المطلوب:</b> <span class="m">m∠XTR &gt; m∠ZTY</span>.</p>
+              <div class="sol" data-sol><ol class="steps"><li><span class="m">ZT ≅ TX</span> (نظرية نقطة المنتصف)، و <span class="m">ST ≅ WT</span> (معطى)، و <span class="m">SZ &gt; WX</span> (معطى).</li><li>عكس متباينة SAS في <span class="m">△STZ</span> و <span class="m">△WTX</span>: <span class="m">m∠STZ &gt; m∠WTX</span></li><li><span class="m">∠STZ ≅ ∠XTR</span> و <span class="m">∠WTX ≅ ∠ZTY</span> (الزوايا المتقابلة بالرأس متطابقة).</li><li class="final">بالتعويض: <span class="m">m∠XTR &gt; m∠ZTY</span></li></ol></div>
+            </div>
+          </div>
+          <div class="card check"><h3>تحقق من فهمك</h3>
+            <p><b>5)</b> <b>المعطيات:</b> <span class="m">NK</span> قطعة متوسطة في <span class="m">△JMN</span> ، <span class="m">JN &gt; NM</span>. <b>المطلوب:</b> <span class="m">m∠1 &gt; m∠2</span> (حيث <span class="m">∠1 = ∠JKN</span> ، <span class="m">∠2 = ∠MKN</span>).</p>
+            <div class="sol" data-sol><ol class="steps"><li><span class="m">JK ≅ KM</span> (تعريف القطعة المتوسطة)، و <span class="m">NK ≅ NK</span> (خاصية الانعكاس).</li><li><span class="m">JN &gt; NM</span> (معطى).</li><li class="final">عكس متباينة SAS في <span class="m">△JKN</span> و <span class="m">△MKN</span>: <span class="m">m∠1 &gt; m∠2</span></li></ol></div>
+          </div>
+          <div class="exercise-head">✓ تأكَّد</div>
+          <div class="ex-group">المثال 1 — قارن بين القياسين المحددين:</div>
+          <div class="ex"><span class="exn">1</span> <span class="m">m∠ACB, m∠GDE</span>: في <span class="m">△ABC</span>: <span class="m">CA = 5</span> ، <span class="m">CB = 4</span> ، <span class="m">AB = 3.2</span>؛ وفي <span class="m">△DEG</span>: <span class="m">DG = 5</span> ، <span class="m">DE = 4</span> ، <span class="m">EG = 3</span>.
+            <div class="sol" data-sol><ol class="steps"><li>ضلعان متطابقان (<span class="num">5</span> و <span class="num">4</span>)، والضلع الثالث <span class="m">3.2 &gt; 3</span>.</li><li class="final">عكس متباينة SAS: <span class="m">m∠ACB &gt; m∠GDE</span></li></ol></div></div>
+          <div class="ex"><span class="exn">2</span> <span class="m">JL, KM</span>: <span class="m">JK = LM = 6</span> ، <span class="m">KL</span> مشترك ، <span class="m">m∠JKL = 47°</span> ، <span class="m">m∠KLM = 81°</span>.
+            <div class="sol" data-sol><ol class="steps"><li>في <span class="m">△JKL</span> و <span class="m">△MLK</span>: ضلعان متطابقان، والزاويتان المحصورتان <span class="num">47°</span> و <span class="num">81°</span>.</li><li class="final">متباينة SAS: <span class="m">KM &gt; JL</span></li></ol></div></div>
+        </div></div><button class="curl" data-next aria-label="الصفحة التالية"></button><div class="pg-foot"><span>الدرس <span class="num">4-6</span> · المتباينات في مثلثين</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+      <!-- ================= 21: ملخص الفصل 4 ================= -->
+      <section class="page" data-title="ملخص الفصل 4">
+        <div class="face front"><div class="scroll"><div class="pg">
+          <h2 class="sec-title">ملخص الفصل</h2>
+          <div class="card def">
+            <h3>ماذا تعلمت في الفصل الرابع؟</h3>
+            <ul style="margin:0;padding-inline-start:18px">
+              <li><b>المنصّفات <span class="num">(4-1)</span>:</b> نقطة على العمود المنصّف ⟸⟹ متساوية البعد عن طرفي القطعة؛ ونقطة على منصّف الزاوية ⟸⟹ متساوية البعد عن ضلعيها. تلتقي الأعمدة المنصّفة في <b>مركز الدائرة الخارجية</b>، ومنصّفات الزوايا في <b>مركز الدائرة الداخلية</b>.</li>
+              <li><b>القطع المتوسطة والارتفاعات <span class="num">(4-2)</span>:</b> تلتقي القطع المتوسطة في <b>مركز المثلث</b> الذي يبعد عن كل رأس ثلثي القطعة المتوسطة، وتلتقي الارتفاعات في <b>ملتقى الارتفاعات</b>.</li>
+              <li><b>المتباينات في المثلث <span class="num">(4-3)</span>:</b> الزاوية الخارجية أكبر من كل زاوية داخلية بعيدة، والضلع الأطول يقابل الزاوية الكبرى.</li>
+              <li><b>البرهان غير المباشر <span class="num">(4-4)</span>:</b> افترض نفي النتيجة، ثم توصّل إلى تناقض.</li>
+              <li><b>متباينة المثلث <span class="num">(4-5)</span>:</b> مجموع طولي أي ضلعين أكبر من الثالث.</li>
+              <li><b>المتباينات في مثلثين <span class="num">(4-6)</span>:</b> متباينة SAS (الزاوية المحصورة الأكبر ⟸ الضلع الثالث الأطول) وعكسها.</li>
+            </ul>
+          </div>
+          <div class="card" style="text-align:center;background:linear-gradient(135deg,#f5f3ff,#eff6ff)">
+            <div style="font-size:42px">🎉</div>
+            <h3 style="color:var(--teal)">أحسنت! أكملت الفصل الرابع وكتاب الرياضيات <span class="num">1-1</span></h3>
+            <p>راجع الملخصات، وجرّب الأدوات التفاعلية مرة أخرى لتثبيت المفاهيم.</p>
+            <div class="ctrl" style="justify-content:center"><a class="btn" href="index.html" style="text-decoration:none">⌂ فهرس الكتاب</a><a class="btn ghost" href="chapter-3.html" style="text-decoration:none">→ الفصل 3</a></div>
+          </div>
+        </div></div><div class="pg-foot"><span>الفصل 4 · العلاقات في المثلث</span><b class="pno"></b></div></div>
+        <div class="face back"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <nav class="navbar">
+    <button class="nav-btn" id="prevBtn" aria-label="الصفحة السابقة">→ السابق</button>
+    <div class="page-ind" id="pageInd"></div>
+    <button class="nav-btn primary" id="nextBtn" aria-label="الصفحة التالية">التالي ←</button>
+  </nav>
+</div>
+
+<aside class="drawer" id="drawer" aria-label="الفهرس">
+  <h3>محتويات الكتاب</h3>
+  <ol id="drawerList"></ol>
+</aside>
+<div class="drawer-bg" id="drawerBg"></div>
+
+<script src="js/math.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" async></script>
+<script src="js/widgets.js"></script>
+<script src="js/book.js"></script>
+</body>
+</html>

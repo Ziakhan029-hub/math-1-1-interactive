@@ -1435,6 +1435,304 @@
     draw();
   };
 
+  /* ===================== Chapter 4 ===================== */
+  const add = (p, q) => [p[0] + q[0], p[1] + q[1]], sub = (p, q) => [p[0] - q[0], p[1] - q[1]], mul = (p, k) => [p[0] * k, p[1] * k];
+  const mid = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+  // foot of the perpendicular from p to the line through a, b
+  const foot = (p, a, b) => { const d = sub(b, a), t = ((p[0] - a[0]) * d[0] + (p[1] - a[1]) * d[1]) / (d[0] ** 2 + d[1] ** 2); return add(a, mul(d, t)); };
+  // long line through p with direction d (clipped by the svg)
+  const longLine = (g, p, d, attrs) => { const L = Math.hypot(...d) || 1, u = mul(d, 900 / L); return s('line', Object.assign({ x1: p[0] - u[0], y1: p[1] - u[1], x2: p[0] + u[0], y2: p[1] + u[1] }, attrs), g); };
+  // small right-angle square at foot f, along directions u and v
+  function rightMark(g, f, u, v, col) {
+    const n = (w) => { const L = Math.hypot(...w) || 1; return mul(w, 9 / L); }, a = n(u), b = n(v);
+    s('path', { d: `M${f[0] + a[0]},${f[1] + a[1]} L${f[0] + a[0] + b[0]},${f[1] + a[1] + b[1]} L${f[0] + b[0]},${f[1] + b[1]}`, fill: 'none', stroke: col || C.pink, 'stroke-width': 1.8 }, g);
+  }
+  const dot = (g, p, col, r) => s('circle', { cx: p[0], cy: p[1], r: r || 4.5, fill: col || C.ink, stroke: '#fff', 'stroke-width': 1.5 }, g);
+  // vertex labels pushed away from the triangle's centre
+  function vLabels(g, T, names) {
+    const c = [(T[0][0] + T[1][0] + T[2][0]) / 3, (T[0][1] + T[1][1] + T[2][1]) / 3];
+    T.forEach((p, i) => { const d = sub(p, c), L = Math.hypot(...d) || 1; txt(g, Math.max(10, Math.min(310, p[0] + d[0] / L * 20)), Math.max(14, p[1] + d[1] / L * 20 + 5), names[i], italic()); });
+  }
+  function dragTri(svg, P, box, draw) {
+    const hs = P.map(() => handle(svg, C.orange));
+    hs.forEach((h, i) => draggable(svg, h, (x, y) => { P[i] = [Math.max(box[0], Math.min(box[2], x)), Math.max(box[1], Math.min(box[3], y))]; draw(); }));
+    return hs;
+  }
+
+  /* ---------- 4-1: points on a perpendicular bisector / an angle bisector ---------- */
+  W.bisector = function (el) {
+    const angle = el.dataset.mode === 'angle';
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 320 220"></svg><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const h = handle(svg, C.orange);
+    const A = [70, 180], B = [250, 180], V = [40, 196], half = 26;      // angle mode: vertex V, sides at 0° and 52°
+    const dirA = [1, 0], dirB = [Math.cos(2 * half * Math.PI / 180), -Math.sin(2 * half * Math.PI / 180)], dirM = [Math.cos(half * Math.PI / 180), -Math.sin(half * Math.PI / 180)];
+    let P = angle ? add(V, mul(dirM, 170)) : [160, 70];
+    draggable(svg, h, (x, y) => {
+      P = [Math.max(14, Math.min(306, x)), Math.max(14, Math.min(angle ? 190 : 206, y))];
+      if (angle) { const t = (P[0] - V[0]) * dirM[0] + (P[1] - V[1]) * dirM[1], q = add(V, mul(dirM, t)); if (t > 30 && dist(q, P) < 7) P = q; }
+      else if (Math.abs(P[0] - 160) < 7) P[0] = 160;
+      draw();
+    });
+    function draw() {
+      clear(layer);
+      if (!angle) {
+        s('line', { x1: 160, y1: 6, x2: 160, y2: 214, stroke: C.teal, 'stroke-width': 2.5, 'stroke-dasharray': '7 5' }, layer);
+        s('line', { x1: A[0], y1: A[1], x2: B[0], y2: B[1], stroke: C.ink, 'stroke-width': 3.5, 'stroke-linecap': 'round' }, layer);
+        rightMark(layer, [160, 180], [1, 0], [0, -1]); ticks(layer, A, [160, 180], 1); ticks(layer, [160, 180], B, 1);
+        const pa = dist(P, A) / 20, pb = dist(P, B) / 20, on = Math.abs(P[0] - 160) < 0.5;
+        s('line', { x1: P[0], y1: P[1], x2: A[0], y2: A[1], stroke: C.blue, 'stroke-width': 3 }, layer);
+        s('line', { x1: P[0], y1: P[1], x2: B[0], y2: B[1], stroke: C.pink, 'stroke-width': 3 }, layer);
+        sideLabel(layer, A, P, fmt(pa), false, C.blue); sideLabel(layer, P, B, fmt(pb), false, C.pink);
+        dot(layer, A); dot(layer, B); dot(layer, [160, 180], C.teal, 3.5);
+        txt(layer, A[0] - 4, A[1] + 22, 'A', italic()); txt(layer, B[0] + 4, B[1] + 22, 'B', italic()); txt(layer, 172, 198, 'M', italic({ 'font-size': 13 }));
+        txt(layer, P[0] + 16, P[1] - 10, 'P', italic());
+        ro.innerHTML = on
+          ? `<span class="pill big ok">✓ <span class="m">P</span> على العمود المنصّف ← <span class="m">PA = PB = ${fmt(pa)}</span></span>`
+          : `<span class="pill no"><span class="m">PA = ${fmt(pa)}</span> ، <span class="m">PB = ${fmt(pb)}</span> ← غير متساويين</span><span class="pill">أعد <span class="m">P</span> إلى المستقيم المتقطع</span>`;
+      } else {
+        s('line', { x1: V[0], y1: V[1], x2: V[0] + 300 * dirM[0], y2: V[1] + 300 * dirM[1], stroke: C.teal, 'stroke-width': 2.5, 'stroke-dasharray': '7 5' }, layer);
+        [dirA, dirB].forEach((d) => s('line', { x1: V[0], y1: V[1], x2: V[0] + fit(V, angAt(V, add(V, d)), 320, 220, 6) * d[0], y2: V[1] + fit(V, angAt(V, add(V, d)), 320, 220, 6) * d[1], stroke: C.ink, 'stroke-width': 3.5, 'stroke-linecap': 'round' }, layer));
+        s('path', { d: arcPath(V, 40, 0, half), fill: 'rgba(29,78,216,.18)', stroke: C.blue, 'stroke-width': 1.5 }, layer);
+        s('path', { d: arcPath(V, 44, half, 2 * half), fill: 'rgba(219,39,119,.18)', stroke: C.pink, 'stroke-width': 1.5 }, layer);
+        // perpendiculars from P to both sides (feet clamped to the rays)
+        const proj = (d) => { const t = Math.max(0, (P[0] - V[0]) * d[0] + (P[1] - V[1]) * d[1]); return add(V, mul(d, t)); };
+        const F1 = proj(dirA), F2 = proj(dirB), d1 = dist(P, F1) / 20, d2 = dist(P, F2) / 20;
+        const t = (P[0] - V[0]) * dirM[0] + (P[1] - V[1]) * dirM[1], on = t > 30 && dist(add(V, mul(dirM, t)), P) < 0.5;
+        s('line', { x1: P[0], y1: P[1], x2: F1[0], y2: F1[1], stroke: C.blue, 'stroke-width': 3 }, layer);
+        s('line', { x1: P[0], y1: P[1], x2: F2[0], y2: F2[1], stroke: C.pink, 'stroke-width': 3 }, layer);
+        if (dist(P, F1) > 12) rightMark(layer, F1, sub(P, F1), dirA.map((v) => -v));
+        if (dist(P, F2) > 12) rightMark(layer, F2, sub(P, F2), dirB.map((v) => -v));
+        sideLabel(layer, F1, P, fmt(d1), false, C.blue); sideLabel(layer, P, F2, fmt(d2), false, C.pink);
+        dot(layer, V); txt(layer, V[0] - 10, V[1] + 4, 'B', italic());
+        txt(layer, P[0] + 16, P[1] - 8, 'P', italic());
+        ro.innerHTML = on
+          ? `<span class="pill big ok">✓ <span class="m">P</span> على منصّف الزاوية ← بُعداه عن الضلعين متساويان: <span class="m">${fmt(d1)} = ${fmt(d2)}</span></span>`
+          : `<span class="pill no">البعدان: <span class="m">${fmt(d1)}</span> و <span class="m">${fmt(d2)}</span> ← غير متساويين</span><span class="pill">أعد <span class="m">P</span> إلى منصّف الزاوية (المتقطع)</span>`;
+      }
+      place(h, P[0], P[1]);
+      tex(ro);
+    }
+    draw();
+  };
+
+  /* ---------- 4-1 / 4-2: the four points of concurrency ---------- */
+  W.centers = function (el) {
+    const M = {
+      circ: { name: 'مركز الدائرة الخارجية', by: 'الأعمدة المنصفة', col: C.teal },
+      inc: { name: 'مركز الدائرة الداخلية', by: 'منصفات الزوايا', col: C.purple },
+      cent: { name: 'مركز المثلث', by: 'القطع المتوسطة', col: C.blue },
+      orth: { name: 'ملتقى الارتفاعات', by: 'الارتفاعات', col: C.red },
+    };
+    const keys = (el.dataset.modes || 'circ,inc,cent,orth').split(',');
+    let mode = el.dataset.mode || keys[0];
+    el.insertAdjacentHTML('beforeend', `<div class="chips">${keys.map((k) => `<button class="chip" data-m="${k}" aria-pressed="${k === mode}" style="color:${M[k].col}"><span>${M[k].by}</span></button>`).join('')}</div><svg viewBox="0 0 320 250"></svg><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const P = [[50, 205], [275, 205], [120, 50]], names = ['A', 'B', 'C'];
+    const hs = dragTri(svg, P, [16, 16, 304, 234], draw);
+    function draw() {
+      clear(layer);
+      const [A, B, Cc] = P, col = M[mode].col, thin = { stroke: col, 'stroke-width': 1.8, opacity: .85 };
+      const a = dist(B, Cc), b = dist(Cc, A), c = dist(A, B);
+      const D = 2 * (A[0] * (B[1] - Cc[1]) + B[0] * (Cc[1] - A[1]) + Cc[0] * (A[1] - B[1]));
+      if (Math.abs(D) < 200) { ro.innerHTML = '<span class="pill no">الرؤوس الثلاثة على استقامة واحدة تقريبًا! اسحب أحدها</span>'; s('polygon', { points: P.map((p) => p.join(',')).join(' '), fill: 'none', stroke: C.ink, 'stroke-width': 3 }, layer); P.forEach((p, i) => place(hs[i], ...p)); return; }
+      const sq = (p) => p[0] ** 2 + p[1] ** 2;
+      const O = [(sq(A) * (B[1] - Cc[1]) + sq(B) * (Cc[1] - A[1]) + sq(Cc) * (A[1] - B[1])) / D, (sq(A) * (Cc[0] - B[0]) + sq(B) * (A[0] - Cc[0]) + sq(Cc) * (B[0] - A[0])) / D];
+      const angs = [angleAt(B, A, Cc), angleAt(A, B, Cc), angleAt(A, Cc, B)], mx = Math.max(...angs);
+      const kind = Math.abs(mx - 90) < 1.5 ? 'right' : mx > 90 ? 'obtuse' : 'acute';
+      let X, extra = '';
+      s('polygon', { points: P.map((p) => p.join(',')).join(' '), fill: '#f8fafc', stroke: 'none' }, layer);
+      if (mode === 'circ') {
+        X = O;
+        s('circle', { cx: O[0], cy: O[1], r: dist(O, A), fill: 'none', stroke: col, 'stroke-width': 1.5, 'stroke-dasharray': '5 4', opacity: .7 }, layer);
+        [[A, B], [B, Cc], [Cc, A]].forEach(([p, q]) => { const m = mid(p, q), d = sub(q, p); longLine(layer, m, [-d[1], d[0]], thin); rightMark(layer, m, d, [-d[1], d[0]], col); ticks(layer, p, m, 1, col); ticks(layer, m, q, 1, col); });
+        [A, B, Cc].forEach((p) => s('line', { x1: X[0], y1: X[1], x2: p[0], y2: p[1], stroke: C.orange, 'stroke-width': 2, 'stroke-dasharray': '3 3' }, layer));
+        extra = `<span class="pill ok"><span class="m">PA = PB = PC = ${fmt(dist(O, A) / 20)}</span></span>`;
+      } else if (mode === 'inc') {
+        X = [(a * A[0] + b * B[0] + c * Cc[0]) / (a + b + c), (a * A[1] + b * B[1] + c * Cc[1]) / (a + b + c)];
+        const r = Math.abs((B[0] - A[0]) * (Cc[1] - A[1]) - (Cc[0] - A[0]) * (B[1] - A[1])) / (a + b + c);
+        s('circle', { cx: X[0], cy: X[1], r, fill: 'none', stroke: col, 'stroke-width': 1.5, 'stroke-dasharray': '5 4', opacity: .7 }, layer);
+        P.forEach((p) => s('line', { x1: p[0], y1: p[1], x2: X[0] + (X[0] - p[0]) * .25, y2: X[1] + (X[1] - p[1]) * .25, stroke: col, 'stroke-width': 1.8 }, layer));
+        [[A, B], [B, Cc], [Cc, A]].forEach(([p, q]) => { const f = foot(X, p, q); s('line', { x1: X[0], y1: X[1], x2: f[0], y2: f[1], stroke: C.orange, 'stroke-width': 2, 'stroke-dasharray': '3 3' }, layer); rightMark(layer, f, sub(X, f), sub(q, p), col); });
+        // the two equal halves of each angle
+        P.forEach((p, i) => { const h1 = angleAt(P[(i + 1) % 3], p, X), th = angAt(p, X); s('path', { d: arcPath(p, 20, th - h1, th), fill: 'none', stroke: col, 'stroke-width': 1.3 }, layer); s('path', { d: arcPath(p, 23, th, th + h1), fill: 'none', stroke: col, 'stroke-width': 1.3 }, layer); });
+        extra = `<span class="pill ok">بُعده عن الأضلاع الثلاثة متساوٍ: <span class="m">${fmt(r / 20)}</span></span>`;
+      } else if (mode === 'cent') {
+        X = [(A[0] + B[0] + Cc[0]) / 3, (A[1] + B[1] + Cc[1]) / 3];
+        P.forEach((p, i) => { const q = P[(i + 1) % 3], o = P[(i + 2) % 3], m = mid(q, o); s('line', { x1: p[0], y1: p[1], x2: m[0], y2: m[1], stroke: col, 'stroke-width': 2 }, layer); ticks(layer, q, m, i + 1, C.pink); ticks(layer, m, o, i + 1, C.pink); dot(layer, m, col, 3); });
+        const K = mid(A, B);   // median from C
+        s('line', { x1: Cc[0], y1: Cc[1], x2: X[0], y2: X[1], stroke: C.orange, 'stroke-width': 4, opacity: .8 }, layer);
+        txt(layer, K[0], K[1] + 18, 'K', italic({ 'font-size': 13 }));
+        const cp = dist(Cc, X) / 20, ck = dist(Cc, K) / 20;
+        extra = `<span class="pill ok"><span class="m">CK = ${fmt(ck)}</span> ، <span class="m">CP = ${fmt(cp)}</span> ← <span class="m">CP</span> ثلثا <span class="m">CK</span></span><span class="pill"><span class="m">CP : PK = 2 : 1</span></span>`;
+      } else {
+        X = sub(add(add(A, B), Cc), mul(O, 2));      // H = A + B + C − 2·O
+        P.forEach((p, i) => {
+          const q = P[(i + 1) % 3], o = P[(i + 2) % 3], f = foot(p, q, o), d = sub(o, q);
+          longLine(layer, p, sub(f, p).every((v) => Math.abs(v) < .01) ? [-d[1], d[0]] : sub(f, p), { stroke: col, 'stroke-width': 1.3, opacity: .45, 'stroke-dasharray': '4 4' });
+          s('line', { x1: p[0], y1: p[1], x2: f[0], y2: f[1], stroke: col, 'stroke-width': 2 }, layer);
+          // extend the opposite side when the foot falls outside it
+          const t = ((f[0] - q[0]) * d[0] + (f[1] - q[1]) * d[1]) / (d[0] ** 2 + d[1] ** 2);
+          if (t < 0 || t > 1) s('line', { x1: t < 0 ? q[0] : o[0], y1: t < 0 ? q[1] : o[1], x2: f[0], y2: f[1], stroke: C.ink, 'stroke-width': 1.5, 'stroke-dasharray': '4 3' }, layer);
+          if (dist(p, f) > 12) rightMark(layer, f, sub(p, f), t > 0.5 ? mul(d, -1) : d, col);
+        });
+        extra = `<span class="pill">الارتفاع عمودي على الضلع المقابل (أو امتداده)</span>`;
+      }
+      s('polygon', { points: P.map((p) => p.join(',')).join(' '), fill: 'none', stroke: C.ink, 'stroke-width': 3, 'stroke-linejoin': 'round' }, layer);
+      // where is the point?
+      const sgn = (p, q, r) => (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]);
+      const s1 = sgn(A, B, X), s2 = sgn(B, Cc, X), s3 = sgn(Cc, A, X), tol = 300;
+      const onEdge = [s1, s2, s3].some((v) => Math.abs(v) < tol * 2) && kind === 'right';
+      const inside = (s1 > 0 && s2 > 0 && s3 > 0) || (s1 < 0 && s2 < 0 && s3 < 0);
+      const where = onEdge ? (mode === 'orth' ? 'على رأس الزاوية القائمة' : 'على أحد الأضلاع (منتصف الوتر)') : inside ? 'داخل المثلث' : 'خارج المثلث';
+      if (X[0] > -20 && X[0] < 340 && X[1] > -20 && X[1] < 270) { dot(layer, X, C.orange, 6); txt(layer, X[0] + 13, X[1] - 9, 'P', italic({ fill: '#b45309' })); }
+      vLabels(layer, P, names);
+      P.forEach((p, i) => place(hs[i], ...p));
+      const kname = { acute: 'حاد الزوايا', right: 'قائم الزاوية', obtuse: 'منفرج الزاوية' }[kind];
+      ro.innerHTML = `<span class="pill big" style="color:${col}">${M[mode].by} تتلاقى في <b>${M[mode].name}</b> <span class="m">P</span></span>${extra}<span class="pill ${inside || onEdge ? 'ok' : 'no'}">المثلث ${kname} ← <span class="m">P</span> ${where}</span>`;
+      tex(ro);
+    }
+    el.querySelectorAll('[data-m]').forEach((bt) => bt.addEventListener('click', () => { mode = bt.dataset.m; el.querySelectorAll('[data-m]').forEach((x) => x.setAttribute('aria-pressed', x === bt)); draw(); }));
+    draw();
+  };
+
+  /* ---------- 4-3: the longest side is opposite the largest angle ---------- */
+  W.sideAngle = function (el) {
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 320 230"></svg><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout'), layer = s('g', {}, svg);
+    const P = [[45, 195], [285, 195], [110, 55]], names = ['A', 'B', 'C'];
+    const hs = dragTri(svg, P, [16, 16, 304, 214], draw);
+    const rankCol = [[C.blue, 'rgba(29,78,216,.22)', 'الأصغر'], [C.orange, 'rgba(245,158,11,.3)', 'الأوسط'], [C.pink, 'rgba(219,39,119,.25)', 'الأكبر']];
+    function draw() {
+      clear(layer);
+      const ang = [angleAt(P[2], P[0], P[1]), angleAt(P[0], P[1], P[2]), angleAt(P[1], P[2], P[0])];
+      const deg0 = ang.map((v) => Math.round(v)); deg0[deg0.indexOf(Math.max(...deg0))] += 180 - deg0[0] - deg0[1] - deg0[2];
+      const order = [0, 1, 2].sort((i, j) => ang[i] - ang[j]), rank = []; order.forEach((v, r) => { rank[v] = r; });
+      const opp = [[1, 2], [2, 0], [0, 1]];   // side opposite vertex i
+      s('polygon', { points: P.map((p) => p.join(',')).join(' '), fill: '#f8fafc', stroke: 'none' }, layer);
+      opp.forEach(([a, b], i) => s('line', { x1: P[a][0], y1: P[a][1], x2: P[b][0], y2: P[b][1], stroke: rankCol[rank[i]][0], 'stroke-width': 5, 'stroke-linecap': 'round' }, layer));
+      P.forEach((p, i) => angleArc(layer, P[(i + 2) % 3], p, P[(i + 1) % 3], 24, rankCol[rank[i]][1], rankCol[rank[i]][0]));
+      const cx = (P[0][0] + P[1][0] + P[2][0]) / 3, cy = (P[0][1] + P[1][1] + P[2][1]) / 3;
+      P.forEach((p, i) => { const d = sub(p, [cx, cy]), L = Math.hypot(...d) || 1; txt(layer, p[0] - d[0] / L * 40, p[1] - d[1] / L * 40 + 4, deg0[i] + '°', { 'font-size': 11, 'font-weight': 800, fill: rankCol[rank[i]][0] }); });
+      opp.forEach(([a, b], i) => sideLabel(layer, P[a], P[b], fmt(dist(P[a], P[b]) / 20), false, rankCol[rank[i]][0]));
+      vLabels(layer, P, names);
+      P.forEach((p, i) => place(hs[i], ...p));
+      const sideName = (i) => names[opp[i][0]] + names[opp[i][1]];
+      ro.innerHTML = `<span class="pill">الزوايا من الأصغر إلى الأكبر: <span class="m">${order.map((i) => '∠' + names[i]).join(' , ')}</span></span>` +
+        `<span class="pill">الأضلاع المقابلة لها: <span class="m">${order.map(sideName).join(' , ')}</span></span>` +
+        `<span class="pill big ok">أكبر زاوية <span class="m">∠${names[order[2]]}</span> تقابل أطول ضلع <span class="m">${sideName(order[2])}</span> (اللون نفسه)</span>`;
+      tex(ro);
+    }
+    draw();
+  };
+
+  /* ---------- 4-5: can three lengths make a triangle? ---------- */
+  W.triIneq = function (el) {
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 320 200"></svg>
+      <div class="ctrl"><label style="color:var(--blue)">a</label><input type="range" min="1" max="12" value="5" data-k="a"><output></output></div>
+      <div class="ctrl"><label style="color:var(--pink,#db2777)">b</label><input type="range" min="1" max="12" value="7" data-k="b"><output></output></div>
+      <div class="ctrl"><label>c</label><input type="range" min="1" max="12" value="9" data-k="c"><output></output></div><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const inp = {}; el.querySelectorAll('input[data-k]').forEach((r) => { inp[r.dataset.k] = r; r.addEventListener('input', draw); });
+    function draw() {
+      el.querySelectorAll('input[data-k]').forEach((r) => { r.nextElementSibling.textContent = r.value; });
+      clear(svg);
+      const a = +inp.a.value, b = +inp.b.value, c = +inp.c.value, k = Math.min(20, 280 / Math.max(c, 1));
+      const A = [160 - c * k / 2, 178], B = [160 + c * k / 2, 178];
+      // compass arcs: radius b around A, radius a around B
+      s('path', { d: `M${A[0] + b * k},${A[1]} A${b * k},${b * k} 0 0 0 ${A[0] - b * k},${A[1]}`, fill: 'none', stroke: '#db2777', 'stroke-width': 1.5, 'stroke-dasharray': '5 4', opacity: .6 }, svg);
+      s('path', { d: `M${B[0] + a * k},${B[1]} A${a * k},${a * k} 0 0 0 ${B[0] - a * k},${B[1]}`, fill: 'none', stroke: C.blue, 'stroke-width': 1.5, 'stroke-dasharray': '5 4', opacity: .6 }, svg);
+      s('line', { x1: A[0], y1: A[1], x2: B[0], y2: B[1], stroke: C.ink, 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+      txt(svg, 160, 196, 'c = ' + c, italic({ 'font-size': 13 }));
+      const ok = a + b > c && a + c > b && b + c > a;
+      if (ok) {
+        const x = (b * b - a * a + c * c) / (2 * c), y = Math.sqrt(Math.max(0, b * b - x * x));
+        const Cc = [A[0] + x * k, A[1] - y * k];
+        s('polygon', { points: [A, B, Cc].map((p) => p.join(',')).join(' '), fill: 'rgba(22,163,74,.12)', stroke: 'none' }, svg);
+        s('line', { x1: A[0], y1: A[1], x2: Cc[0], y2: Cc[1], stroke: '#db2777', 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+        s('line', { x1: B[0], y1: B[1], x2: Cc[0], y2: Cc[1], stroke: C.blue, 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+        dot(svg, Cc, C.green, 5);
+      } else {
+        // lay the two sides along their arcs, pointing at each other, to show the gap
+        const ga = Math.PI * 0.3;
+        s('line', { x1: A[0], y1: A[1], x2: A[0] + b * k * Math.cos(ga), y2: A[1] - b * k * Math.sin(ga), stroke: '#db2777', 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+        s('line', { x1: B[0], y1: B[1], x2: B[0] - a * k * Math.cos(ga), y2: B[1] - a * k * Math.sin(ga), stroke: C.blue, 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+      }
+      [A, B].forEach((p) => dot(svg, p));
+      const row = (l, r, x) => { const g = l > r; return `<span class="pill ${g ? 'ok' : 'no'}"><span class="m">${x} = ${l} ${g ? '&gt;' : '≯'} ${r}</span> ${g ? '✓' : '✗'}</span>`; };
+      ro.innerHTML = row(a + b, c, 'a + b') + row(a + c, b, 'a + c') + row(b + c, a, 'b + c') +
+        `<span class="pill big ${ok ? 'ok' : 'no'}">${ok ? '✓ تتحقق المتباينات الثلاث ← تكوّن مثلثًا' : '✗ القوسان لا يلتقيان ← لا تكوّن مثلثًا'}</span>`;
+      tex(ro);
+    }
+    draw();
+  };
+
+  /* ---------- 4-6: the hinge theorem (SAS inequality) ---------- */
+  W.hinge = function (el) {
+    el.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 320 200"></svg>
+      <div class="ctrl"><label>∠A</label><input type="range" min="15" max="165" value="95"><output></output></div><div class="readout"></div>`);
+    const svg = el.querySelector('svg'), ro = el.querySelector('.readout');
+    const A = [150, 170], AB = 5, AC = 4, k = 30, ref = 60;
+    const Bp = [A[0] + AB * k, A[1]];
+    const third = (t) => Math.sqrt(AB * AB + AC * AC - 2 * AB * AC * Math.cos(t * Math.PI / 180));
+    range(el, (t) => {
+      clear(svg);
+      const Cr = [A[0] + AC * k * Math.cos(ref * Math.PI / 180), A[1] - AC * k * Math.sin(ref * Math.PI / 180)];
+      const Cc = [A[0] + AC * k * Math.cos(t * Math.PI / 180), A[1] - AC * k * Math.sin(t * Math.PI / 180)];
+      // reference triangle (fixed 60°), dashed
+      s('polygon', { points: [A, Bp, Cr].map((p) => p.join(',')).join(' '), fill: 'none', stroke: C.muted, 'stroke-width': 2, 'stroke-dasharray': '6 4' }, svg);
+      s('path', { d: arcPath(A, 26, 0, t), fill: t > ref ? 'rgba(219,39,119,.22)' : 'rgba(29,78,216,.2)', stroke: t > ref ? C.pink : C.blue, 'stroke-width': 1.5 }, svg);
+      s('polygon', { points: [A, Bp, Cc].map((p) => p.join(',')).join(' '), fill: 'rgba(14,165,233,.08)', stroke: 'none' }, svg);
+      s('line', { x1: A[0], y1: A[1], x2: Bp[0], y2: Bp[1], stroke: C.ink, 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+      s('line', { x1: A[0], y1: A[1], x2: Cc[0], y2: Cc[1], stroke: C.ink, 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+      s('line', { x1: Bp[0], y1: Bp[1], x2: Cc[0], y2: Cc[1], stroke: C.orange, 'stroke-width': 4.5, 'stroke-linecap': 'round' }, svg);
+      ticks(svg, A, Bp, 1, C.pink); ticks(svg, A, Cc, 2, C.pink);
+      txt(svg, A[0] + AB * k * .72, A[1] + 20, '5', { 'font-size': 12, 'font-weight': 700, fill: '#334155' }); sideLabel(svg, Cc, A, '4', false);
+      txt(svg, A[0] + 34 * Math.cos(t * Math.PI / 360), A[1] - 34 * Math.sin(t * Math.PI / 360) + 4, t + '°', { 'font-size': 11, 'font-weight': 800, fill: t > ref ? C.pink : C.blue });
+      txt(svg, Cr[0] + 10, Cr[1] - 6, '60°', { 'font-size': 10, fill: C.muted });
+      dot(svg, Cc, C.orange); dot(svg, A); dot(svg, Bp);
+      txt(svg, A[0] - 4, A[1] + 16, 'A', italic({ 'font-size': 13 })); txt(svg, Bp[0] + 4, Bp[1] + 16, 'B', italic({ 'font-size': 13 })); txt(svg, Cc[0] + (t > 90 ? -12 : 12), Cc[1] - 8, 'C', italic({ 'font-size': 13 }));
+      const bc = third(t), br = third(ref), cmp = t > ref ? '&gt;' : t < ref ? '&lt;' : '=';
+      ro.innerHTML = `<span class="pill">الضلعان ثابتان: <span class="m">AB = 5</span> ، <span class="m">AC = 4</span></span>` +
+        `<span class="pill big ${t === ref ? '' : 'ok'}"><span class="m">${t}° ${cmp} 60°</span> ← <span class="m">BC = ${fmt(bc, 2)} ${cmp} ${fmt(br, 2)}</span></span>` +
+        `<span class="pill">كلما كبرت الزاوية المحصورة، طال الضلع الثالث (البرتقالي)</span>`;
+      tex(ro);
+    });
+  };
+
+  /* ---------- 4-4: choose the right assumption for an indirect proof ---------- */
+  const m_ = (x) => `<span class="m">${x}</span>`;
+  const ASSUME = {
+    c4: [
+      [m_('∠ABC ≇ ∠XYZ'), [m_('∠ABC ≅ ∠XYZ'), m_('m∠ABC &gt; m∠XYZ'), m_('∠ABC ≇ ∠XYZ')], 0, 'نقيض «غير متطابقتين» هو «متطابقتان».'],
+      [m_('x &gt; 5'), [m_('x &lt; 5'), m_('x ≤ 5'), m_('x ≥ 5')], 1, `نقيض ${m_('x &gt; 5')} يشمل المساواة: ${m_('x ≤ 5')}.`],
+      [m_('∠3') + ' زاوية منفرجة', [m_('∠3') + ' حادة', m_('∠3') + ' قائمة', m_('∠3') + ' ليست منفرجة'], 2, 'إذا لم تكن منفرجة فقد تكون حادة أو قائمة؛ لذا نفترض «ليست منفرجة».'],
+      [m_('△XYZ') + ' متطابق الأضلاع', [m_('△XYZ') + ' مختلف الأضلاع', m_('△XYZ') + ' ليس متطابق الأضلاع', m_('△XYZ') + ' متطابق الضلعين'], 1, 'النفي هو «ليس متطابق الأضلاع» (فقد يكون متطابق الضلعين أو مختلف الأضلاع).'],
+      ['إذا كان ' + m_('7x &gt; 56') + ' ، فإن ' + m_('x &gt; 8'), [m_('7x ≤ 56'), m_('x ≤ 8'), m_('x &lt; 8')], 1, 'نفترض نفي النتيجة ' + m_('x &gt; 8') + ' ، أي ' + m_('x ≤ 8') + ' ، ونبقي المعطى صحيحًا.'],
+    ],
+  };
+  W.assumeQuiz = function (el) {
+    const items = ASSUME[el.dataset.set];
+    el.insertAdjacentHTML('beforeend', `<div class="aq"></div><div class="readout"></div>`);
+    const box = el.querySelector('.aq'), ro = el.querySelector('.readout');
+    let right = 0;
+    items.forEach(([st, opts, ans, why], i) => {
+      const d = document.createElement('div');
+      d.style.cssText = 'margin:8px 0;padding:8px;border:1px dashed var(--line);border-radius:12px';
+      d.innerHTML = `<div style="margin-bottom:6px">${i + 1}) العبارة: ${st} ← الافتراض هو:</div><div class="chips">${opts.map((o, j) => `<button class="chip" data-j="${j}" style="color:var(--blue)"><span>${o}</span></button>`).join('')}</div><div class="fbk" style="margin-top:6px;font-size:14px"></div>`;
+      let done = false;
+      d.querySelectorAll('.chip').forEach((b) => b.addEventListener('click', () => {
+        const ok = +b.dataset.j === ans;
+        b.style.color = ok ? C.green : C.red; b.setAttribute('aria-pressed', 'true');
+        d.querySelector('.fbk').innerHTML = (ok ? '✓ صحيح. ' : '✗ ليس هذا. ') + why;
+        if (ok && !done) { done = true; right++; ro.innerHTML = `<span class="pill ${right === items.length ? 'big ok' : ''}">${right === items.length ? '🎉 ممتاز! أتقنت صياغة الافتراض' : `صحيح: ${right} من ${items.length}`}</span>`; }
+        tex(d);
+      }));
+      box.appendChild(d);
+    });
+    tex(box);
+  };
+
   document.querySelectorAll('[data-widget]').forEach((el) => {
     const f = W[el.dataset.widget];
     if (f) { try { f(el); } catch (e) { console.error('widget', el.dataset.widget, e); } }

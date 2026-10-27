@@ -246,6 +246,12 @@ Mark it in HTML, JS does the rest:
 | `congTest` | SSS / SAS / ASA / AAS (one triangle) vs SSA / AAA (not enough) | 3-4, 3-5 |
 | `isoTri` | Isosceles triangle: equal legs ⟺ equal base angles | 3-6 |
 | `midsegment` | Coordinate proof: the midsegment is parallel to the base and half its length | 3-7 |
+| `bisector` | Drag P: equal distances on a perpendicular bisector; `data-mode="angle"` → equal distances to the sides of an angle | 4-1 |
+| `centers` | Draggable triangle with its 4 points of concurrency (circumcenter, incenter, centroid, orthocenter); `data-modes="circ,inc,cent,orth"` limits the buttons | 4-1, 4-2 |
+| `sideAngle` | Drag vertices: each angle has the colour of its opposite side; largest angle ↔ longest side | 4-3 |
+| `assumeQuiz` | Choose the correct assumption for an indirect proof (`data-set` = key in `ASSUME`) | 4-4 |
+| `triIneq` | Three length sliders + compass arcs: do they make a triangle? | 4-5 |
+| `hinge` | SAS inequality: two fixed sides, slider for the included angle vs a 60° reference | 4-6 |
 
 ### Rules for a new widget
 - Write it as `W.myWidget = function (el) { … }` in `js/widgets.js`.
